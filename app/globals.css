@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'Manrope', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+  --clr-orange:   #FF6B00;
+  --clr-dark:     #1A1A1A;
+  --clr-warm:     #F5F4F0;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: #F5F4F0;
+  color: #1A1A1A;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+/* SVG grain texture — накладывается через псевдоэлемент на секции с .grain */
+.grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); letter-spacing: -0.01em; }
+  .font-body    { font-family: var(--font-body); }
+  .font-mono    { font-family: var(--font-mono); }
+
+  .text-gradient {
+    background: linear-gradient(120deg, #FF6B00 20%, #FFA500 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Слоистые тени с цветным тинтом */
+  .shadow-card {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.08);
+  }
+  .shadow-card-hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.06), 0 16px 40px rgba(255,107,0,0.10), 0 4px 16px rgba(0,0,0,0.08);
+  }
+  .shadow-orange {
+    box-shadow: 0 4px 24px rgba(255,107,0,0.30), 0 2px 8px rgba(255,107,0,0.15);
+  }
+
+  .delay-75  { animation-delay: 75ms;  }
+  .delay-100 { animation-delay: 100ms; }
+  .delay-150 { animation-delay: 150ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+
+  /* Scroll-driven entrance — JS-free через простой opacity/translate */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* prefers-reduced-motion — убираем все анимации */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration:   0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration:  0.01ms !important;
+  }
+}
+
+/* Скроллбар */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: #1A1A1A; }
+::-webkit-scrollbar-thumb { background: #FF6B00; border-radius: 3px; }
+
+/* Минимальный размер touch-target */
+button, a, [role="button"] {
+  min-height: 44px;
+  min-width:  44px;
+}
+
+/* Skip-link для клавиатурной навигации */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  padding: 0.5rem 1rem;
+  background: #FF6B00;
+  color: white;
+  font-weight: 600;
+  border-radius: 0 0 8px 8px;
+  transition: top 0.2s ease;
+  z-index: 9999;
+}
+.skip-link:focus { top: 0; }

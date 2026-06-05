@@ -1,0 +1,14 @@
+.git
+.github
+.next
+node_modules
+npm-debug.log*
+.env.local
+.env.*.local
+*.log
+.DS_Store
+Thumbs.db
+temporary screenshots
+screenshot.mjs
+serve.mjs
+skills

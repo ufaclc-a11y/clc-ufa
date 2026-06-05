@@ -1,0 +1,422 @@
+
+> clc-ufa@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:3000
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 7.7s
+ ○ Compiling /portfolio/[category] ...
+ ✓ Compiled /portfolio/[category] in 12.4s (603 modules)
+ GET /portfolio/medalnitsa 200 in 17664ms
+ ○ Compiling /icon.svg ...
+ ✓ Compiled /icon.svg in 6.9s (352 modules)
+ GET /portfolio/gravirovka 200 in 515ms
+ ○ Compiling /portfolio ...
+ ✓ Compiled /portfolio in 870ms (592 modules)
+ GET /portfolio 200 in 1264ms
+ ○ Compiling / ...
+ ✓ Compiled / in 842ms (613 modules)
+ ✓ Compiled /products/[id] in 480ms (622 modules)
+ ✓ Compiled in 662ms (290 modules)
+ ○ Compiling /portfolio/[category] ...
+ ✓ Compiled /portfolio/[category] in 767ms (350 modules)
+ GET /portfolio/medali 200 in 1783ms
+ GET /portfolio?cat=medali 200 in 196ms
+ ○ Compiling /icon.svg ...
+ ✓ Compiled /icon.svg in 817ms (376 modules)
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 1016ms
+ ✓ Compiled in 2.4s (636 modules)
+ GET /portfolio 200 in 234ms
+ GET /portfolio 200 in 851ms
+ ✓ Compiled /icon.svg in 342ms (376 modules)
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 587ms
+ ✓ Compiled in 5.8s (636 modules)
+ ⨯ app\portfolio\page.tsx (20:12) @ Breadcrumbs
+ ⨯ ReferenceError: Breadcrumbs is not defined
+    at PortfolioPage (./app/portfolio/page.tsx:29:101)
+    at stringify (<anonymous>)
+digest: "638389158"
+[0m [90m 18 |[39m       [33m<[39m[33mdiv[39m className[33m=[39m[32m"pt-24 pb-20 bg-[#F5F4F0]"[39m[33m>[39m[0m
+[0m [90m 19 |[39m         [33m<[39m[33mdiv[39m className[33m=[39m[32m"max-w-7xl mx-auto px-4 sm:px-6"[39m[33m>[39m[0m
+[0m[31m[1m>[22m[39m[90m 20 |[39m           [33m<[39m[33mBreadcrumbs[39m items[33m=[39m{[{ label[33m:[39m [32m'Наши работы'[39m }]} [33m/[39m[33m>[39m[0m
+[0m [90m    |[39m            [31m[1m^[22m[39m[0m
+[0m [90m 21 |[39m           [33m<[39m[33mspan[39m className[33m=[39m[32m"font-mono text-xs text-[#FF6B00] tracking-widest uppercase"[39m[33m>[39m[33mПортфолио[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m[0m
+[0m [90m 22 |[39m           [33m<[39m[33mh1[39m className[33m=[39m[32m"font-display text-5xl sm:text-6xl text-[#1A1A1A] tracking-wider mt-2 mb-4"[39m[33m>[39m[0m
+[0m [90m 23 |[39m             [33mНаши[39m работы[0m
+ ✓ Compiled in 463ms (636 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /portfolio?cat=medali 200 in 186ms
+ ✓ Compiled /icon.svg in 115ms (376 modules)
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 321ms
+ GET /portfolio 200 in 344ms
+ GET /products/organajzery 200 in 109ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 17ms
+ ✓ Compiled in 1101ms (636 modules)
+ GET /products/organajzery-fanera 404 in 336ms
+ ✓ Compiled /icon.svg in 269ms (376 modules)
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 367ms
+ ○ Compiling /about ...
+ ✓ Compiled /about in 503ms (655 modules)
+ GET /about 200 in 760ms
+ GET /about 200 in 60ms
+ GET /products/organajzery 200 in 100ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 20ms
+ ✓ Compiled in 437ms (290 modules)
+ ✓ Compiled in 180ms (290 modules)
+ ✓ Compiled in 629ms (636 modules)
+ ✓ Compiled in 364ms (290 modules)
+ ✓ Compiled in 172ms (290 modules)
+ ✓ Compiled in 3.6s (636 modules)
+ ✓ Compiled in 1869ms (639 modules)
+ ✓ Compiled /about in 290ms (629 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /about 200 in 869ms
+ GET /products/vyveski 200 in 329ms
+ ○ Compiling /icon.svg ...
+ ✓ Compiled /icon.svg in 546ms (381 modules)
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 971ms
+ GET /products/organajzery 200 in 198ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 25ms
+ GET /products/organajzery 200 in 301ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 49ms
+ GET /products/organajzery 200 in 108ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 11ms
+ GET /products/organajzery 200 in 110ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 8ms
+ GET /about 200 in 1173ms
+ GET /products/organajzery 200 in 93ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 6ms
+ GET /about 200 in 70ms
+ GET /products/organajzery 200 in 60ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 9ms
+ GET /about 200 in 102ms
+ GET /products/organajzery 200 in 85ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 6ms
+ GET /about 200 in 110ms
+ GET /products/organajzery 200 in 110ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 12ms
+ GET /about 200 in 50ms
+ GET /products/organajzery 200 in 188ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 10ms
+ GET /about 200 in 70ms
+ GET /products/vyveski 200 in 271ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 11ms
+ ○ Compiling /services ...
+ ✓ Compiled /services in 1125ms (676 modules)
+ ○ Compiling /services/[slug] ...
+ ✓ Compiled /services/[slug] in 794ms (666 modules)
+ ✓ Compiled in 1882ms (640 modules)
+ ✓ Compiled in 450ms (640 modules)
+ ✓ Compiled in 887ms (640 modules)
+ ✓ Compiled in 454ms (638 modules)
+ ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  <... gridClass=... roundedClass=... imageSizes=... itemClassFn={function itemClassFn} items=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "69320130"
+ ⚠ Fast Refresh had to perform a full reload when D:\\clc-ufa3\\components\\FAQAccordion.tsx","ids":["FAQAccordion"]}, D:\\clc-ufa3\\components\\GalleryGrid.tsx","ids":["GalleryGrid"]}, D:\\clc-ufa3\\components\\OrderForm.tsx","ids":["OrderForm"]}, D:\\clc-ufa3\\node_modules\\next\\dist\\client\\image-component.js","ids":[]}, D:\\clc-ufa3\\node_modules\\next\\dist\\client\\link.js","ids":["*"]} changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  <... gridClass=... roundedClass=... imageSizes=... itemClassFn={function itemClassFn} items=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "578319296"
+ ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  <... gridClass=... roundedClass=... imageSizes=... itemClassFn={function itemClassFn} items=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "578319296"
+ GET /services/uf-pechat 500 in 171ms
+ ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  <... gridClass=... roundedClass=... imageSizes=... itemClassFn={function itemClassFn} items=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "578319296"
+ ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  <... gridClass=... roundedClass=... imageSizes=... itemClassFn={function itemClassFn} items=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "578319296"
+ GET /services/uf-pechat 500 in 91ms
+ ✓ Compiled /[slug] in 440ms (629 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  <... gridClass=... roundedClass=... imageSizes=... itemClassFn={function itemClassFn} items=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "578319296"
+ ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  <... gridClass=... roundedClass=... imageSizes=... itemClassFn={function itemClassFn} items=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "578319296"
+ GET /favicon.ico 200 in 712ms
+ ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  <... gridClass=... roundedClass=... imageSizes=... itemClassFn={function itemClassFn} items=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "578319296"
+ ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  <... gridClass=... roundedClass=... imageSizes=... itemClassFn={function itemClassFn} items=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "578319296"
+ GET /services/uf-pechat 500 in 277ms
+ GET /services/uf-pechat 500 in 203ms
+ GET /favicon.ico 404 in 298ms
+ ✓ Compiled in 106ms (293 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  <... gridClass=... roundedClass=... imageSizes=... itemClassFn={function itemClassFn} items=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "578319296"
+ ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  <... gridClass=... roundedClass=... imageSizes=... itemClassFn={function itemClassFn} items=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "578319296"
+ GET /services/uf-pechat 500 in 232ms
+ ✓ Compiled in 449ms (643 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 674ms (643 modules)
+ GET /services/uf-pechat 200 in 319ms
+ ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  <... gridClass=... roundedClass=... imageSizes=... itemClassFn={function itemClassFn} items=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "578319296"
+ ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  <... gridClass=... roundedClass=... imageSizes=... itemClassFn={function itemClassFn} items=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "578319296"
+ ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  <... gridClass=... roundedClass=... imageSizes=... itemClassFn={function itemClassFn} items=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "578319296"
+ ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  <... gridClass=... roundedClass=... imageSizes=... itemClassFn={function itemClassFn} items=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "578319296"
+ GET /services/uf-pechat 500 in 155ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 495ms (643 modules)
+ GET /services/uf-pechat 200 in 288ms
+ ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  <... gridClass=... roundedClass=... imageSizes=... itemClassFn={function itemClassFn} items=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "578319296"
+ ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  <... gridClass=... roundedClass=... imageSizes=... itemClassFn={function itemClassFn} items=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "578319296"
+ ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  <... gridClass=... roundedClass=... imageSizes=... itemClassFn={function itemClassFn} items=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "578319296"
+ ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+  <... gridClass=... roundedClass=... imageSizes=... itemClassFn={function itemClassFn} items=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^
+    at stringify (<anonymous>)
+    at stringify (<anonymous>)
+digest: "578319296"
+ GET /services/uf-pechat 500 in 156ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 812ms (643 modules)
+ GET /services/uf-pechat 200 in 301ms
+ ✓ Compiled /icon.svg in 362ms (380 modules)
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 565ms
+ GET /services/uf-pechat 200 in 174ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 5ms
+ GET /services/uf-pechat 200 in 109ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 14ms
+ GET /about 200 in 98ms
+ ○ Compiling /products ...
+ ✓ Compiled /products in 1838ms (646 modules)
+ ✓ Compiled in 2.7s (626 modules)
+ ✓ Compiled in 390ms (626 modules)
+ ✓ Compiled in 856ms (640 modules)
+ GET /products/nagrady 200 in 366ms
+ ✓ Compiled /icon.svg in 101ms (375 modules)
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 217ms
+ GET /products/nagrady 200 in 195ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 8ms
+ ✓ Compiled in 16s (640 modules)
+ ✓ Compiled in 139ms (295 modules)
+ ✓ Compiled in 909ms (295 modules)
+ ✓ Compiled in 566ms (626 modules)
+ GET /products/zhetony 200 in 152ms
+ ✓ Compiled /icon.svg in 195ms (375 modules)
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 450ms
+ GET /products/tablichki 200 in 211ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 17ms
+ GET /products/adresniki 200 in 119ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 12ms
+ GET /products 200 in 101ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 8ms
+ ○ Compiling /portfolio ...
+ ✓ Compiled /portfolio in 782ms (381 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 598ms (358 modules)
+ ✓ Compiled in 1064ms (650 modules)
+ ✓ Compiled in 940ms (636 modules)
+ ✓ Compiled in 690ms (636 modules)
+ ✓ Compiled in 1266ms (636 modules)
+ ✓ Compiled in 576ms (636 modules)
+ ✓ Compiled in 224ms (636 modules)
+ ✓ Compiled in 10.2s (650 modules)
+ GET / 200 in 3668ms
+ ○ Compiling /icon.svg ...
+ ✓ Compiled /icon.svg in 1844ms (385 modules)
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 2064ms
+ GET / 200 in 425ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 10ms
+ GET / 200 in 212ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 8ms
+ ✓ Compiled in 1361ms (650 modules)
+ GET / 200 in 761ms
+ ✓ Compiled /icon.svg in 233ms (385 modules)
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 541ms
+ GET / 200 in 299ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 7ms
+ GET / 200 in 220ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 6ms
+ GET / 200 in 225ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 19ms
+ GET / 200 in 277ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 7ms
+ ✓ Compiled in 1468ms (650 modules)
+ ✓ Compiled in 484ms (636 modules)
+ ✓ Compiled in 270ms (636 modules)
+ ✓ Compiled in 206ms (636 modules)
+ ✓ Compiled in 250ms (636 modules)
+ ✓ Compiled in 246ms (636 modules)
+ ✓ Compiled in 523ms (636 modules)
+ ✓ Compiled in 298ms (636 modules)
+ ✓ Compiled in 258ms (636 modules)
+ ✓ Compiled in 295ms (636 modules)
+ ✓ Compiled in 303ms (636 modules)
+ ✓ Compiled in 399ms (636 modules)
+ ✓ Compiled in 268ms (636 modules)
+ ✓ Compiled in 584ms (636 modules)
+ ✓ Compiled in 313ms (636 modules)
+ ✓ Compiled in 202ms (636 modules)
+ ✓ Compiled in 389ms (636 modules)
+ ✓ Compiled in 164ms (636 modules)
+ ✓ Compiled in 320ms (636 modules)
+ ✓ Compiled in 317ms (636 modules)
+ ✓ Compiled in 291ms (636 modules)
+ ✓ Compiled in 211ms (636 modules)
+ GET / 200 in 228ms
+ ○ Compiling /icon.svg ...
+ ✓ Compiled /icon.svg in 1402ms (385 modules)
+ GET /products/organajzery 200 in 184ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 10ms
+ GET /products/nagrady 200 in 95ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 7ms
+ GET / 200 in 131ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 915ms
+ GET /products/zhetony 200 in 156ms
+ GET /products/adresniki 200 in 84ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 15ms
+ GET /products/adresniki 200 in 57ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 7ms
+ ✓ Compiled in 2.8s (650 modules)
+ ✓ Compiled in 345ms (636 modules)
+ ✓ Compiled in 418ms (636 modules)
+ ✓ Compiled in 262ms (636 modules)
+ ✓ Compiled in 216ms (636 modules)
+ ✓ Compiled in 281ms (636 modules)
+ ✓ Compiled in 192ms (636 modules)
+ ✓ Compiled in 430ms (636 modules)
+ ✓ Compiled in 178ms (636 modules)
+ ✓ Compiled in 310ms (636 modules)
+ ✓ Compiled in 178ms (636 modules)
+ ✓ Compiled in 197ms (295 modules)
+ ✓ Compiled in 135ms (295 modules)
+ ✓ Compiled in 94ms (295 modules)
+ ✓ Compiled in 208ms (295 modules)
+ ✓ Compiled in 200ms (295 modules)
+ ✓ Compiled in 296ms (295 modules)
+ ✓ Compiled in 143ms (295 modules)
+ GET /products/adresniki 200 in 196ms
+ ✓ Compiled /icon.svg in 223ms (385 modules)
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 290ms
+ GET /products/adresniki 200 in 206ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 12ms
+ GET /products/adresniki 200 in 105ms
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 7ms
+ ✓ Compiled in 532ms (295 modules)
+ ✓ Compiled in 211ms (295 modules)
+ ✓ Compiled in 8.5s (650 modules)
+ ✓ Compiled in 932ms (651 modules)
+ ✓ Compiled in 2.8s (655 modules)
+ ✓ Compiled in 1384ms (655 modules)
+ ✓ Compiled in 262ms (297 modules)
+ ✓ Compiled in 460ms (655 modules)
+ ✓ Compiled in 1014ms (655 modules)
+ ✓ Compiled in 624ms (653 modules)
+ ✓ Compiled in 190ms (296 modules)
+ ✓ Compiled in 335ms (296 modules)
+ ✓ Compiled in 121ms (296 modules)
+ ✓ Compiled in 134ms (296 modules)
+ ✓ Compiled in 373ms (296 modules)
+ ⨯ SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at loadManifest (D:\clc-ufa3\node_modules\next\dist\server\load-manifest.js:35:27)
+    at DevServer.getNextFontManifest (D:\clc-ufa3\node_modules\next\dist\server\next-server.js:745:47)
+    at DevServer.findPageComponents (D:\clc-ufa3\node_modules\next\dist\server\dev\next-dev-server.js:571:43)
+    at async DevServer.renderPageComponent (D:\clc-ufa3\node_modules\next\dist\server\base-server.js:1917:24)
+    at async DevServer.renderToResponseImpl (D:\clc-ufa3\node_modules\next\dist\server\base-server.js:1969:32)
+    at async DevServer.pipeImpl (D:\clc-ufa3\node_modules\next\dist\server\base-server.js:920:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\clc-ufa3\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\clc-ufa3\node_modules\next\dist\server\base-server.js:816:17)
+    at async D:\clc-ufa3\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\clc-ufa3\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\clc-ufa3\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\clc-ufa3\node_modules\next\dist\server\lib\router-server.js:174:21)
+    at async handleRequest (D:\clc-ufa3\node_modules\next\dist\server\lib\router-server.js:353:24)
+    at async requestHandlerImpl (D:\clc-ufa3\node_modules\next\dist\server\lib\router-server.js:377:13)
+    at async Server.requestListener (D:\clc-ufa3\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  page: '/products/adresniki'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 18.9s (862 modules)
+ GET /products/adresniki 200 in 163ms
+ GET /products/adresniki 200 in 116ms
+ ✓ Compiled /icon.svg in 439ms (427 modules)
+ GET /icon.svg?b3d5f0c81fae36b3 200 in 571ms
+ ○ Compiling /services ...
+ ✓ Compiled /services in 552ms (399 modules)
+ ✓ Compiled in 1022ms (874 modules)
+ GET /services/uf-pechat 200 in 335ms
+ GET /services/uf-pechat 200 in 1694ms

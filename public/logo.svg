@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="46" fill="none" stroke="white" stroke-width="5.5"/>
+  <text x="50" y="31"
+    text-anchor="middle" dominant-baseline="middle"
+    font-family="'Arial Black','Impact','Helvetica Neue',Arial,sans-serif"
+    font-weight="900" font-size="16" fill="white" letter-spacing="-1">ЦЕНТР</text>
+  <text x="50" y="51"
+    text-anchor="middle" dominant-baseline="middle"
+    font-family="'Arial Black','Impact','Helvetica Neue',Arial,sans-serif"
+    font-weight="900" font-size="14" fill="white" letter-spacing="-0.8">ЛАЗЕРНОЙ</text>
+  <text x="50" y="71"
+    text-anchor="middle" dominant-baseline="middle"
+    font-family="'Arial Black','Impact','Helvetica Neue',Arial,sans-serif"
+    font-weight="900" font-size="16" fill="white" letter-spacing="-1">РЕЗКИ</text>
+</svg>
