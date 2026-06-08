@@ -207,29 +207,59 @@ export default function ServicePage({ params }: Props) {
       )}
 
       {/* ── МАТЕРИАЛЫ + ЧТО ДЕЛАЕМ ── */}
-      <section className="py-16 bg-[#F5F4F0]">
-        <div className={`max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 gap-16 ${service.featuredProducts?.length ? '' : 'lg:grid-cols-2'}`}>
+      <section className="py-20 bg-[#F5F4F0]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-14">
+
+          {/* Материалы */}
           <div>
-            <h2 className="font-display text-3xl text-[#1A1A1A] tracking-wider mb-6">Материалы</h2>
-            <div className="flex flex-wrap gap-2">
-              {service.materials.map(m => (
-                <span key={m} className="bg-white border border-[#E8E6E0] text-[#1A1A1A] px-4 py-2 rounded-full text-sm font-semibold">
-                  {m}
-                </span>
-              ))}
+            <div className="mb-5">
+              <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Работаем с</span>
+              <h2 className="font-display text-3xl text-[#1A1A1A] tracking-wider mt-1">Материалы</h2>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              {service.materials.map(m => {
+                const href = service.materialLinks?.[m] ?? `/services/${service.slug}`
+                return (
+                  <Link
+                    key={m}
+                    href={href}
+                    className="group flex items-center gap-2.5 bg-white border border-[#E8E6E0] hover:border-[#FF6B00] hover:bg-[#FF6B00] text-[#1A1A1A] hover:text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200"
+                    style={{ boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}
+                  >
+                    <span className="w-2 h-2 rounded-full bg-[#FF6B00] group-hover:bg-white shrink-0 transition-colors duration-200" />
+                    {m}
+                  </Link>
+                )
+              })}
             </div>
           </div>
+
+          {/* Что изготавливаем */}
           {!service.featuredProducts?.length && (
             <div>
-              <h2 className="font-display text-3xl text-[#1A1A1A] tracking-wider mb-6">Что изготавливаем</h2>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {service.useCases.map(u => (
-                  <li key={u} className="flex items-center gap-3 text-[#2D2D2D] text-sm bg-white rounded-xl px-4 py-3 border border-[#E8E6E0]">
-                    <span className="w-1.5 h-1.5 bg-[#FF6B00] rounded-full shrink-0" />
-                    {u}
-                  </li>
-                ))}
-              </ul>
+              <div className="mb-5">
+                <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Применение</span>
+                <h2 className="font-display text-3xl text-[#1A1A1A] tracking-wider mt-1">Что изготавливаем</h2>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {service.useCases.map(u => {
+                  const href = service.useCaseLinks?.[u] ?? `/services/${service.slug}`
+                  return (
+                    <Link
+                      key={u}
+                      href={href}
+                      className="group flex items-center justify-between gap-3 bg-white border border-[#E8E6E0] hover:border-[#FF6B00] px-5 py-4 rounded-xl text-sm font-semibold text-[#2D2D2D] hover:text-[#FF6B00] transition-all duration-200"
+                      style={{ boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}
+                    >
+                      <span className="flex items-center gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B00] shrink-0" />
+                        {u}
+                      </span>
+                      <span className="text-[#FF6B00] translate-x-0 group-hover:translate-x-1 transition-transform duration-200 shrink-0">→</span>
+                    </Link>
+                  )
+                })}
+              </div>
             </div>
           )}
         </div>
