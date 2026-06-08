@@ -6,7 +6,7 @@ import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { CTASection }  from '@/components/CTASection'
 
 export const metadata: Metadata = {
-  title:       'Блог — советы по лазерной резке, материалам и гравировке | Центр лазерной резки',
+  title:       'Блог — советы по лазерной резке и гравировке | ЦЛР',
   description: 'Статьи и советы: как подготовить макет, какой материал выбрать, в чём разница между УФ-печатью и гравировкой. Центр лазерной резки — Уфа.',
   keywords:    ['блог лазерная резка', 'советы по лазерной резке', 'статьи гравировка уфа', 'материалы для резки статья'],
   alternates:  { canonical: 'https://clc-ufa.ru/blog' },
