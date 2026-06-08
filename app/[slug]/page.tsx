@@ -22,10 +22,16 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const page = seoPages.find(p => p.slug === params.slug)
   if (!page) return {}
+  const relatedService = services.find(s => s.slug === page.service)
   return {
     title:       page.title,
     description: page.description,
     alternates:  { canonical: `https://clc-ufa.ru/${page.slug}` },
+    openGraph: {
+      title:       page.title,
+      description: page.description,
+      images:      relatedService?.heroImage ? [{ url: relatedService.heroImage }] : [],
+    },
   }
 }
 
@@ -51,6 +57,14 @@ export default function SeoLandingPage({ params }: Props) {
   // Related service
   const relatedService = services.find(s => s.slug === page.service)
 
+  // Hero image: explicit on page (future) → related service heroImage → service image
+  const heroImage = relatedService?.heroImage ?? relatedService?.image ?? null
+
+  // Gallery photos: explicit on page → service portfolioPhotos slice
+  const galleryPhotos: string[] = page.galleryPhotos?.length
+    ? page.galleryPhotos
+    : (relatedService?.portfolioPhotos?.slice(0, 6) ?? [])
+
   const jsonLd = {
     '@context':  'https://schema.org',
     '@type':     'Service',
@@ -75,28 +89,50 @@ export default function SeoLandingPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="pt-24 pb-16 bg-[#F5F4F0]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <Breadcrumbs items={[
-            { label: 'Услуги', href: '/services' },
-            { label: page.h1 },
-          ]} />
-
-          <h1 className="font-display text-5xl sm:text-6xl text-[#1A1A1A] tracking-wider mb-6 leading-tight">
+      {/* ── HERO ── */}
+      <div className="relative min-h-[500px] flex items-end bg-[#1A1A1A] overflow-hidden pt-24">
+        {heroImage && (
+          <div className="absolute inset-0">
+            <Image
+              src={heroImage}
+              alt={page.h1}
+              fill
+              priority
+              className="object-cover opacity-30"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/70 to-[#1A1A1A]/30" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent" />
+          </div>
+        )}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pb-14 w-full">
+          <Breadcrumbs
+            items={[
+              { label: 'Услуги', href: '/services' },
+              { label: page.h1 },
+            ]}
+          />
+          <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl text-white tracking-wider mb-5 leading-tight max-w-3xl">
             {page.h1}
           </h1>
-          <p className="text-lg text-[#8A8680] leading-relaxed mb-8 max-w-2xl">
+          <p className="text-lg text-white/60 leading-relaxed mb-8 max-w-xl">
             {page.description}
           </p>
-          <ContactButtons size="lg" className="mb-12" />
+          <ContactButtons size="lg" />
+        </div>
+      </div>
+
+      {/* ── КОНТЕНТ ── */}
+      <div className="bg-[#F5F4F0]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-14 space-y-10">
 
           {/* Body text card */}
-          <div className="bg-white rounded-2xl p-8 border border-[#E8E6E0] mb-10">
+          <div className="bg-white rounded-2xl p-8 border border-[#E8E6E0]">
             <p className="text-[#1A1A1A] leading-[1.85] text-base">{page.bodyText}</p>
           </div>
 
           {/* Trust signals row */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-12">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
               { Icon: IconCheck,        text: 'От 1 штуки' },
               { Icon: IconBolt,         text: 'Срок от 1 дня' },
@@ -113,7 +149,7 @@ export default function SeoLandingPage({ params }: Props) {
           </div>
 
           {/* Process */}
-          <div className="mb-12">
+          <div>
             <h2 className="font-display text-2xl text-[#1A1A1A] tracking-wide mb-6">Как это работает</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {PROCESS_STEPS.map((s, i) => (
@@ -129,7 +165,7 @@ export default function SeoLandingPage({ params }: Props) {
 
           {/* Related service */}
           {relatedService && (
-            <div className="bg-white rounded-2xl p-6 border border-[#E8E6E0] mb-12 flex items-start gap-5">
+            <div className="bg-white rounded-2xl p-6 border border-[#E8E6E0] flex items-start gap-5">
               <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#FF6B00]/10 flex items-center justify-center">
                 <SymbolIcon symbol={relatedService.icon} size={20} className="text-[#FF6B00]" />
               </div>
@@ -150,9 +186,48 @@ export default function SeoLandingPage({ params }: Props) {
         </div>
       </div>
 
-      {/* Related products */}
-      {relatedProducts.length > 0 && (
+      {/* ── ГАЛЕРЕЯ РАБОТ ── */}
+      {galleryPhotos.length > 0 && (
         <section className="py-14 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="flex items-end justify-between gap-4 mb-8">
+              <div>
+                <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Портфолио</span>
+                <h2 className="font-display text-2xl text-[#1A1A1A] tracking-wide mt-1">Наши работы</h2>
+              </div>
+              {relatedService && (
+                <Link
+                  href={`/services/${relatedService.slug}`}
+                  className="text-sm font-semibold text-[#FF6B00] hover:underline underline-offset-4 shrink-0"
+                >
+                  Все работы →
+                </Link>
+              )}
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+              {galleryPhotos.map((src, i) => (
+                <div
+                  key={src}
+                  className="relative aspect-square rounded-xl overflow-hidden bg-[#2D2D2D] group"
+                >
+                  <Image
+                    src={src}
+                    alt={`${page.h1} — пример работы ${i + 1}`}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── RELATED PRODUCTS ── */}
+      {relatedProducts.length > 0 && (
+        <section className="py-14 bg-[#F5F4F0]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <h2 className="font-display text-2xl text-[#1A1A1A] tracking-wide mb-6">
               Что мы изготавливаем из этого материала
@@ -184,8 +259,8 @@ export default function SeoLandingPage({ params }: Props) {
         </section>
       )}
 
-      {/* Order form */}
-      <section className="py-16 bg-[#F5F4F0]">
+      {/* ── ORDER FORM ── */}
+      <section className="py-16 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <h2 className="font-display text-3xl text-[#1A1A1A] tracking-wider mb-2">Оформить заказ</h2>
           <p className="text-[#8A8680] mb-8">Опишите задачу — ответим с расчётом стоимости.</p>
@@ -193,8 +268,8 @@ export default function SeoLandingPage({ params }: Props) {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-14 bg-white">
+      {/* ── FAQ ── */}
+      <section className="py-14 bg-[#F5F4F0]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <div className="flex items-end justify-between gap-4 mb-8">
             <h2 className="font-display text-2xl text-[#1A1A1A] tracking-wide">Частые вопросы</h2>

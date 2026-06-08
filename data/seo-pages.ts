@@ -1,11 +1,12 @@
 export type SeoPage = {
-  slug:       string
-  title:      string
-  h1:         string
-  description: string
-  service:    string
-  material:   string
-  bodyText:   string
+  slug:          string
+  title:         string
+  h1:            string
+  description:   string
+  service:       string
+  material:      string
+  bodyText:      string
+  galleryPhotos?: string[]   // фото для галереи на странице
 }
 
 export const seoPages: SeoPage[] = [
@@ -107,6 +108,32 @@ export const seoPages: SeoPage[] = [
     service:     'izgotovlenie-izdelij',
     material:    'akril',
     bodyText:    'Делаем награды для корпоративных мероприятий, спортивных соревнований, конкурсов профессионального мастерства. Статуэтки, медали, кубки из акрила и фанеры с вашим логотипом, именем победителя и гравировкой. Любая форма, размер и тираж.',
+  },
+  {
+    slug:        'lazernaya-rezka-kartona-ufa',
+    title:       'Лазерная резка картона в Уфе — упаковка, трафареты, макеты | Центр лазерной резки',
+    h1:          'Лазерная резка картона в Уфе',
+    description: 'Лазерная резка картона и гофрокартона в Уфе. Упаковка, коробки, трафареты, архитектурные макеты. Точный рез без сминания. От одной штуки.',
+    service:     'lazernaya-rezka',
+    material:    'karton',
+    bodyText:    'Режем картон любой плотности: меловку, гофрокартон, микрогофру, переплётный картон. Лазер режет чисто — без сминания краёв, с любым контуром и мелкими деталями. Подходит для изготовления подарочной и промышленной упаковки, трафаретов, архитектурных макетов, бирок и вырубных заготовок. Принимаем заказы от одной штуки.',
+  },
+  {
+    slug:        'gravirovka-na-kozhe-ufa',
+    title:       'Гравировка на коже и экокоже в Уфе — ремни, кошельки, блокноты | Центр лазерной резки',
+    h1:          'Гравировка на коже в Уфе',
+    description: 'Лазерная гравировка на коже и экокоже в Уфе. Ремни, кошельки, блокноты, обложки, чехлы. Именные надписи и логотипы. От одного изделия.',
+    service:     'gravirovka-na-nemetalah',
+    material:    'kozha',
+    bodyText:    'Гравируем на натуральной коже, экокоже и замше. Изображение выжигается лазером — получается тактильный, чёткий рисунок, который не сотрётся и не выцветет. Подходит для персонализации кошельков, ремней, блокноты, обложек для документов, чехлов для телефонов, поясных сумок. Принимаем изделия клиента — нанесём имя, логотип, дату или рисунок.',
+    galleryPhotos: [
+      '/images/portfolio/gravirovka-029.jpg',
+      '/images/portfolio/gravirovka-003.jpg',
+      '/images/portfolio/gravirovka-025.jpg',
+      '/images/portfolio/gravirovka-008.jpg',
+      '/images/portfolio/gravirovka-022.jpg',
+      '/images/portfolio/gravirovka-034.jpg',
+    ],
   },
   {
     slug:        'vyveski-na-zakaz-ufa',
