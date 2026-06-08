@@ -1,9 +1,9 @@
-# ─── Stage 1: зависимости ───────────────────────────────────────────────────
+# ─── Stage 1: все зависимости для сборки ────────────────────────────────────
 FROM node:20-alpine AS deps
 WORKDIR /app
 
 COPY package.json package-lock.json* ./
-RUN npm ci --omit=dev
+RUN npm ci
 
 # ─── Stage 2: сборка ────────────────────────────────────────────────────────
 FROM node:20-alpine AS builder
@@ -11,6 +11,9 @@ WORKDIR /app
 
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+
+# Отладка: проверяем что файлы скопировались
+RUN echo "=== components ===" && ls components/ && echo "=== data ===" && ls data/
 
 # Переменные окружения нужны только для сборки если используются в getStaticProps
 ARG TG_BOT_TOKEN
