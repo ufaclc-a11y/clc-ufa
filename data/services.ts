@@ -26,7 +26,10 @@ export type Service = {
   portfolioPrefix?:  string   // префикс файлов в public/images/portfolio/
   portfolioCount?:   number   // сколько фото доступно
   portfolioPrefixes?: { prefix: string; count: number }[]  // несколько категорий (берём -001 из каждой)
+  portfolioPhotos?:   string[]                             // явный список путей к фото
   featuredProducts?:  { image: string; title: string }[]   // карточки изделий для раздела «Ассортимент»
+  useCaseLinks?:      Record<string, string>               // применение → href
+  materialLinks?:     Record<string, string>               // материал → href
   stats?:            { value: string; label: string }[]
   priceTables?:      {         // таблицы цен
     title:    string
@@ -77,6 +80,26 @@ export const services: Service[] = [
       { icon: '▣', title: 'От 1 штуки',               desc: 'Нет минимального тиража. Один экземпляр или тысяча — условия одинаковые.' },
       { icon: '◈', title: 'По вашему файлу',           desc: 'DXF, SVG, CDR, AI, PDF. Если файла нет — поможем подготовить макет.' },
     ],
+    useCaseLinks: {
+      'Лазерная резка фанеры':          '/lazernaya-rezka-fanery-ufa',
+      'Лазерная резка акрила':          '/lazernaya-rezka-akrila-ufa',
+      'Лазерная резка трафаретов':      '/products/trafarety',
+      'Лазерная резка картона':         '/lazernaya-rezka-kartona-ufa',
+      'Заготовки и детали для изделий': '/products/zagotovki',
+      'Бейджи и номерки':               '/products/bejdzhi',
+      'Декоративные вставки':           '/dekorativnye-vstavki-ufa',
+      'Элементы мебели':                '/elementy-mebeli-ufa',
+      'Пазлы и развивающие игрушки':    '/pazly-igrushki-ufa',
+    },
+    materialLinks: {
+      'Фанера':           '/lazernaya-rezka-fanery-ufa',
+      'Акрил / оргстекло':'/lazernaya-rezka-akrila-ufa',
+      'Картон':           '/lazernaya-rezka-kartona-ufa',
+      'МДФ':              '/lazernaya-rezka-mdf-ufa',
+      'Дерево':           '/lazernaya-rezka-fanery-ufa',
+      'Кожа':             '/lazernaya-rezka-kozhi-ufa',
+      'Ткань':            '/lazernaya-rezka-tkani-ufa',
+    },
     portfolioPrefix: 'lazernaya-rezka',
     portfolioCount:  113,
     stats: [
@@ -203,6 +226,28 @@ export const services: Service[] = [
       { icon: '↗', title: 'От 1 штуки',            desc: 'Работаем с единичными заказами и партиями. Нет минимального тиража.' },
       { icon: '▣', title: 'Срок от 1 дня',         desc: 'Стандартные заказы — 1–3 дня. Срочные — в тот же день.' },
     ],
+    useCaseLinks: {
+      'Печать на акриле':            '/uf-pechat-na-akrile-ufa',
+      'UV DTF-наклейки':             '/products/uv-dtf',
+      'Медали с фотопечатью':        '/products/medali',
+      'Именные и офисные таблички':  '/products/tablichki',
+      'Шильдики и бирки':            '/products/shildiki-abs',
+      'Сувениры с логотипом':        '/suveniry-na-zakaz-ufa',
+      'POS-материалы и тейбл тенты': '/products/tejbl-tenty',
+      'Печать на фанере':            '/uf-pechat-na-fanere-ufa',
+      'Печать на коже':              '/uf-pechat-na-kozhe-ufa',
+      'Печать на пластике':          '/uf-pechat-na-plastike-ufa',
+    },
+    materialLinks: {
+      'Акрил':  '/uf-pechat-na-akrile-ufa',
+      'ПВХ':    '/uf-pechat-na-plastike-ufa',
+      'Фанера': '/uf-pechat-na-fanere-ufa',
+      'Дерево': '/uf-pechat-na-fanere-ufa',
+      'Металл': '/uf-pechat-na-metalle-ufa',
+      'Пластик':'/uf-pechat-na-plastike-ufa',
+      'Кожа':   '/uf-pechat-na-kozhe-ufa',
+      'Стекло': '/uf-pechat-na-stekle-ufa',
+    },
     portfolioPrefix: 'uf-pechat',
     portfolioCount:  24,
     stats: [
@@ -250,6 +295,25 @@ export const services: Service[] = [
       { icon: '↗', title: 'Свои материалы',       desc: 'Принимаем изделие заказчика — привезите и мы нанесём гравировку.' },
       { icon: '▣', title: 'Точность 0,01 мм',     desc: 'Мелкие детали, тонкие линии, мелкий шрифт — лазер держит точность.' },
     ],
+    useCaseLinks: {
+      'Гравировка на жетонах':   '/products/zhetony',
+      'Гравировка на медалях':   '/products/medali',
+      'Гравировка на кулонах':   '/products/kulony',
+      'Гравировка на адресниках':'/products/adresniki',
+      'Гравировка на кружках':   '/products/kruzhki-gravir',
+      'Гравировка на термосах':  '/products/termosy-gravir',
+      'Гравировка на ножах':     '/products/nozhi-gravir',
+      'Персонализация подарков': '/suveniry-na-zakaz-ufa',
+      'Корпоративная маркировка':'/korporativnaya-markirovka-ufa',
+    },
+    materialLinks: {
+      'Сталь':                '/gravirovka-na-metalle-ufa',
+      'Нержавеющая сталь':    '/gravirovka-na-metalle-ufa',
+      'Алюминий':             '/gravirovka-na-metalle-ufa',
+      'Медь':                 '/gravirovka-na-metalle-ufa',
+      'Латунь':               '/gravirovka-na-metalle-ufa',
+      'Анодированный металл': '/gravirovka-na-metalle-ufa',
+    },
     portfolioPrefix: 'gravirovka',
     portfolioCount:  69,
     stats: [
@@ -270,7 +334,7 @@ export const services: Service[] = [
     shortDescription: 'Дерево, кожа, экокожа, пластик, брелоки, органайзеры, менажницы.',
     materials: [
       'Дерево', 'Фанера', 'Кожа', 'Экокожа',
-      'Пластик', 'МДФ', 'Фанера', 'Поликарбонат',
+      'Пластик', 'МДФ', 'Поликарбонат',
     ],
     useCases: [
       'Гравировка на фанере',
@@ -297,6 +361,26 @@ export const services: Service[] = [
       { icon: '↗', title: 'От 1 штуки',             desc: 'Нет минимального тиража. Один брелок или тысяча — работаем одинаково.' },
       { icon: '▣', title: 'По вашему макету',       desc: 'DXF, AI, SVG, CDR, PDF. Если нет файла — поможем нарисовать.' },
     ],
+    useCaseLinks: {
+      'Гравировка на фанере':          '/gravirovka-na-dereve-ufa',
+      'Гравировка на дереве':          '/gravirovka-na-dereve-ufa',
+      'Гравировка на коже':            '/gravirovka-na-kozhe-ufa',
+      'Гравировка на экокоже':         '/gravirovka-na-kozhe-ufa',
+      'Гравировка на брелоках':        '/products/breloki',
+      'Гравировка на органайзерах':    '/products/organajzery',
+      'Гравировка на менажницах':      '/products/menazhnitsy',
+      'Именные подарки с гравировкой': '/suveniry-na-zakaz-ufa',
+      'Гравировка на пластике':        '/gravirovka-na-plastike-ufa',
+    },
+    materialLinks: {
+      'Дерево':      '/gravirovka-na-dereve-ufa',
+      'Фанера':      '/gravirovka-na-dereve-ufa',
+      'Кожа':        '/gravirovka-na-kozhe-ufa',
+      'Экокожа':     '/gravirovka-na-kozhe-ufa',
+      'Пластик':     '/gravirovka-na-plastike-ufa',
+      'МДФ':         '/gravirovka-na-dereve-ufa',
+      'Поликарбонат':'/gravirovka-na-plastike-ufa',
+    },
     portfolioPhotos: [
       '/images/portfolio/gravirovka-003.jpg',
       '/images/portfolio/gravirovka-008.jpg',
@@ -354,6 +438,28 @@ export const services: Service[] = [
       { icon: '↗', title: 'Мебельные изделия',     desc: 'Фасады, вставки, декоративные элементы — по вашим чертежам.' },
       { icon: '▣', title: 'По вашему файлу',       desc: 'DXF, CDR, AI, STEP — любой формат чертежа.' },
     ],
+    useCaseLinks: {
+      'Фрезеровка фанеры':          '/frezernaya-rezka-fanery-ufa',
+      'Изготовление менажниц':       '/products/menazhnitsy',
+      'Фрезеровка МДФ':             '/frezernaya-rezka-mdf-ufa',
+      'Фрезеровка акрила':          '/frezernaya-rezka-akrila-ufa',
+      'Фрезеровка дерева':          '/frezernaya-rezka-dereva-ufa',
+      'Фрезеровка ПВХ':             '/frezernaya-rezka-pvh-ufa',
+      'Рекламные конструкции':       '/reklamnye-konstruktsii-ufa',
+      'Объёмные буквы и логотипы':   '/obemnye-bukvy-ufa',
+      'Мебельные фасады':            '/mebelnye-fasady-ufa',
+      '3D-обработка':                '/obemnaya-frezerovka-ufa',
+    },
+    materialLinks: {
+      'Фанера':               '/frezernaya-rezka-fanery-ufa',
+      'МДФ':                  '/frezernaya-rezka-mdf-ufa',
+      'ПВХ':                  '/frezernaya-rezka-pvh-ufa',
+      'Алюминиевый композит': '/frezernaya-rezka-kompozit-ufa',
+      'Дерево':               '/frezernaya-rezka-dereva-ufa',
+      'Акрил':                '/frezernaya-rezka-akrila-ufa',
+      'Полистирол':           '/frezernaya-rezka-pvh-ufa',
+      'Поликарбонат':         '/frezernaya-rezka-pvh-ufa',
+    },
     portfolioPrefix: 'frezernaya-rezka',
     portfolioCount:  50,
     stats: [
@@ -407,6 +513,32 @@ export const services: Service[] = [
       { icon: '↗', title: 'От 1 штуки',            desc: 'Один экземпляр или большая партия — без разницы.' },
       { icon: '▣', title: 'Фанера, акрил, дерево', desc: 'Натуральные материалы: берёзовая фанера, оргстекло, массив.' },
     ],
+    useCaseLinks: {
+      'Вывески и таблички':          '/products/vyveski',
+      'Часы настенные':              '/products/chasy',
+      'Ключницы':                    '/products/klyuchnitsy',
+      'Медальницы':                  '/products/medalnitsy',
+      'Органайзеры':                 '/products/organajzery',
+      'Шкатулки из фанеры':          '/products/shkatulki',
+      'Копилки':                     '/products/kopilki',
+      'Кормушки':                    '/products/kormushki',
+      'Хештеги и фотозоны':          '/products/heshteги',
+      'Брелоки':                     '/products/breloki',
+      'Наградные статуэтки':         '/nagrady-na-zakaz-ufa',
+      'Номерки для гардеробов':      '/products/nomera',
+      'Тейбл тенты и менюхолдеры':   '/products/tejbl-tenty',
+      'Шильдики из АБС пластика':    '/products/shildiki-abs',
+      'Акриловое клише':             '/products/akril-klishe',
+    },
+    materialLinks: {
+      'Фанера':                  '/lazernaya-rezka-fanery-ufa',
+      'Акрил / оргстекло':       '/lazernaya-rezka-akrila-ufa',
+      'Дерево':                  '/gravirovka-na-dereve-ufa',
+      'МДФ':                     '/lazernaya-rezka-mdf-ufa',
+      'ПВХ':                     '/frezernaya-rezka-pvh-ufa',
+      'АБС пластик':             '/products/shildiki-abs',
+      'Комбинированные материалы':'/portfolio',
+    },
     portfolioPrefixes: [
       { prefix: 'chasy',              count: 8  },
       { prefix: 'klyuchnitsa',        count: 2  },
