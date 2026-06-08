@@ -18,6 +18,14 @@ export const seoPages: SeoPage[] = [
     service:     'lazernaya-rezka',
     material:    'fanera',
     bodyText:    'Режем фанеру любой сложности: заготовки для творчества, детали для мебели, трафареты, декоративные элементы. Работаем с толщиной 3, 4, 6, 8 и 10 мм. Принимаем заказы единично и партиями. Края реза получаются чистыми — без сколов и нагара.',
+    galleryPhotos: [
+      '/images/portfolio/koroba-fanera-001.jpg',
+      '/images/portfolio/koroba-fanera-020.jpg',
+      '/images/portfolio/koroba-fanera-040.jpg',
+      '/images/portfolio/shkatulki-fanera-001.jpg',
+      '/images/portfolio/shkatulki-fanera-007.jpg',
+      '/images/portfolio/medalnitsa-001.jpg',
+    ],
   },
   {
     slug:        'lazernaya-rezka-akrila-ufa',
@@ -27,6 +35,14 @@ export const seoPages: SeoPage[] = [
     service:     'lazernaya-rezka',
     material:    'akril',
     bodyText:    'Режем прозрачный, матовый, цветной и зеркальный акрил. Торцы после резки получаются гладкими и прозрачными. Подходит для медалей, табличек, номерков, декора и B2B-деталей.',
+    galleryPhotos: [
+      '/images/portfolio/nagradnye-statuetki-001.jpg',
+      '/images/portfolio/nagradnye-statuetki-010.jpg',
+      '/images/portfolio/nagradnye-statuetki-020.jpg',
+      '/images/portfolio/medali-001.jpg',
+      '/images/portfolio/medali-010.jpg',
+      '/images/portfolio/breloki-001.jpg',
+    ],
   },
   {
     slug:        'uf-pechat-na-akrile-ufa',
@@ -36,6 +52,14 @@ export const seoPages: SeoPage[] = [
     service:     'uf-pechat',
     material:    'akril',
     bodyText:    'Печатаем напрямую на акрил — без наклеек и плёнок. Краска держится прочно, устойчива к царапинам и выцветанию. Можем совместить с лазерной резкой по контуру.',
+    galleryPhotos: [
+      '/images/portfolio/uf-pechat-001.jpg',
+      '/images/portfolio/uf-pechat-005.jpg',
+      '/images/portfolio/uf-pechat-010.jpg',
+      '/images/portfolio/uf-pechat-015.jpg',
+      '/images/portfolio/uf-pechat-020.jpg',
+      '/images/portfolio/uf-pechat-023.jpg',
+    ],
   },
   {
     slug:        'izgotovlenie-medaley-ufa',
@@ -45,6 +69,14 @@ export const seoPages: SeoPage[] = [
     service:     'uf-pechat',
     material:    'akril',
     bodyText:    'Делаем медали любой формы и размера: круглые, фигурные, с вашим дизайном. Возможна именная гравировка или печать с фото. Подходит для спортивных турниров, школ, детских садов, корпоративных мероприятий.',
+    galleryPhotos: [
+      '/images/portfolio/medali-001.jpg',
+      '/images/portfolio/medali-005.jpg',
+      '/images/portfolio/medali-010.jpg',
+      '/images/portfolio/medali-015.jpg',
+      '/images/portfolio/nagradnye-statuetki-001.jpg',
+      '/images/portfolio/nagradnye-statuetki-010.jpg',
+    ],
   },
   {
     slug:        'tablichki-na-zakaz-ufa',
@@ -54,6 +86,14 @@ export const seoPages: SeoPage[] = [
     service:     'lazernaya-rezka',
     material:    'akril',
     bodyText:    'Изготавливаем офисные, именные и интерьерные таблички. Можем сделать с логотипом, текстом, QR-кодом. Разные материалы: акрил, ПВХ, металл, фанера.',
+    galleryPhotos: [
+      '/images/portfolio/tablitchki-001.jpg',
+      '/images/portfolio/tablitchki-005.jpg',
+      '/images/portfolio/tablitchki-010.jpg',
+      '/images/portfolio/tablitchki-015.jpg',
+      '/images/portfolio/vyveski-001.jpg',
+      '/images/portfolio/bejdzhi-001.jpg',
+    ],
   },
   {
     slug:        'gravirovka-na-dereve-ufa',
@@ -63,6 +103,14 @@ export const seoPages: SeoPage[] = [
     service:     'gravirovka-na-nemetalah',
     material:    'derevo',
     bodyText:    'Гравируем на фанере, сосне, ясене, дубе и других породах. Фотогравировка, текст, логотипы. Отлично подходит для именных подарков, корпоративных сувениров и декора.',
+    galleryPhotos: [
+      '/images/portfolio/gravirovka-003.jpg',
+      '/images/portfolio/gravirovka-008.jpg',
+      '/images/portfolio/gravirovka-015.jpg',
+      '/images/portfolio/gravirovka-020.jpg',
+      '/images/portfolio/gravirovka-022.jpg',
+      '/images/portfolio/gravirovka-025.jpg',
+    ],
   },
   {
     slug:        'frezernaya-rezka-fanery-ufa',
@@ -72,6 +120,14 @@ export const seoPages: SeoPage[] = [
     service:     'frezernaya-rezka-chpu',
     material:    'fanera',
     bodyText:    'Фрезеруем фанеру для декоративных панелей, мебельных фасадов, рекламных конструкций и производственных деталей. Работаем по DXF, AI, CDR и другим форматам.',
+    galleryPhotos: [
+      '/images/portfolio/frezernaya-rezka-001.jpg',
+      '/images/portfolio/frezernaya-rezka-010.jpg',
+      '/images/portfolio/frezernaya-rezka-020.jpg',
+      '/images/portfolio/frezernaya-rezka-030.jpg',
+      '/images/portfolio/frezernaya-rezka-040.jpg',
+      '/images/portfolio/frezernaya-rezka-050.jpg',
+    ],
   },
   {
     slug:        'detali-iz-fanery-na-zakaz-ufa',
@@ -81,6 +137,14 @@ export const seoPages: SeoPage[] = [
     service:     'lazernaya-rezka',
     material:    'fanera',
     bodyText:    'Изготавливаем детали из фанеры для производств, мастерских и агентств. Работаем с толщиной от 3 до 10 мм. Принимаем файлы в форматах DXF, AI, CDR, CorelDRAW.',
+    galleryPhotos: [
+      '/images/portfolio/koroba-fanera-005.jpg',
+      '/images/portfolio/koroba-fanera-025.jpg',
+      '/images/portfolio/koroba-fanera-050.jpg',
+      '/images/portfolio/zagotovki-001.jpg',
+      '/images/portfolio/zagotovki-002.jpg',
+      '/images/portfolio/shkatulki-fanera-003.jpg',
+    ],
   },
   {
     slug:        'gravirovka-na-metalle-ufa',
@@ -90,6 +154,14 @@ export const seoPages: SeoPage[] = [
     service:     'gravirovka-na-metalle',
     material:    'metall',
     bodyText:    'Используем волоконный маркиратор — гравировка выжигается в поверхности металла и не стирается. Принимаем изделия клиента: термосы, кружки, ножи, медали, жетоны, шильдики. Наносим текст, логотипы, орнаменты, фотографии. Стандартный срок — 1 рабочий день, срочные заказы — от 1 часа.',
+    galleryPhotos: [
+      '/images/portfolio/gravirovka-001.jpg',
+      '/images/portfolio/gravirovka-040.jpg',
+      '/images/portfolio/gravirovka-043.jpg',
+      '/images/portfolio/gravirovka-050.jpg',
+      '/images/portfolio/gravirovka-055.jpg',
+      '/images/portfolio/gravirovka-060.jpg',
+    ],
   },
   {
     slug:        'suveniry-na-zakaz-ufa',
@@ -99,6 +171,14 @@ export const seoPages: SeoPage[] = [
     service:     'izgotovlenie-izdelij',
     material:    'akril',
     bodyText:    'Изготавливаем сувениры под любой повод: корпоратив, выпускной, спортивное мероприятие, день рождения. На изделии можно разместить имя, логотип, дату, QR-код. Работаем с акрилом, фанерой, деревом, кожей. Принимаем заказы от 1 штуки без минимального тиража.',
+    galleryPhotos: [
+      '/images/portfolio/breloki-001.jpg',
+      '/images/portfolio/breloki-005.jpg',
+      '/images/portfolio/kheshtegi-001.jpg',
+      '/images/portfolio/shkatulki-fanera-001.jpg',
+      '/images/portfolio/chasy-001.jpg',
+      '/images/portfolio/nagradnye-statuetki-001.jpg',
+    ],
   },
   {
     slug:        'nagrady-na-zakaz-ufa',
@@ -108,6 +188,14 @@ export const seoPages: SeoPage[] = [
     service:     'izgotovlenie-izdelij',
     material:    'akril',
     bodyText:    'Делаем награды для корпоративных мероприятий, спортивных соревнований, конкурсов профессионального мастерства. Статуэтки, медали, кубки из акрила и фанеры с вашим логотипом, именем победителя и гравировкой. Любая форма, размер и тираж.',
+    galleryPhotos: [
+      '/images/portfolio/nagradnye-statuetki-001.jpg',
+      '/images/portfolio/nagradnye-statuetki-005.jpg',
+      '/images/portfolio/nagradnye-statuetki-010.jpg',
+      '/images/portfolio/nagradnye-statuetki-015.jpg',
+      '/images/portfolio/medali-001.jpg',
+      '/images/portfolio/medali-011.jpg',
+    ],
   },
   {
     slug:        'lazernaya-rezka-kartona-ufa',
@@ -117,6 +205,14 @@ export const seoPages: SeoPage[] = [
     service:     'lazernaya-rezka',
     material:    'karton',
     bodyText:    'Режем картон любой плотности: меловку, гофрокартон, микрогофру, переплётный картон. Лазер режет чисто — без сминания краёв, с любым контуром и мелкими деталями. Подходит для изготовления подарочной и промышленной упаковки, трафаретов, архитектурных макетов, бирок и вырубных заготовок. Принимаем заказы от одной штуки.',
+    galleryPhotos: [
+      '/images/portfolio/kheshtegi-001.jpg',
+      '/images/portfolio/kheshtegi-003.jpg',
+      '/images/portfolio/kheshtegi-005.jpg',
+      '/images/portfolio/tablitchki-001.jpg',
+      '/images/portfolio/zagotovki-001.jpg',
+      '/images/portfolio/zagotovki-003.jpg',
+    ],
   },
   {
     slug:        'gravirovka-na-kozhe-ufa',
@@ -143,5 +239,13 @@ export const seoPages: SeoPage[] = [
     service:     'lazernaya-rezka',
     material:    'pvh',
     bodyText:    'Изготавливаем вывески для фасадов, интерьеров и торговых точек. Работаем с ПВХ (3–10 мм), алюминиевым композитом и акрилом. Режем на лазере и фрезе по вашему макету, наносим логотип методом УФ-печати. Монтажные отверстия входят в стоимость.',
+    galleryPhotos: [
+      '/images/portfolio/vyveski-001.jpg',
+      '/images/portfolio/vyveski-003.jpg',
+      '/images/portfolio/vyveski-005.jpg',
+      '/images/portfolio/vyveski-008.jpg',
+      '/images/portfolio/tablitchki-001.jpg',
+      '/images/portfolio/tablitchki-010.jpg',
+    ],
   },
 ]
