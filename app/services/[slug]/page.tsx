@@ -25,6 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title:       s.seoTitle,
     description: s.seoDescription,
+    keywords:    s.keywords,
     alternates:  { canonical: `https://clc-ufa.ru/services/${s.slug}` },
     openGraph: {
       title:  s.seoTitle,

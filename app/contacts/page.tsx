@@ -7,6 +7,7 @@ import { ContactButtons } from '@/components/ContactButtons'
 export const metadata: Metadata = {
   title:       'Контакты — Центр лазерной резки, Уфа, ул. Менделеева 177',
   description: 'Адрес, телефон и мессенджеры Центр лазерной резки: г. Уфа, ул. Менделеева, 177, 5 этаж, цех 509. Работаем ежедневно с 10:00 до 19:00.',
+  keywords:    ['центр лазерной резки уфа адрес', 'лазерная резка менделеева уфа', 'контакты лазерная резка уфа', 'лазерная резка телефон уфа'],
   alternates:  { canonical: 'https://clc-ufa.ru/contacts' },
 }
 
