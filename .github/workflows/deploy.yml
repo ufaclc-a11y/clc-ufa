@@ -36,6 +36,7 @@ jobs:
               --name clc-ufa \
               --restart unless-stopped \
               -p 3000:3000 \
+              -v clc-ufa-image-cache:/app/.next/cache/images \
               -e TG_BOT_TOKEN=${{ secrets.TG_BOT_TOKEN }} \
               -e TG_CHAT_ID=${{ secrets.TG_CHAT_ID }} \
               clc-ufa:latest
