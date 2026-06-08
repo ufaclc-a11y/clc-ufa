@@ -60,10 +60,25 @@ export default function SeoLandingPage({ params }: Props) {
   // Hero image: explicit on page (future) → related service heroImage → service image
   const heroImage = relatedService?.heroImage ?? relatedService?.image ?? null
 
-  // Gallery photos: explicit on page → service portfolioPhotos slice
+  // Gallery photos: explicit on page → service portfolioPhotos → derived from portfolioPrefix
+  function deriveGalleryFromService(): string[] {
+    if (!relatedService) return []
+    if (relatedService.portfolioPhotos?.length) return relatedService.portfolioPhotos.slice(0, 6)
+    if (relatedService.portfolioPrefix && relatedService.portfolioCount) {
+      const count = relatedService.portfolioCount
+      const limit = 6
+      const step  = Math.max(1, Math.floor(count / limit))
+      const photos: string[] = []
+      for (let i = 1; i <= count && photos.length < limit; i += step) {
+        photos.push(`/images/portfolio/${relatedService.portfolioPrefix}-${String(i).padStart(3, '0')}.jpg`)
+      }
+      return photos
+    }
+    return []
+  }
   const galleryPhotos: string[] = page.galleryPhotos?.length
     ? page.galleryPhotos
-    : (relatedService?.portfolioPhotos?.slice(0, 6) ?? [])
+    : deriveGalleryFromService()
 
   const jsonLd = {
     '@context':  'https://schema.org',

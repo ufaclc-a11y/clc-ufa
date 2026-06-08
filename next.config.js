@@ -14,7 +14,6 @@ const nextConfig = {
       { source: '/uv-print-medali',     destination: '/services/uf-pechat',       permanent: true },
       { source: '/uv-print-acrill',     destination: '/services/uf-pechat',       permanent: true },
       { source: '/contact',             destination: '/contacts',                  permanent: true },
-      { source: '/calculator',          destination: '/',                          permanent: false },
     ]
   },
 }

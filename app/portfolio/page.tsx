@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image             from 'next/image'
 import { PortfolioGrid } from '@/components/PortfolioGrid'
 import { CTASection }    from '@/components/CTASection'
 
@@ -10,23 +11,58 @@ export const metadata: Metadata = {
 
 type Props = { searchParams: { cat?: string } }
 
+/* Коллаж из нескольких разных работ для hero-фона */
+const HERO_IMAGES = [
+  '/images/portfolio/medali-011.jpg',
+  '/images/portfolio/gravirovka-029.jpg',
+  '/images/portfolio/lazernaya-rezka-187.jpg',
+  '/images/portfolio/nagradnye-statuetki-001.jpg',
+]
+
 export default function PortfolioPage({ searchParams }: Props) {
   const defaultCategory = searchParams.cat ?? 'all'
 
   return (
     <>
-      <div className="pt-24 pb-20 bg-[#F5F4F0]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      {/* ── HERO ── */}
+      <div className="relative min-h-[400px] flex items-end bg-[#1A1A1A] overflow-hidden pt-24">
+        {/* Сетка 2×2 из фото для фона */}
+        <div className="absolute inset-0 grid grid-cols-2 grid-rows-2">
+          {HERO_IMAGES.map((src, i) => (
+            <div key={i} className="relative overflow-hidden">
+              <Image
+                src={src}
+                alt=""
+                fill
+                priority={i < 2}
+                className="object-cover opacity-25"
+                sizes="50vw"
+              />
+            </div>
+          ))}
+        </div>
+        {/* Оверлеи */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/75 to-[#1A1A1A]/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pb-14 w-full">
           <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Портфолио</span>
-          <h1 className="font-display text-5xl sm:text-6xl text-[#1A1A1A] tracking-wider mt-2 mb-4">
+          <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl text-white tracking-wider mt-2 mb-4 leading-tight">
             Наши работы
           </h1>
-          <p className="text-lg text-[#8A8680] max-w-2xl mb-12">
+          <p className="text-lg text-white/55 max-w-xl leading-relaxed">
             Медали, таблички, вывески, интерьерный декор, детали для производств и многое другое.
           </p>
+        </div>
+      </div>
+
+      {/* ── СЕТКА С ФИЛЬТРОМ ── */}
+      <div className="py-12 bg-[#F5F4F0]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <PortfolioGrid defaultCategory={defaultCategory} />
         </div>
       </div>
+
       <CTASection />
     </>
   )
