@@ -39,7 +39,11 @@ function getPortfolioPhotos(service: {
   portfolioPrefix?: string
   portfolioCount?: number
   portfolioPrefixes?: { prefix: string; count: number }[]
+  portfolioPhotos?: string[]
 }): string[] {
+  if (service.portfolioPhotos?.length) {
+    return service.portfolioPhotos
+  }
   if (service.portfolioPrefixes?.length) {
     return service.portfolioPrefixes.map(cat =>
       `/images/portfolio/${cat.prefix}-001.jpg`
