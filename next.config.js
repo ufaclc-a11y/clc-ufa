@@ -13,7 +13,8 @@ const nextConfig = {
       { source: '/lazer-rez-trafaret',  destination: '/services/lazernaya-rezka', permanent: true },
       { source: '/uv-print-medali',     destination: '/services/uf-pechat',       permanent: true },
       { source: '/uv-print-acrill',     destination: '/services/uf-pechat',       permanent: true },
-      { source: '/contact',             destination: '/contacts',                  permanent: true },
+      { source: '/contact',                      destination: '/contacts',                  permanent: true },
+      { source: '/services/izgotovlenie-izdelij', destination: '/products',                   permanent: true },
     ]
   },
 }
