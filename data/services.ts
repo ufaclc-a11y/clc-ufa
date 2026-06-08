@@ -88,7 +88,7 @@ export const services: Service[] = [
       'Заготовки и детали для изделий': '/products/zagotovki',
       'Бейджи и номерки':               '/products/bejdzhi',
       'Декоративные вставки':           '/dekorativnye-vstavki-ufa',
-      'Элементы мебели':                '/elementy-mebeli-ufa',
+      'Элементы мебели':                '/lazernaya-rezka-fanery-ufa',
       'Пазлы и развивающие игрушки':    '/pazly-igrushki-ufa',
     },
     materialLinks: {
@@ -446,8 +446,8 @@ export const services: Service[] = [
       'Фрезеровка дерева':          '/frezernaya-rezka-dereva-ufa',
       'Фрезеровка ПВХ':             '/frezernaya-rezka-pvh-ufa',
       'Рекламные конструкции':       '/reklamnye-konstruktsii-ufa',
-      'Объёмные буквы и логотипы':   '/obemnye-bukvy-ufa',
-      'Мебельные фасады':            '/mebelnye-fasady-ufa',
+      'Объёмные буквы и логотипы':   '/reklamnye-konstruktsii-ufa',
+      'Мебельные фасады':            '/frezernaya-rezka-mdf-ufa',
       '3D-обработка':                '/obemnaya-frezerovka-ufa',
     },
     materialLinks: {
