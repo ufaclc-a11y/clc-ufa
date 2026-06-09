@@ -204,13 +204,13 @@ function ProductCard({ item }: { item: ShopItem }) {
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]"
     >
       {/* Image container */}
-      <div className="relative aspect-square bg-[#2A2A2A] overflow-hidden">
+      <div className="relative aspect-[3/4] bg-[#2A2A2A] overflow-hidden">
         {!imgError ? (
           <Image
             src={item.image}
             alt={item.title}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-contain transition-transform duration-300 group-hover:scale-105"
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
             onError={() => setImgError(true)}
             unoptimized
@@ -220,8 +220,6 @@ function ProductCard({ item }: { item: ShopItem }) {
             🪵
           </div>
         )}
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#222]/60 via-transparent to-transparent" />
         {/* WB badge */}
         <div className="absolute top-2 right-2 flex items-center gap-1 px-2 py-0.5 bg-[#CB11AB]/90 rounded-full text-white text-[10px] font-bold tracking-wide">
           WB
