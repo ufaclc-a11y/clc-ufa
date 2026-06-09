@@ -49,14 +49,14 @@ const clients = [
   {
     title: 'Мебельщики',
     desc:  'Декоративные фасады, резные вставки, элементы из МДФ и фанеры по вашим эскизам.',
-    img:   '/images/products/organajzery-fanera.jpg',
-    alt:   'Мебельные элементы из фанеры',
+    img:   '/images/products/b2b-detali-proizvodstvo.jpg',
+    alt:   'Декоративные фасады и элементы из МДФ для мебельщиков',
   },
   {
     title: 'Производители сувениров',
     desc:  'Заготовки, бланки, детали под дальнейшую гравировку, печать или отделку.',
-    img:   '/images/products/shkatulki-fanera.jpg',
-    alt:   'Заготовки для сувениров',
+    img:   '/images/products/suveniры-gravировka.jpg',
+    alt:   'Заготовки и сувениры с гравировкой',
   },
 ]
 
