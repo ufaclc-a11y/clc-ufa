@@ -34,6 +34,7 @@ const nextConfig = {
       { source: '/uv-print-acrill',     destination: '/services/uf-pechat',       permanent: true },
       { source: '/contact',                      destination: '/contacts',                  permanent: true },
       { source: '/services/izgotovlenie-izdelij', destination: '/products',                   permanent: true },
+      { source: '/products/detali-b2b',           destination: '/b2b',                        permanent: true },
     ]
   },
 }
