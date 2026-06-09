@@ -25,8 +25,8 @@ const clients = [
   {
     title: 'Заводы и производства',
     desc:  'Детали и элементы для встраивания в собственные изделия. Работаем по чертежам DXF, STEP, CDR.',
-    img:   '/images/services/frezernaya-rezka-chpu.jpg',
-    alt:   'Фрезерная резка ЧПУ для производства',
+    img:   '/images/services/lazernaya-rezka.jpg',
+    alt:   'Лазерная резка деталей для производства',
   },
   {
     title: 'Рекламные агентства',
