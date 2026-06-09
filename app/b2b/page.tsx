@@ -25,8 +25,8 @@ const clients = [
   {
     title: 'Заводы и производства',
     desc:  'Детали и элементы для встраивания в собственные изделия. Работаем по чертежам DXF, STEP, CDR.',
-    img:   '/images/services/lazernaya-rezka.jpg',
-    alt:   'Лазерная резка деталей для производства',
+    img:   '/images/portfolio/lazernaya-rezka-250.jpg',
+    alt:   'Нарезанные детали из МДФ для производства',
   },
   {
     title: 'Рекламные агентства',
