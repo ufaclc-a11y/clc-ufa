@@ -134,7 +134,7 @@ export default function SeoLandingPage({ params }: Props) {
           <p className="text-lg text-white/60 leading-relaxed mb-8 max-w-xl">
             {page.description}
           </p>
-          <ContactButtons size="lg" />
+          <ContactButtons size="lg" variant="dark" />
         </div>
       </div>
 

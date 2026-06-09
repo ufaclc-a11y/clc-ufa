@@ -93,7 +93,7 @@ export default function HomePage() {
             </p>
 
             <div className="animate-fade-up delay-200">
-              <ContactButtons size="lg" variant="light" />
+              <ContactButtons size="lg" variant="dark" />
             </div>
 
             {/* Цифры */}
@@ -107,7 +107,7 @@ export default function HomePage() {
                   <div className="font-display text-3xl sm:text-4xl text-[#FF6B00] tracking-wider leading-none">
                     {s.n}
                   </div>
-                  <div className="text-xs sm:text-sm text-white/35 mt-1 leading-tight">{s.sub}</div>
+                  <div className="text-xs sm:text-sm text-white/60 mt-1 leading-tight">{s.sub}</div>
                 </div>
               ))}
             </div>

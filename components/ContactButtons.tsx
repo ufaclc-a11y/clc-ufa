@@ -65,8 +65,8 @@ export function ContactButtons({
         className={cn(
           base, sz,
           variant === 'dark'
-            ? 'bg-white/5 text-white/70 hover:text-white border border-white/10'
-            : 'bg-[#1A1A1A]/8 text-[#1A1A1A] hover:bg-[#1A1A1A]/15'
+            ? 'bg-white/10 text-white border border-white/30 hover:bg-white/20 hover:border-white/50'
+            : 'bg-[#1A1A1A]/10 text-[#1A1A1A] border border-[#1A1A1A]/20 hover:bg-[#1A1A1A]/20'
         )}
       >
         <IconPhone /> Позвонить

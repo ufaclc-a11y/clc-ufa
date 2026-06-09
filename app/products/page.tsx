@@ -64,7 +64,7 @@ export default function ProductsPage() {
           <p className="text-lg text-white/55 max-w-2xl leading-relaxed mb-10">
             {service.description}
           </p>
-          <ContactButtons size="lg" />
+          <ContactButtons size="lg" variant="dark" />
         </div>
       </div>
 
