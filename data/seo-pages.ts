@@ -43,7 +43,7 @@ export const seoPages: SeoPage[] = [
     galleryPhotos: [
       '/images/portfolio/nagradnye-statuetki-001.jpg',
       '/images/portfolio/nagradnye-statuetki-010.jpg',
-      '/images/portfolio/nagradnye-statuetki-020.jpg',
+      '/images/portfolio/nagradnye-statuetki-018.jpg',
       '/images/portfolio/medali-001.jpg',
       '/images/portfolio/medali-010.jpg',
       '/images/portfolio/breloki-001.jpg',
@@ -391,8 +391,8 @@ export const seoPages: SeoPage[] = [
     galleryPhotos: [
       '/images/portfolio/nagradnye-statuetki-003.jpg',
       '/images/portfolio/nagradnye-statuetki-007.jpg',
-      '/images/portfolio/nagradnye-statuetki-015.jpg',
-      '/images/portfolio/nagradnye-statuetki-022.jpg',
+      '/images/portfolio/nagradnye-statuetki-013.jpg',
+      '/images/portfolio/nagradnye-statuetki-020.jpg',
       '/images/portfolio/medali-003.jpg',
       '/images/portfolio/medali-008.jpg',
     ],
@@ -512,7 +512,7 @@ export const seoPages: SeoPage[] = [
       '/images/portfolio/nagradnye-statuetki-001.jpg',
       '/images/portfolio/nagradnye-statuetki-005.jpg',
       '/images/portfolio/nagradnye-statuetki-010.jpg',
-      '/images/portfolio/nagradnye-statuetki-015.jpg',
+      '/images/portfolio/nagradnye-statuetki-013.jpg',
       '/images/portfolio/medali-001.jpg',
       '/images/portfolio/medali-011.jpg',
     ],

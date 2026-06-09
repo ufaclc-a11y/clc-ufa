@@ -550,7 +550,7 @@ export const services: Service[] = [
       { prefix: 'vyveski',            count: 14 },
       { prefix: 'tablitchki',         count: 21 },
       { prefix: 'kormushki',          count: 5  },
-      { prefix: 'nagradnye-statuetki',count: 25 },
+      { prefix: 'nagradnye-statuetki',count: 23 },
       { prefix: 'nomerki-garderob',   count: 6  },
       { prefix: 'tejbl-tenty',        count: 5  },
     ],

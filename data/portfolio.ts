@@ -11,13 +11,13 @@ export type PortfolioCategory = { id: string; label: string; count: number }
 
 // Все категории с количеством фото
 export const portfolioCategories: PortfolioCategory[] = [
-  { id: 'all',                label: 'Все работы',           count: 808 },
+  { id: 'all',                label: 'Все работы',           count: 806 },
   { id: 'lazernaya-rezka',    label: 'Лазерная резка',       count: 375 },
   { id: 'koroba-fanera',      label: 'Коробки и ящики',      count: 74  },
   { id: 'gravirovka',         label: 'Гравировка',           count: 69  },
   { id: 'frezernaya-rezka',   label: 'Фрезеровка',           count: 50  },
   { id: 'organajzery',        label: 'Органайзеры',          count: 37  },
-  { id: 'nagradnye-statuetki',label: 'Наградные статуэтки',  count: 25  },
+  { id: 'nagradnye-statuetki',label: 'Наградные статуэтки',  count: 23  },
   { id: 'uf-pechat',          label: 'УФ-печать',            count: 24  },
   { id: 'medali',             label: 'Медали',               count: 23  },
   { id: 'tablitchki',         label: 'Таблички',             count: 21  },
