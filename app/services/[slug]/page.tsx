@@ -368,14 +368,9 @@ export default function ServicePage({ params }: Props) {
       {portfolioPhotos.length > 0 && (
         <section className="py-16 bg-[#F5F4F0]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="flex items-end justify-between gap-4 mb-8">
-              <div>
-                <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Наши работы</span>
-                <h2 className="font-display text-4xl text-[#1A1A1A] tracking-wider mt-2">Примеры</h2>
-              </div>
-              <Link href="/portfolio" className="text-sm font-semibold text-[#FF6B00] hover:underline underline-offset-4 shrink-0">
-                Все работы →
-              </Link>
+            <div className="mb-8">
+              <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Наши работы</span>
+              <h2 className="font-display text-4xl text-[#1A1A1A] tracking-wider mt-2">Примеры</h2>
             </div>
             <GalleryGrid
               gridClass="grid grid-cols-2 sm:grid-cols-3 gap-3"
@@ -391,6 +386,11 @@ export default function ServicePage({ params }: Props) {
                 alt: `${service.title} — пример работы ${i + 1}`,
               }))}
             />
+            <div className="mt-8 text-center">
+              <Link href="/portfolio" className="text-sm font-semibold text-[#FF6B00] hover:underline underline-offset-4">
+                Все работы →
+              </Link>
+            </div>
           </div>
         </section>
       )}

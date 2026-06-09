@@ -181,12 +181,7 @@ export default function PortfolioCategoryPage({ params }: Props) {
       {/* ── ДРУГИЕ КАТЕГОРИИ ── */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between gap-4 mb-6">
-            <h2 className="font-display text-2xl text-[#1A1A1A] tracking-wider">Другие категории</h2>
-            <Link href="/portfolio" className="text-sm font-semibold text-[#FF6B00] hover:underline underline-offset-4 shrink-0">
-              Все работы →
-            </Link>
-          </div>
+          <h2 className="font-display text-2xl text-[#1A1A1A] tracking-wider mb-6">Другие категории</h2>
           <div className="flex flex-wrap gap-2">
             {others.map(c => (
               <Link
@@ -210,6 +205,11 @@ export default function PortfolioCategoryPage({ params }: Props) {
                 </div>
               </Link>
             ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link href="/portfolio" className="text-sm font-semibold text-[#FF6B00] hover:underline underline-offset-4">
+              Все работы →
+            </Link>
           </div>
         </div>
       </section>

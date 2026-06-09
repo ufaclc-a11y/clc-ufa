@@ -206,19 +206,9 @@ export default function SeoLandingPage({ params }: Props) {
       {galleryPhotos.length > 0 && (
         <section className="py-14 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="flex items-end justify-between gap-4 mb-8">
-              <div>
-                <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Портфолио</span>
-                <h2 className="font-display text-2xl text-[#1A1A1A] tracking-wide mt-1">Наши работы</h2>
-              </div>
-              {relatedService && (
-                <Link
-                  href={`/services/${relatedService.slug}`}
-                  className="text-sm font-semibold text-[#FF6B00] hover:underline underline-offset-4 shrink-0"
-                >
-                  Все работы →
-                </Link>
-              )}
+            <div className="mb-8">
+              <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Портфолио</span>
+              <h2 className="font-display text-2xl text-[#1A1A1A] tracking-wide mt-1">Наши работы</h2>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
               {galleryPhotos.map((src, i) => (
@@ -237,6 +227,16 @@ export default function SeoLandingPage({ params }: Props) {
                 </div>
               ))}
             </div>
+            {relatedService && (
+              <div className="mt-8 text-center">
+                <Link
+                  href={`/services/${relatedService.slug}`}
+                  className="text-sm font-semibold text-[#FF6B00] hover:underline underline-offset-4"
+                >
+                  Все работы →
+                </Link>
+              </div>
+            )}
           </div>
         </section>
       )}
