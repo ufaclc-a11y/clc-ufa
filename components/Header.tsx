@@ -9,6 +9,7 @@ import { SiteSearch } from '@/components/SiteSearch'
 const nav = [
   { href: '/services',  label: 'Услуги'      },
   { href: '/products',  label: 'Изделия'     },
+  { href: '/shop',      label: 'Магазин'     },
   { href: '/portfolio', label: 'Работы'      },
   { href: '/b2b',       label: 'Для бизнеса' },
   { href: '/contacts',  label: 'Контакты'    },
