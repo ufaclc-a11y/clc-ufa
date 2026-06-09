@@ -37,7 +37,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2700,
-    "image": "https://basket-21.wbbasket.ru/vol3557/part355794/355794658/images/big/1.webp",
+    "image": "/shop-images/355794658.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/355794658/detail.aspx",
     "desc": "Добавьте оригинальности вашему интерьеру с помощью декоративного сёрфа. Этот стильный элемент станет отличным акцентом в любом помещении, будь то гостиная, спальня или офис. Сёрф имеет размеры 75х23,5 см, что делает его идеальным для размещения на ст"
   },
@@ -47,7 +47,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2700,
-    "image": "https://basket-22.wbbasket.ru/vol7623/part762364/762364207/images/big/1.webp",
+    "image": "/shop-images/762364207.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/762364207/detail.aspx",
     "desc": "Будьте первыми, кто оценит новинку! Декоративный сёрф Surfer Girl в жёлтом цвете: яркий штрих для вашего интерьера  Этот стильный декоративный сёрф — не просто элемент оформления, а настоящее воплощение духа океана и беззаботного отдыха. Сочный жёлты"
   },
@@ -57,7 +57,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2700,
-    "image": "https://basket-22.wbbasket.ru/vol8955/part895567/895567312/images/big/1.webp",
+    "image": "/shop-images/895567312.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/895567312/detail.aspx",
     "desc": "Добавьте нотку парижской элегантности и прибрежного шика в ваш интерьер с декоративным серфом — стильным настенным панно, вдохновлённым эстетикой высокой моды.  Изящные линии и утончённый дизайн создают атмосферу лёгкости и роскоши, напоминая о сочет"
   },
@@ -67,7 +67,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2700,
-    "image": "https://basket-22.wbbasket.ru/vol8955/part895563/895563652/images/big/1.webp",
+    "image": "/shop-images/895563652.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/895563652/detail.aspx",
     "desc": "Добавьте нотку парижской элегантности и прибрежного шика в ваш интерьер с декоративным серфом — стильным настенным панно, вдохновлённым эстетикой высокой моды.  Изящные линии и утончённый дизайн создают атмосферу лёгкости и роскоши, напоминая о сочет"
   },
@@ -77,7 +77,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2700,
-    "image": "https://basket-22.wbbasket.ru/vol8955/part895553/895553579/images/big/1.webp",
+    "image": "/shop-images/895553579.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/895553579/detail.aspx",
     "desc": "Стильный декоративный серф с узнаваемым паттерном в духе эстетики Gucci — эффектное настенное панно, которое добавит интерьеру нотку итальянского шика и премиальности.  Изысканный принт с монограммным узором нанесён методом УФ‑печати — это обеспечива"
   },
@@ -87,7 +87,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2700,
-    "image": "https://basket-22.wbbasket.ru/vol8953/part895306/895306269/images/big/1.webp",
+    "image": "/shop-images/895306269.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/895306269/detail.aspx",
     "desc": "Добавьте в интерьер нотку парижского шика и утончённой роскоши с декоративным серфом — стильным настенным панно с изысканным геометрическим принтом, напоминающим винтажные монограммы.  Благородный узор в сочетании с элегантными пропорциями доски созд"
   },
@@ -97,7 +97,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2700,
-    "image": "https://basket-22.wbbasket.ru/vol8952/part895289/895289684/images/big/1.webp",
+    "image": "/shop-images/895289684.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/895289684/detail.aspx",
     "desc": "Роскошный декоративный серф с культовым логотипом LouisVuitton — эффектное настенное панно, которое добавит интерьеру нотку парижского шика и премиальности.  Крупный золотой логотип LouisVuitton нанесён методом УФ‑печати — это обеспечивает:  высокую "
   },
@@ -107,7 +107,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2700,
-    "image": "https://basket-22.wbbasket.ru/vol8928/part892849/892849768/images/big/1.webp",
+    "image": "/shop-images/892849768.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/892849768/detail.aspx",
     "desc": "Добавьте в интерьер нотку романтического шика и природной красоты с декоративным серфом — стильным настенным панно с изящным цветочным принтом в нежных розовых тонах.  Нежный розовый оттенок в сочетании с ботаническим орнаментом создаёт атмосферу уто"
   },
@@ -117,7 +117,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2700,
-    "image": "https://basket-22.wbbasket.ru/vol8925/part892560/892560422/images/big/1.webp",
+    "image": "/shop-images/892560422.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/892560422/detail.aspx",
     "desc": "Добавьте нотку парижской элегантности и прибрежного шика в ваш интерьер с декоративным серфом — стильным настенным панно, вдохновлённым эстетикой высокой моды.  Изящные линии и утончённый дизайн создают атмосферу лёгкости и роскоши, напоминая о сочет"
   },
@@ -127,7 +127,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2340,
-    "image": "https://basket-22.wbbasket.ru/vol7686/part768647/768647477/images/big/1.webp",
+    "image": "/shop-images/768647477.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/768647477/detail.aspx",
     "desc": "Будьте первыми, кто оценит новинку!  Декоративный сёрф «live in motion» — магия заката в вашем интерьере  Яркий арт‑объект с динамичной сценой: мальчик покоряет волну на сёрфе под закатным небом, где в нежных тонах сливаются фиолетовый, розовый (как "
   },
@@ -137,7 +137,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2295,
-    "image": "https://basket-22.wbbasket.ru/vol7686/part768615/768615262/images/big/1.webp",
+    "image": "/shop-images/768615262.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/768615262/detail.aspx",
     "desc": "Будьте первыми, кто оценит новинку!  Декоративный сёрф «Summer Vibes Men» — энергия пляжного лета в вашем интерьере Динамичный арт с бегущим по пляжу мужчиной воплощает дух свободного лета. Сёрф передаёт атмосферу беззаботного отдыха: песок, солнце и"
   },
@@ -147,7 +147,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2340,
-    "image": "https://basket-22.wbbasket.ru/vol7671/part767110/767110860/images/big/1.webp",
+    "image": "/shop-images/767110860.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/767110860/detail.aspx",
     "desc": "Будьте первыми, кто оценит новинку! Декоративный сёрф «Лазурный берег» — воплощение летнего релакса  Позвольте этому сёрфу перенести вас на идеальный пляж: лазурная вода, уютные лежаки в тени пальм и безмятежное солнце. Реалистичный принт создаёт эфф"
   },
@@ -157,7 +157,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2340,
-    "image": "https://basket-22.wbbasket.ru/vol7669/part766941/766941530/images/big/1.webp",
+    "image": "/shop-images/766941530.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/766941530/detail.aspx",
     "desc": "Будьте первыми, кто оценит новинку! Декоративный сёрф «Пляж с кокосами» — кусочек тропического рая у вас дома  Погрузитесь в атмосферу безмятежного отдыха с декоративным сёрфом, на котором запечатлён живописный пляжный пейзаж: золотистый песок, пальм"
   },
@@ -167,7 +167,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2295,
-    "image": "https://basket-22.wbbasket.ru/vol7666/part766679/766679469/images/big/1.webp",
+    "image": "/shop-images/766679469.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/766679469/detail.aspx",
     "desc": "Будьте первыми, кто оценит новинку! Декоративный сёрф «Осьминог» (ч/б) — арт‑объект с морским характером  Строгий чёрно‑белый сёрф с графическим изображением осьминога — это сочетание минимализма и морской романтики. Лаконичная палитра и выразительны"
   },
@@ -177,7 +177,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2295,
-    "image": "https://basket-22.wbbasket.ru/vol7666/part766652/766652532/images/big/1.webp",
+    "image": "/shop-images/766652532.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/766652532/detail.aspx",
     "desc": "Будьте первыми, кто оценит новинку! Декоративный сёрф «Life Comes in Waves» (ч/б) — лаконичный символ океанского ритма  Элегантный чёрно‑белый сёрф с надписью Life Comes in Waves — это не просто украшение стены, а философский акцент для тех, кто цени"
   },
@@ -187,7 +187,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2295,
-    "image": "https://basket-22.wbbasket.ru/vol7666/part766630/766630278/images/big/1.webp",
+    "image": "/shop-images/766630278.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/766630278/detail.aspx",
     "desc": "Будьте первыми, кто оценит новинку! Декоративный сёрф «Aloha Hawaii» — взрыв тропического настроения в вашем интерьере  Яркий, сочный, полный энергии — сёрф «Aloha Hawaii» перенесёт вас прямиком на солнечные пляжи Гавайев. Насыщенные цвета, выразител"
   },
@@ -197,7 +197,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2295,
-    "image": "https://basket-22.wbbasket.ru/vol7666/part766603/766603348/images/big/1.webp",
+    "image": "/shop-images/766603348.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/766603348/detail.aspx",
     "desc": "Будьте первыми, кто оценит новинку! Декоративный сёрф «Life is a Beach» в молочно‑синем оттенке  Спокойствие океана и философия беззаботного отдыха — в лаконичном дизайне. Сёрф в изысканном молочно‑синем цвете с минималистичной надписью Life is a Bea"
   },
@@ -207,7 +207,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2295,
-    "image": "https://basket-22.wbbasket.ru/vol7663/part766395/766395251/images/big/1.webp",
+    "image": "/shop-images/766395251.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/766395251/detail.aspx",
     "desc": "Будьте первыми, кто оценит новинку! Декоративный сёрф «Burn to Surf» в трендовых оттенках бургунди и молочного  Лаконичность, стиль и дух свободы — в каждой линии. Этот сёрф сочетает глубокий оттенок бургунди с нежным молочным тоном и минималистичной"
   },
@@ -217,7 +217,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2295,
-    "image": "https://basket-22.wbbasket.ru/vol7662/part766247/766247563/images/big/1.webp",
+    "image": "/shop-images/766247563.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/766247563/detail.aspx",
     "desc": "Будьте первыми, кто оценит новинку! Декоративный сёрф «Summer vibes» — веселье на волне!  Подарите себе и близким кусочек подводного веселья с декоративным сёрфом, на котором запечатлены любимые герои.  Почему этот сёрф станет хитом:  Яркий дизайн: с"
   },
@@ -227,7 +227,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2295,
-    "image": "https://basket-22.wbbasket.ru/vol7661/part766189/766189423/images/big/1.webp",
+    "image": "/shop-images/766189423.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/766189423/detail.aspx",
     "desc": "Будьте первыми, кто оценит новинку! Декоративный сёрф Surfer Girl в ярко‑розовом цвете: смелый акцент для яркого интерьера  Этот энергичный декоративный сёрф — настоящий взрыв цвета и настроения! Сочный ярко‑розовый оттенок превращает его в эффектный"
   },
@@ -237,7 +237,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2700,
-    "image": "https://basket-21.wbbasket.ru/vol3557/part355794/355794659/images/big/1.webp",
+    "image": "/shop-images/355794659.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/355794659/detail.aspx",
     "desc": "Добавьте оригинальности вашему интерьеру с помощью декоративного сёрфа. Этот стильный элемент станет отличным акцентом в любом помещении, будь то гостиная, спальня или офис. Сёрф выполнен в сером цвете и имеет размеры 75х23,5 см, что делает его идеал"
   },
@@ -247,7 +247,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2700,
-    "image": "https://basket-21.wbbasket.ru/vol3557/part355782/355782508/images/big/1.webp",
+    "image": "/shop-images/355782508.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/355782508/detail.aspx",
     "desc": "Добавьте оригинальности вашему интерьеру с помощью декоративного сёрфа. Этот стильный элемент станет отличным акцентом в любом помещении, будь то гостиная, спальня или офис. Сёрф имеет размеры 75х23,5 см, что делает его идеальным для размещения на ст"
   },
@@ -257,7 +257,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2700,
-    "image": "https://basket-21.wbbasket.ru/vol3557/part355771/355771751/images/big/1.webp",
+    "image": "/shop-images/355771751.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/355771751/detail.aspx",
     "desc": "Добавьте оригинальности вашему интерьеру с помощью декоративного сёрфа. Этот стильный элемент станет отличным акцентом в любом помещении, будь то гостиная, спальня или офис. Сёрф имеет размеры 75х23,5 см, что делает его идеальным для размещения на ст"
   },
@@ -267,7 +267,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2700,
-    "image": "https://basket-21.wbbasket.ru/vol3510/part351070/351070743/images/big/1.webp",
+    "image": "/shop-images/351070743.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/351070743/detail.aspx",
     "desc": "Добавьте оригинальности вашему интерьеру с помощью декоративного сёрфа. Этот стильный элемент станет отличным акцентом в любом помещении, будь то гостиная, спальня или офис. Сёрф имеет размеры 75х23,5 см, что делает его идеальным для размещения на ст"
   },
@@ -277,7 +277,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2700,
-    "image": "https://basket-21.wbbasket.ru/vol3510/part351065/351065503/images/big/1.webp",
+    "image": "/shop-images/351065503.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/351065503/detail.aspx",
     "desc": "Добавьте оригинальности вашему интерьеру с помощью декоративного сёрфа. Этот стильный элемент станет отличным акцентом в любом помещении, будь то гостиная, спальня или офис. Сёрф имеет размеры 75х23,5 см, что делает его идеальным для размещения на ст"
   },
@@ -287,7 +287,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2700,
-    "image": "https://basket-17.wbbasket.ru/vol2630/part263033/263033507/images/big/1.webp",
+    "image": "/shop-images/263033507.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/263033507/detail.aspx",
     "desc": "Добавьте оригинальности вашему интерьеру с помощью декоративного сёрфа. Этот стильный элемент станет отличным акцентом в любом помещении, будь то гостиная, спальня или офис. Сёрф выполнен в сером цвете и имеет размеры 75х23,5 см, что делает его идеал"
   },
@@ -297,7 +297,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2700,
-    "image": "https://basket-17.wbbasket.ru/vol2630/part263033/263033506/images/big/1.webp",
+    "image": "/shop-images/263033506.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/263033506/detail.aspx",
     "desc": "Добавьте оригинальности вашему интерьеру с помощью декоративного сёрфа. Этот стильный элемент станет отличным акцентом в любом помещении, будь то гостиная, спальня или офис. Сёрф выполнен в сером цвете и имеет размеры 75х23,5 см, что делает его идеал"
   },
@@ -307,7 +307,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2800,
-    "image": "https://basket-17.wbbasket.ru/vol2630/part263030/263030506/images/big/1.webp",
+    "image": "/shop-images/263030506.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/263030506/detail.aspx",
     "desc": "Добавьте оригинальности вашему интерьеру с помощью декоративного сёрфа. Этот стильный элемент станет отличным акцентом в любом помещении, будь то гостиная, спальня или офис. Сёрф выполнен в сером цвете и имеет размеры 75х23,5 см, что делает его идеал"
   },
@@ -317,7 +317,7 @@ export const shopItems: ShopItem[] = [
     "category": "konstruktory",
     "categoryName": "Конструкторы",
     "price": 13900,
-    "image": "https://basket-12.wbbasket.ru/vol1867/part186737/186737476/images/big/1.webp",
+    "image": "/shop-images/186737476.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/186737476/detail.aspx",
     "desc": "Сортировщик деталей конструктора LEGO от \"Центр лазерной резки\" - это незаменимый помощник для всех любителей LEGO, независимо от возраста. Изготовленный из прочной березовой фанеры, он имеет 5 этажей с 4 фильтрами и дном, что позволяет удобно и комп"
   },
@@ -327,7 +327,7 @@ export const shopItems: ShopItem[] = [
     "category": "konstruktory",
     "categoryName": "Конструкторы",
     "price": 7600,
-    "image": "https://basket-22.wbbasket.ru/vol8175/part817567/817567205/images/big/1.webp",
+    "image": "/shop-images/817567205.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/817567205/detail.aspx",
     "desc": "Сортировщик деталей конструктора — ваш помощник в борьбе с хаосом  Устали перебирать тысячи деталей вручную? Наш сортировщик сделает это за вас: всего одно движение — и все элементы разложены по размерам!  Ключевые преимущества:  Автоматизация: не ну"
   },
@@ -337,7 +337,7 @@ export const shopItems: ShopItem[] = [
     "category": "runy",
     "categoryName": "Предсказания сувенирные",
     "price": 1590,
-    "image": "https://basket-22.wbbasket.ru/vol9638/part963848/963848845/images/big/1.webp",
+    "image": "/shop-images/963848845.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/963848845/detail.aspx",
     "desc": "Алтарь для гадания диаметром 25 см с рисунком Валькнут и рунами старшего футарка из фанеры толщиной 6 мм, покрыт маслом с воском, цвет серый. Основной компонент покрытия это натуральное льняное масло, в первое время оно пахнет, в тепле за несколько д"
   },
@@ -347,7 +347,7 @@ export const shopItems: ShopItem[] = [
     "category": "runy",
     "categoryName": "Предсказания сувенирные",
     "price": 1590,
-    "image": "https://basket-22.wbbasket.ru/vol5928/part592856/592856777/images/big/1.webp",
+    "image": "/shop-images/592856777.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/592856777/detail.aspx",
     "desc": "Магический алтарь \"Заря-Алатырь, Крест Сварога\" в сером цвете станет прекрасным дополнением к вашим ритуалам и практикам. Этот алтарь, выполненный в форме креста Сварога, поможет вам создать особую атмосферу для медитаций, гаданий и других магических"
   },
@@ -357,7 +357,7 @@ export const shopItems: ShopItem[] = [
     "category": "runy",
     "categoryName": "Предсказания сувенирные",
     "price": 1590,
-    "image": "https://basket-22.wbbasket.ru/vol5672/part567285/567285841/images/big/1.webp",
+    "image": "/shop-images/567285841.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/567285841/detail.aspx",
     "desc": "Алтарь \"Заря-Алатырь, Крест Сварога\" - это уникальный предмет, который станет прекрасным дополнением к вашим магическим практикам или просто интересным сувениром. Его бесцветный дизайн позволяет легко вписать его в любой интерьер, при этом он сохраня"
   },
@@ -367,7 +367,7 @@ export const shopItems: ShopItem[] = [
     "category": "runy",
     "categoryName": "Предсказания сувенирные",
     "price": 1670,
-    "image": "https://basket-22.wbbasket.ru/vol5413/part541345/541345760/images/big/1.webp",
+    "image": "/shop-images/541345760.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/541345760/detail.aspx",
     "desc": "Алтарь для гадания диаметром 25 см с рисунком Валькнут и рунами старшего футарка из фанеры толщиной 6 мм, покрыт маслом с воском, цвет серый. Основной компонент покрытия это натуральное льняное масло, в первое время оно пахнет, в тепле за несколько д"
   },
@@ -377,7 +377,7 @@ export const shopItems: ShopItem[] = [
     "category": "runy",
     "categoryName": "Предсказания сувенирные",
     "price": 1590,
-    "image": "https://basket-13.wbbasket.ru/vol2000/part200084/200084636/images/big/1.webp",
+    "image": "/shop-images/200084636.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/200084636/detail.aspx",
     "desc": "Алтарь для гадания диаметром 25 см с рисунком Валькнут и рунами старшего футарка из фанеры толщиной 6 мм, покрыт бесцветным маслом с воском. Основной компонент покрытия это натуральное льняное масло, в первое время оно пахнет, в тепле за несколько дн"
   },
@@ -387,7 +387,7 @@ export const shopItems: ShopItem[] = [
     "category": "runy",
     "categoryName": "Предсказания сувенирные",
     "price": 2385,
-    "image": "https://basket-10.wbbasket.ru/vol1557/part155757/155757277/images/big/1.webp",
+    "image": "/shop-images/155757277.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/155757277/detail.aspx",
     "desc": "Алтарь для гадания диаметром 25 см с рисунком Иггдрасиль и рунами старшего футарка, из фанеры толщиной 6 мм, покрыт маслом с воском, бецветный. Основной компонент покрытия это натуральное льняное масло, в первое время оно пахнет, в тепле за несколько"
   },
@@ -397,7 +397,7 @@ export const shopItems: ShopItem[] = [
     "category": "runy",
     "categoryName": "Предсказания сувенирные",
     "price": 1590,
-    "image": "https://basket-10.wbbasket.ru/vol1463/part146375/146375573/images/big/1.webp",
+    "image": "/shop-images/146375573.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/146375573/detail.aspx",
     "desc": "Алтарь для гадания диаметром 25 см с рисунком Валькнут и рунами старшего футарка из фанеры толщиной 6 мм, покрыт маслом с воском, цвет серый. Основной компонент покрытия это натуральное льняное масло, в первое время оно пахнет, в тепле за несколько д"
   },
@@ -407,7 +407,7 @@ export const shopItems: ShopItem[] = [
     "category": "runy",
     "categoryName": "Предсказания сувенирные",
     "price": 2650,
-    "image": "https://basket-10.wbbasket.ru/vol1463/part146373/146373712/images/big/1.webp",
+    "image": "/shop-images/146373712.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/146373712/detail.aspx",
     "desc": "Алтарь для гадания диаметром 25 см с рисунком Иггдрасиль и рунами старшего футарка, из фанеры толщиной 6 мм, покрыт маслом с воском, цвет серый. Основной компонент покрытия это натуральное льняное масло, в первое время оно пахнет, в тепле за нескольк"
   },
@@ -417,7 +417,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2670,
-    "image": "https://basket-22.wbbasket.ru/vol9435/part943569/943569661/images/big/1.webp",
+    "image": "/shop-images/943569661.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/943569661/detail.aspx",
     "desc": "Настенный щит с гербом Сахалинской области — выразительный элемент декора, подчёркивающий связь с уникальным регионом России. Изделие выполнено из МДФ толщиной 6 мм, изображение нанесено с помощью УФ‑чернил — они не выцветают со временем и сохраняют "
   },
@@ -427,7 +427,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2670,
-    "image": "https://basket-22.wbbasket.ru/vol9436/part943605/943605517/images/big/1.webp",
+    "image": "/shop-images/943605517.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/943605517/detail.aspx",
     "desc": "Настенный щит с гербом Углегорского района Сахалинской области — выразительный элемент декора, подчёркивающий связь с самобытным регионом Дальнего Востока. Изделие выполнено из фанеры и напечатано УФ‑чернилами, размещено на щите из МДФ толщиной 6 мм."
   },
@@ -437,7 +437,7 @@ export const shopItems: ShopItem[] = [
     "category": "lustry",
     "categoryName": "Люстры",
     "price": 8127,
-    "image": "https://basket-19.wbbasket.ru/vol3208/part320858/320858711/images/big/1.webp",
+    "image": "/shop-images/320858711.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/320858711/detail.aspx",
     "desc": "Люстра \"Шишка\" из фанеры станет стильным и функциональным дополнением к вашему интерьеру. Ее лаконичный дизайн в стиле винтаж, лофт или скандинавский органично впишется в гостиную, кабинет или мансарду. Матовый плафон с декоративными лепестками рассе"
   },
@@ -447,7 +447,7 @@ export const shopItems: ShopItem[] = [
     "category": "lustry",
     "categoryName": "Люстры",
     "price": 4100,
-    "image": "https://basket-19.wbbasket.ru/vol3222/part322268/322268543/images/big/1.webp",
+    "image": "/shop-images/322268543.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/322268543/detail.aspx",
     "desc": "Люстра \"Эволюция\" из фанеры станет стильным и функциональным дополнением к вашему интерьеру. Ее лаконичный дизайн в стиле винтаж, лофт или скандинавский органично впишется в гостиную, кабинет или мансарду. Матовый плафон с декоративными ламелями расс"
   },
@@ -457,7 +457,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2250,
-    "image": "https://basket-22.wbbasket.ru/vol9249/part924989/924989835/images/big/1.webp",
+    "image": "/shop-images/924989835.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/924989835/detail.aspx",
     "desc": "Декоративные панно в виде дорожных знаков — добавьте урбанистический шик в свой интерьер!  Хотите сделать пространство уникальным и запоминающимся? Представляем коллекцию декоративных панно в форме дорожных знаков — идеальное решение для тех, кто цен"
   },
@@ -467,7 +467,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 4500,
-    "image": "https://basket-22.wbbasket.ru/vol9227/part922780/922780000/images/big/1.webp",
+    "image": "/shop-images/922780000.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/922780000/detail.aspx",
     "desc": "Декоративные панно в виде дорожных знаков — добавьте урбанистический шик в свой интерьер!  Хотите сделать пространство уникальным и запоминающимся? Представляем коллекцию декоративных панно в форме дорожных знаков — идеальное решение для тех, кто цен"
   },
@@ -477,7 +477,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2250,
-    "image": "https://basket-22.wbbasket.ru/vol9249/part924980/924980141/images/big/1.webp",
+    "image": "/shop-images/924980141.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/924980141/detail.aspx",
     "desc": "Декоративные панно в виде дорожных знаков — добавьте урбанистический шик в свой интерьер!  Хотите сделать пространство уникальным и запоминающимся? Представляем коллекцию декоративных панно в форме дорожных знаков — идеальное решение для тех, кто цен"
   },
@@ -487,7 +487,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2250,
-    "image": "https://basket-22.wbbasket.ru/vol9249/part924977/924977920/images/big/1.webp",
+    "image": "/shop-images/924977920.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/924977920/detail.aspx",
     "desc": "Декоративные панно в виде дорожных знаков — добавьте урбанистический шик в свой интерьер!  Хотите сделать пространство уникальным и запоминающимся? Представляем коллекцию декоративных панно в форме дорожных знаков — идеальное решение для тех, кто цен"
   },
@@ -497,7 +497,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2250,
-    "image": "https://basket-22.wbbasket.ru/vol9249/part924983/924983092/images/big/1.webp",
+    "image": "/shop-images/924983092.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/924983092/detail.aspx",
     "desc": "Декоративные панно в виде дорожных знаков — добавьте урбанистический шик в свой интерьер!  Хотите сделать пространство уникальным и запоминающимся? Представляем коллекцию декоративных панно в форме дорожных знаков — идеальное решение для тех, кто цен"
   },
@@ -507,7 +507,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2250,
-    "image": "https://basket-22.wbbasket.ru/vol9227/part922778/922778456/images/big/1.webp",
+    "image": "/shop-images/922778456.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/922778456/detail.aspx",
     "desc": "Декоративные панно в виде дорожных знаков — добавьте урбанистический шик в свой интерьер!  Хотите сделать пространство уникальным и запоминающимся? Представляем коллекцию декоративных панно в форме дорожных знаков — идеальное решение для тех, кто цен"
   },
@@ -517,7 +517,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2250,
-    "image": "https://basket-22.wbbasket.ru/vol9249/part924966/924966578/images/big/1.webp",
+    "image": "/shop-images/924966578.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/924966578/detail.aspx",
     "desc": "Декоративные панно в виде дорожных знаков — добавьте урбанистический шик в свой интерьер!  Хотите сделать пространство уникальным и запоминающимся? Представляем коллекцию декоративных панно в форме дорожных знаков — идеальное решение для тех, кто цен"
   },
@@ -527,7 +527,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2250,
-    "image": "https://basket-22.wbbasket.ru/vol9249/part924972/924972620/images/big/1.webp",
+    "image": "/shop-images/924972620.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/924972620/detail.aspx",
     "desc": "Декоративные панно в виде дорожных знаков — добавьте урбанистический шик в свой интерьер!  Хотите сделать пространство уникальным и запоминающимся? Представляем коллекцию декоративных панно в форме дорожных знаков — идеальное решение для тех, кто цен"
   },
@@ -537,7 +537,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2250,
-    "image": "https://basket-22.wbbasket.ru/vol9249/part924997/924997223/images/big/1.webp",
+    "image": "/shop-images/924997223.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/924997223/detail.aspx",
     "desc": "Декоративные панно в виде дорожных знаков — добавьте урбанистический шик в свой интерьер!  Хотите сделать пространство уникальным и запоминающимся? Представляем коллекцию декоративных панно в форме дорожных знаков — идеальное решение для тех, кто цен"
   },
@@ -547,7 +547,7 @@ export const shopItems: ShopItem[] = [
     "category": "stellazhi",
     "categoryName": "Стеллажи",
     "price": 5000,
-    "image": "https://basket-22.wbbasket.ru/vol9016/part901681/901681341/images/big/1.webp",
+    "image": "/shop-images/901681341.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/901681341/detail.aspx",
     "desc": "Стеллаж Монтессори: порядок, безопасность и развитие в каждой детали  Практичный стеллаж в стиле Монтессори — идеальное решение для организации пространства в детской комнате, спальне, прихожей или гостиной. Модель с 3вместительными полками и защитно"
   },
@@ -557,7 +557,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 4500,
-    "image": "https://basket-22.wbbasket.ru/vol9034/part903431/903431735/images/big/1.webp",
+    "image": "/shop-images/903431735.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/903431735/detail.aspx",
     "desc": "Герб Республики Адыгея — символ истории и традиций на стене вашего дома  Почувствуйте связь с богатой культурой и наследием Адыгеи, украсив интерьер настоящим произведением геральдического искусства!  Настенный герб Республики Адыгея — это не просто "
   },
@@ -567,7 +567,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2492,
-    "image": "https://basket-22.wbbasket.ru/vol8151/part815153/815153196/images/big/1.webp",
+    "image": "/shop-images/815153196.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/815153196/detail.aspx",
     "desc": "Герб Татарстана на стену от Центра лазерной резки станет стильным и оригинальным украшением вашего интерьера. Изготовленный с высокой точностью лазерной резки, герб выполнен в ярком красном цвете и привнесет в ваш дом или офис нотку национального кол"
   },
@@ -577,7 +577,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2492,
-    "image": "https://basket-22.wbbasket.ru/vol8614/part861431/861431291/images/big/1.webp",
+    "image": "/shop-images/861431291.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/861431291/detail.aspx",
     "desc": "Герб Татарстана на стену от Центра лазерной резки станет стильным и оригинальным украшением вашего интерьера. Изготовленный с высокой точностью лазерной резки, герб выполнен в ярком красном цвете и привнесет в ваш дом или офис нотку национального кол"
   },
@@ -587,7 +587,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2492,
-    "image": "https://basket-22.wbbasket.ru/vol8615/part861520/861520779/images/big/1.webp",
+    "image": "/shop-images/861520779.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/861520779/detail.aspx",
     "desc": "Герб Республики Башкортостан на МДФ с УФ‑печатью: символ региона в безупречном исполнении  Подчеркните статусность и связь с традициями — оформите интерьер с помощью качественного герба Республики Башкортостан. Изделие идеально подойдёт для кабинетов"
   },
@@ -597,7 +597,7 @@ export const shopItems: ShopItem[] = [
     "category": "dekor",
     "categoryName": "Декорации настенные",
     "price": 2670,
-    "image": "https://basket-15.wbbasket.ru/vol2238/part223845/223845904/images/big/1.webp",
+    "image": "/shop-images/223845904.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/223845904/detail.aspx",
     "desc": "Настенный щит с гербом Российской Федерации, выполненный из фанеры и напечатанный УФ-чернилами.  Двуглавый Орел - это официальный государственный символ, станет прекрасным декором для кабинета, офиса или дома. Герб России на стену добавит штрих офици"
   },
@@ -607,7 +607,7 @@ export const shopItems: ShopItem[] = [
     "category": "organajzery",
     "categoryName": "Органайзеры подвесные",
     "price": 2250,
-    "image": "https://basket-22.wbbasket.ru/vol8742/part874246/874246986/images/big/1.webp",
+    "image": "/shop-images/874246986.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/874246986/detail.aspx",
     "desc": "Наведите порядок в гараже: настенная полка‑органайзер для шуруповёрта и УШМ  Забудьте о беспорядке и долгих поисках нужного инструмента! Настенная полка‑органайзер — идеальное решение для гаража. Всё под рукой: шуруповёрт, угловая шлифовальная машина"
   },
@@ -617,7 +617,7 @@ export const shopItems: ShopItem[] = [
     "category": "kormushki",
     "categoryName": "Кормушки для животных",
     "price": 2450,
-    "image": "https://basket-18.wbbasket.ru/vol2938/part293800/293800230/images/big/1.webp",
+    "image": "/shop-images/293800230.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/293800230/detail.aspx",
     "desc": "Прозрачная кормушка на окно изготовлена из акрила, что обеспечивает долговечность и устойчивость к погодным условиям. Прозрачные стенки позволяют наблюдать за птицами, не выходя из дома.  Надежная фиксация на окне  Две большие присоски диаметром 40 м"
   },
@@ -627,7 +627,7 @@ export const shopItems: ShopItem[] = [
     "category": "konstruktory",
     "categoryName": "Конструкторы",
     "price": 2700,
-    "image": "https://basket-15.wbbasket.ru/vol2340/part234003/234003775/images/big/1.webp",
+    "image": "/shop-images/234003775.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/234003775/detail.aspx",
     "desc": "3D конструктор из оргстекла Котёнок - это оригинальная игрушка, которая сочетает в себе характеристики конструктора, головоломки и объемных фигур. Высота сборной модели – 10 см, количество деталей – 29. Поставляется в разобранном виде  ЛЕГКАЯ СБОРКА:"
   },
@@ -637,7 +637,7 @@ export const shopItems: ShopItem[] = [
     "category": "kormushki",
     "categoryName": "Кормушки для животных",
     "price": 2450,
-    "image": "https://basket-19.wbbasket.ru/vol3161/part316175/316175243/images/big/1.webp",
+    "image": "/shop-images/316175243.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/316175243/detail.aspx",
     "desc": "Прозрачная кормушка на окно изготовлена из акрила, что обеспечивает долговечность и устойчивость к погодным условиям. Прозрачные стенки позволяют наблюдать за птицами, не выходя из дома.  Надежная фиксация на окне  Две большие присоски диаметром 40 м"
   },
@@ -647,7 +647,7 @@ export const shopItems: ShopItem[] = [
     "category": "runy",
     "categoryName": "Предсказания сувенирные",
     "price": 1560,
-    "image": "https://basket-10.wbbasket.ru/vol1590/part159057/159057738/images/big/1.webp",
+    "image": "/shop-images/159057738.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/159057738/detail.aspx",
     "desc": "Скандинавские деревянные руны Старшего Футарка из березы для гадания. В наборе 24 гадальные руны, рисунок нанесён лазерной гравировкой, отшлифованы и покрыты маслом с воском, очень приятные на ощупь. В комплекте мешочек со скандинавским узором, со шн"
   },
@@ -657,7 +657,7 @@ export const shopItems: ShopItem[] = [
     "category": "klyuchnitsy",
     "categoryName": "Ключницы настенные",
     "price": 1367,
-    "image": "https://basket-22.wbbasket.ru/vol3764/part376412/376412948/images/big/1.webp",
+    "image": "/shop-images/376412948.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/376412948/detail.aspx",
     "desc": "Эта милая ключница станет отличным дополнением для вашего дома. Она предназначена для удобного хранения ключей и вещей, создавая атмосферу уюта в прихожей. Настенная полка легко крепится на стену без сверления с помощью клейкой ленты, или дюбель-гвоз"
   },
@@ -667,7 +667,7 @@ export const shopItems: ShopItem[] = [
     "category": "zagotovki",
     "categoryName": "Заготовки для поделок",
     "price": 2200,
-    "image": "https://basket-10.wbbasket.ru/vol1464/part146469/146469601/images/big/1.webp",
+    "image": "/shop-images/146469601.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/146469601/detail.aspx",
     "desc": "Заготовка \"Дерево жизни\" диаметром 50 см из фанеры высшего сорта, толщиной 6 мм. Можно использовать для выжигания, термопереноса, сублимации, декупажа, раскраски. Панно в форме Дерева можно повесить как отдельный элемент, так и сделать из него композ"
   },
@@ -677,7 +677,7 @@ export const shopItems: ShopItem[] = [
     "category": "orgsteklo",
     "categoryName": "Оргстекла",
     "price": 1500,
-    "image": "https://basket-21.wbbasket.ru/vol3650/part365052/365052748/images/big/1.webp",
+    "image": "/shop-images/365052748.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/365052748/detail.aspx",
     "desc": "Оргстекло, также известное как акриловое стекло, представляет собой современный и универсальный материал, обладающий множеством полезных свойств и широким спектром применения. Это прозрачное пластическое вещество является отличной альтернативой обычн"
   },
@@ -687,7 +687,7 @@ export const shopItems: ShopItem[] = [
     "category": "zagotovki",
     "categoryName": "Заготовки для поделок",
     "price": 1560,
-    "image": "https://basket-10.wbbasket.ru/vol1477/part147753/147753967/images/big/1.webp",
+    "image": "/shop-images/147753967.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/147753967/detail.aspx",
     "desc": "Погрузитесь в мир креативности с нашими уникальными шестеренками для творчества! Эти деревянные шестеренки из фанеры идеально подойдут для вашего рукоделия, добавляя оригинальности и стиля в каждую работу. Каждый набор шестеренок — это не только заго"
   },
@@ -697,7 +697,7 @@ export const shopItems: ShopItem[] = [
     "category": "kopilki",
     "categoryName": "Копилки",
     "price": 1560,
-    "image": "https://basket-15.wbbasket.ru/vol2278/part227895/227895517/images/big/1.webp",
+    "image": "/shop-images/227895517.webp",
     "wbUrl": "https://www.wildberries.ru/catalog/227895517/detail.aspx",
     "desc": "Прозрачная разборная копилка - это функциональный и стильный аксессуар для хранения ваших сбережений. Изготовлена из прозрачного акрилового оргстекла толщиной 3 мм, что обеспечивает прочность и долговечность изделия.  Копилка имеет размеры 10х10х13 с"
   }
