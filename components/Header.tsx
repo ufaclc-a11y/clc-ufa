@@ -130,10 +130,6 @@ export function Header() {
             <a href={`tel:${business.phone}`} className="font-mono text-sm text-white/60">
               {business.phoneDisplay}
             </a>
-            <a href={business.whatsapp} target="_blank" rel="noopener noreferrer"
-              className="bg-[#25D366] text-white text-center font-semibold px-4 py-3 rounded-xl">
-              WhatsApp
-            </a>
             <a href={business.telegram} target="_blank" rel="noopener noreferrer"
               className="bg-[#2AABEE] text-white text-center font-semibold px-4 py-3 rounded-xl">
               Telegram
