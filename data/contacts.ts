@@ -14,8 +14,8 @@ export const business = {
   telegram:       'https://t.me/clcufa',
   telegramChannel:'https://t.me/clcchannel',
   max:            'https://max.ru/u/f9LHodD0cOJovKYdnmZPaYaDMUKsaiKLd4XDfHDJQDiV-nyK1Csp7gqlTFk',
-  coords:         { lat: 54.7065, lng: 55.9779 },
-  yandexMaps:     'https://yandex.ru/maps/?pt=55.9779,54.7065&z=17&l=map',
+  coords:         { lat: 54.720195, lng: 56.008528 },
+  yandexMaps:     'https://yandex.ru/maps/?pt=56.008528,54.720195&z=17&l=map',
   howToFind: [
     'Едете по ул. Менделеева в направлении центра города.',
     'ТЦ «Чайка» — большое здание. Вход с главного фасада.',
