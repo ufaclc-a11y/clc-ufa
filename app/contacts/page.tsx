@@ -108,7 +108,7 @@ export default function ContactsPage() {
           {/* Правая колонка — карта */}
           <div className="rounded-3xl overflow-hidden min-h-[400px] border border-[#E8E6E0] relative">
             <iframe
-              src={`https://yandex.ru/map-widget/v1/?ll=${business.coords.lng},${business.coords.lat}&z=16&pt=${business.coords.lng},${business.coords.lat},pm2rdl&lang=ru_RU`}
+              src={`https://yandex.ru/map-widget/v1/?ll=${business.coords.lng},${business.coords.lat}&z=16&l=map&pt=${business.coords.lng},${business.coords.lat},org&lang=ru_RU`}
               width="100%"
               height="100%"
               style={{ border: 0, minHeight: '400px' }}
@@ -120,9 +120,10 @@ export default function ContactsPage() {
               href={business.yandexMaps}
               target="_blank"
               rel="noopener noreferrer"
-              className="absolute bottom-4 right-4 bg-[#FF6B00] text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-[#e55e00] transition-colors shadow-lg"
+              className="absolute bottom-4 right-4 inline-flex items-center justify-center gap-1.5 bg-[#FF6B00] text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-[#e55e00] transition-colors shadow-lg leading-none"
             >
-              Открыть →
+              <span>Открыть</span>
+              <span aria-hidden="true">→</span>
             </a>
           </div>
         </div>
