@@ -91,9 +91,9 @@ export default function ContactsPage() {
               <p className="font-display text-2xl text-[#FF6B00] tracking-wider">{business.workingHours}</p>
             </div>
 
-            {/* Как пройти */}
+            {/* Как нас найти */}
             <div className="bg-white rounded-2xl p-6 border border-[#E8E6E0]">
-              <h2 className="font-display text-xl text-[#1A1A1A] tracking-wider mb-5">Как пройти</h2>
+              <h2 className="font-display text-xl text-[#1A1A1A] tracking-wider mb-5">Как нас найти</h2>
               <ol className="space-y-3">
                 {business.howToFind.map((step, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-[#8A8680] leading-relaxed">
@@ -102,6 +102,65 @@ export default function ContactsPage() {
                   </li>
                 ))}
               </ol>
+              <p className="text-sm text-[#8A8680] mt-4 pt-4 border-t border-[#E8E6E0]">
+                🅿️ {business.parking}
+              </p>
+            </div>
+
+            {/* Позвонить основателю */}
+            <div className="bg-white rounded-2xl p-6 border border-[#E8E6E0]">
+              <h2 className="font-display text-xl text-[#1A1A1A] tracking-wider mb-4">Позвонить основателю</h2>
+              <p className="text-sm text-[#8A8680] mb-1">{business.founder.name}</p>
+              <p className="text-xs text-[#8A8680]/70 uppercase tracking-widest mb-3">{business.founder.role}</p>
+              <a
+                href={`tel:${business.founder.phone}`}
+                className="font-mono text-2xl text-[#1A1A1A] hover:text-[#FF6B00] transition-colors"
+              >
+                {business.founder.phoneDisplay}
+              </a>
+            </div>
+
+            {/* Наши реквизиты */}
+            <div className="bg-white rounded-2xl p-6 border border-[#E8E6E0]">
+              <h2 className="font-display text-xl text-[#1A1A1A] tracking-wider mb-5">Наши реквизиты</h2>
+              <dl className="space-y-2.5 text-sm">
+                <div className="flex justify-between gap-4">
+                  <dt className="text-[#8A8680]">Получатель</dt>
+                  <dd className="text-[#1A1A1A] text-right">{business.requisites.ip}</dd>
+                </div>
+                <div className="flex justify-between gap-4">
+                  <dt className="text-[#8A8680]">ИНН</dt>
+                  <dd className="text-[#1A1A1A] font-mono">{business.requisites.inn}</dd>
+                </div>
+                <div className="flex justify-between gap-4">
+                  <dt className="text-[#8A8680]">ОГРНИП</dt>
+                  <dd className="text-[#1A1A1A] font-mono">{business.requisites.ogrn}</dd>
+                </div>
+                <div className="flex justify-between gap-4">
+                  <dt className="text-[#8A8680]">Расчётный счёт</dt>
+                  <dd className="text-[#1A1A1A] font-mono">{business.requisites.account}</dd>
+                </div>
+                <div className="flex justify-between gap-4">
+                  <dt className="text-[#8A8680]">Банк</dt>
+                  <dd className="text-[#1A1A1A] text-right">{business.requisites.bank}</dd>
+                </div>
+                <div className="flex justify-between gap-4">
+                  <dt className="text-[#8A8680]">ИНН банка</dt>
+                  <dd className="text-[#1A1A1A] font-mono">{business.requisites.bankInn}</dd>
+                </div>
+                <div className="flex justify-between gap-4">
+                  <dt className="text-[#8A8680]">БИК</dt>
+                  <dd className="text-[#1A1A1A] font-mono">{business.requisites.bik}</dd>
+                </div>
+                <div className="flex justify-between gap-4">
+                  <dt className="text-[#8A8680]">Корр. счёт</dt>
+                  <dd className="text-[#1A1A1A] font-mono">{business.requisites.corrAccount}</dd>
+                </div>
+                <div className="flex justify-between gap-4 pt-2.5 border-t border-[#E8E6E0]">
+                  <dt className="text-[#8A8680]">Адрес банка</dt>
+                  <dd className="text-[#1A1A1A] text-right">{business.requisites.bankAddress}</dd>
+                </div>
+              </dl>
             </div>
           </div>
 
