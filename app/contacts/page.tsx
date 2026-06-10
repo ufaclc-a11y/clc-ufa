@@ -3,6 +3,7 @@ import Image             from 'next/image'
 import { business }      from '@/data/contacts'
 import { Breadcrumbs }   from '@/components/Breadcrumbs'
 import { ContactButtons } from '@/components/ContactButtons'
+import { FounderPhone }   from '@/components/FounderPhone'
 
 export const metadata: Metadata = {
   title:       'Контакты — Центр лазерной резки, Уфа, ул. Менделеева 177',
@@ -112,12 +113,7 @@ export default function ContactsPage() {
               <h2 className="font-display text-xl text-[#1A1A1A] tracking-wider mb-4">Позвонить основателю</h2>
               <p className="text-sm text-[#8A8680] mb-1">{business.founder.name}</p>
               <p className="text-xs text-[#8A8680]/70 uppercase tracking-widest mb-3">{business.founder.role}</p>
-              <a
-                href={`tel:${business.founder.phone}`}
-                className="font-mono text-2xl text-[#1A1A1A] hover:text-[#FF6B00] transition-colors"
-              >
-                {business.founder.phoneDisplay}
-              </a>
+              <FounderPhone />
             </div>
 
             {/* Наши реквизиты */}
