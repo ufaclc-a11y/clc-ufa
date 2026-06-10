@@ -114,7 +114,16 @@
       "Bash(mkdir -p D:/clc-ufa3/public/shop-images)",
       "Bash(node scripts/download-wb-images.mjs)",
       "Bash(xargs ls -la)",
-      "Bash(sort -k5 -rn)"
+      "Bash(sort -k5 -rn)",
+      "WebFetch(domain:web.archive.org)",
+      "Bash(gh run *)",
+      "Bash(curl -s \"https://project8483754.tilda.ws/contact\" -o /tmp/contact.html -L)",
+      "Read(//tmp/**)",
+      "Bash(curl -s \"https://project8483754.tilda.ws/about\" -o /tmp/about.html -L)",
+      "Bash(curl -s \"https://project8483754.tilda.ws/about\" -o \"/c/temp_about.html\" -L)",
+      "Read(//c//**)",
+      "Bash(curl -s \"https://project8483754.tilda.ws/about\" -o \"./temp_about.html\" -L)",
+      "Bash(curl -s \"https://static.tildacdn.com/tild3162-6531-4162-b766-653634386534/photo.jpg\" -o D:/clc-ufa3/public/images/founder-photo-temp.jpg)"
     ]
   }
 }

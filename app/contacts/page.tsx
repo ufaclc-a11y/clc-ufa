@@ -95,6 +95,7 @@ export default function ContactsPage() {
             {/* Как нас найти */}
             <div className="bg-white rounded-2xl p-6 border border-[#E8E6E0]">
               <h2 className="font-display text-xl text-[#1A1A1A] tracking-wider mb-5">Как нас найти</h2>
+              <p className="text-sm text-[#8A8680] leading-relaxed mb-3">{business.howToFindIntro}</p>
               <ol className="space-y-3">
                 {business.howToFind.map((step, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-[#8A8680] leading-relaxed">
@@ -103,17 +104,27 @@ export default function ContactsPage() {
                   </li>
                 ))}
               </ol>
+              <p className="text-sm text-[#8A8680] leading-relaxed mt-3">{business.howToFindOutro}</p>
               <p className="text-sm text-[#8A8680] mt-4 pt-4 border-t border-[#E8E6E0]">
                 🅿️ {business.parking}
               </p>
             </div>
 
             {/* Позвонить основателю */}
-            <div className="bg-white rounded-2xl p-6 border border-[#E8E6E0]">
-              <h2 className="font-display text-xl text-[#1A1A1A] tracking-wider mb-4">Позвонить основателю</h2>
-              <p className="text-sm text-[#8A8680] mb-1">{business.founder.name}</p>
-              <p className="text-xs text-[#8A8680]/70 uppercase tracking-widest mb-3">{business.founder.role}</p>
-              <FounderPhone />
+            <div className="bg-white rounded-2xl p-6 border border-[#E8E6E0] flex items-center justify-between gap-6">
+              <div>
+                <h2 className="font-display text-xl text-[#1A1A1A] tracking-wider mb-4">Позвонить основателю</h2>
+                <p className="text-sm text-[#8A8680] mb-1">{business.founder.name}</p>
+                <p className="text-xs text-[#8A8680]/70 uppercase tracking-widest mb-3">{business.founder.role}</p>
+                <FounderPhone />
+              </div>
+              <Image
+                src="/images/founder.jpg"
+                alt={business.founder.name}
+                width={96}
+                height={96}
+                className="w-24 h-24 rounded-full object-cover shrink-0 border border-[#E8E6E0]"
+              />
             </div>
 
             {/* Наши реквизиты */}
