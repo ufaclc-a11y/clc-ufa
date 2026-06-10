@@ -63,12 +63,12 @@ export function PortfolioGrid({ limit, showFilter = true, defaultCategory = 'all
         <div className="flex flex-wrap gap-2 mb-8">
           {portfolioCategories.map(cat => {
             const isActive = active === cat.id
-            const cls = `text-sm px-4 py-2 rounded-full font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2 active:scale-95 ${
+            const cls = `inline-flex items-center text-sm px-4 py-2 rounded-full font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2 active:scale-95 ${
               isActive
                 ? 'bg-[#FF6B00] text-white shadow-[0_2px_12px_rgba(255,107,0,0.35)]'
                 : 'bg-[#E8E6E0] text-[#8A8680] hover:bg-[#1A1A1A] hover:text-white'
             }`
-            const badge = <span className={`ml-1.5 text-[11px] ${isActive ? 'text-white/70' : 'text-[#8A8680]/60'}`}>{cat.count}</span>
+            const badge = <span className={`ml-1.5 text-[11px] leading-none ${isActive ? 'text-white/70' : 'text-[#8A8680]/60'}`}>{cat.count}</span>
 
             if (cat.id === 'all') {
               return (

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 }
 
 const stats = [
-  { value: '5+',   label: 'лет на рынке'           },
+  { value: '9+',   label: 'лет на рынке'           },
   { value: '4',    label: 'технологии в одном месте'},
   { value: 'от 1', label: 'штуки — без минималки'  },
   { value: '1–3',  label: 'дня — стандартный срок'  },

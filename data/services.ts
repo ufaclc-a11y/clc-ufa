@@ -101,7 +101,7 @@ export const services: Service[] = [
       'Ткань':            '/lazernaya-rezka-tkani-ufa',
     },
     portfolioPrefix: 'lazernaya-rezka',
-    portfolioCount:  113,
+    portfolioCount:  112,
     stats: [
       { value: 'от 1',  label: 'штуки в заказе'   },
       { value: '±0,1',  label: 'мм точность'       },
