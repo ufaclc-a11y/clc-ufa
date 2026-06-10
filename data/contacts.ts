@@ -6,7 +6,7 @@ export const business = {
   address:        'г. Уфа, ул. Менделеева, 177, 5 этаж, цех 509',
   landmark:       'ТЦ «Чайка»',
   phone:          '+79374838003',
-  phoneDisplay:   '+7 (937) 483-80-03',
+  phoneDisplay:   '+7(937)483-80-03',
   email:          'bulek-ufa@mail.ru',
   workingHours:   'Ежедневно с 10:00 до 19:00',
   site:           'clc-ufa.ru',
@@ -30,7 +30,7 @@ export const business = {
     name:  'Давлетгареев Венер Марсович',
     role:  'Основатель компании',
     phone: '+79279422253',
-    phoneDisplay: '+7 (927) 942-22-53',
+    phoneDisplay: '+7(927)942-22-53',
   },
   requisites: {
     ip:        'ИП Давлетгареев Венер Марсович',

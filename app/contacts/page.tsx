@@ -172,12 +172,12 @@ export default function ContactsPage() {
           </div>
 
           {/* Правая колонка — карта */}
-          <div className="rounded-3xl overflow-hidden min-h-[400px] border border-[#E8E6E0] relative">
+          <div className="rounded-3xl overflow-hidden aspect-square lg:sticky lg:top-24 lg:self-start border border-[#E8E6E0] relative">
             <iframe
               src={`https://yandex.ru/map-widget/v1/?ll=${business.coords.lng},${business.coords.lat}&z=16&l=map&pt=${business.coords.lng},${business.coords.lat},org&lang=ru_RU`}
               width="100%"
               height="100%"
-              style={{ border: 0, minHeight: '400px' }}
+              style={{ border: 0 }}
               loading="lazy"
               title="Карта — Центр лазерной резки на Яндексе"
               allowFullScreen

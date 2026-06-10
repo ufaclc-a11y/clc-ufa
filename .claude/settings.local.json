@@ -123,7 +123,8 @@
       "Bash(curl -s \"https://project8483754.tilda.ws/about\" -o \"/c/temp_about.html\" -L)",
       "Read(//c//**)",
       "Bash(curl -s \"https://project8483754.tilda.ws/about\" -o \"./temp_about.html\" -L)",
-      "Bash(curl -s \"https://static.tildacdn.com/tild3162-6531-4162-b766-653634386534/photo.jpg\" -o D:/clc-ufa3/public/images/founder-photo-temp.jpg)"
+      "Bash(curl -s \"https://static.tildacdn.com/tild3162-6531-4162-b766-653634386534/photo.jpg\" -o D:/clc-ufa3/public/images/founder-photo-temp.jpg)",
+      "Bash(python3 -c ' *)"
     ]
   }
 }
