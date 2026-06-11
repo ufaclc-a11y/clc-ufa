@@ -13,6 +13,7 @@ export const business = {
   whatsapp:       'https://wa.me/79374838003?text=Здравствуйте!%20Хочу%20рассчитать%20заказ.',
   telegram:       'https://t.me/clcufa',
   telegramChannel:'https://t.me/clcchannel',
+  vk:             'https://vk.com/laserrezkaufa',
   max:            'https://max.ru/u/f9LHodD0cOJovKYdnmZPaYaDMUKsaiKLd4XDfHDJQDiV-nyK1Csp7gqlTFk',
   coords:         { lat: 54.720195, lng: 56.008528 },
   yandexMaps:     'https://yandex.ru/maps/-/CPhNj08A',
