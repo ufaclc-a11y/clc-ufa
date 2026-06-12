@@ -21,5 +21,7 @@ jobs:
             npm run build
             cp -r .next/static .next/standalone/.next/static
             cp -r public .next/standalone/public
-            pm2 restart clc-ufa
+            cp .env .next/standalone/.env
+            export $(grep -v '^#' .env | xargs)
+            pm2 restart clc-ufa --update-env
           command_timeout: 10m
