@@ -27,6 +27,15 @@ if (process.env.SMTP_USER && process.env.SMTP_PASS) {
   getTransporter().verify().catch(() => { /* тихая ошибка при старте */ })
 }
 
+// Лимиты защиты от злоупотреблений (дублируют клиентскую проверку OrderForm)
+const MAX_FILES      = 5
+const MAX_FILE_BYTES = 20 * 1024 * 1024   // 20 МБ на файл
+const MAX_TOTAL_BYTES = 40 * 1024 * 1024  // 40 МБ суммарно
+const MAX_FIELD_LEN  = 2000               // максимум символов в текстовом поле
+const ALLOWED_EXT = new Set([
+  'jpg', 'jpeg', 'png', 'webp', 'gif', 'pdf', 'ai', 'eps', 'svg', 'dxf', 'cdr', 'zip',
+])
+
 export async function POST(req: Request) {
   try {
     const smtpUser = process.env.SMTP_USER
@@ -37,25 +46,47 @@ export async function POST(req: Request) {
     const contentType = req.headers.get('content-type') ?? ''
     const body: Record<string, string> = {}
     const attachments: { filename: string; content: Buffer }[] = []
+    let totalBytes = 0
 
     if (contentType.includes('multipart/form-data')) {
       const fd = await req.formData()
       const entries = Array.from(fd.entries())
       for (const [key, value] of entries) {
         if (key === 'files' && value instanceof File && value.size > 0) {
+          if (attachments.length >= MAX_FILES) continue
+          const ext = value.name.split('.').pop()?.toLowerCase() ?? ''
+          if (!ALLOWED_EXT.has(ext)) {
+            return NextResponse.json({ error: `Недопустимый тип файла: ${value.name}` }, { status: 400 })
+          }
+          if (value.size > MAX_FILE_BYTES) {
+            return NextResponse.json({ error: `Файл слишком большой: ${value.name}` }, { status: 413 })
+          }
+          totalBytes += value.size
+          if (totalBytes > MAX_TOTAL_BYTES) {
+            return NextResponse.json({ error: 'Суммарный размер файлов превышает лимит' }, { status: 413 })
+          }
           const buf = Buffer.from(await value.arrayBuffer())
           attachments.push({ filename: value.name, content: buf })
         } else if (typeof value === 'string') {
-          body[key] = value
+          body[key] = value.slice(0, MAX_FIELD_LEN)
         }
       }
     } else {
       Object.assign(body, await req.json())
     }
 
-    // Dev-режим без SMTP — логируем и возвращаем успех
+    // Honeypot: поле скрыто от людей, заполняют только боты — тихо «успех», ничего не шлём
+    if (body.company && body.company.trim() !== '') {
+      return NextResponse.json({ ok: true })
+    }
+
+    // Требуем хотя бы контакт — отсекаем пустые автозапросы
+    if (!body.contact || body.contact.trim() === '') {
+      return NextResponse.json({ error: 'Укажите контакт для связи' }, { status: 400 })
+    }
+
+    // Dev-режим без SMTP — возвращаем успех, не логируя данные клиента
     if (!smtpUser || !smtpPass) {
-      console.log('📧 Письмо (SMTP не настроен):', body, 'Файлов:', attachments.length)
       return NextResponse.json({ ok: true })
     }
 

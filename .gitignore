@@ -1,3 +1,14 @@
 node_modules
 .next
 .env.local
+
+# logs
+*.log
+dev-out.log
+dev-err.log
+
+# build cache
+tsconfig.tsbuildinfo
+
+# temp artifacts
+temporary screenshots/

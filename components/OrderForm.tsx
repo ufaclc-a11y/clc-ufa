@@ -88,6 +88,7 @@ export function OrderForm() {
   const [emailState, setEmailState] = useState<'idle' | 'loading' | 'ok' | 'error'>('idle')
   const [emailErr,   setEmailErr]   = useState('')
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const honeypotRef  = useRef<HTMLInputElement>(null)
 
   // Restore from localStorage
   useEffect(() => {
@@ -152,6 +153,7 @@ export function OrderForm() {
       try {
         const fd = new FormData()
         Object.entries(form).forEach(([k, v]) => fd.append(k, String(v)))
+        fd.append('company', honeypotRef.current?.value ?? '')
         files.forEach(f => fd.append('files', f))
         const res = await fetch('/api/send-email', { method: 'POST', body: fd })
         if (res.ok) {
@@ -184,6 +186,17 @@ export function OrderForm() {
       <p className="text-sm text-[#8A8680] mb-8">
         Заполните форму — и отправьте нам одним нажатием в удобном мессенджере.
       </p>
+
+      {/* Honeypot для ботов — скрыт от людей, не должен заполняться */}
+      <input
+        ref={honeypotRef}
+        type="text"
+        name="company"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute -left-[9999px] h-0 w-0 opacity-0"
+      />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
 

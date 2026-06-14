@@ -84,6 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           ym(53776969,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
         `}</Script>
         <noscript>
+          {/* eslint-disable-next-line @next/next/no-img-element -- трекинг-пиксель Яндекс.Метрики, не оптимизируется next/image */}
           <div><img src="https://mc.yandex.ru/watch/53776969" style={{position:'absolute',left:'-9999px'}} alt="" /></div>
         </noscript>
       </body>
