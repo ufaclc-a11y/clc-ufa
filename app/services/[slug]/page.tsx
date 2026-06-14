@@ -80,10 +80,12 @@ export default function ServicePage({ params }: Props) {
           {service.heroVideo ? (
             <video
               src={service.heroVideo}
+              poster={service.heroImage}
               autoPlay
               muted
               loop
               playsInline
+              preload="metadata"
               className="w-full h-full object-cover opacity-40"
             />
           ) : service.heroImage ? (
