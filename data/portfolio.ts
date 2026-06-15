@@ -7,17 +7,21 @@ export type PortfolioItem = {
   alt:      string
 }
 
-export type PortfolioCategory = { id: string; label: string; count: number }
+export type PortfolioCategory = { id: string; label: string; count: number; sourceCount?: number }
+
+const excludedPortfolioNumbers: Record<string, number[]> = {
+  'nagradnye-statuetki': [1, 3, 4, 7, 9, 10, 14, 16, 23],
+}
 
 // Все категории с количеством фото
 export const portfolioCategories: PortfolioCategory[] = [
-  { id: 'all',                label: 'Все работы',           count: 805 },
+  { id: 'all',                label: 'Все работы',           count: 796 },
   { id: 'lazernaya-rezka',    label: 'Лазерная резка',       count: 374 },
   { id: 'koroba-fanera',      label: 'Коробки и ящики',      count: 74  },
   { id: 'gravirovka',         label: 'Гравировка',           count: 69  },
   { id: 'frezernaya-rezka',   label: 'Фрезеровка',           count: 50  },
   { id: 'organajzery',        label: 'Органайзеры',          count: 37  },
-  { id: 'nagradnye-statuetki',label: 'Наградные статуэтки',  count: 23  },
+  { id: 'nagradnye-statuetki',label: 'Наградные статуэтки',  count: 14, sourceCount: 23 },
   { id: 'uf-pechat',          label: 'УФ-печать',            count: 24  },
   { id: 'medali',             label: 'Медали',               count: 23  },
   { id: 'tablitchki',         label: 'Таблички',             count: 21  },
@@ -38,7 +42,9 @@ export const portfolioCategories: PortfolioCategory[] = [
 
 /** Генерирует массив PortfolioItem для заданного префикса */
 function makeItems(id: string, label: string, count: number): PortfolioItem[] {
+  const excluded = new Set(excludedPortfolioNumbers[id] ?? [])
   return Array.from({ length: count }, (_, i) => {
+    const itemNumber = i + 1
     const n = String(i + 1).padStart(3, '0')
     return {
       id:       `${id}-${n}`,
@@ -46,12 +52,12 @@ function makeItems(id: string, label: string, count: number): PortfolioItem[] {
       category: id,
       tags:     [],
       image:    `/images/portfolio/${id}-${n}.jpg`,
-      alt:      `${label} — пример ${i + 1}`,
+      alt:      `${label} — пример ${itemNumber}`,
     }
-  })
+  }).filter((_, i) => !excluded.has(i + 1))
 }
 
 // Все элементы портфолио (генерируются из файлов)
 export const portfolioItems: PortfolioItem[] = portfolioCategories
   .filter(c => c.id !== 'all')
-  .flatMap(c => makeItems(c.id, c.label, c.count))
+  .flatMap(c => makeItems(c.id, c.label, c.sourceCount ?? c.count))
