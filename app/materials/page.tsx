@@ -132,6 +132,81 @@ export default function MaterialsPage() {
         </div>
       </div>
 
+      {/* ── СРАВНИТЕЛЬНАЯ ТАБЛИЦА ── */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="mb-8">
+            <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Сравнение</span>
+            <h2 className="font-display text-4xl sm:text-5xl text-[#1A1A1A] tracking-wider mt-2">
+              Таблица материалов
+            </h2>
+            <p className="text-[#8A8680] mt-3 max-w-2xl leading-relaxed">
+              Краткая сводка: материал, в каком виде он бывает, какими технологиями обрабатываем и для чего подходит. Не уверены в выборе — подскажем бесплатно.
+            </p>
+          </div>
+
+          <div className="overflow-x-auto rounded-2xl border border-[#E8E6E0] shadow-[0_1px_4px_rgba(0,0,0,0.05)]">
+            <table className="w-full min-w-[820px] text-left border-collapse">
+              <caption className="sr-only">
+                Сравнение материалов для лазерной резки, гравировки, УФ-печати и фрезеровки в Уфе
+              </caption>
+              <thead>
+                <tr className="bg-[#1A1A1A]">
+                  {['Материал', 'Вид / толщина', 'Технологии', 'Подходит для'].map(h => (
+                    <th
+                      key={h}
+                      scope="col"
+                      className="font-mono text-[11px] text-white/70 uppercase tracking-wider font-semibold px-5 py-4 whitespace-nowrap"
+                    >
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {materials.map((mat, i) => (
+                  <tr
+                    key={mat.id}
+                    className={`${i % 2 ? 'bg-[#FAF9F6]' : 'bg-white'} border-t border-[#E8E6E0] hover:bg-[#FF6B00]/[0.04] transition-colors`}
+                  >
+                    <th scope="row" className="align-top px-5 py-4 font-normal">
+                      <Link
+                        href={mat.href}
+                        className="font-display text-xl text-[#1A1A1A] tracking-wide hover:text-[#FF6B00] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] rounded"
+                      >
+                        {mat.name}
+                      </Link>
+                    </th>
+                    <td className="align-top px-5 py-4 text-sm text-[#8A8680] whitespace-nowrap">
+                      {mat.subtitle}
+                    </td>
+                    <td className="align-top px-5 py-4">
+                      <div className="flex flex-wrap gap-1.5 max-w-[260px]">
+                        {mat.tech.map(t => (
+                          <span
+                            key={t}
+                            className="text-xs px-2.5 py-1 bg-[#FF6B00]/8 text-[#FF6B00] rounded-full font-medium whitespace-nowrap"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </td>
+                    <td className="align-top px-5 py-4 text-sm text-[#2D2D2D] leading-relaxed max-w-[320px]">
+                      {mat.examples}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <p className="text-xs text-[#8A8680]/70 mt-3">
+            Минимальный заказ — от 400 ₽. Стандартный срок — 1–3 дня, срочно — от 1 часа.
+          </p>
+        </div>
+      </section>
+
       {/* ── СЕТКА МАТЕРИАЛОВ ── */}
       <section className="py-16 bg-[#F5F4F0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
