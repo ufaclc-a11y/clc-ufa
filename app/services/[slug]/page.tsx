@@ -300,7 +300,7 @@ export default function ServicePage({ params }: Props) {
                     <SymbolIcon symbol={a.icon} size={20} className="text-[#FF6B00]" />
                   </div>
                   <h3 className="font-display text-lg text-[#1A1A1A] tracking-wide mb-2">{a.title}</h3>
-                  <p className="text-sm text-[#8A8680] leading-relaxed">{a.desc}</p>
+                  <p className="text-sm text-[#6E6A64] leading-relaxed">{a.desc}</p>
                 </div>
               ))}
             </div>
@@ -315,7 +315,7 @@ export default function ServicePage({ params }: Props) {
             <div className="mb-10">
               <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Стоимость</span>
               <h2 className="font-display text-4xl text-[#1A1A1A] tracking-wider mt-2">Цены</h2>
-              <p className="text-[#8A8680] mt-3 max-w-2xl">
+              <p className="text-[#6E6A64] mt-3 max-w-2xl">
                 Точная стоимость рассчитывается по вашему макету — зависит от длины реза,
                 материала и тиража. Ниже — ориентировочные тарифы.
               </p>
@@ -343,7 +343,7 @@ export default function ServicePage({ params }: Props) {
                   {/* Сноска */}
                   {table.note && (
                     <div className="px-6 py-3 bg-[#F5F4F0] border-t border-[#E8E6E0]">
-                      <p className="text-xs text-[#8A8680]">{table.note}</p>
+                      <p className="text-xs text-[#6E6A64]">{table.note}</p>
                     </div>
                   )}
                 </div>
@@ -352,7 +352,7 @@ export default function ServicePage({ params }: Props) {
 
             {/* Дисклеймер */}
             <div className="mt-8 flex flex-col items-center gap-3 text-center">
-              <p className="text-sm text-[#8A8680]">
+              <p className="text-sm text-[#6E6A64]">
                 Цены ориентировочные. Для точного расчёта — отправьте макет любым способом:
               </p>
               <div className="flex flex-wrap justify-center gap-2">
@@ -420,7 +420,7 @@ export default function ServicePage({ params }: Props) {
             <h2 className="font-display text-4xl text-[#1A1A1A] tracking-wider mt-2 mb-2">
               Рассчитать стоимость
             </h2>
-            <p className="text-[#8A8680]">Опишите задачу — ответим с расчётом.</p>
+            <p className="text-[#6E6A64]">Опишите задачу — ответим с расчётом.</p>
           </div>
           <OrderForm />
         </div>

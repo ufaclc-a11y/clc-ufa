@@ -17,7 +17,7 @@ export default function PrivacyPage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
 
         {/* Хлебные крошки */}
-        <nav className="text-xs text-[#8A8680] mb-10 flex items-center gap-2">
+        <nav className="text-xs text-[#6E6A64] mb-10 flex items-center gap-2">
           <Link href="/" className="hover:text-[#FF6B00] transition-colors">Главная</Link>
           <span>/</span>
           <span className="text-[#1A1A1A]">Политика конфиденциальности</span>
@@ -27,7 +27,7 @@ export default function PrivacyPage() {
         <h1 className="font-display text-4xl sm:text-5xl text-[#1A1A1A] tracking-wider mb-3">
           Политика конфиденциальности
         </h1>
-        <p className="text-sm text-[#8A8680] mb-12">Последнее обновление: {UPDATED}</p>
+        <p className="text-sm text-[#6E6A64] mb-12">Последнее обновление: {UPDATED}</p>
 
         {/* Контент */}
         <div className="prose-clc">

@@ -164,10 +164,10 @@ export default function PartnersPage() {
               >
                 <div className="text-3xl mb-4" aria-hidden="true">{f.icon}</div>
                 <h3 className="font-display text-xl text-[#1A1A1A] tracking-wide mb-2">{f.title}</h3>
-                <p className="text-sm text-[#8A8680] leading-relaxed mb-5">{f.desc}</p>
+                <p className="text-sm text-[#6E6A64] leading-relaxed mb-5">{f.desc}</p>
                 <div className="flex items-end gap-1.5 pt-4 border-t border-[#F5F4F0]">
                   <span className="font-display text-2xl text-[#FF6B00] tracking-wide leading-none">{f.reward}</span>
-                  <span className="text-xs text-[#8A8680] mb-0.5">{f.rewardLabel}</span>
+                  <span className="text-xs text-[#6E6A64] mb-0.5">{f.rewardLabel}</span>
                 </div>
               </div>
             ))}
@@ -221,7 +221,7 @@ export default function PartnersPage() {
                 </div>
                 <div>
                   <h3 className="font-display text-lg text-[#1A1A1A] tracking-wide mb-1">{s.title}</h3>
-                  <p className="text-sm text-[#8A8680] leading-relaxed">{s.desc}</p>
+                  <p className="text-sm text-[#6E6A64] leading-relaxed">{s.desc}</p>
                 </div>
               </div>
             ))}
@@ -255,11 +255,11 @@ export default function PartnersPage() {
               <details key={item.q} className="group border-b border-[#E8E6E0] pb-5">
                 <summary className="flex items-center justify-between cursor-pointer list-none gap-4">
                   <span className="font-semibold text-[#1A1A1A] text-sm leading-snug">{item.q}</span>
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full border border-[#E8E6E0] flex items-center justify-center text-[#8A8680] group-open:text-[#FF6B00] group-open:border-[#FF6B00]/40 transition-colors text-sm font-mono">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full border border-[#E8E6E0] flex items-center justify-center text-[#6E6A64] group-open:text-[#FF6B00] group-open:border-[#FF6B00]/40 transition-colors text-sm font-mono">
                     +
                   </span>
                 </summary>
-                <p className="mt-3 text-sm text-[#8A8680] leading-relaxed">{item.a}</p>
+                <p className="mt-3 text-sm text-[#6E6A64] leading-relaxed">{item.a}</p>
               </details>
             ))}
           </div>

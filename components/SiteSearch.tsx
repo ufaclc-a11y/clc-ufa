@@ -55,7 +55,7 @@ const TYPE_COLORS: Record<SearchResult['type'], string> = {
   service: 'bg-[#FF6B00]/10 text-[#FF6B00]',
   product: 'bg-[#059669]/10 text-[#059669]',
   blog:    'bg-[#2563EB]/10 text-[#2563EB]',
-  page:    'bg-[#8A8680]/10 text-[#8A8680]',
+  page:    'bg-[#6E6A64]/10 text-[#6E6A64]',
 }
 
 function normalize(s: string) {
@@ -125,7 +125,7 @@ export function SiteSearch() {
       <button
         onClick={() => setOpen(true)}
         aria-label="Поиск по сайту"
-        className="hidden md:flex items-center self-stretch gap-2 text-sm text-[#8A8680] hover:text-white transition-colors px-3 rounded-lg hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]"
+        className="hidden md:flex items-center self-stretch gap-2 text-sm text-[#6E6A64] hover:text-white transition-colors px-3 rounded-lg hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]"
       >
         <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8">
           <circle cx="8.5" cy="8.5" r="5.5"/>
@@ -138,7 +138,7 @@ export function SiteSearch() {
       <button
         onClick={() => setOpen(true)}
         aria-label="Поиск"
-        className="md:hidden inline-flex items-center justify-center w-9 h-9 text-[#8A8680] hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] rounded-lg"
+        className="md:hidden inline-flex items-center justify-center w-9 h-9 text-[#6E6A64] hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] rounded-lg"
       >
         <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8">
           <circle cx="8.5" cy="8.5" r="5.5"/>
@@ -159,7 +159,7 @@ export function SiteSearch() {
           >
             {/* Input */}
             <div className="flex items-center gap-3 px-5 py-4 border-b border-white/10">
-              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#8A8680" strokeWidth="1.8" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#6E6A64" strokeWidth="1.8" aria-hidden="true">
                 <circle cx="8.5" cy="8.5" r="5.5"/>
                 <path d="M13.5 13.5L18 18"/>
               </svg>

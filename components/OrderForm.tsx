@@ -71,12 +71,12 @@ function buildUrl(channel: Channel, msg: string): string {
 
 const inputCls =
   'w-full border border-[#E8E6E0] rounded-xl px-4 py-3 text-sm text-[#1A1A1A] ' +
-  'placeholder:text-[#8A8680] focus:outline-none focus:border-[#FF6B00] ' +
+  'placeholder:text-[#6E6A64] focus:outline-none focus:border-[#FF6B00] ' +
   'transition-[border-color] bg-white'
 
 const inputErrCls =
   'w-full border border-red-400 rounded-xl px-4 py-3 text-sm text-[#1A1A1A] ' +
-  'placeholder:text-[#8A8680] focus:outline-none focus:border-red-500 ' +
+  'placeholder:text-[#6E6A64] focus:outline-none focus:border-red-500 ' +
   'transition-[border-color] bg-white'
 
 export function OrderForm() {
@@ -183,7 +183,7 @@ export function OrderForm() {
       <h2 className="font-display text-3xl sm:text-4xl text-[#1A1A1A] tracking-wider mb-2">
         Рассчитать стоимость
       </h2>
-      <p className="text-sm text-[#8A8680] mb-8">
+      <p className="text-sm text-[#6E6A64] mb-8">
         Заполните форму — и отправьте нам одним нажатием в удобном мессенджере.
       </p>
 
@@ -214,7 +214,7 @@ export function OrderForm() {
 
         {/* Urgency */}
         <div className="sm:col-span-2">
-          <label className="block text-xs font-semibold text-[#8A8680] uppercase tracking-wider mb-2">
+          <label className="block text-xs font-semibold text-[#6E6A64] uppercase tracking-wider mb-2">
             Срочность
           </label>
           <div className="grid grid-cols-3 gap-2">
@@ -229,11 +229,11 @@ export function OrderForm() {
                     'flex flex-col items-center py-3 px-2 rounded-xl border text-sm font-semibold transition-[background-color,border-color,color] duration-150',
                     active
                       ? 'bg-[#FF6B00] border-[#FF6B00] text-white'
-                      : 'bg-white border-[#E8E6E0] text-[#8A8680] hover:border-[#FF6B00]/50 hover:text-[#FF6B00]',
+                      : 'bg-white border-[#E8E6E0] text-[#6E6A64] hover:border-[#FF6B00]/50 hover:text-[#FF6B00]',
                   ].join(' ')}
                 >
                   <span>{u.label}</span>
-                  <span className={`text-[10px] font-normal mt-0.5 ${active ? 'text-white/70' : 'text-[#8A8680]/70'}`}>
+                  <span className={`text-[10px] font-normal mt-0.5 ${active ? 'text-white/70' : 'text-[#6E6A64]/70'}`}>
                     {u.hint}
                   </span>
                 </button>
@@ -274,7 +274,7 @@ export function OrderForm() {
 
         {/* File upload */}
         <div className="sm:col-span-2">
-          <label className="block text-xs font-semibold text-[#8A8680] uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-semibold text-[#6E6A64] uppercase tracking-wider mb-1.5">
             Приложить макет или фото
           </label>
           <div
@@ -297,15 +297,15 @@ export function OrderForm() {
             />
             {files.length === 0 ? (
               <>
-                <svg className="mx-auto mb-2 text-[#8A8680]" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <svg className="mx-auto mb-2 text-[#6E6A64]" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                   <polyline points="17 8 12 3 7 8"/>
                   <line x1="12" y1="3" x2="12" y2="15"/>
                 </svg>
-                <p className="text-sm text-[#8A8680]">
+                <p className="text-sm text-[#6E6A64]">
                   Перетащите файлы или <span className="text-[#FF6B00] font-semibold">нажмите для выбора</span>
                 </p>
-                <p className="text-xs text-[#8A8680]/60 mt-1">JPG, PNG, PDF, AI, SVG, DXF, CDR · до {MAX_SIZE_MB} МБ · до 5 файлов</p>
+                <p className="text-xs text-[#6E6A64]/60 mt-1">JPG, PNG, PDF, AI, SVG, DXF, CDR · до {MAX_SIZE_MB} МБ · до 5 файлов</p>
               </>
             ) : (
               <div className="space-y-2 text-left" onClick={e => e.stopPropagation()}>
@@ -316,9 +316,9 @@ export function OrderForm() {
                       <polyline points="14 2 14 8 20 8"/>
                     </svg>
                     <span className="text-xs text-[#1A1A1A] truncate flex-1">{f.name}</span>
-                    <span className="text-xs text-[#8A8680] shrink-0">{(f.size / 1024).toFixed(0)} KB</span>
+                    <span className="text-xs text-[#6E6A64] shrink-0">{(f.size / 1024).toFixed(0)} KB</span>
                     <button type="button" onClick={() => removeFile(f.name)}
-                      className="text-[#8A8680] hover:text-red-500 transition-colors shrink-0">
+                      className="text-[#6E6A64] hover:text-red-500 transition-colors shrink-0">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
                       </svg>
@@ -336,7 +336,7 @@ export function OrderForm() {
           </div>
           {fileErr && <p className="mt-2 text-xs text-red-500">{fileErr}</p>}
           {files.length > 0 && (
-            <p className="mt-2 text-xs text-[#8A8680]">
+            <p className="mt-2 text-xs text-[#6E6A64]">
               Названия файлов попадут в текст сообщения. После открытия мессенджера — отправьте файлы следующим сообщением.
             </p>
           )}
@@ -367,7 +367,7 @@ export function OrderForm() {
                 )}
               </div>
             </div>
-            <span className={`text-xs leading-relaxed ${agreedErr ? 'text-red-500' : 'text-[#8A8680]'}`}>
+            <span className={`text-xs leading-relaxed ${agreedErr ? 'text-red-500' : 'text-[#6E6A64]'}`}>
               Согласен на обработку персональных данных в соответствии с&nbsp;
               <Link href="/privacy" target="_blank" className="text-[#FF6B00] underline underline-offset-2 hover:text-[#e55e00]">политикой конфиденциальности</Link>
             </span>
@@ -380,7 +380,7 @@ export function OrderForm() {
 
       {/* ── Send block ── */}
       <div className="mt-8 rounded-2xl border border-[#E8E6E0] bg-white p-6">
-        <p className="text-xs font-semibold text-[#8A8680] uppercase tracking-wider mb-4">
+        <p className="text-xs font-semibold text-[#6E6A64] uppercase tracking-wider mb-4">
           Отправить заявку
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -480,7 +480,7 @@ export function OrderForm() {
           </div>
         )}
 
-        <p className="mt-4 text-xs text-[#8A8680] leading-relaxed">
+        <p className="mt-4 text-xs text-[#6E6A64] leading-relaxed">
           «Почта» — письмо отправится прямо с сайта. Мессенджеры — откроется чат с готовым текстом.
         </p>
       </div>
@@ -495,7 +495,7 @@ function Field({
 }) {
   return (
     <div className={span ? 'sm:col-span-2' : ''}>
-      <label className="block text-xs font-semibold text-[#8A8680] uppercase tracking-wider mb-1.5">
+      <label className="block text-xs font-semibold text-[#6E6A64] uppercase tracking-wider mb-1.5">
         {label}{required && <span className="text-[#FF6B00] ml-0.5">*</span>}
       </label>
       {children}

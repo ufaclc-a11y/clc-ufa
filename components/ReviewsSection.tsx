@@ -45,7 +45,7 @@ function ReviewCard({ review }: { review: Review }) {
               <p className="text-xs text-[#FF6B00] mt-0.5">{review.product}</p>
             )}
           </div>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8A8680" strokeWidth="2" className="opacity-40 shrink-0 mt-1" aria-hidden="true">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6E6A64" strokeWidth="2" className="opacity-40 shrink-0 mt-1" aria-hidden="true">
             <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
           </svg>
         </div>
@@ -56,7 +56,7 @@ function ReviewCard({ review }: { review: Review }) {
           >
             {sourceLabels[review.source]}
           </span>
-          <span className="text-[11px] text-[#8A8680]">
+          <span className="text-[11px] text-[#6E6A64]">
             {new Date(review.date).toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' })}
           </span>
         </div>
@@ -80,12 +80,12 @@ export function ReviewsSection() {
           <div className="flex items-center gap-4">
             <div className="text-center">
               <div className="font-display text-3xl text-[#1A1A1A] tracking-wider leading-none">5.0</div>
-              <div className="text-xs text-[#8A8680] mt-1">Яндекс.Карты</div>
+              <div className="text-xs text-[#6E6A64] mt-1">Яндекс.Карты</div>
             </div>
             <div className="w-px h-10 bg-[#E8E6E0]" />
             <div className="text-center">
               <div className="font-display text-3xl text-[#1A1A1A] tracking-wider leading-none">4.9</div>
-              <div className="text-xs text-[#8A8680] mt-1">2ГИС</div>
+              <div className="text-xs text-[#6E6A64] mt-1">2ГИС</div>
             </div>
           </div>
         </div>
@@ -96,7 +96,7 @@ export function ReviewsSection() {
 
         {/* Leave review CTA */}
         <div className="mt-10 text-center">
-          <p className="text-sm text-[#8A8680] mb-3">Работали с нами? Будем рады вашему отзыву</p>
+          <p className="text-sm text-[#6E6A64] mb-3">Работали с нами? Будем рады вашему отзыву</p>
           <div className="flex justify-center gap-3 flex-wrap">
             <a
               href="https://yandex.ru/maps/org/tsentr_lazernoy_rezki/170623886332/reviews/"

@@ -51,13 +51,13 @@ export function ProductsGrid() {
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]/50',
                 isActive
                   ? 'bg-[#FF6B00] text-white shadow-[0_2px_12px_rgba(255,107,0,0.30)]'
-                  : 'bg-white text-[#8A8680] border border-[#E8E6E0] hover:border-[#FF6B00]/50 hover:text-[#FF6B00]',
+                  : 'bg-white text-[#6E6A64] border border-[#E8E6E0] hover:border-[#FF6B00]/50 hover:text-[#FF6B00]',
               ].join(' ')}
             >
               {f.label}
               <span className={[
                 'text-xs tabular-nums rounded-full px-1.5 py-0.5',
-                isActive ? 'bg-white/20 text-white' : 'bg-[#F5F4F0] text-[#8A8680]',
+                isActive ? 'bg-white/20 text-white' : 'bg-[#F5F4F0] text-[#6E6A64]',
               ].join(' ')}>
                 {FILTER_COUNTS[f.key]}
               </span>
@@ -117,7 +117,7 @@ export function ProductsGrid() {
       </div>
 
       {visible.length === 0 && (
-        <div className="text-center py-16 text-[#8A8680]">
+        <div className="text-center py-16 text-[#6E6A64]">
           <p className="text-lg">Ничего не найдено в этой категории</p>
         </div>
       )}

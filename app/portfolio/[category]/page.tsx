@@ -164,7 +164,7 @@ export default function PortfolioCategoryPage({ params }: Props) {
 
           {items.length > PAGE && (
             <div className="mt-10 text-center">
-              <p className="text-[#8A8680] text-sm mb-4">
+              <p className="text-[#6E6A64] text-sm mb-4">
                 Показаны первые {PAGE} из {items.length} фото
               </p>
               <Link

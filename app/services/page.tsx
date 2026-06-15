@@ -22,7 +22,7 @@ export default function ServicesPage() {
           <h1 className="font-display text-5xl sm:text-6xl text-[#1A1A1A] tracking-wider mt-2 mb-4">
             Услуги
           </h1>
-          <p className="text-lg text-[#8A8680] max-w-2xl leading-relaxed mb-14">
+          <p className="text-lg text-[#6E6A64] max-w-2xl leading-relaxed mb-14">
             Совмещаем несколько технологий в одном месте — удобно, когда изделие требует резки, гравировки и печати одновременно.
           </p>
 

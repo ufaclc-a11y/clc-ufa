@@ -134,7 +134,7 @@ export async function POST(req: Request) {
           <div style="background:#F5F4F0;padding:24px;border-radius:0 0 8px 8px;line-height:2">
             ${lines.join('<br/>')}
           </div>
-          <p style="font-size:12px;color:#8A8680;margin-top:16px">Заявка отправлена через сайт Центра лазерной резки clc-ufa.ru</p>
+          <p style="font-size:12px;color:#6E6A64;margin-top:16px">Заявка отправлена через сайт Центра лазерной резки clc-ufa.ru</p>
         </div>
       `,
       attachments,

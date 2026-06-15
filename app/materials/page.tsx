@@ -140,7 +140,7 @@ export default function MaterialsPage() {
             <h2 className="font-display text-4xl sm:text-5xl text-[#1A1A1A] tracking-wider mt-2">
               Таблица материалов
             </h2>
-            <p className="text-[#8A8680] mt-3 max-w-2xl leading-relaxed">
+            <p className="text-[#6E6A64] mt-3 max-w-2xl leading-relaxed">
               Краткая сводка: материал, в каком виде он бывает, какими технологиями обрабатываем и для чего подходит. Не уверены в выборе — подскажем бесплатно.
             </p>
           </div>
@@ -177,7 +177,7 @@ export default function MaterialsPage() {
                         {mat.name}
                       </Link>
                     </th>
-                    <td className="align-top px-5 py-4 text-sm text-[#8A8680] whitespace-nowrap">
+                    <td className="align-top px-5 py-4 text-sm text-[#6E6A64] whitespace-nowrap">
                       {mat.subtitle}
                     </td>
                     <td className="align-top px-5 py-4">
@@ -201,7 +201,7 @@ export default function MaterialsPage() {
             </table>
           </div>
 
-          <p className="text-xs text-[#8A8680]/70 mt-3">
+          <p className="text-xs text-[#6E6A64]/70 mt-3">
             Минимальный заказ — от 400 ₽. Стандартный срок — 1–3 дня, срочно — от 1 часа.
           </p>
         </div>
@@ -238,14 +238,14 @@ export default function MaterialsPage() {
 
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {mat.properties.map(p => (
-                      <span key={p} className="text-xs px-2.5 py-1 bg-[#F5F4F0] text-[#8A8680] rounded-full border border-[#E8E6E0]">
+                      <span key={p} className="text-xs px-2.5 py-1 bg-[#F5F4F0] text-[#6E6A64] rounded-full border border-[#E8E6E0]">
                         {p}
                       </span>
                     ))}
                   </div>
 
                   <div className="mb-4">
-                    <p className="text-xs font-semibold text-[#8A8680] uppercase tracking-wider mb-2">Технологии</p>
+                    <p className="text-xs font-semibold text-[#6E6A64] uppercase tracking-wider mb-2">Технологии</p>
                     <div className="flex flex-wrap gap-1.5">
                       {mat.tech.map(t => (
                         <span key={t} className="text-xs px-2.5 py-1 bg-[#FF6B00]/8 text-[#FF6B00] rounded-full font-medium">
@@ -255,7 +255,7 @@ export default function MaterialsPage() {
                     </div>
                   </div>
 
-                  <p className="text-xs text-[#8A8680] leading-relaxed border-t border-[#E8E6E0] pt-4">
+                  <p className="text-xs text-[#6E6A64] leading-relaxed border-t border-[#E8E6E0] pt-4">
                     <span className="font-semibold text-[#1A1A1A]">Примеры: </span>
                     {mat.examples}
                   </p>
@@ -280,7 +280,7 @@ export default function MaterialsPage() {
           <h2 className="font-display text-3xl sm:text-4xl text-[#1A1A1A] tracking-wider mt-2 mb-4">
             Не знаете какой материал выбрать?
           </h2>
-          <p className="text-[#8A8680] leading-relaxed mb-8">
+          <p className="text-[#6E6A64] leading-relaxed mb-8">
             Опишите задачу — мы подберём оптимальный материал по характеристикам, бюджету и внешнему виду. Бесплатно.
           </p>
           <div className="flex justify-center flex-wrap gap-3">

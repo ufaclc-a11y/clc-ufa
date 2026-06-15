@@ -1,14 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { parseWbImageUrl } from '@/lib/wb-cdn'
 
 // Proxy WB CDN images to bypass hotlink protection
 export async function GET(req: NextRequest) {
-  const url = req.nextUrl.searchParams.get('url')
-  if (!url || !url.startsWith('https://basket-')) {
+  const target = parseWbImageUrl(req.nextUrl.searchParams.get('url'))
+  if (!target) {
     return new NextResponse('Bad request', { status: 400 })
   }
 
   try {
-    const res = await fetch(url, {
+    const res = await fetch(target.toString(), {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Referer': 'https://www.wildberries.ru/',

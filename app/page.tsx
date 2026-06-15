@@ -266,7 +266,7 @@ export default function HomePage() {
                   <SymbolIcon symbol={a.icon} size={20} className="text-[#FF6B00]" />
                 </div>
                 <h3 className="font-display text-lg text-[#1A1A1A] tracking-wide mb-2">{a.title}</h3>
-                <p className="text-sm text-[#8A8680] leading-[1.7]">{a.desc}</p>
+                <p className="text-sm text-[#6E6A64] leading-[1.7]">{a.desc}</p>
               </div>
             ))}
           </div>

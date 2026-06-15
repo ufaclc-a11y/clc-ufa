@@ -66,9 +66,9 @@ export function PortfolioGrid({ limit, showFilter = true, defaultCategory = 'all
             const cls = `inline-flex items-center text-sm px-4 py-2 rounded-full font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2 active:scale-95 ${
               isActive
                 ? 'bg-[#FF6B00] text-white shadow-[0_2px_12px_rgba(255,107,0,0.35)]'
-                : 'bg-[#E8E6E0] text-[#8A8680] hover:bg-[#1A1A1A] hover:text-white'
+                : 'bg-[#E8E6E0] text-[#6E6A64] hover:bg-[#1A1A1A] hover:text-white'
             }`
-            const badge = <span className={`ml-1.5 text-[11px] leading-none ${isActive ? 'text-white/70' : 'text-[#8A8680]/60'}`}>{cat.count}</span>
+            const badge = <span className={`ml-1.5 text-[11px] leading-none ${isActive ? 'text-white/70' : 'text-[#6E6A64]/60'}`}>{cat.count}</span>
 
             if (cat.id === 'all') {
               return (
@@ -104,7 +104,7 @@ export function PortfolioGrid({ limit, showFilter = true, defaultCategory = 'all
       </div>
 
       {items.length === 0 && (
-        <div className="text-center py-20 text-[#8A8680]">
+        <div className="text-center py-20 text-[#6E6A64]">
           <p className="font-display text-2xl tracking-wider mb-2">Нет фото в этой категории</p>
         </div>
       )}
@@ -117,7 +117,7 @@ export function PortfolioGrid({ limit, showFilter = true, defaultCategory = 'all
           >
             Показать ещё — {Math.min(PAGE, filtered.length - visible)} фото
           </button>
-          <p className="mt-3 text-sm text-[#8A8680]">
+          <p className="mt-3 text-sm text-[#6E6A64]">
             Показано {visible} из {filtered.length}
           </p>
         </div>

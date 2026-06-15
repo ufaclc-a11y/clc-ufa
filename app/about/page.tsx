@@ -197,7 +197,7 @@ export default function AboutPage() {
                   </h3>
                 </div>
                 <div className="p-5">
-                  <p className="text-sm text-[#8A8680] leading-[1.7]">{eq.desc}</p>
+                  <p className="text-sm text-[#6E6A64] leading-[1.7]">{eq.desc}</p>
                 </div>
               </div>
             ))}

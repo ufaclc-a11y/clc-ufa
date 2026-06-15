@@ -133,7 +133,7 @@ export default function PromoPage() {
                   <h2 className="font-display text-xl text-[#1A1A1A] tracking-wide mb-3 leading-tight">
                     {offer.title}
                   </h2>
-                  <p className="text-sm text-[#8A8680] leading-[1.7] flex-1">{offer.desc}</p>
+                  <p className="text-sm text-[#6E6A64] leading-[1.7] flex-1">{offer.desc}</p>
 
                   {offer.action && (
                     <div className="mt-5 pt-4 border-t border-[#E8E6E0]">
@@ -169,7 +169,7 @@ export default function PromoPage() {
           <h2 className="font-display text-3xl sm:text-4xl text-[#1A1A1A] tracking-wider mb-4">
             Есть специфическая задача?
           </h2>
-          <p className="text-[#8A8680] leading-relaxed mb-8">
+          <p className="text-[#6E6A64] leading-relaxed mb-8">
             Не нашли подходящего предложения — напишите. Мы гибкие и готовы обсуждать нестандартные условия.
           </p>
           <div className="flex justify-center gap-3 flex-wrap">

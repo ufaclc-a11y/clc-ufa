@@ -33,10 +33,10 @@ export function B2BSection() {
             <h2 className="font-display text-4xl sm:text-5xl text-white tracking-wider mt-2 mb-6 leading-tight">
               Изготавливаем детали для ваших изделий
             </h2>
-            <p className="text-[#8A8680] leading-relaxed mb-4">
+            <p className="text-[#6E6A64] leading-relaxed mb-4">
               Помогаем производствам, рекламным агентствам, дизайнерам и мастерским закрывать задачи по резке, печати, гравировке и фрезеровке.
             </p>
-            <p className="text-[#8A8680] leading-relaxed mb-8">
+            <p className="text-[#6E6A64] leading-relaxed mb-8">
               Работаем по вашим чертежам, макетам, эскизам и образцам. Можно заказать одну деталь, тестовую партию или регулярное производство.
             </p>
             <Link

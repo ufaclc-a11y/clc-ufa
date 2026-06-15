@@ -30,6 +30,12 @@ export const metadata: Metadata = {
     description: 'Воплощаем идеи: изготавливаем изделия из фанеры, акрила, ПВХ, МДФ и других материалов. Медали, таблички, вывески, детали для производств.',
     images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Центр лазерной резки Уфа' }],
   },
+  twitter: {
+    card:        'summary_large_image',
+    title:       'Центр лазерной резки — Уфа',
+    description: 'Лазерная резка, УФ-печать, гравировка и фрезеровка ЧПУ в Уфе. От одной штуки до партии.',
+    images:      ['/images/og-image.jpg'],
+  },
   robots:     { index: true, follow: true },
   alternates: {
     canonical: 'https://clc-ufa.ru',

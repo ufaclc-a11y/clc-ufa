@@ -46,7 +46,7 @@ export default function ContactsPage() {
           <div className="space-y-8">
 
             <div>
-              <p className="font-mono text-xs text-[#8A8680] uppercase tracking-widest mb-1">Телефон</p>
+              <p className="font-mono text-xs text-[#6E6A64] uppercase tracking-widest mb-1">Телефон</p>
               <a
                 href={`tel:${business.phone}`}
                 className="font-mono text-3xl text-[#1A1A1A] hover:text-[#FF6B00] transition-colors"
@@ -56,7 +56,7 @@ export default function ContactsPage() {
             </div>
 
             <div>
-              <p className="font-mono text-xs text-[#8A8680] uppercase tracking-widest mb-3">Мессенджеры</p>
+              <p className="font-mono text-xs text-[#6E6A64] uppercase tracking-widest mb-3">Мессенджеры</p>
               <ContactButtons showCalc={false} />
               <a
                 href={business.telegramChannel}
@@ -72,7 +72,7 @@ export default function ContactsPage() {
             </div>
 
             <div>
-              <p className="font-mono text-xs text-[#8A8680] uppercase tracking-widest mb-1">Email</p>
+              <p className="font-mono text-xs text-[#6E6A64] uppercase tracking-widest mb-1">Email</p>
               <a
                 href={`mailto:${business.email}`}
                 className="text-lg text-[#1A1A1A] hover:text-[#FF6B00] transition-colors"
@@ -82,30 +82,30 @@ export default function ContactsPage() {
             </div>
 
             <div>
-              <p className="font-mono text-xs text-[#8A8680] uppercase tracking-widest mb-1">Адрес</p>
+              <p className="font-mono text-xs text-[#6E6A64] uppercase tracking-widest mb-1">Адрес</p>
               <p className="text-lg text-[#1A1A1A] leading-relaxed">{business.address}</p>
-              <p className="text-sm text-[#8A8680] mt-1">{business.landmark}</p>
+              <p className="text-sm text-[#6E6A64] mt-1">{business.landmark}</p>
             </div>
 
             <div>
-              <p className="font-mono text-xs text-[#8A8680] uppercase tracking-widest mb-1">Режим работы</p>
+              <p className="font-mono text-xs text-[#6E6A64] uppercase tracking-widest mb-1">Режим работы</p>
               <p className="font-display text-2xl text-[#FF6B00] tracking-wider">{business.workingHours}</p>
             </div>
 
             {/* Как нас найти */}
             <div className="bg-white rounded-2xl p-6 border border-[#E8E6E0]">
               <h2 className="font-display text-xl text-[#1A1A1A] tracking-wider mb-5">Как нас найти</h2>
-              <p className="text-sm text-[#8A8680] leading-relaxed mb-3">{business.howToFindIntro}</p>
+              <p className="text-sm text-[#6E6A64] leading-relaxed mb-3">{business.howToFindIntro}</p>
               <ol className="space-y-3">
                 {business.howToFind.map((step, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-[#8A8680] leading-relaxed">
+                  <li key={i} className="flex items-start gap-3 text-sm text-[#6E6A64] leading-relaxed">
                     <span className="font-mono text-[#FF6B00] shrink-0 mt-0.5">{i + 1}.</span>
                     {step}
                   </li>
                 ))}
               </ol>
-              <p className="text-sm text-[#8A8680] leading-relaxed mt-3">{business.howToFindOutro}</p>
-              <p className="text-sm text-[#8A8680] mt-4 pt-4 border-t border-[#E8E6E0]">
+              <p className="text-sm text-[#6E6A64] leading-relaxed mt-3">{business.howToFindOutro}</p>
+              <p className="text-sm text-[#6E6A64] mt-4 pt-4 border-t border-[#E8E6E0]">
                 🅿️ {business.parking}
               </p>
             </div>
@@ -114,8 +114,8 @@ export default function ContactsPage() {
             <div className="bg-white rounded-2xl p-6 border border-[#E8E6E0] flex items-center justify-between gap-6">
               <div>
                 <h2 className="font-display text-xl text-[#1A1A1A] tracking-wider mb-4">Позвонить основателю</h2>
-                <p className="text-sm text-[#8A8680] mb-1">{business.founder.name}</p>
-                <p className="text-xs text-[#8A8680]/70 uppercase tracking-widest mb-3">{business.founder.role}</p>
+                <p className="text-sm text-[#6E6A64] mb-1">{business.founder.name}</p>
+                <p className="text-xs text-[#6E6A64]/70 uppercase tracking-widest mb-3">{business.founder.role}</p>
                 <FounderPhone />
               </div>
               <Image
@@ -132,39 +132,39 @@ export default function ContactsPage() {
               <h2 className="font-display text-xl text-[#1A1A1A] tracking-wider mb-5">Наши реквизиты</h2>
               <dl className="space-y-2.5 text-sm">
                 <div className="flex justify-between gap-4">
-                  <dt className="text-[#8A8680]">Получатель</dt>
+                  <dt className="text-[#6E6A64]">Получатель</dt>
                   <dd className="text-[#1A1A1A] text-right">{business.requisites.ip}</dd>
                 </div>
                 <div className="flex justify-between gap-4">
-                  <dt className="text-[#8A8680]">ИНН</dt>
+                  <dt className="text-[#6E6A64]">ИНН</dt>
                   <dd className="text-[#1A1A1A] font-mono">{business.requisites.inn}</dd>
                 </div>
                 <div className="flex justify-between gap-4">
-                  <dt className="text-[#8A8680]">ОГРНИП</dt>
+                  <dt className="text-[#6E6A64]">ОГРНИП</dt>
                   <dd className="text-[#1A1A1A] font-mono">{business.requisites.ogrn}</dd>
                 </div>
                 <div className="flex justify-between gap-4">
-                  <dt className="text-[#8A8680]">Расчётный счёт</dt>
+                  <dt className="text-[#6E6A64]">Расчётный счёт</dt>
                   <dd className="text-[#1A1A1A] font-mono">{business.requisites.account}</dd>
                 </div>
                 <div className="flex justify-between gap-4">
-                  <dt className="text-[#8A8680]">Банк</dt>
+                  <dt className="text-[#6E6A64]">Банк</dt>
                   <dd className="text-[#1A1A1A] text-right">{business.requisites.bank}</dd>
                 </div>
                 <div className="flex justify-between gap-4">
-                  <dt className="text-[#8A8680]">ИНН банка</dt>
+                  <dt className="text-[#6E6A64]">ИНН банка</dt>
                   <dd className="text-[#1A1A1A] font-mono">{business.requisites.bankInn}</dd>
                 </div>
                 <div className="flex justify-between gap-4">
-                  <dt className="text-[#8A8680]">БИК</dt>
+                  <dt className="text-[#6E6A64]">БИК</dt>
                   <dd className="text-[#1A1A1A] font-mono">{business.requisites.bik}</dd>
                 </div>
                 <div className="flex justify-between gap-4">
-                  <dt className="text-[#8A8680]">Корр. счёт</dt>
+                  <dt className="text-[#6E6A64]">Корр. счёт</dt>
                   <dd className="text-[#1A1A1A] font-mono">{business.requisites.corrAccount}</dd>
                 </div>
                 <div className="flex justify-between gap-4 pt-2.5 border-t border-[#E8E6E0]">
-                  <dt className="text-[#8A8680]">Адрес банка</dt>
+                  <dt className="text-[#6E6A64]">Адрес банка</dt>
                   <dd className="text-[#1A1A1A] text-right">{business.requisites.bankAddress}</dd>
                 </div>
               </dl>

@@ -43,7 +43,7 @@ export function Footer() {
             <Link href="/" className="inline-flex items-center gap-3 mb-5">
               <span className="font-display text-3xl text-white tracking-[0.1em]">CLC</span>
               <span className="w-px h-6 bg-[#FF6B00]" />
-              <span className="font-body text-[10px] text-[#8A8680] uppercase tracking-widest leading-tight">
+              <span className="font-body text-[10px] text-[#6E6A64] uppercase tracking-widest leading-tight">
                 Воплощаем<br />идеи
               </span>
             </Link>

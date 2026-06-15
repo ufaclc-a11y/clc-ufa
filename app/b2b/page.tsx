@@ -249,7 +249,7 @@ export default function B2BPage() {
                   <h3 className="font-display text-xl text-[#1A1A1A] tracking-wide mb-2 group-hover:text-[#FF6B00] transition-colors">
                     {c.title}
                   </h3>
-                  <p className="text-sm text-[#8A8680] leading-relaxed">{c.desc}</p>
+                  <p className="text-sm text-[#6E6A64] leading-relaxed">{c.desc}</p>
                 </div>
               </div>
             ))}
@@ -265,7 +265,7 @@ export default function B2BPage() {
             <h2 className="font-display text-4xl sm:text-5xl text-[#1A1A1A] tracking-wider mt-2">
               4 технологии — один подрядчик
             </h2>
-            <p className="mt-4 text-[#8A8680] max-w-2xl leading-relaxed">
+            <p className="mt-4 text-[#6E6A64] max-w-2xl leading-relaxed">
               Не нужно искать отдельных исполнителей под каждую задачу. Резку, печать, гравировку и фрезеровку
               выполняем на собственном оборудовании в одном цехе.
             </p>
@@ -292,7 +292,7 @@ export default function B2BPage() {
                   <h3 className="font-display text-lg text-[#1A1A1A] tracking-wide mb-2 group-hover:text-[#FF6B00] transition-colors">
                     {t.title}
                   </h3>
-                  <p className="text-xs text-[#8A8680] leading-relaxed">{t.desc}</p>
+                  <p className="text-xs text-[#6E6A64] leading-relaxed">{t.desc}</p>
                 </div>
               </Link>
             ))}
@@ -356,7 +356,7 @@ export default function B2BPage() {
                     </div>
                     <div className="pt-2">
                       <h3 className="font-semibold text-[#1A1A1A] mb-1">{p.title}</h3>
-                      <p className="text-sm text-[#8A8680] leading-relaxed">{p.desc}</p>
+                      <p className="text-sm text-[#6E6A64] leading-relaxed">{p.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -378,7 +378,7 @@ export default function B2BPage() {
               {/* Плашка */}
               <div className="absolute -bottom-5 -left-5 bg-white rounded-2xl px-6 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.12)] border border-[#E8E6E0]">
                 <div className="font-display text-3xl text-[#FF6B00] tracking-wider leading-none mb-0.5">1–3</div>
-                <div className="text-xs text-[#8A8680] font-medium">дня — стандартный срок</div>
+                <div className="text-xs text-[#6E6A64] font-medium">дня — стандартный срок</div>
               </div>
             </div>
           </div>
@@ -393,7 +393,7 @@ export default function B2BPage() {
             <h2 className="font-display text-4xl sm:text-5xl text-[#1A1A1A] tracking-wider mt-2 mb-3">
               Отправьте макет или фото детали
             </h2>
-            <p className="text-[#8A8680] text-lg">
+            <p className="text-[#6E6A64] text-lg">
               Рассчитаем изготовление и ответим быстро.
             </p>
           </div>

@@ -83,10 +83,10 @@ export default function ProductPage({ params }: Props) {
       name:    'Центр лазерной резки',
     },
     offers: {
-      '@type':        'Offer',
+      // Цена индивидуальная (по макету), заказ от 400 ₽ — выражаем через AggregateOffer/lowPrice.
+      '@type':        'AggregateOffer',
       priceCurrency:  'RUB',
-      price:          '100',
-      priceValidUntil:'2026-12-31',
+      lowPrice:       '400',
       availability:   'https://schema.org/InStock',
       url:            `https://clc-ufa.ru/products/${product.id}`,
       seller: {
@@ -144,7 +144,7 @@ export default function ProductPage({ params }: Props) {
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-8">
                 {product.tags.map(tag => (
-                  <span key={tag} className="text-sm px-3 py-1.5 bg-white border border-[#E8E6E0] rounded-full text-[#8A8680]">
+                  <span key={tag} className="text-sm px-3 py-1.5 bg-white border border-[#E8E6E0] rounded-full text-[#6E6A64]">
                     {tag}
                   </span>
                 ))}
@@ -162,7 +162,7 @@ export default function ProductPage({ params }: Props) {
                     <div className="flex justify-center mb-1">
                       <s.Icon size={18} className="text-[#FF6B00]" />
                     </div>
-                    <div className="text-xs text-[#8A8680] leading-tight">{s.text}</div>
+                    <div className="text-xs text-[#6E6A64] leading-tight">{s.text}</div>
                   </div>
                 ))}
               </div>
@@ -204,7 +204,7 @@ export default function ProductPage({ params }: Props) {
                     {product.materials.map(m => (
                       <div key={m.name} className="bg-[#F5F4F0] rounded-xl p-5 border border-[#E8E6E0]">
                         <h3 className="font-semibold text-[#1A1A1A] mb-1">{m.name}</h3>
-                        <p className="text-sm text-[#8A8680] leading-[1.7]">{m.desc}</p>
+                        <p className="text-sm text-[#6E6A64] leading-[1.7]">{m.desc}</p>
                       </div>
                     ))}
                   </div>
@@ -234,7 +234,7 @@ export default function ProductPage({ params }: Props) {
                   <h3 className="font-display text-lg text-[#1A1A1A] tracking-wide mb-1 group-hover:text-[#FF6B00] transition-colors">
                     {s.shortTitle}
                   </h3>
-                  <p className="text-xs text-[#8A8680] leading-relaxed">{s.shortDescription}</p>
+                  <p className="text-xs text-[#6E6A64] leading-relaxed">{s.shortDescription}</p>
                 </Link>
               ))}
             </div>
@@ -270,7 +270,7 @@ export default function ProductPage({ params }: Props) {
       <section className="py-16 bg-[#F5F4F0]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <h2 className="font-display text-3xl text-[#1A1A1A] tracking-wider mb-2">Оформить заказ</h2>
-          <p className="text-[#8A8680] mb-8">Опишите детали — ответим с расчётом стоимости.</p>
+          <p className="text-[#6E6A64] mb-8">Опишите детали — ответим с расчётом стоимости.</p>
           <OrderForm />
         </div>
       </section>

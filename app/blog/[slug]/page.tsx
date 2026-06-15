@@ -210,7 +210,7 @@ export default function BlogPostPage({ params }: Props) {
       {/* Article body */}
       <article className="py-12 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <p className="text-lg text-[#8A8680] leading-relaxed mb-8 italic">{post.description}</p>
+          <p className="text-lg text-[#6E6A64] leading-relaxed mb-8 italic">{post.description}</p>
           <div className="prose-like">
             {renderContent(post.content)}
           </div>
@@ -218,7 +218,7 @@ export default function BlogPostPage({ params }: Props) {
           {/* CTA inside article */}
           <div className="mt-12 bg-[#F5F4F0] rounded-2xl p-6 sm:p-8 border border-[#E8E6E0]">
             <h3 className="font-display text-2xl text-[#1A1A1A] tracking-wide mb-2">Готовы сделать заказ?</h3>
-            <p className="text-sm text-[#8A8680] mb-5">Напишите нам — рассчитаем стоимость за несколько минут.</p>
+            <p className="text-sm text-[#6E6A64] mb-5">Напишите нам — рассчитаем стоимость за несколько минут.</p>
             <div className="flex flex-wrap gap-3">
               <a
                 href="https://wa.me/79374838003?text=Здравствуйте!%20Хочу%20рассчитать%20заказ."

@@ -143,7 +143,7 @@ export default function ProductsPage() {
                     <SymbolIcon symbol={a.icon} size={20} className="text-[#FF6B00]" />
                   </div>
                   <h3 className="font-display text-lg text-[#1A1A1A] tracking-wide mb-2">{a.title}</h3>
-                  <p className="text-sm text-[#8A8680] leading-relaxed">{a.desc}</p>
+                  <p className="text-sm text-[#6E6A64] leading-relaxed">{a.desc}</p>
                 </div>
               ))}
             </div>
@@ -158,7 +158,7 @@ export default function ProductsPage() {
             <div className="mb-10">
               <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Стоимость</span>
               <h2 className="font-display text-4xl text-[#1A1A1A] tracking-wider mt-2">Цены</h2>
-              <p className="text-[#8A8680] mt-3 max-w-2xl">
+              <p className="text-[#6E6A64] mt-3 max-w-2xl">
                 Ориентировочные тарифы. Точная стоимость — после расчёта по вашему макету.
               </p>
             </div>
@@ -179,14 +179,14 @@ export default function ProductsPage() {
                   </div>
                   {table.note && (
                     <div className="px-6 py-3 bg-white/60 border-t border-[#E8E6E0]">
-                      <p className="text-xs text-[#8A8680]">{table.note}</p>
+                      <p className="text-xs text-[#6E6A64]">{table.note}</p>
                     </div>
                   )}
                 </div>
               ))}
             </div>
             <div className="mt-8 flex flex-col items-center gap-3 text-center">
-              <p className="text-sm text-[#8A8680]">Для точного расчёта — отправьте макет любым способом:</p>
+              <p className="text-sm text-[#6E6A64]">Для точного расчёта — отправьте макет любым способом:</p>
               <div className="flex flex-wrap justify-center gap-2">
                 <a href={`${business.whatsapp.split('?')[0]}?text=${waText}`} target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 bg-[#25D366] text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-[#1fb855] transition-colors">
@@ -241,7 +241,7 @@ export default function ProductsPage() {
           <div className="mb-10 text-center">
             <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Заявка</span>
             <h2 className="font-display text-4xl text-[#1A1A1A] tracking-wider mt-2 mb-2">Рассчитать стоимость</h2>
-            <p className="text-[#8A8680]">Опишите задачу — ответим с расчётом.</p>
+            <p className="text-[#6E6A64]">Опишите задачу — ответим с расчётом.</p>
           </div>
           <OrderForm />
         </div>

@@ -139,13 +139,13 @@ function OptionCard({
     >
       <div className="flex items-start gap-3">
         {icon && (
-          <span className="mt-0.5 shrink-0 text-[#8A8680]">
+          <span className="mt-0.5 shrink-0 text-[#6E6A64]">
             <SymbolIcon symbol={icon} size={18} />
           </span>
         )}
         <div>
           <div className={`font-semibold text-sm ${selected ? 'text-[#FF6B00]' : 'text-[#1A1A1A]'}`}>{label}</div>
-          {desc && <div className="text-xs text-[#8A8680] mt-0.5 leading-snug">{desc}</div>}
+          {desc && <div className="text-xs text-[#6E6A64] mt-0.5 leading-snug">{desc}</div>}
         </div>
         {selected && (
           <div className="ml-auto shrink-0 w-5 h-5 rounded-full bg-[#FF6B00] flex items-center justify-center">
@@ -202,7 +202,7 @@ export default function CalculatorPage() {
           <h1 className="font-display text-4xl sm:text-5xl text-[#1A1A1A] tracking-wider mb-3">
             Рассчитать стоимость
           </h1>
-          <p className="text-[#8A8680] leading-relaxed">
+          <p className="text-[#6E6A64] leading-relaxed">
             Ориентировочная цена за 30 секунд. Точная цена — по вашему макету и размерам.
           </p>
         </div>
@@ -242,7 +242,7 @@ export default function CalculatorPage() {
           {/* Step 2: Material */}
           {step === 'material' && service && (
             <div>
-              <button onClick={() => setStep('service')} className="text-sm text-[#8A8680] hover:text-[#1A1A1A] mb-4 transition-colors">← Назад</button>
+              <button onClick={() => setStep('service')} className="text-sm text-[#6E6A64] hover:text-[#1A1A1A] mb-4 transition-colors">← Назад</button>
               <h2 className="font-display text-2xl text-[#1A1A1A] tracking-wide mb-6">Материал или изделие</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {materialsByService[service].map(m => (
@@ -267,7 +267,7 @@ export default function CalculatorPage() {
           {/* Step 3: Size */}
           {step === 'size' && (
             <div>
-              <button onClick={() => setStep('material')} className="text-sm text-[#8A8680] hover:text-[#1A1A1A] mb-4 transition-colors">← Назад</button>
+              <button onClick={() => setStep('material')} className="text-sm text-[#6E6A64] hover:text-[#1A1A1A] mb-4 transition-colors">← Назад</button>
               <h2 className="font-display text-2xl text-[#1A1A1A] tracking-wide mb-6">Примерный размер</h2>
               <div className="grid grid-cols-1 gap-3">
                 {sizeOptions.map(s => (
@@ -293,7 +293,7 @@ export default function CalculatorPage() {
           {/* Step 4: Quantity */}
           {step === 'qty' && (
             <div>
-              <button onClick={() => setStep('size')} className="text-sm text-[#8A8680] hover:text-[#1A1A1A] mb-4 transition-colors">← Назад</button>
+              <button onClick={() => setStep('size')} className="text-sm text-[#6E6A64] hover:text-[#1A1A1A] mb-4 transition-colors">← Назад</button>
               <h2 className="font-display text-2xl text-[#1A1A1A] tracking-wide mb-6">Количество</h2>
               <div className="grid grid-cols-1 gap-3">
                 {qtyOptions.map(q => (
@@ -321,32 +321,32 @@ export default function CalculatorPage() {
               <div className="w-16 h-16 bg-[#FF6B00]/10 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="font-mono text-2xl text-[#FF6B00]">₽</span>
               </div>
-              <p className="text-[#8A8680] text-sm mb-2">Ориентировочная стоимость</p>
+              <p className="text-[#6E6A64] text-sm mb-2">Ориентировочная стоимость</p>
               <div className="font-display text-5xl text-[#1A1A1A] tracking-wider mb-1">
                 {priceMin.toLocaleString('ru-RU')} – {priceMax.toLocaleString('ru-RU')} ₽
               </div>
-              <p className="text-xs text-[#8A8680] mt-2 mb-8">
+              <p className="text-xs text-[#6E6A64] mt-2 mb-8">
                 Это приблизительная оценка. Точная цена зависит от вашего макета и деталей заказа.
               </p>
 
               {/* Summary */}
               <div className="bg-[#F5F4F0] rounded-2xl p-5 text-left mb-8 space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="text-[#8A8680]">Услуга:</span>
+                  <span className="text-[#6E6A64]">Услуга:</span>
                   <span className="font-semibold text-[#1A1A1A]">{serviceName}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-[#8A8680]">Материал:</span>
+                  <span className="text-[#6E6A64]">Материал:</span>
                   <span className="font-semibold text-[#1A1A1A]">
                     {materialsByService[service!].find(m => m.key === material)?.label ?? material}
                   </span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-[#8A8680]">Размер:</span>
+                  <span className="text-[#6E6A64]">Размер:</span>
                   <span className="font-semibold text-[#1A1A1A]">{sizeOption?.desc}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-[#8A8680]">Количество:</span>
+                  <span className="text-[#6E6A64]">Количество:</span>
                   <span className="font-semibold text-[#1A1A1A]">{qtyOption?.label}</span>
                 </div>
               </div>
@@ -362,7 +362,7 @@ export default function CalculatorPage() {
 
               <button
                 onClick={() => { setStep('service'); setService(null); setMaterial(null); setSizeKey(null); setQtyKey(null) }}
-                className="text-sm text-[#8A8680] hover:text-[#1A1A1A] transition-colors"
+                className="text-sm text-[#6E6A64] hover:text-[#1A1A1A] transition-colors"
               >
                 Рассчитать другой заказ
               </button>
@@ -371,7 +371,7 @@ export default function CalculatorPage() {
         </div>
 
         {/* Note */}
-        <p className="text-xs text-[#8A8680] text-center mt-6 leading-relaxed">
+        <p className="text-xs text-[#6E6A64] text-center mt-6 leading-relaxed">
           Калькулятор даёт ориентир. Точная цена считается по вашему конкретному макету и параметрам.{' '}
           <Link href="/contacts" className="text-[#FF6B00] hover:underline">Напишите нам</Link>{' '}
           — ответим быстро.

@@ -159,7 +159,7 @@ export default function SeoLandingPage({ params }: Props) {
                 <div className="flex justify-center mb-1.5">
                   <s.Icon size={20} className="text-[#FF6B00]" />
                 </div>
-                <div className="text-xs text-[#8A8680] leading-tight font-medium">{s.text}</div>
+                <div className="text-xs text-[#6E6A64] leading-tight font-medium">{s.text}</div>
               </div>
             ))}
           </div>
@@ -189,7 +189,7 @@ export default function SeoLandingPage({ params }: Props) {
                 <h2 className="font-display text-xl text-[#1A1A1A] tracking-wide mb-1">
                   {relatedService.title}
                 </h2>
-                <p className="text-sm text-[#8A8680] leading-relaxed mb-3">{relatedService.shortDescription}</p>
+                <p className="text-sm text-[#6E6A64] leading-relaxed mb-3">{relatedService.shortDescription}</p>
                 <Link
                   href={`/services/${relatedService.slug}`}
                   className="text-sm font-semibold text-[#FF6B00] hover:underline underline-offset-4"
@@ -279,7 +279,7 @@ export default function SeoLandingPage({ params }: Props) {
       <section className="py-16 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <h2 className="font-display text-3xl text-[#1A1A1A] tracking-wider mb-2">Оформить заказ</h2>
-          <p className="text-[#8A8680] mb-8">Опишите задачу — ответим с расчётом стоимости.</p>
+          <p className="text-[#6E6A64] mb-8">Опишите задачу — ответим с расчётом стоимости.</p>
           <OrderForm />
         </div>
       </section>
