@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import { business } from '@/data/contacts'
+import { rateLimit, clientIp } from '@/lib/rate-limit'
 
 // Создаём транспортер один раз на весь процесс (DNS резолвится при первом sendMail)
 let _transporter: ReturnType<typeof nodemailer.createTransport> | null = null
@@ -36,8 +37,21 @@ const ALLOWED_EXT = new Set([
   'jpg', 'jpeg', 'png', 'webp', 'gif', 'pdf', 'ai', 'eps', 'svg', 'dxf', 'cdr', 'zip',
 ])
 
+// Лимит подачи заявок с одного IP: 5 запросов за 10 минут.
+const RL_LIMIT  = 5
+const RL_WINDOW = 10 * 60 * 1000
+
 export async function POST(req: Request) {
   try {
+    // Анти-флуд по IP — до парсинга тела, чтобы отсекать большие payload'ы.
+    const rl = rateLimit(`send-email:${clientIp(req)}`, RL_LIMIT, RL_WINDOW)
+    if (!rl.ok) {
+      return NextResponse.json(
+        { error: 'Слишком много заявок за короткое время. Попробуйте через несколько минут или напишите в мессенджер.' },
+        { status: 429, headers: { 'Retry-After': String(rl.retryAfter) } },
+      )
+    }
+
     const smtpUser = process.env.SMTP_USER
     const smtpPass = process.env.SMTP_PASS
     const toEmail  = process.env.SMTP_TO?.trim() || business.email
