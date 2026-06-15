@@ -4,6 +4,7 @@ import './globals.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { business } from '@/data/contacts'
+import { sameAs, aggregateRating, reviewLd, offerCatalog, openingHoursSpecification } from '@/lib/seo'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://clc-ufa.ru'),
@@ -29,14 +30,19 @@ export const metadata: Metadata = {
     images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Центр лазерной резки Уфа' }],
   },
   robots:     { index: true, follow: true },
-  alternates: { canonical: 'https://clc-ufa.ru' },
+  alternates: {
+    canonical: 'https://clc-ufa.ru',
+    types: { 'application/rss+xml': 'https://clc-ufa.ru/blog/rss.xml' },
+  },
 }
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type':    'LocalBusiness',
+  '@id':            'https://clc-ufa.ru/#business',
   name:             business.name,
   alternateName:    business.brand,
+  slogan:           business.slogan,
   description:      'Изготовление изделий на заказ: лазерная резка, УФ-печать, гравировка и фрезеровка ЧПУ в Уфе.',
   url:              'https://clc-ufa.ru',
   telephone:        business.phone,
@@ -54,9 +60,25 @@ const jsonLd = {
     latitude:   business.coords.lat,
     longitude:  business.coords.lng,
   },
+  areaServed:   { '@type': 'City', name: 'Уфа' },
   openingHours: 'Mo-Su 10:00-19:00',
+  openingHoursSpecification,
   priceRange:   '₽₽',
   image:        'https://clc-ufa.ru/images/og-image.jpg',
+  sameAs,
+  aggregateRating,
+  review:           reviewLd,
+  hasOfferCatalog:  offerCatalog,
+}
+
+const webSiteLd = {
+  '@context': 'https://schema.org',
+  '@type':    'WebSite',
+  '@id':       'https://clc-ufa.ru/#website',
+  name:        business.name,
+  url:         'https://clc-ufa.ru',
+  inLanguage:  'ru-RU',
+  publisher:   { '@id': 'https://clc-ufa.ru/#business' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -66,6 +88,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteLd) }}
         />
       </head>
       <body>

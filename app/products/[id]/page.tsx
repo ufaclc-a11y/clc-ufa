@@ -13,6 +13,7 @@ import { IconCheck, IconBolt, IconTarget, SymbolIcon } from '@/components/Icons'
 import { getPortfolioCatId } from '@/data/products'
 import { GalleryGrid } from '@/components/GalleryGrid'
 import { RichText }   from '@/components/RichText'
+import { aggregateRating } from '@/lib/seo'
 
 function getPortfolioPhotos(prefix: string, count: number, limit = 8): string[] {
   const step = Math.max(1, Math.floor(count / limit))
@@ -93,6 +94,8 @@ export default function ProductPage({ params }: Props) {
         name:    'Центр лазерной резки',
       },
     },
+    aggregateRating,
+    areaServed: { '@type': 'City', name: 'Уфа' },
   }
 
   return (

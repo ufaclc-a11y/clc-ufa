@@ -12,6 +12,7 @@ import { FAQAccordion }   from '@/components/FAQAccordion'
 import { SymbolIcon }     from '@/components/Icons'
 import { GalleryGrid }   from '@/components/GalleryGrid'
 import { RichText }      from '@/components/RichText'
+import { SITE, localBusinessRef, aggregateRating } from '@/lib/seo'
 
 type Props = { params: { slug: string } }
 
@@ -72,8 +73,22 @@ export default function ServicePage({ params }: Props) {
     `Здравствуйте! Интересует услуга: ${service.title}. Подскажите стоимость.`
   )
 
+  const serviceLd = {
+    '@context': 'https://schema.org',
+    '@type':    'Service',
+    name:        service.title,
+    serviceType: service.title,
+    description: service.description,
+    url:         `${SITE}/services/${service.slug}`,
+    ...(service.heroImage ? { image: `${SITE}${service.heroImage}` } : {}),
+    provider:    localBusinessRef,
+    areaServed:  { '@type': 'City', name: 'Уфа' },
+    aggregateRating,
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
       {/* ── HERO ── */}
       <div className="relative min-h-[560px] flex items-end bg-[#1A1A1A] overflow-hidden pt-24">
         <div className="absolute inset-0">
