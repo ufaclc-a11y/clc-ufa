@@ -4,6 +4,17 @@ import Image from 'next/image'
 import { CTASection }  from '@/components/CTASection'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { business }    from '@/data/contacts'
+import { JsonLd }      from '@/components/JsonLd'
+
+const promoLd = {
+  '@context': 'https://schema.org',
+  '@type':    'CollectionPage',
+  name:        'Акции и скидки — Центр лазерной резки',
+  description: 'Актуальные акции и скидки на лазерную резку, гравировку и УФ-печать в Уфе.',
+  url:         'https://clc-ufa.ru/promo',
+  isPartOf:    { '@id': 'https://clc-ufa.ru/#website' },
+  about:       { '@id': 'https://clc-ufa.ru/#business' },
+}
 
 export const metadata: Metadata = {
   title:       'Акции и скидки на резку и гравировку в Уфе | ЦЛР',
@@ -66,6 +77,7 @@ const offers = [
 export default function PromoPage() {
   return (
     <>
+      <JsonLd data={promoLd} />
       {/* Hero */}
       <div className="relative min-h-[380px] flex items-end bg-[#1A1A1A] overflow-hidden pt-24">
         <div className="absolute inset-0">

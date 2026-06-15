@@ -5,6 +5,23 @@ import { cases }        from '@/data/cases'
 import { business }     from '@/data/contacts'
 import { Breadcrumbs }  from '@/components/Breadcrumbs'
 import { CTASection }   from '@/components/CTASection'
+import { JsonLd }       from '@/components/JsonLd'
+
+const casesLd = {
+  '@context': 'https://schema.org',
+  '@type':    'ItemList',
+  name:        'Кейсы — Центр лазерной резки',
+  itemListElement: cases.map((c, i) => ({
+    '@type':   'ListItem',
+    position:  i + 1,
+    item: {
+      '@type':     'CreativeWork',
+      name:        c.title,
+      image:       `https://clc-ufa.ru${c.image}`,
+      description: c.task,
+    },
+  })),
+}
 
 export const metadata: Metadata = {
   title:       'Кейсы и примеры работ с ценами | Центр лазерной резки Уфа',
@@ -88,6 +105,7 @@ function CaseCard({ c }: { c: (typeof cases)[number] }) {
 export default function CasesPage() {
   return (
     <>
+      <JsonLd data={casesLd} />
       <div className="relative min-h-[420px] flex items-end bg-[#1A1A1A] overflow-hidden pt-24">
         <div className="absolute inset-0">
           <Image

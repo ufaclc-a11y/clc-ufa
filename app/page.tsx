@@ -9,7 +9,6 @@ import { ProcessSteps }      from '@/components/ProcessSteps'
 import { PortfolioGrid }     from '@/components/PortfolioGrid'
 import { OrderForm }         from '@/components/OrderForm'
 import { CTASection }        from '@/components/CTASection'
-import { LaserBackground }   from '@/components/LaserBackground'
 import { ReviewsSection }    from '@/components/ReviewsSection'
 import { FAQAccordion }      from '@/components/FAQAccordion'
 import { blogPosts }         from '@/data/blog'
@@ -48,8 +47,16 @@ export default function HomePage() {
     <>
       {/* ─── HERO ─── */}
       <section className="relative min-h-screen bg-black flex flex-col justify-end pb-20 pt-32 overflow-hidden">
-        {/* Анимированный лазерный фон */}
-        <LaserBackground />
+        {/* Фоновое фото: лазерная голова за работой */}
+        <Image
+          src="/images/hero-laser.jpg"
+          alt=""
+          fill
+          priority
+          className="object-cover opacity-40"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40 pointer-events-none" />
 
         {/* Тонкий оранжевый акцент снизу-слева поверх лазера */}
         <div

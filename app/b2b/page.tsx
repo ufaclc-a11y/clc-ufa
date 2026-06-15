@@ -6,6 +6,20 @@ import { OrderForm }     from '@/components/OrderForm'
 import { CTASection }    from '@/components/CTASection'
 import { IconCheck, IconBolt, IconTarget, IconMessageSquare, IconRefresh, IconLayers } from '@/components/Icons'
 import { business } from '@/data/contacts'
+import { JsonLd } from '@/components/JsonLd'
+import { localBusinessRef } from '@/lib/seo'
+
+const b2bServiceLd = {
+  '@context': 'https://schema.org',
+  '@type':    'Service',
+  name:        'Лазерная резка и фрезеровка для бизнеса (B2B)',
+  serviceType: 'Контрактное производство деталей и изделий на заказ',
+  description: 'Серийное изготовление деталей и изделий для бизнеса в Уфе: лазерная резка, фрезеровка ЧПУ, гравировка и УФ-печать. Работа по договору, отсрочка, документы.',
+  url:         'https://clc-ufa.ru/b2b',
+  provider:    localBusinessRef,
+  areaServed:  { '@type': 'City', name: 'Уфа' },
+  audience:    { '@type': 'BusinessAudience', name: 'Производства, рекламные агентства, дизайн-студии, торговые компании' },
+}
 
 export const metadata: Metadata = {
   title:       'Производство деталей для бизнеса в Уфе | Центр лазерной резки',
@@ -112,6 +126,7 @@ const msgText = encodeURIComponent('Здравствуйте! Хочу разм�
 export default function B2BPage() {
   return (
     <>
+      <JsonLd data={b2bServiceLd} />
       {/* ── HERO ── */}
       <div className="relative min-h-[600px] flex items-end bg-[#1A1A1A] overflow-hidden pt-24">
         {/* Фото */}

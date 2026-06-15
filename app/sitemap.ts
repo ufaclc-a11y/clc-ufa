@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/b2b`,          priority: 0.9, changeFrequency: 'monthly' as const },
     { url: `${base}/portfolio`,    priority: 0.8, changeFrequency: 'weekly'  as const },
     { url: `${base}/products`,     priority: 0.8, changeFrequency: 'monthly' as const },
+    { url: `${base}/shop`,         priority: 0.7, changeFrequency: 'weekly'  as const },
     { url: `${base}/about`,        priority: 0.8, changeFrequency: 'monthly' as const },
     { url: `${base}/calculator`,   priority: 0.9, changeFrequency: 'monthly' as const },
     { url: `${base}/faq`,          priority: 0.8, changeFrequency: 'monthly' as const },

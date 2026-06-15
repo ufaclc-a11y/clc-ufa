@@ -2,6 +2,17 @@ import type { Metadata } from 'next'
 import Image             from 'next/image'
 import { PortfolioGrid } from '@/components/PortfolioGrid'
 import { CTASection }    from '@/components/CTASection'
+import { JsonLd }        from '@/components/JsonLd'
+
+const portfolioLd = {
+  '@context': 'https://schema.org',
+  '@type':    'CollectionPage',
+  name:        'Портфолио работ — Центр лазерной резки',
+  description: 'Галерея выполненных работ: лазерная резка, гравировка, УФ-печать и фрезеровка ЧПУ в Уфе.',
+  url:         'https://clc-ufa.ru/portfolio',
+  isPartOf:    { '@id': 'https://clc-ufa.ru/#website' },
+  about:       { '@id': 'https://clc-ufa.ru/#business' },
+}
 
 export const metadata: Metadata = {
   title:       'Наши работы — галерея изделий | Центр лазерной резки Уфа',
@@ -25,6 +36,7 @@ export default function PortfolioPage({ searchParams }: Props) {
 
   return (
     <>
+      <JsonLd data={portfolioLd} />
       {/* ── HERO ── */}
       <div className="relative min-h-[400px] flex items-end bg-[#1A1A1A] overflow-hidden pt-24">
         {/* Сетка 2×2 из фото для фона */}

@@ -1,10 +1,11 @@
-import type { Metadata } from 'next'
-import Script from 'next/script'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { CookieConsent } from '@/components/CookieConsent'
 import { business } from '@/data/contacts'
 import { sameAs, aggregateRating, reviewLd, offerCatalog, openingHoursSpecification } from '@/lib/seo'
+import { fontVariables } from '@/lib/fonts'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://clc-ufa.ru'),
@@ -34,6 +35,10 @@ export const metadata: Metadata = {
     canonical: 'https://clc-ufa.ru',
     types: { 'application/rss+xml': 'https://clc-ufa.ru/blog/rss.xml' },
   },
+}
+
+export const viewport: Viewport = {
+  themeColor: '#FF6B00',
 }
 
 const jsonLd = {
@@ -83,7 +88,7 @@ const webSiteLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ru">
+    <html lang="ru" className={fontVariables}>
       <head>
         <script
           type="application/ld+json"
@@ -100,19 +105,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main-content">{children}</main>
         <Footer />
 
-        {/* Яндекс.Метрика */}
-        <Script id="ym-init" strategy="afterInteractive">{`
-          (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-          m[i].l=1*new Date();
-          for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
-          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-          (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
-          ym(53776969,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
-        `}</Script>
-        <noscript>
-          {/* eslint-disable-next-line @next/next/no-img-element -- трекинг-пиксель Яндекс.Метрики, не оптимизируется next/image */}
-          <div><img src="https://mc.yandex.ru/watch/53776969" style={{position:'absolute',left:'-9999px'}} alt="" /></div>
-        </noscript>
+        {/* Яндекс.Метрика грузится только после согласия (см. CookieConsent) */}
+        <CookieConsent />
       </body>
     </html>
   )

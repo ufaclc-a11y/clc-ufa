@@ -6,6 +6,32 @@ import { Breadcrumbs }   from '@/components/Breadcrumbs'
 import { CTASection }    from '@/components/CTASection'
 import { SymbolIcon }    from '@/components/Icons'
 import { GalleryGrid }   from '@/components/GalleryGrid'
+import { JsonLd }        from '@/components/JsonLd'
+import { business }      from '@/data/contacts'
+import { sameAs }        from '@/lib/seo'
+
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type':    'Organization',
+  '@id':       'https://clc-ufa.ru/#business',
+  name:        business.name,
+  alternateName: business.brand,
+  url:         'https://clc-ufa.ru',
+  logo:        'https://clc-ufa.ru/icon-512.png',
+  legalName:   business.requisites.ip,
+  taxID:       business.requisites.inn,
+  telephone:   business.phone,
+  email:       business.email,
+  founder:     { '@type': 'Person', name: business.founder.name, jobTitle: business.founder.role },
+  address:     {
+    '@type':         'PostalAddress',
+    streetAddress:   'ул. Менделеева, 177, 5 этаж, цех 509',
+    addressLocality: 'Уфа',
+    addressRegion:   'Республика Башкортостан',
+    addressCountry:  'RU',
+  },
+  sameAs,
+}
 
 export const metadata: Metadata = {
   title:       'О нас — Центр лазерной резки, производство в Уфе',
@@ -70,6 +96,7 @@ const values = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={orgLd} />
       {/* Hero */}
       <div className="relative min-h-[540px] flex items-end bg-[#1A1A1A] overflow-hidden pt-24">
         <div className="absolute inset-0">

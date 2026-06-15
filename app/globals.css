@@ -2,12 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
-
 :root {
-  --font-display: 'Bebas Neue', sans-serif;
-  --font-body:    'Manrope', sans-serif;
-  --font-mono:    'JetBrains Mono', monospace;
+  --font-display: var(--f-display), 'Bebas Neue', sans-serif;
+  --font-body:    var(--f-body), system-ui, sans-serif;
+  --font-mono:    var(--f-mono), 'JetBrains Mono', monospace;
   --clr-orange:   #FF6B00;
   --clr-dark:     #1A1A1A;
   --clr-warm:     #F5F4F0;

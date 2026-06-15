@@ -1,6 +1,26 @@
 /** @type {import('next').NextConfig} */
 
+// CSP применяем только в проде: dev-режим Next использует eval для HMR,
+// который строгий script-src заблокировал бы.
+const isProd = process.env.NODE_ENV === 'production'
+
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' https://mc.yandex.ru",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https://mc.yandex.ru https://placehold.co",
+  "font-src 'self' data:",
+  "connect-src 'self' https://mc.yandex.ru https://mc.yandex.com",
+  "frame-src https://yandex.ru https://*.yandex.ru",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'self'",
+  "upgrade-insecure-requests",
+].join('; ')
+
 const securityHeaders = [
+  ...(isProd ? [{ key: 'Content-Security-Policy', value: contentSecurityPolicy }] : []),
   { key: 'X-Content-Type-Options',  value: 'nosniff' },
   { key: 'X-Frame-Options',         value: 'SAMEORIGIN' },
   { key: 'Referrer-Policy',         value: 'strict-origin-when-cross-origin' },
