@@ -1,3 +1,5 @@
+import { portfolioFiles } from './portfolio.generated'
+
 export type PortfolioItem = {
   id:       string
   title:    string
@@ -7,57 +9,64 @@ export type PortfolioItem = {
   alt:      string
 }
 
-export type PortfolioCategory = { id: string; label: string; count: number; sourceCount?: number }
+export type PortfolioCategory = { id: string; label: string; count: number }
 
-const excludedPortfolioNumbers: Record<string, number[]> = {
-  'nagradnye-statuetki': [1, 3, 4, 7, 9, 10, 14, 16, 23],
-}
-
-// Все категории с количеством фото
-export const portfolioCategories: PortfolioCategory[] = [
-  { id: 'all',                label: 'Все работы',           count: 796 },
-  { id: 'lazernaya-rezka',    label: 'Лазерная резка',       count: 374 },
-  { id: 'koroba-fanera',      label: 'Коробки и ящики',      count: 74  },
-  { id: 'gravirovka',         label: 'Гравировка',           count: 69  },
-  { id: 'frezernaya-rezka',   label: 'Фрезеровка',           count: 50  },
-  { id: 'organajzery',        label: 'Органайзеры',          count: 37  },
-  { id: 'nagradnye-statuetki',label: 'Наградные статуэтки',  count: 14, sourceCount: 23 },
-  { id: 'uf-pechat',          label: 'УФ-печать',            count: 24  },
-  { id: 'medali',             label: 'Медали',               count: 23  },
-  { id: 'tablitchki',         label: 'Таблички',             count: 21  },
-  { id: 'breloki',            label: 'Брелоки',              count: 15  },
-  { id: 'kheshtegi',          label: 'Хештеги',              count: 15  },
-  { id: 'shkatulki-fanera',   label: 'Шкатулки',            count: 14  },
-  { id: 'vyveski',            label: 'Вывески',              count: 14  },
-  { id: 'ramki-foto',         label: 'Рамки для фото',       count: 10  },
-  { id: 'chasy',              label: 'Часы',                 count: 8   },
-  { id: 'medalnitsa',         label: 'Медальницы',           count: 8   },
-  { id: 'nomerki-garderob',   label: 'Номерки',              count: 6   },
-  { id: 'tejbl-tenty',        label: 'Тейбл тенты',          count: 5   },
-  { id: 'kormushki',          label: 'Кормушки',             count: 5   },
-  { id: 'bejdzhi',            label: 'Бейджи',               count: 5   },
-  { id: 'zagotovki',          label: 'Заготовки',            count: 3   },
-  { id: 'klyuchnitsa',        label: 'Ключницы',             count: 2   },
+// ─────────────────────────────────────────────────────────────────────────────
+// Единственное, что поддерживается вручную — порядок категорий и их подписи.
+// Количество фото и сами файлы берутся из public/images/portfolio
+// (см. data/portfolio.generated.ts, обновляется в predev/prebuild).
+//
+// Добавить фото в существующую категорию → просто положить файл вида
+//   <id>-NNN.jpg  в public/images/portfolio — код подхватит автоматически.
+// Удалить фото → удалить файл. Категория без файлов скрывается сама.
+// Новая категория → добавить строку с её id и подписью ниже.
+// ─────────────────────────────────────────────────────────────────────────────
+const CATEGORY_META: { id: string; label: string }[] = [
+  { id: 'lazernaya-rezka',     label: 'Лазерная резка'      },
+  { id: 'koroba-fanera',       label: 'Коробки и ящики'     },
+  { id: 'gravirovka',          label: 'Гравировка'          },
+  { id: 'frezernaya-rezka',    label: 'Фрезеровка'          },
+  { id: 'organajzery',         label: 'Органайзеры'         },
+  { id: 'nagradnye-statuetki', label: 'Наградные статуэтки' },
+  { id: 'uf-pechat',           label: 'УФ-печать'           },
+  { id: 'medali',              label: 'Медали'              },
+  { id: 'tablitchki',          label: 'Таблички'            },
+  { id: 'breloki',             label: 'Брелоки'             },
+  { id: 'kheshtegi',           label: 'Хештеги'             },
+  { id: 'shkatulki-fanera',    label: 'Шкатулки'            },
+  { id: 'vyveski',             label: 'Вывески'             },
+  { id: 'ramki-foto',          label: 'Рамки для фото'      },
+  { id: 'chasy',               label: 'Часы'                },
+  { id: 'medalnitsa',          label: 'Медальницы'          },
+  { id: 'nomerki-garderob',    label: 'Номерки'             },
+  { id: 'tejbl-tenty',         label: 'Тейбл тенты'         },
+  { id: 'kormushki',           label: 'Кормушки'            },
+  { id: 'bejdzhi',             label: 'Бейджи'              },
+  { id: 'zagotovki',           label: 'Заготовки'           },
+  { id: 'klyuchnitsa',         label: 'Ключницы'            },
 ]
 
-/** Генерирует массив PortfolioItem для заданного префикса */
-function makeItems(id: string, label: string, count: number): PortfolioItem[] {
-  const excluded = new Set(excludedPortfolioNumbers[id] ?? [])
-  return Array.from({ length: count }, (_, i) => {
-    const itemNumber = i + 1
-    const n = String(i + 1).padStart(3, '0')
-    return {
-      id:       `${id}-${n}`,
-      title:    label,
-      category: id,
-      tags:     [],
-      image:    `/images/portfolio/${id}-${n}.jpg`,
-      alt:      `${label} — пример ${itemNumber}`,
-    }
-  }).filter((_, i) => !excluded.has(i + 1))
+function makeItems(id: string, label: string): PortfolioItem[] {
+  const files = portfolioFiles[id] ?? []
+  return files.map((file, i) => ({
+    id:       file.replace(/\.[^.]+$/, ''),
+    title:    label,
+    category: id,
+    tags:     [],
+    image:    `/images/portfolio/${file}`,
+    alt:      `${label} — пример ${i + 1}`,
+  }))
 }
 
-// Все элементы портфолио (генерируются из файлов)
-export const portfolioItems: PortfolioItem[] = portfolioCategories
-  .filter(c => c.id !== 'all')
-  .flatMap(c => makeItems(c.id, c.label, c.sourceCount ?? c.count))
+// Все элементы портфолио — строго из реальных файлов на диске
+export const portfolioItems: PortfolioItem[] = CATEGORY_META.flatMap(c =>
+  makeItems(c.id, c.label),
+)
+
+// Категории с непустым набором фото (+ виртуальная «Все работы»)
+export const portfolioCategories: PortfolioCategory[] = [
+  { id: 'all', label: 'Все работы', count: portfolioItems.length },
+  ...CATEGORY_META
+    .map(c => ({ id: c.id, label: c.label, count: (portfolioFiles[c.id] ?? []).length }))
+    .filter(c => c.count > 0),
+]
