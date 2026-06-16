@@ -8,6 +8,8 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
+    env:
+      PUPPETEER_SKIP_DOWNLOAD: 'true'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -37,6 +39,9 @@ jobs:
           script: |
             set -euo pipefail
             cd /var/www/clc-ufa
+
+            # puppeteer (devDep для скриншотов) не должен качать Chrome на сервере
+            export PUPPETEER_SKIP_DOWNLOAD=true
 
             # Берём ровно то, что в origin/main (без конфликтов локального состояния)
             git fetch --all --prune
