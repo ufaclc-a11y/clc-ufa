@@ -35,12 +35,31 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            set -euo pipefail
             cd /var/www/clc-ufa
-            git pull
+
+            # Берём ровно то, что в origin/main (без конфликтов локального состояния)
+            git fetch --all --prune
+            git reset --hard origin/main
+
+            # Чистая установка зависимостей строго по lock-файлу
+            npm ci
+
+            # Чистый билд — сбрасываем кэш, чтобы не тащить устаревшие маршруты/ISR
+            rm -rf .next
             npm run build
-            cp -r .next/static .next/standalone/.next/static
-            cp -r public .next/standalone/public
-            cp .env .next/standalone/.env
+
+            # standalone не включает public и static — копируем их БЕЗ вложенности
+            rm -rf .next/standalone/public .next/standalone/.next/static
+            mkdir -p .next/standalone/.next
+            cp -r public            .next/standalone/public
+            cp -r .next/static       .next/standalone/.next/static
+            cp .env                  .next/standalone/.env
+
             export $(grep -v '^#' .env | xargs)
             pm2 restart clc-ufa --update-env
-          command_timeout: 10m
+
+            # Здоровье после рестарта: localhost должен ответить 200
+            sleep 3
+            curl -fsS -o /dev/null http://localhost:3000/ && echo "Deploy OK"
+          command_timeout: 15m
