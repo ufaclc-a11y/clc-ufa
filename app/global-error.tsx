@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect } from 'react'
+import { trackGoal } from '@/lib/analytics'
 
 export default function GlobalError({
   error,
@@ -13,13 +14,11 @@ export default function GlobalError({
   useEffect(() => {
     // Логируем в консоль и шлём событие в Яндекс.Метрику (если она загружена после согласия).
     console.error('GlobalError:', error)
-    try {
-      window.ym?.(53776969, 'reachGoal', 'js_error', {
-        message: error?.message?.slice(0, 200),
-        digest: error?.digest,
-        path: typeof location !== 'undefined' ? location.pathname : undefined,
-      })
-    } catch { /* ym не загружен — игнорируем */ }
+    trackGoal('js_error', {
+      message: error?.message?.slice(0, 200),
+      digest: error?.digest,
+      path: typeof location !== 'undefined' ? location.pathname : undefined,
+    })
   }, [error])
 
   return (

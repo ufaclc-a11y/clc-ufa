@@ -19,7 +19,10 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: '*', allow: '/' },
       ...aiBots.map(userAgent => ({ userAgent, allow: '/' })),
     ],
-    sitemap: 'https://clc-ufa.ru/sitemap.xml',
+    sitemap: [
+      'https://clc-ufa.ru/sitemap.xml',
+      'https://clc-ufa.ru/sitemaps/images.xml',
+    ],
     host: 'https://clc-ufa.ru',
   }
 }

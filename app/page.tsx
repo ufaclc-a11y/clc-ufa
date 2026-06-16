@@ -14,6 +14,20 @@ import { FAQAccordion }      from '@/components/FAQAccordion'
 import { blogPosts }         from '@/data/blog'
 import Image                 from 'next/image'
 import { SymbolIcon }        from '@/components/Icons'
+import { JsonLd }            from '@/components/JsonLd'
+
+const howToLd = {
+  '@context': 'https://schema.org',
+  '@type':    'HowTo',
+  name:        'Как заказать изделие в Центре лазерной резки',
+  description: 'Четыре шага от идеи до готового изделия: лазерная резка, УФ-печать, гравировка и фрезеровка ЧПУ в Уфе.',
+  step: [
+    { '@type': 'HowToStep', position: 1, name: 'Опишите задачу', text: 'Опишите задачу словами или пришлите фото/макет. Можно без готового макета — поможем подготовить.' },
+    { '@type': 'HowToStep', position: 2, name: 'Получите расчёт', text: 'Рассчитываем стоимость и срок. Минимальный заказ — от 400 ₽, стандартный срок — 1–3 дня.' },
+    { '@type': 'HowToStep', position: 3, name: 'Согласуйте макет и оплату', text: 'Утверждаем макет, материал и вносим оплату.' },
+    { '@type': 'HowToStep', position: 4, name: 'Заберите заказ', text: 'Заберите готовое изделие в Уфе или получите доставкой транспортной компанией.' },
+  ],
+}
 
 export const metadata: Metadata = {
   title:       'Центр лазерной резки — Лазерная резка, УФ-печать и фрезеровка ЧПУ в Уфе',
@@ -45,6 +59,7 @@ const advantages = [
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={howToLd} />
       {/* ─── HERO ─── */}
       <section className="relative min-h-screen bg-black flex flex-col justify-end pb-20 pt-32 overflow-hidden">
         {/* Фоновое фото: лазерная голова за работой */}

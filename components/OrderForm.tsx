@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { business } from '@/data/contacts'
+import { trackGoal } from '@/lib/analytics'
 
 type Urgency = 'calm' | 'days' | 'today'
 
@@ -159,6 +160,7 @@ export function OrderForm() {
         if (res.ok) {
           setEmailState('ok')
           setOpened('email')
+          trackGoal('order_email')
         } else {
           const data = await res.json().catch(() => ({}))
           setEmailErr(data.error || 'Не удалось отправить письмо')
@@ -176,6 +178,7 @@ export function OrderForm() {
     const url = buildUrl(channel, msg)
     window.open(url, '_blank', 'noopener,noreferrer')
     setOpened(channel)
+    trackGoal(`order_${channel}`)
   }, [form, files])
 
   return (

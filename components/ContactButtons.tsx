@@ -1,6 +1,9 @@
+'use client'
+
 import Link from 'next/link'
 import { business } from '@/data/contacts'
 import { cn } from '@/lib/utils'
+import { trackGoal } from '@/lib/analytics'
 
 type Props = {
   variant?:  'light' | 'dark'
@@ -27,6 +30,7 @@ export function ContactButtons({
       {showCalc && (
         <Link
           href="/calculator"
+          onClick={() => trackGoal('cta_calculator')}
           className={cn(base, sz, 'bg-[#FF6B00] text-white hover:bg-[#e55e00] shadow-lg shadow-[#FF6B00]/20')}
         >
           Рассчитать стоимость
@@ -35,6 +39,7 @@ export function ContactButtons({
 
       <a
         href={business.whatsapp}
+        onClick={() => trackGoal('contact_whatsapp')}
         target="_blank" rel="noopener noreferrer"
         className={cn(base, sz, 'bg-[#25D366] text-white hover:bg-[#1fb855]')}
       >
@@ -43,6 +48,7 @@ export function ContactButtons({
 
       <a
         href={business.telegram}
+        onClick={() => trackGoal('contact_telegram')}
         target="_blank" rel="noopener noreferrer"
         className={cn(base, sz, 'bg-[#2AABEE] text-white hover:bg-[#1a9adc]')}
       >
@@ -51,6 +57,7 @@ export function ContactButtons({
 
       <a
         href={business.max}
+        onClick={() => trackGoal('contact_max')}
         target="_blank" rel="noopener noreferrer"
         className={cn(
           base, sz,
@@ -62,6 +69,7 @@ export function ContactButtons({
 
       <a
         href={`tel:${business.phone}`}
+        onClick={() => trackGoal('contact_phone')}
         className={cn(
           base, sz,
           variant === 'dark'
