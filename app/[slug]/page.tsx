@@ -12,6 +12,14 @@ import { OrderForm }     from '@/components/OrderForm'
 import { CTASection }    from '@/components/CTASection'
 import { FAQAccordion }  from '@/components/FAQAccordion'
 import { IconCheck, IconBolt, IconTarget, IconArrowUpRight, SymbolIcon } from '@/components/Icons'
+import { selectFaqItems, type FAQItem } from '@/data/faq'
+import { faqPageLd } from '@/lib/seo'
+
+/** Те же категории/лимит, что у <FAQAccordion> ниже — schema совпадает с видимым блоком. */
+const faqSelection: { limit: number; categories: FAQItem['category'][] } = {
+  limit: 5,
+  categories: ['order', 'files', 'materials'],
+}
 
 type Props = { params: { slug: string } }
 
@@ -103,6 +111,10 @@ export default function SeoLandingPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageLd(selectFaqItems(faqSelection))) }}
       />
 
       {/* ── HERO ── */}
@@ -293,7 +305,7 @@ export default function SeoLandingPage({ params }: Props) {
               Все вопросы →
             </Link>
           </div>
-          <FAQAccordion limit={5} categories={['order', 'files', 'materials']} />
+          <FAQAccordion limit={faqSelection.limit} categories={faqSelection.categories} />
         </div>
       </section>
 

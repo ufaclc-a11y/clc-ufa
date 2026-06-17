@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { FAQAccordion } from '@/components/FAQAccordion'
 import { CTASection } from '@/components/CTASection'
-import { faqItems, faqCategories, type FAQItem } from '@/data/faq'
+import { faqItems } from '@/data/faq'
+import { faqPageLd } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title:       'Частые вопросы — лазерная резка и изготовление изделий в Уфе',
@@ -11,19 +12,8 @@ export const metadata: Metadata = {
   alternates:  { canonical: 'https://clc-ufa.ru/faq' },
 }
 
-// Schema.org FAQPage
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqItems.map(item => ({
-    '@type': 'Question',
-    name: item.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: item.answer,
-    },
-  })),
-}
+// Schema.org FAQPage — полный список вопросов (страница показывает все).
+const faqJsonLd = faqPageLd(faqItems)
 
 export default function FAQPage() {
   return (

@@ -13,7 +13,14 @@ import { IconCheck, IconBolt, IconTarget, SymbolIcon } from '@/components/Icons'
 import { getPortfolioCatId } from '@/data/products'
 import { GalleryGrid } from '@/components/GalleryGrid'
 import { RichText }   from '@/components/RichText'
-import { aggregateRating } from '@/lib/seo'
+import { selectFaqItems, type FAQItem } from '@/data/faq'
+import { aggregateRating, faqPageLd } from '@/lib/seo'
+
+/** Те же категории/лимит, что у <FAQAccordion> ниже — schema совпадает с видимым блоком. */
+const faqSelection: { limit: number; categories: FAQItem['category'][] } = {
+  limit: 5,
+  categories: ['order', 'prices', 'files'],
+}
 
 function getPortfolioPhotos(prefix: string, count: number, limit = 8): string[] {
   const step = Math.max(1, Math.floor(count / limit))
@@ -103,6 +110,10 @@ export default function ProductPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageLd(selectFaqItems(faqSelection))) }}
       />
 
       <div className="pt-24 bg-[#F5F4F0]">
@@ -284,7 +295,7 @@ export default function ProductPage({ params }: Props) {
               Все вопросы →
             </Link>
           </div>
-          <FAQAccordion limit={5} categories={['order', 'prices', 'files']} />
+          <FAQAccordion limit={faqSelection.limit} categories={faqSelection.categories} />
         </div>
       </section>
 

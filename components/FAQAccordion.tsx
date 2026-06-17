@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { faqItems, faqCategories, type FAQItem } from '@/data/faq'
+import { selectFaqItems, faqCategories, type FAQItem } from '@/data/faq'
 import { RichText } from '@/components/RichText'
 
 function AccordionItem({
@@ -57,9 +57,7 @@ type Props = {
 export function FAQAccordion({ categories, limit, grouped = false }: Props) {
   const [openId, setOpenId] = useState<string | null>(null)
 
-  const filtered = faqItems
-    .filter(f => !categories || categories.includes(f.category))
-    .slice(0, limit)
+  const filtered = selectFaqItems({ categories, limit })
 
   const toggle = (id: string) => setOpenId(prev => (prev === id ? null : id))
 

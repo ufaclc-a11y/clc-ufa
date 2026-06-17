@@ -12,7 +12,14 @@ import { FAQAccordion }   from '@/components/FAQAccordion'
 import { SymbolIcon }     from '@/components/Icons'
 import { GalleryGrid }   from '@/components/GalleryGrid'
 import { RichText }      from '@/components/RichText'
-import { SITE, localBusinessRef, aggregateRating } from '@/lib/seo'
+import { selectFaqItems, type FAQItem } from '@/data/faq'
+import { SITE, localBusinessRef, aggregateRating, faqPageLd } from '@/lib/seo'
+
+/** Те же категории/лимит, что у <FAQAccordion> ниже — schema совпадает с видимым блоком. */
+const faqSelection: { limit: number; categories: FAQItem['category'][] } = {
+  limit: 5,
+  categories: ['order', 'prices', 'files'],
+}
 
 type Props = { params: { slug: string } }
 
@@ -89,6 +96,7 @@ export default function ServicePage({ params }: Props) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageLd(selectFaqItems(faqSelection))) }} />
       {/* ── HERO ── */}
       <div className="relative min-h-[560px] flex items-end bg-[#1A1A1A] overflow-hidden pt-24">
         <div className="absolute inset-0">
@@ -435,7 +443,7 @@ export default function ServicePage({ params }: Props) {
               Все вопросы →
             </Link>
           </div>
-          <FAQAccordion limit={5} categories={['order', 'prices', 'files']} />
+          <FAQAccordion limit={faqSelection.limit} categories={faqSelection.categories} />
         </div>
       </section>
 

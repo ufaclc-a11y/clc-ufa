@@ -75,6 +75,24 @@ export function breadcrumbLd(items: { name: string; url?: string }[]) {
   }
 }
 
+/**
+ * FAQPage schema. Передавай ТЕ ЖЕ вопросы, что рендерятся на странице
+ * (через selectFaqItems из data/faq.ts) — разметка должна совпадать с видимым
+ * FAQ-блоком. Ответы — это plain-текст из data/faq.ts (RichText лишь линкует
+ * названия мессенджеров, текст не меняется), поэтому подходят как есть.
+ */
+export function faqPageLd(items: { question: string; answer: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map(it => ({
+      '@type': 'Question',
+      name: it.question,
+      acceptedAnswer: { '@type': 'Answer', text: it.answer },
+    })),
+  }
+}
+
 /** Удобный рендер: <JsonLd data={...} /> */
 export function jsonLdScript(data: unknown) {
   return { __html: JSON.stringify(data) }

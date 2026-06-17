@@ -138,6 +138,19 @@ export const faqItems: FAQItem[] = [
   },
 ]
 
+/**
+ * Выборка вопросов для показа. Используется И в <FAQAccordion>, И в FAQPage
+ * JSON-LD (lib/seo.ts → faqPageLd), чтобы structured data всегда совпадала
+ * с видимым на странице блоком — это требование Google для FAQ-разметки.
+ */
+export function selectFaqItems(
+  opts: { categories?: FAQItem['category'][]; limit?: number } = {},
+): FAQItem[] {
+  return faqItems
+    .filter(f => !opts.categories || opts.categories.includes(f.category))
+    .slice(0, opts.limit)
+}
+
 export const faqCategories: Record<FAQItem['category'], string> = {
   general:   'Общие вопросы',
   order:     'Оформление заказа',

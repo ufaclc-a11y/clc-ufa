@@ -15,6 +15,12 @@ import { blogPosts }         from '@/data/blog'
 import Image                 from 'next/image'
 import { SymbolIcon }        from '@/components/Icons'
 import { JsonLd }            from '@/components/JsonLd'
+import { selectFaqItems }    from '@/data/faq'
+import { faqPageLd }         from '@/lib/seo'
+
+/** Один источник лимита для FAQ-блока и FAQPage schema — чтобы не разъезжались. */
+const HOME_FAQ_LIMIT = 6
+const faqLd = faqPageLd(selectFaqItems({ limit: HOME_FAQ_LIMIT }))
 
 const howToLd = {
   '@context': 'https://schema.org',
@@ -60,6 +66,7 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={howToLd} />
+      <JsonLd data={faqLd} />
       {/* ─── HERO ─── */}
       <section className="relative min-h-screen bg-black flex flex-col justify-end pb-20 pt-32 overflow-hidden">
         {/* Фоновое фото: лазерная голова за работой */}
@@ -305,7 +312,7 @@ export default function HomePage() {
               Все вопросы →
             </Link>
           </div>
-          <FAQAccordion limit={6} />
+          <FAQAccordion limit={HOME_FAQ_LIMIT} />
         </div>
       </section>
 
