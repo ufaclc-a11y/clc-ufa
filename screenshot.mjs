@@ -20,7 +20,13 @@ const browser = await puppeteer.launch({
 })
 const page    = await browser.newPage()
 await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1.5 })
-await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 })
+// domcontentloaded надёжнее networkidle на страницах с галереями/картой
+// (где сеть долго не «затихает»); таймаут не роняет скрипт — снимаем что есть.
+try {
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 })
+} catch (e) {
+  console.warn(`warn: navigation не завершилась идеально (${e.name}) — продолжаю`)
+}
 
 // Прокручиваем страницу чтобы trigger lazy-loaded images
 await page.evaluate(async () => {
@@ -35,7 +41,7 @@ await page.evaluate(async () => {
     }, 100)
   })
 })
-await new Promise(r => setTimeout(r, 1500))
+await new Promise(r => setTimeout(r, 2500))
 
 const fullPage = process.argv[4] === '--full'
 await page.screenshot({ path: out, fullPage })
