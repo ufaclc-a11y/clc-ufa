@@ -46,6 +46,7 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      { source: '/wtf',                 destination: '/fonts',                    permanent: true },
       { source: '/laser-rez',           destination: '/services/lazernaya-rezka', permanent: true },
       { source: '/lazer-rez-fanera',    destination: '/services/lazernaya-rezka', permanent: true },
       { source: '/lazer-rez-acril',     destination: '/services/lazernaya-rezka', permanent: true },

@@ -11,6 +11,7 @@ const nav = [
   { href: '/products',  label: 'Изделия'     },
   { href: '/shop',      label: 'Магазин'     },
   { href: '/portfolio', label: 'Работы'      },
+  { href: '/fonts',     label: 'Шрифты'      },
   { href: '/b2b',       label: 'Для бизнеса' },
   { href: '/contacts',  label: 'Контакты'    },
 ]

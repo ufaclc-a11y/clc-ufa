@@ -16,6 +16,7 @@ const seoLinks = [
   { href: '/izgotovlenie-medaley-ufa',      label: 'Медали'          },
   { href: '/tablichki-na-zakaz-ufa',        label: 'Таблички'        },
   { href: '/gravirovka-na-dereve-ufa',      label: 'Гравировка'      },
+  { href: '/fonts',                         label: 'Подбор шрифта'   },
   { href: '/materials',                     label: 'Материалы'        },
 ]
 
