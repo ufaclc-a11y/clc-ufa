@@ -8,13 +8,11 @@ export const portfolioFiles: Record<string, string[]> = {
   ],
   "bejdzhi": [
     "bejdzhi-001.jpg",
-    "bejdzhi-002.jpg",
     "bejdzhi-003.jpg",
     "bejdzhi-004.jpg",
     "bejdzhi-005.jpg"
   ],
   "breloki": [
-    "breloki-001.jpg",
     "breloki-002.jpg",
     "breloki-003.jpg",
     "breloki-004.jpg",
@@ -25,9 +23,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "breloki-009.jpg",
     "breloki-010.jpg",
     "breloki-011.jpg",
-    "breloki-012.jpg",
     "breloki-013.jpg",
-    "breloki-014.jpg",
     "breloki-015.jpg"
   ],
   "chasy": [
@@ -36,7 +32,6 @@ export const portfolioFiles: Record<string, string[]> = {
     "chasy-003.jpg",
     "chasy-004.jpg",
     "chasy-005.jpg",
-    "chasy-006.jpg",
     "chasy-007.jpg",
     "chasy-008.jpg"
   ],
@@ -61,7 +56,6 @@ export const portfolioFiles: Record<string, string[]> = {
     "frezernaya-rezka-018.jpg",
     "frezernaya-rezka-019.jpg",
     "frezernaya-rezka-020.jpg",
-    "frezernaya-rezka-021.jpg",
     "frezernaya-rezka-022.jpg",
     "frezernaya-rezka-023.jpg",
     "frezernaya-rezka-024.jpg",
@@ -112,8 +106,6 @@ export const portfolioFiles: Record<string, string[]> = {
     "gravirovka-017.jpg",
     "gravirovka-018.jpg",
     "gravirovka-019.jpg",
-    "gravirovka-020.jpg",
-    "gravirovka-021.jpg",
     "gravirovka-022.jpg",
     "gravirovka-023.jpg",
     "gravirovka-024.jpg",
@@ -128,7 +120,6 @@ export const portfolioFiles: Record<string, string[]> = {
     "gravirovka-033.jpg",
     "gravirovka-034.jpg",
     "gravirovka-035.jpg",
-    "gravirovka-036.jpg",
     "gravirovka-037.jpg",
     "gravirovka-038.jpg",
     "gravirovka-039.jpg",
@@ -140,8 +131,6 @@ export const portfolioFiles: Record<string, string[]> = {
     "gravirovka-045.jpg",
     "gravirovka-046.jpg",
     "gravirovka-047.jpg",
-    "gravirovka-048.jpg",
-    "gravirovka-049.jpg",
     "gravirovka-050.jpg",
     "gravirovka-051.jpg",
     "gravirovka-052.jpg",
@@ -150,18 +139,26 @@ export const portfolioFiles: Record<string, string[]> = {
     "gravirovka-055.jpg",
     "gravirovka-056.jpg",
     "gravirovka-057.jpg",
-    "gravirovka-058.jpg",
     "gravirovka-059.jpg",
     "gravirovka-060.jpg",
     "gravirovka-061.jpg",
     "gravirovka-062.jpg",
-    "gravirovka-063.jpg",
     "gravirovka-064.jpg",
     "gravirovka-065.jpg",
     "gravirovka-066.jpg",
     "gravirovka-067.jpg",
     "gravirovka-068.jpg",
-    "gravirovka-069.jpg"
+    "gravirovka-069.jpg",
+    "gravirovka-070.jpg",
+    "gravirovka-071.jpg",
+    "gravirovka-072.jpg",
+    "gravirovka-073.jpg",
+    "gravirovka-074.jpg",
+    "gravirovka-075.jpg"
+  ],
+  "gravirovka-chasy": [
+    "gravirovka-chasy-001.jpg",
+    "gravirovka-chasy-002.jpg"
   ],
   "kheshtegi": [
     "kheshtegi-001.jpg",
@@ -198,7 +195,6 @@ export const portfolioFiles: Record<string, string[]> = {
     "koroba-fanera-004.jpg",
     "koroba-fanera-005.jpg",
     "koroba-fanera-006.jpg",
-    "koroba-fanera-007.jpg",
     "koroba-fanera-008.jpg",
     "koroba-fanera-009.jpg",
     "koroba-fanera-010.jpg",
@@ -357,7 +353,6 @@ export const portfolioFiles: Record<string, string[]> = {
     "lazernaya-rezka-087.jpg",
     "lazernaya-rezka-088.jpg",
     "lazernaya-rezka-089.jpg",
-    "lazernaya-rezka-090.jpg",
     "lazernaya-rezka-091.jpg",
     "lazernaya-rezka-092.jpg",
     "lazernaya-rezka-093.jpg",
@@ -505,10 +500,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "lazernaya-rezka-235.jpg",
     "lazernaya-rezka-236.jpg",
     "lazernaya-rezka-237.jpg",
-    "lazernaya-rezka-238.jpg",
     "lazernaya-rezka-239.jpg",
-    "lazernaya-rezka-240.jpg",
-    "lazernaya-rezka-241.jpg",
     "lazernaya-rezka-242.jpg",
     "lazernaya-rezka-243.jpg",
     "lazernaya-rezka-244.jpg",
@@ -573,7 +565,6 @@ export const portfolioFiles: Record<string, string[]> = {
     "lazernaya-rezka-303.jpg",
     "lazernaya-rezka-304.jpg",
     "lazernaya-rezka-305.jpg",
-    "lazernaya-rezka-306.jpg",
     "lazernaya-rezka-307.jpg",
     "lazernaya-rezka-308.jpg",
     "lazernaya-rezka-309.jpg",
@@ -641,7 +632,17 @@ export const portfolioFiles: Record<string, string[]> = {
     "lazernaya-rezka-371.jpg",
     "lazernaya-rezka-372.jpg",
     "lazernaya-rezka-373.jpg",
-    "lazernaya-rezka-374.jpg"
+    "lazernaya-rezka-374.jpg",
+    "lazernaya-rezka-375.jpg",
+    "lazernaya-rezka-376.jpg",
+    "lazernaya-rezka-377.jpg",
+    "lazernaya-rezka-378.jpg",
+    "lazernaya-rezka-379.jpg",
+    "lazernaya-rezka-380.jpg",
+    "lazernaya-rezka-381.jpg",
+    "lazernaya-rezka-382.jpg",
+    "lazernaya-rezka-383.jpg",
+    "lazernaya-rezka-384.jpg"
   ],
   "medali": [
     "medali-001.jpg",
@@ -666,7 +667,9 @@ export const portfolioFiles: Record<string, string[]> = {
     "medali-020.jpg",
     "medali-021.jpg",
     "medali-022.jpg",
-    "medali-023.jpg"
+    "medali-023.jpg",
+    "medali-024.jpg",
+    "medali-025.jpg"
   ],
   "medalnitsa": [
     "medalnitsa-001.jpg",
@@ -674,9 +677,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "medalnitsa-003.jpg",
     "medalnitsa-004.jpg",
     "medalnitsa-005.jpg",
-    "medalnitsa-006.jpg",
-    "medalnitsa-007.jpg",
-    "medalnitsa-008.jpg"
+    "medalnitsa-006.jpg"
   ],
   "nagradnye-statuetki": [
     "nagradnye-statuetki-002.jpg",
@@ -692,7 +693,11 @@ export const portfolioFiles: Record<string, string[]> = {
     "nagradnye-statuetki-019.jpg",
     "nagradnye-statuetki-020.jpg",
     "nagradnye-statuetki-021.jpg",
-    "nagradnye-statuetki-022.jpg"
+    "nagradnye-statuetki-022.jpg",
+    "nagradnye-statuetki-023.jpg",
+    "nagradnye-statuetki-024.jpg",
+    "nagradnye-statuetki-025.jpg",
+    "nagradnye-statuetki-026.jpg"
   ],
   "nomerki-garderob": [
     "nomerki-garderob-001.jpg",
@@ -751,7 +756,13 @@ export const portfolioFiles: Record<string, string[]> = {
     "ramki-foto-007.jpg",
     "ramki-foto-008.jpg",
     "ramki-foto-009.jpg",
-    "ramki-foto-010.jpg"
+    "ramki-foto-010.jpg",
+    "ramki-foto-011.jpg",
+    "ramki-foto-012.jpg"
+  ],
+  "shildiki-abs": [
+    "shildiki-abs-001.jpg",
+    "shildiki-abs-002.jpg"
   ],
   "shkatulki-fanera": [
     "shkatulki-fanera-001.jpg",
@@ -783,14 +794,13 @@ export const portfolioFiles: Record<string, string[]> = {
     "tablitchki-011.jpg",
     "tablitchki-012.jpg",
     "tablitchki-013.jpg",
-    "tablitchki-014.jpg",
-    "tablitchki-015.jpg",
     "tablitchki-016.jpg",
     "tablitchki-017.jpg",
     "tablitchki-018.jpg",
     "tablitchki-019.jpg",
     "tablitchki-020.jpg",
-    "tablitchki-021.jpg"
+    "tablitchki-021.jpg",
+    "tablitchki-022.jpg"
   ],
   "tejbl-tenty": [
     "tejbl-tenty-001.jpg",
@@ -823,13 +833,13 @@ export const portfolioFiles: Record<string, string[]> = {
     "uf-pechat-021.jpg",
     "uf-pechat-022.jpg",
     "uf-pechat-023.jpg",
-    "uf-pechat-024.jpg"
+    "uf-pechat-024.jpg",
+    "uf-pechat-025.jpg"
   ],
   "vyveski": [
     "vyveski-001.jpg",
     "vyveski-002.jpg",
     "vyveski-003.jpg",
-    "vyveski-004.jpg",
     "vyveski-005.jpg",
     "vyveski-006.jpg",
     "vyveski-007.jpg",
@@ -839,7 +849,8 @@ export const portfolioFiles: Record<string, string[]> = {
     "vyveski-011.jpg",
     "vyveski-012.jpg",
     "vyveski-013.jpg",
-    "vyveski-014.jpg"
+    "vyveski-014.jpg",
+    "vyveski-015.jpg"
   ],
   "zagotovki": [
     "zagotovki-001.jpg",

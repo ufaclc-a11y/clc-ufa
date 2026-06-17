@@ -4,6 +4,12 @@
 2. Проход 1: каждое фото → сервисный префикс (по первому тегу-услуге)
 3. Проход 2: каждое фото → все продуктовые префиксы (по всем тегам)
 4. Выводит отчёт с кол-вом по каждому префиксу
+
+ВНИМАНИЕ: полный пересбор. Удаляет ВСЁ из portfolio и собирает заново из
+photo_tags.json + архива. Ручные удаления файлов в public/images/portfolio/
+ЗДЕСЬ НЕ УЧИТЫВАЮТСЯ и ВОСКРЕСНУТ — чтобы убрать фото совсем, сними с него теги
+в photo_tagger.py (или удали запись в photo_tags.json) ДО запуска. Для простой
+ДОзагрузки новых фото без пересбора используй import_new.py (append-only).
 """
 import json, os, shutil, sys, collections, glob
 
@@ -40,6 +46,8 @@ SERVICE_PREFIX = {
     "Фрезеровка МДФ":             "frezernaya-rezka",
     "Фрезеровка ПВХ":             "frezernaya-rezka",
     "Изготовление менажниц":      "frezernaya-rezka",
+    "Гравировка на кулонах":      "gravirovka",
+    "Гравировка на медалях":      "gravirovka",
 }
 
 PRODUCT_PREFIX = {
@@ -61,6 +69,8 @@ PRODUCT_PREFIX = {
     "Ключница":                   "klyuchnitsa",
     "Тейбл тенты и менюхолдеры": "tejbl-tenty",
     "Заготовки для творчества":   "zagotovki",
+    "Шилдики из АБС пластика":    "shildiki-abs",
+    "Гравировка на часах":        "gravirovka-chasy",
 }
 
 ALL_PREFIX = {**SERVICE_PREFIX, **PRODUCT_PREFIX}
