@@ -2,6 +2,8 @@ import {
   // script / рукописные
   Lobster, Caveat, Marck_Script, Bad_Script, Pangolin, Pacifico,
   Lobster_Two, Pattaya, Neucha,
+  Comforter, Comforter_Brush, Amatic_SC, Balsamiq_Sans, Bellota,
+  Shantell_Sans, Yomogi, Klee_One, Hachi_Maru_Pop, Zen_Kurenaido,
   // serif / с засечками
   Yeseva_One, Playfair_Display, Prata, Forum, PT_Serif, Merriweather,
   Lora, Cormorant, EB_Garamond, Spectral, Vollkorn, Old_Standard_TT,
@@ -33,6 +35,16 @@ const pacifico   = Pacifico({        weight: '400', subsets: ['latin', 'cyrillic
 const lobsterTwo = Lobster_Two({     weight: '400', subsets: ['latin'], display: 'swap', preload: false, variable: '--fp-lobstertwo' })
 const pattaya    = Pattaya({         weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-pattaya'    })
 const neucha     = Neucha({          weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-neucha'     })
+const comforter  = Comforter({       weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-comforter' })
+const comforterBr= Comforter_Brush({ weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-comfortbr' })
+const amatic     = Amatic_SC({       weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-amatic'    })
+const balsamiq   = Balsamiq_Sans({   weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-balsamiq'  })
+const bellota    = Bellota({         weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-bellota'   })
+const shantell   = Shantell_Sans({   weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-shantell'  })
+const yomogi     = Yomogi({          weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-yomogi'    })
+const kleeOne    = Klee_One({        weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-klee'      })
+const hachiMaru  = Hachi_Maru_Pop({  weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-hachimaru' })
+const zenKure    = Zen_Kurenaido({   weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-zenkure'   })
 
 // ── serif / с засечками ──────────────────────────────────────────────────────
 const yeseva     = Yeseva_One({      weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-yeseva'    })
@@ -110,6 +122,16 @@ export const previewFonts: PreviewFont[] = [
   { id: 'pattaya',    name: 'Pattaya',          cssVar: '--fp-pattaya',    cyrillic: true,  category: 'script' },
   { id: 'neucha',     name: 'Neucha',           cssVar: '--fp-neucha',     cyrillic: true,  category: 'script' },
   { id: 'pacifico',   name: 'Pacifico',         cssVar: '--fp-pacifico',   cyrillic: true,  category: 'script' },
+  { id: 'comforter',  name: 'Comforter',        cssVar: '--fp-comforter',  cyrillic: true,  category: 'script' },
+  { id: 'comfortbr',  name: 'Comforter Brush',  cssVar: '--fp-comfortbr',  cyrillic: true,  category: 'script' },
+  { id: 'amatic',     name: 'Amatic SC',        cssVar: '--fp-amatic',     cyrillic: true,  category: 'script' },
+  { id: 'balsamiq',   name: 'Balsamiq Sans',    cssVar: '--fp-balsamiq',   cyrillic: true,  category: 'script' },
+  { id: 'bellota',    name: 'Bellota',          cssVar: '--fp-bellota',    cyrillic: true,  category: 'script' },
+  { id: 'shantell',   name: 'Shantell Sans',    cssVar: '--fp-shantell',   cyrillic: true,  category: 'script' },
+  { id: 'yomogi',     name: 'Yomogi',           cssVar: '--fp-yomogi',     cyrillic: true,  category: 'script' },
+  { id: 'klee',       name: 'Klee One',         cssVar: '--fp-klee',       cyrillic: true,  category: 'script' },
+  { id: 'hachimaru',  name: 'Hachi Maru Pop',   cssVar: '--fp-hachimaru',  cyrillic: true,  category: 'script' },
+  { id: 'zenkure',    name: 'Zen Kurenaido',    cssVar: '--fp-zenkure',    cyrillic: true,  category: 'script' },
   // serif
   { id: 'yeseva',     name: 'Yeseva One',       cssVar: '--fp-yeseva',     cyrillic: true,  category: 'serif'  },
   { id: 'playfair',   name: 'Playfair Display', cssVar: '--fp-playfair',   cyrillic: true,  category: 'serif'  },
@@ -159,6 +181,7 @@ export const previewFonts: PreviewFont[] = [
 // Класс со всеми CSS-переменными шрифтов — вешается на обёртку страницы.
 export const previewFontVars = [
   lobster, caveat, marck, badScript, pangolin, pacifico, lobsterTwo, pattaya, neucha,
+  comforter, comforterBr, amatic, balsamiq, bellota, shantell, yomogi, kleeOne, hachiMaru, zenKure,
   yeseva, playfair, prata, forum, ptSerif, merriweather, lora, cormorant, ebGaramond,
   spectral, vollkorn, oldStandard, tenor, philosopher, notoSerif,
   ruslan, underdog, pressStart, seymour, rubikMono, stalinist, kellySlab, podkova,

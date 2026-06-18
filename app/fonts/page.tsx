@@ -48,6 +48,28 @@ export default function FontsPage() {
           <Link href="/contacts" className="text-[#FF6B00] hover:underline">Напишите нам</Link>{' '}
           — подберём под вашу задачу.
         </p>
+
+        {/* Лицензия на шрифты */}
+        <div className="mt-12 bg-white/60 border border-[#E8E6E0] rounded-2xl p-5 sm:p-6">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="font-mono text-[10px] tracking-[0.15em] px-2 py-0.5 rounded-full bg-[#FF6B00]/10 text-[#FF6B00]">
+              FREE
+            </span>
+            <h2 className="font-display text-lg text-[#1A1A1A] tracking-wide">Лицензия на шрифты</h2>
+          </div>
+          <p className="text-sm text-[#6E6A64] leading-relaxed">
+            Все шрифты в этом подборщике — бесплатные и с открытым исходным кодом, из библиотеки{' '}
+            <a href="https://fonts.google.com" target="_blank" rel="noopener noreferrer" className="text-[#FF6B00] hover:underline">
+              Google Fonts
+            </a>. Они распространяются по лицензии{' '}
+            <a href="https://openfontlicense.org" target="_blank" rel="noopener noreferrer" className="text-[#FF6B00] hover:underline">
+              SIL Open Font License (OFL)
+            </a>{' '}
+            или Apache License 2.0 — обе разрешают свободное использование, в том числе в
+            коммерческих целях (гравировка на заказ). Платить за шрифты или покупать лицензию
+            не нужно. Авторские права на сами начертания принадлежат их разработчикам.
+          </p>
+        </div>
       </div>
     </div>
   )
