@@ -5,6 +5,7 @@ import { notFound }      from 'next/navigation'
 import { seoPages }      from '@/data/seo-pages'
 import { products }      from '@/data/products'
 import { services }      from '@/data/services'
+import { samplePhotos }  from '@/data/portfolio'
 import { Breadcrumbs }   from '@/components/Breadcrumbs'
 import { ContactButtons } from '@/components/ContactButtons'
 import { RichText }       from '@/components/RichText'
@@ -73,17 +74,7 @@ export default function SeoLandingPage({ params }: Props) {
   function deriveGalleryFromService(): string[] {
     if (!relatedService) return []
     if (relatedService.portfolioPhotos?.length) return relatedService.portfolioPhotos.slice(0, 6)
-    if (relatedService.portfolioPrefix && relatedService.portfolioCount) {
-      const count = relatedService.portfolioCount
-      const limit = 6
-      const step  = Math.max(1, Math.floor(count / limit))
-      const photos: string[] = []
-      for (let i = 1; i <= count && photos.length < limit; i += step) {
-        photos.push(`/images/portfolio/${relatedService.portfolioPrefix}-${String(i).padStart(3, '0')}.jpg`)
-      }
-      return photos
-    }
-    return []
+    return samplePhotos(relatedService.portfolioPrefix, 6)
   }
   const galleryPhotos: string[] = page.galleryPhotos?.length
     ? page.galleryPhotos

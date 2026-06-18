@@ -12,6 +12,7 @@ import { business } from '@/data/contacts'
 import { IconCheck, IconBolt, IconTarget, SymbolIcon } from '@/components/Icons'
 import { getPortfolioCatId } from '@/data/products'
 import { GalleryGrid } from '@/components/GalleryGrid'
+import { samplePhotos } from '@/data/portfolio'
 import { RichText }   from '@/components/RichText'
 import { selectFaqItems, type FAQItem } from '@/data/faq'
 import { aggregateRating, faqPageLd } from '@/lib/seo'
@@ -20,15 +21,6 @@ import { aggregateRating, faqPageLd } from '@/lib/seo'
 const faqSelection: { limit: number; categories: FAQItem['category'][] } = {
   limit: 5,
   categories: ['order', 'prices', 'files'],
-}
-
-function getPortfolioPhotos(prefix: string, count: number, limit = 8): string[] {
-  const step = Math.max(1, Math.floor(count / limit))
-  const photos: string[] = []
-  for (let i = 1; i <= count && photos.length < limit; i += step) {
-    photos.push(`/images/portfolio/${prefix}-${String(i).padStart(3, '0')}.jpg`)
-  }
-  return photos
 }
 
 type Props = { params: { id: string } }
@@ -71,9 +63,7 @@ export default function ProductPage({ params }: Props) {
     .slice(0, 4)
 
   // Portfolio gallery
-  const portfolioPhotos = product.portfolioPrefix && product.portfolioCount
-    ? getPortfolioPhotos(product.portfolioPrefix, product.portfolioCount, 8)
-    : []
+  const portfolioPhotos = samplePhotos(product.portfolioPrefix, 8)
 
   const waMessage = encodeURIComponent(
     `Здравствуйте! Хочу заказать: ${product.title}. Подскажите стоимость.`

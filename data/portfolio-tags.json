@@ -1,0 +1,4778 @@
+{
+  "akril-klishe-001.jpg": {
+    "categories": [
+      "akril-klishe"
+    ],
+    "order": {
+      "akril-klishe": 1
+    }
+  },
+  "akril-klishe-002.jpg": {
+    "categories": [
+      "akril-klishe"
+    ],
+    "order": {
+      "akril-klishe": 2
+    }
+  },
+  "bejdzhi-001.jpg": {
+    "categories": [
+      "bejdzhi"
+    ],
+    "order": {
+      "bejdzhi": 1
+    }
+  },
+  "bejdzhi-003.jpg": {
+    "categories": [
+      "bejdzhi",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "bejdzhi": 3,
+      "lazernaya-rezka": 21
+    }
+  },
+  "bejdzhi-004.jpg": {
+    "categories": [
+      "bejdzhi",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "bejdzhi": 4,
+      "lazernaya-rezka": 216
+    }
+  },
+  "bejdzhi-005.jpg": {
+    "categories": [
+      "bejdzhi",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "bejdzhi": 5,
+      "lazernaya-rezka": 246
+    }
+  },
+  "breloki-002.jpg": {
+    "categories": [
+      "breloki",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "breloki": 2,
+      "lazernaya-rezka": 8
+    }
+  },
+  "breloki-003.jpg": {
+    "categories": [
+      "breloki",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "breloki": 3,
+      "lazernaya-rezka": 29
+    }
+  },
+  "breloki-004.jpg": {
+    "categories": [
+      "breloki",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "breloki": 4,
+      "lazernaya-rezka": 42
+    }
+  },
+  "breloki-005.jpg": {
+    "categories": [
+      "breloki",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "breloki": 5,
+      "lazernaya-rezka": 63
+    }
+  },
+  "breloki-006.jpg": {
+    "categories": [
+      "breloki",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "breloki": 6,
+      "lazernaya-rezka": 89
+    }
+  },
+  "breloki-007.jpg": {
+    "categories": [
+      "breloki",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "breloki": 7,
+      "lazernaya-rezka": 93
+    }
+  },
+  "breloki-008.jpg": {
+    "categories": [
+      "breloki",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "breloki": 8,
+      "lazernaya-rezka": 101
+    }
+  },
+  "breloki-010.jpg": {
+    "categories": [
+      "breloki",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "breloki": 10,
+      "lazernaya-rezka": 221
+    }
+  },
+  "breloki-011.jpg": {
+    "categories": [
+      "breloki",
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "breloki": 11,
+      "lazernaya-rezka": 233,
+      "medali": 22
+    }
+  },
+  "breloki-013.jpg": {
+    "categories": [
+      "breloki",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "breloki": 13,
+      "lazernaya-rezka": 311
+    }
+  },
+  "breloki-015.jpg": {
+    "categories": [
+      "breloki",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "breloki": 15,
+      "lazernaya-rezka": 367
+    }
+  },
+  "chasy-001.jpg": {
+    "categories": [
+      "chasy",
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "chasy": 1,
+      "frezernaya-rezka": 4
+    }
+  },
+  "chasy-002.jpg": {
+    "categories": [
+      "chasy",
+      "lazernaya-rezka",
+      "ramki-foto"
+    ],
+    "order": {
+      "chasy": 2,
+      "lazernaya-rezka": 131,
+      "ramki-foto": 2
+    }
+  },
+  "chasy-003.jpg": {
+    "categories": [
+      "chasy",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "chasy": 3,
+      "lazernaya-rezka": 178
+    }
+  },
+  "chasy-004.jpg": {
+    "categories": [
+      "chasy",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "chasy": 4,
+      "lazernaya-rezka": 181
+    }
+  },
+  "chasy-007.jpg": {
+    "categories": [
+      "chasy",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "chasy": 7,
+      "lazernaya-rezka": 254
+    }
+  },
+  "chasy-008.jpg": {
+    "categories": [
+      "chasy",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "chasy": 8,
+      "lazernaya-rezka": 255
+    }
+  },
+  "frezernaya-rezka-001.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 1
+    }
+  },
+  "frezernaya-rezka-002.jpg": {
+    "categories": [
+      "frezernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "frezernaya-rezka": 2,
+      "nagradnye-statuetki": 2
+    }
+  },
+  "frezernaya-rezka-003.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 3
+    }
+  },
+  "frezernaya-rezka-005.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 5
+    }
+  },
+  "frezernaya-rezka-006.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 6
+    }
+  },
+  "frezernaya-rezka-007.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 7
+    }
+  },
+  "frezernaya-rezka-008.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 8
+    }
+  },
+  "frezernaya-rezka-009.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 9
+    }
+  },
+  "frezernaya-rezka-010.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 10
+    }
+  },
+  "frezernaya-rezka-011.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 11
+    }
+  },
+  "frezernaya-rezka-012.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 12
+    }
+  },
+  "frezernaya-rezka-013.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 13
+    }
+  },
+  "frezernaya-rezka-014.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 14
+    }
+  },
+  "frezernaya-rezka-015.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 15
+    }
+  },
+  "frezernaya-rezka-016.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 16
+    }
+  },
+  "frezernaya-rezka-017.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 17
+    }
+  },
+  "frezernaya-rezka-018.jpg": {
+    "categories": [
+      "frezernaya-rezka",
+      "koroba-fanera"
+    ],
+    "order": {
+      "frezernaya-rezka": 18,
+      "koroba-fanera": 1
+    }
+  },
+  "frezernaya-rezka-019.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 19
+    }
+  },
+  "frezernaya-rezka-020.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 20
+    }
+  },
+  "frezernaya-rezka-022.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 22
+    }
+  },
+  "frezernaya-rezka-023.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 23
+    }
+  },
+  "frezernaya-rezka-024.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 24
+    }
+  },
+  "frezernaya-rezka-025.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 25
+    }
+  },
+  "frezernaya-rezka-026.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 26
+    }
+  },
+  "frezernaya-rezka-027.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 27
+    }
+  },
+  "frezernaya-rezka-028.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 28
+    }
+  },
+  "frezernaya-rezka-029.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 29
+    }
+  },
+  "frezernaya-rezka-030.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 30
+    }
+  },
+  "frezernaya-rezka-031.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 31
+    }
+  },
+  "frezernaya-rezka-032.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 32
+    }
+  },
+  "frezernaya-rezka-033.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 33
+    }
+  },
+  "frezernaya-rezka-034.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 34
+    }
+  },
+  "frezernaya-rezka-035.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 35
+    }
+  },
+  "frezernaya-rezka-036.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 36
+    }
+  },
+  "frezernaya-rezka-037.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 37
+    }
+  },
+  "frezernaya-rezka-038.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 38
+    }
+  },
+  "frezernaya-rezka-039.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 39
+    }
+  },
+  "frezernaya-rezka-040.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 40
+    }
+  },
+  "frezernaya-rezka-041.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 41
+    }
+  },
+  "frezernaya-rezka-042.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 42
+    }
+  },
+  "frezernaya-rezka-043.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 43
+    }
+  },
+  "frezernaya-rezka-044.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 44
+    }
+  },
+  "frezernaya-rezka-045.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 45
+    }
+  },
+  "frezernaya-rezka-046.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 46
+    }
+  },
+  "frezernaya-rezka-047.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 47
+    }
+  },
+  "frezernaya-rezka-048.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 48
+    }
+  },
+  "frezernaya-rezka-049.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 49
+    }
+  },
+  "frezernaya-rezka-050.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": 50
+    }
+  },
+  "gravirovka-001.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 1
+    }
+  },
+  "gravirovka-002.jpg": {
+    "categories": [
+      "gravirovka",
+      "tablitchki"
+    ],
+    "order": {
+      "gravirovka": 2,
+      "tablitchki": 1
+    }
+  },
+  "gravirovka-003.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 3
+    }
+  },
+  "gravirovka-004.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 4
+    }
+  },
+  "gravirovka-005.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 5
+    }
+  },
+  "gravirovka-006.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 6
+    }
+  },
+  "gravirovka-007.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 7
+    }
+  },
+  "gravirovka-008.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 8
+    }
+  },
+  "gravirovka-009.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 9
+    }
+  },
+  "gravirovka-010.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 10
+    }
+  },
+  "gravirovka-011.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 11
+    }
+  },
+  "gravirovka-012.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 12
+    }
+  },
+  "gravirovka-013.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 13
+    }
+  },
+  "gravirovka-014.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 14
+    }
+  },
+  "gravirovka-015.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 15
+    }
+  },
+  "gravirovka-016.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 16
+    }
+  },
+  "gravirovka-017.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 17
+    }
+  },
+  "gravirovka-018.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 18
+    }
+  },
+  "gravirovka-019.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 19
+    }
+  },
+  "gravirovka-022.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 22
+    }
+  },
+  "gravirovka-023.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 23
+    }
+  },
+  "gravirovka-024.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 24
+    }
+  },
+  "gravirovka-025.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 25
+    }
+  },
+  "gravirovka-026.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 26
+    }
+  },
+  "gravirovka-027.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 27
+    }
+  },
+  "gravirovka-028.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 28
+    }
+  },
+  "gravirovka-029.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 29
+    }
+  },
+  "gravirovka-030.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 30
+    }
+  },
+  "gravirovka-031.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 31
+    }
+  },
+  "gravirovka-032.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 32
+    }
+  },
+  "gravirovka-033.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 33
+    }
+  },
+  "gravirovka-034.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 34
+    }
+  },
+  "gravirovka-035.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 35
+    }
+  },
+  "gravirovka-038.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 38
+    }
+  },
+  "gravirovka-039.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 39
+    }
+  },
+  "gravirovka-040.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 40
+    }
+  },
+  "gravirovka-041.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 41
+    }
+  },
+  "gravirovka-042.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 42
+    }
+  },
+  "gravirovka-043.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 43
+    }
+  },
+  "gravirovka-044.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 44
+    }
+  },
+  "gravirovka-045.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 45
+    }
+  },
+  "gravirovka-046.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 46
+    }
+  },
+  "gravirovka-047.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 47
+    }
+  },
+  "gravirovka-050.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 50
+    }
+  },
+  "gravirovka-051.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 51
+    }
+  },
+  "gravirovka-052.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 52
+    }
+  },
+  "gravirovka-053.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 53
+    }
+  },
+  "gravirovka-054.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 54
+    }
+  },
+  "gravirovka-055.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 55
+    }
+  },
+  "gravirovka-056.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 56
+    }
+  },
+  "gravirovka-057.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 57
+    }
+  },
+  "gravirovka-060.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 60
+    }
+  },
+  "gravirovka-061.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 61
+    }
+  },
+  "gravirovka-062.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 62
+    }
+  },
+  "gravirovka-064.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 64
+    }
+  },
+  "gravirovka-065.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 65
+    }
+  },
+  "gravirovka-066.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 66
+    }
+  },
+  "gravirovka-067.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 67
+    }
+  },
+  "gravirovka-068.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 68
+    }
+  },
+  "gravirovka-069.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 69
+    }
+  },
+  "gravirovka-070.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 70
+    }
+  },
+  "gravirovka-071.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 71
+    }
+  },
+  "gravirovka-072.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 72
+    }
+  },
+  "gravirovka-073.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 73
+    }
+  },
+  "gravirovka-074.jpg": {
+    "categories": [
+      "gravirovka",
+      "medali"
+    ],
+    "order": {
+      "gravirovka": 74,
+      "medali": 24
+    }
+  },
+  "gravirovka-075.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": 75
+    }
+  },
+  "gravirovka-chasy-001.jpg": {
+    "categories": [
+      "gravirovka-chasy"
+    ],
+    "order": {
+      "gravirovka-chasy": 1
+    }
+  },
+  "gravirovka-chasy-002.jpg": {
+    "categories": [
+      "gravirovka-chasy"
+    ],
+    "order": {
+      "gravirovka-chasy": 2
+    }
+  },
+  "kheshtegi-001.jpg": {
+    "categories": [
+      "kheshtegi",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kheshtegi": 1,
+      "lazernaya-rezka": 43
+    }
+  },
+  "kheshtegi-002.jpg": {
+    "categories": [
+      "kheshtegi",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kheshtegi": 2,
+      "lazernaya-rezka": 49
+    }
+  },
+  "kheshtegi-003.jpg": {
+    "categories": [
+      "kheshtegi",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kheshtegi": 3,
+      "lazernaya-rezka": 50
+    }
+  },
+  "kheshtegi-004.jpg": {
+    "categories": [
+      "kheshtegi",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kheshtegi": 4,
+      "lazernaya-rezka": 51
+    }
+  },
+  "kheshtegi-005.jpg": {
+    "categories": [
+      "kheshtegi",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kheshtegi": 5,
+      "lazernaya-rezka": 52
+    }
+  },
+  "kheshtegi-006.jpg": {
+    "categories": [
+      "kheshtegi",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kheshtegi": 6,
+      "lazernaya-rezka": 151
+    }
+  },
+  "kheshtegi-007.jpg": {
+    "categories": [
+      "kheshtegi",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kheshtegi": 7,
+      "lazernaya-rezka": 159
+    }
+  },
+  "kheshtegi-008.jpg": {
+    "categories": [
+      "kheshtegi",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kheshtegi": 8,
+      "lazernaya-rezka": 171
+    }
+  },
+  "kheshtegi-009.jpg": {
+    "categories": [
+      "kheshtegi",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kheshtegi": 9,
+      "lazernaya-rezka": 186
+    }
+  },
+  "kheshtegi-010.jpg": {
+    "categories": [
+      "kheshtegi",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kheshtegi": 10,
+      "lazernaya-rezka": 213
+    }
+  },
+  "kheshtegi-011.jpg": {
+    "categories": [
+      "kheshtegi",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kheshtegi": 11,
+      "lazernaya-rezka": 219
+    }
+  },
+  "kheshtegi-012.jpg": {
+    "categories": [
+      "kheshtegi",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kheshtegi": 12,
+      "lazernaya-rezka": 248
+    }
+  },
+  "kheshtegi-013.jpg": {
+    "categories": [
+      "kheshtegi",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kheshtegi": 13,
+      "lazernaya-rezka": 281
+    }
+  },
+  "kheshtegi-014.jpg": {
+    "categories": [
+      "kheshtegi",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kheshtegi": 14,
+      "lazernaya-rezka": 334
+    }
+  },
+  "kheshtegi-015.jpg": {
+    "categories": [
+      "kheshtegi",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kheshtegi": 15,
+      "lazernaya-rezka": 341
+    }
+  },
+  "klyuchnitsa-001.jpg": {
+    "categories": [
+      "klyuchnitsa",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "klyuchnitsa": 1,
+      "lazernaya-rezka": 257
+    }
+  },
+  "klyuchnitsa-002.jpg": {
+    "categories": [
+      "klyuchnitsa",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "klyuchnitsa": 2,
+      "lazernaya-rezka": 329
+    }
+  },
+  "kormushki-001.jpg": {
+    "categories": [
+      "kormushki",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kormushki": 1,
+      "lazernaya-rezka": 25
+    }
+  },
+  "kormushki-002.jpg": {
+    "categories": [
+      "kormushki",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kormushki": 2,
+      "lazernaya-rezka": 26
+    }
+  },
+  "kormushki-003.jpg": {
+    "categories": [
+      "kormushki",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kormushki": 3,
+      "lazernaya-rezka": 79
+    }
+  },
+  "kormushki-004.jpg": {
+    "categories": [
+      "kormushki",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kormushki": 4,
+      "lazernaya-rezka": 208
+    }
+  },
+  "kormushki-005.jpg": {
+    "categories": [
+      "kormushki",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "kormushki": 5,
+      "lazernaya-rezka": 209
+    }
+  },
+  "koroba-fanera-002.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 2,
+      "lazernaya-rezka": 44
+    }
+  },
+  "koroba-fanera-003.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 3,
+      "lazernaya-rezka": 45
+    }
+  },
+  "koroba-fanera-004.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 4,
+      "lazernaya-rezka": 46
+    }
+  },
+  "koroba-fanera-005.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 5,
+      "lazernaya-rezka": 55
+    }
+  },
+  "koroba-fanera-006.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 6,
+      "lazernaya-rezka": 88
+    }
+  },
+  "koroba-fanera-008.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 8,
+      "lazernaya-rezka": 94
+    }
+  },
+  "koroba-fanera-009.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 9,
+      "lazernaya-rezka": 96
+    }
+  },
+  "koroba-fanera-010.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 10,
+      "lazernaya-rezka": 119
+    }
+  },
+  "koroba-fanera-011.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 11,
+      "lazernaya-rezka": 121
+    }
+  },
+  "koroba-fanera-012.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka",
+      "shkatulki-fanera"
+    ],
+    "order": {
+      "koroba-fanera": 12,
+      "lazernaya-rezka": 124,
+      "shkatulki-fanera": 1
+    }
+  },
+  "koroba-fanera-013.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 13,
+      "lazernaya-rezka": 136
+    }
+  },
+  "koroba-fanera-014.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 14,
+      "lazernaya-rezka": 143
+    }
+  },
+  "koroba-fanera-015.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 15,
+      "lazernaya-rezka": 144
+    }
+  },
+  "koroba-fanera-017.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka",
+      "shkatulki-fanera"
+    ],
+    "order": {
+      "koroba-fanera": 17,
+      "lazernaya-rezka": 149,
+      "shkatulki-fanera": 4
+    }
+  },
+  "koroba-fanera-018.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 18,
+      "lazernaya-rezka": 152
+    }
+  },
+  "koroba-fanera-019.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 19,
+      "lazernaya-rezka": 156
+    }
+  },
+  "koroba-fanera-020.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 20,
+      "lazernaya-rezka": 158
+    }
+  },
+  "koroba-fanera-021.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 21,
+      "lazernaya-rezka": 160
+    }
+  },
+  "koroba-fanera-022.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 22,
+      "lazernaya-rezka": 162
+    }
+  },
+  "koroba-fanera-023.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 23,
+      "lazernaya-rezka": 164
+    }
+  },
+  "koroba-fanera-024.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 24,
+      "lazernaya-rezka": 165
+    }
+  },
+  "koroba-fanera-025.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 25,
+      "lazernaya-rezka": 173
+    }
+  },
+  "koroba-fanera-026.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 26,
+      "lazernaya-rezka": 175
+    }
+  },
+  "koroba-fanera-027.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 27,
+      "lazernaya-rezka": 180
+    }
+  },
+  "koroba-fanera-029.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "koroba-fanera": 29,
+      "lazernaya-rezka": 184,
+      "organajzery": 10
+    }
+  },
+  "koroba-fanera-030.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 28,
+      "lazernaya-rezka": 182
+    }
+  },
+  "koroba-fanera-031.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 31,
+      "lazernaya-rezka": 189
+    }
+  },
+  "koroba-fanera-032.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 32,
+      "lazernaya-rezka": 195
+    }
+  },
+  "koroba-fanera-033.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 33,
+      "lazernaya-rezka": 196
+    }
+  },
+  "koroba-fanera-034.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 34,
+      "lazernaya-rezka": 197
+    }
+  },
+  "koroba-fanera-035.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 35,
+      "lazernaya-rezka": 198
+    }
+  },
+  "koroba-fanera-036.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 36,
+      "lazernaya-rezka": 201
+    }
+  },
+  "koroba-fanera-037.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 37,
+      "lazernaya-rezka": 202
+    }
+  },
+  "koroba-fanera-038.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 38,
+      "lazernaya-rezka": 204
+    }
+  },
+  "koroba-fanera-039.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 39,
+      "lazernaya-rezka": 205
+    }
+  },
+  "koroba-fanera-040.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 40,
+      "lazernaya-rezka": 224
+    }
+  },
+  "koroba-fanera-041.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "koroba-fanera": 41,
+      "lazernaya-rezka": 227,
+      "organajzery": 17
+    }
+  },
+  "koroba-fanera-042.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 42,
+      "lazernaya-rezka": 243
+    }
+  },
+  "koroba-fanera-043.jpg": {
+    "categories": [
+      "koroba-fanera"
+    ],
+    "order": {
+      "koroba-fanera": 43
+    }
+  },
+  "koroba-fanera-044.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 44,
+      "lazernaya-rezka": 252
+    }
+  },
+  "koroba-fanera-045.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 45,
+      "lazernaya-rezka": 259
+    }
+  },
+  "koroba-fanera-046.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 46,
+      "lazernaya-rezka": 260
+    }
+  },
+  "koroba-fanera-047.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 47,
+      "lazernaya-rezka": 262
+    }
+  },
+  "koroba-fanera-048.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 48,
+      "lazernaya-rezka": 263
+    }
+  },
+  "koroba-fanera-049.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 49,
+      "lazernaya-rezka": 268
+    }
+  },
+  "koroba-fanera-050.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 50,
+      "lazernaya-rezka": 269
+    }
+  },
+  "koroba-fanera-051.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 51,
+      "lazernaya-rezka": 271
+    }
+  },
+  "koroba-fanera-052.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 52,
+      "lazernaya-rezka": 277
+    }
+  },
+  "koroba-fanera-053.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 53,
+      "lazernaya-rezka": 279
+    }
+  },
+  "koroba-fanera-054.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 54,
+      "lazernaya-rezka": 287
+    }
+  },
+  "koroba-fanera-055.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 55,
+      "lazernaya-rezka": 292
+    }
+  },
+  "koroba-fanera-056.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 56,
+      "lazernaya-rezka": 293
+    }
+  },
+  "koroba-fanera-057.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "koroba-fanera": 57,
+      "lazernaya-rezka": 295,
+      "organajzery": 33
+    }
+  },
+  "koroba-fanera-058.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 58,
+      "lazernaya-rezka": 297
+    }
+  },
+  "koroba-fanera-059.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 59,
+      "lazernaya-rezka": 298
+    }
+  },
+  "koroba-fanera-060.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 60,
+      "lazernaya-rezka": 299
+    }
+  },
+  "koroba-fanera-061.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 61,
+      "lazernaya-rezka": 300
+    }
+  },
+  "koroba-fanera-062.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 62,
+      "lazernaya-rezka": 301
+    }
+  },
+  "koroba-fanera-063.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 63,
+      "lazernaya-rezka": 303
+    }
+  },
+  "koroba-fanera-064.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 64,
+      "lazernaya-rezka": 304
+    }
+  },
+  "koroba-fanera-065.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 65,
+      "lazernaya-rezka": 305
+    }
+  },
+  "koroba-fanera-066.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 66,
+      "lazernaya-rezka": 327
+    }
+  },
+  "koroba-fanera-067.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 67,
+      "lazernaya-rezka": 330
+    }
+  },
+  "koroba-fanera-068.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 68,
+      "lazernaya-rezka": 332
+    }
+  },
+  "koroba-fanera-069.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 69,
+      "lazernaya-rezka": 335
+    }
+  },
+  "koroba-fanera-070.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 70,
+      "lazernaya-rezka": 338
+    }
+  },
+  "koroba-fanera-071.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 71,
+      "lazernaya-rezka": 342
+    }
+  },
+  "koroba-fanera-072.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 72,
+      "lazernaya-rezka": 347
+    }
+  },
+  "koroba-fanera-073.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 73,
+      "lazernaya-rezka": 348
+    }
+  },
+  "koroba-fanera-074.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "koroba-fanera": 74,
+      "lazernaya-rezka": 355
+    }
+  },
+  "lazernaya-rezka-001.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 1
+    }
+  },
+  "lazernaya-rezka-003.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 3
+    }
+  },
+  "lazernaya-rezka-004.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 4,
+      "medali": 2
+    }
+  },
+  "lazernaya-rezka-006.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nomerki-garderob"
+    ],
+    "order": {
+      "lazernaya-rezka": 6,
+      "nomerki-garderob": 3
+    }
+  },
+  "lazernaya-rezka-009.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 9,
+      "medali": 3
+    }
+  },
+  "lazernaya-rezka-010.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 10,
+      "medali": 4
+    }
+  },
+  "lazernaya-rezka-011.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 11
+    }
+  },
+  "lazernaya-rezka-012.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 12
+    }
+  },
+  "lazernaya-rezka-014.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 14
+    }
+  },
+  "lazernaya-rezka-015.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 15
+    }
+  },
+  "lazernaya-rezka-016.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 16
+    }
+  },
+  "lazernaya-rezka-017.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nomerki-garderob"
+    ],
+    "order": {
+      "lazernaya-rezka": 17,
+      "nomerki-garderob": 4
+    }
+  },
+  "lazernaya-rezka-018.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 18
+    }
+  },
+  "lazernaya-rezka-019.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 19
+    }
+  },
+  "lazernaya-rezka-022.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 22
+    }
+  },
+  "lazernaya-rezka-027.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 27
+    }
+  },
+  "lazernaya-rezka-028.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 28
+    }
+  },
+  "lazernaya-rezka-030.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "lazernaya-rezka": 30,
+      "nagradnye-statuetki": 6
+    }
+  },
+  "lazernaya-rezka-031.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 31
+    }
+  },
+  "lazernaya-rezka-032.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 32
+    }
+  },
+  "lazernaya-rezka-033.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 33,
+      "medali": 9
+    }
+  },
+  "lazernaya-rezka-037.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "lazernaya-rezka": 37,
+      "nagradnye-statuetki": 8
+    }
+  },
+  "lazernaya-rezka-038.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 38
+    }
+  },
+  "lazernaya-rezka-039.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 39
+    }
+  },
+  "lazernaya-rezka-040.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "lazernaya-rezka": 40,
+      "nagradnye-statuetki": 11
+    }
+  },
+  "lazernaya-rezka-041.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "lazernaya-rezka": 41,
+      "nagradnye-statuetki": 12
+    }
+  },
+  "lazernaya-rezka-054.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 54
+    }
+  },
+  "lazernaya-rezka-056.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 56
+    }
+  },
+  "lazernaya-rezka-057.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 57
+    }
+  },
+  "lazernaya-rezka-058.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 58
+    }
+  },
+  "lazernaya-rezka-059.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "lazernaya-rezka": 59,
+      "nagradnye-statuetki": 15
+    }
+  },
+  "lazernaya-rezka-060.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 60
+    }
+  },
+  "lazernaya-rezka-065.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "lazernaya-rezka": 65,
+      "nagradnye-statuetki": 17
+    }
+  },
+  "lazernaya-rezka-067.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "lazernaya-rezka": 67,
+      "nagradnye-statuetki": 19
+    }
+  },
+  "lazernaya-rezka-074.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "tablitchki"
+    ],
+    "order": {
+      "lazernaya-rezka": 74,
+      "tablitchki": 13
+    }
+  },
+  "lazernaya-rezka-075.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "tejbl-tenty"
+    ],
+    "order": {
+      "lazernaya-rezka": 75,
+      "tejbl-tenty": 5
+    }
+  },
+  "lazernaya-rezka-076.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 76
+    }
+  },
+  "lazernaya-rezka-077.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nomerki-garderob"
+    ],
+    "order": {
+      "lazernaya-rezka": 77,
+      "nomerki-garderob": 5
+    }
+  },
+  "lazernaya-rezka-078.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nomerki-garderob"
+    ],
+    "order": {
+      "lazernaya-rezka": 78,
+      "nomerki-garderob": 6
+    }
+  },
+  "lazernaya-rezka-082.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 82,
+      "medali": 12
+    }
+  },
+  "lazernaya-rezka-083.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 83
+    }
+  },
+  "lazernaya-rezka-084.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 84
+    }
+  },
+  "lazernaya-rezka-085.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 85
+    }
+  },
+  "lazernaya-rezka-086.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 86
+    }
+  },
+  "lazernaya-rezka-087.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 87,
+      "medali": 13
+    }
+  },
+  "lazernaya-rezka-091.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 91,
+      "medali": 14
+    }
+  },
+  "lazernaya-rezka-095.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 95,
+      "medali": 16
+    }
+  },
+  "lazernaya-rezka-097.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 97
+    }
+  },
+  "lazernaya-rezka-098.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 98
+    }
+  },
+  "lazernaya-rezka-099.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 99,
+      "medali": 17
+    }
+  },
+  "lazernaya-rezka-100.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 100,
+      "medali": 18
+    }
+  },
+  "lazernaya-rezka-102.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 102
+    }
+  },
+  "lazernaya-rezka-103.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 103,
+      "medali": 19
+    }
+  },
+  "lazernaya-rezka-105.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "lazernaya-rezka": 105,
+      "nagradnye-statuetki": 21
+    }
+  },
+  "lazernaya-rezka-106.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 106
+    }
+  },
+  "lazernaya-rezka-107.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 107
+    }
+  },
+  "lazernaya-rezka-108.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 108
+    }
+  },
+  "lazernaya-rezka-109.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 109
+    }
+  },
+  "lazernaya-rezka-110.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 110
+    }
+  },
+  "lazernaya-rezka-111.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 111
+    }
+  },
+  "lazernaya-rezka-112.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 112
+    }
+  },
+  "lazernaya-rezka-113.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 113
+    }
+  },
+  "lazernaya-rezka-114.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 114
+    }
+  },
+  "lazernaya-rezka-116.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 116
+    }
+  },
+  "lazernaya-rezka-118.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 118
+    }
+  },
+  "lazernaya-rezka-120.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 120
+    }
+  },
+  "lazernaya-rezka-122.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 122
+    }
+  },
+  "lazernaya-rezka-123.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 123
+    }
+  },
+  "lazernaya-rezka-125.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 125
+    }
+  },
+  "lazernaya-rezka-126.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 126,
+      "organajzery": 2
+    }
+  },
+  "lazernaya-rezka-127.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 127
+    }
+  },
+  "lazernaya-rezka-128.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 128
+    }
+  },
+  "lazernaya-rezka-129.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 129
+    }
+  },
+  "lazernaya-rezka-130.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 130
+    }
+  },
+  "lazernaya-rezka-133.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 133,
+      "organajzery": 3
+    }
+  },
+  "lazernaya-rezka-134.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 134
+    }
+  },
+  "lazernaya-rezka-135.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 135
+    }
+  },
+  "lazernaya-rezka-137.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 137,
+      "organajzery": 4
+    }
+  },
+  "lazernaya-rezka-138.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 138
+    }
+  },
+  "lazernaya-rezka-139.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 139
+    }
+  },
+  "lazernaya-rezka-140.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 140,
+      "organajzery": 5
+    }
+  },
+  "lazernaya-rezka-141.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 141,
+      "organajzery": 6
+    }
+  },
+  "lazernaya-rezka-142.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 142
+    }
+  },
+  "lazernaya-rezka-145.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 145
+    }
+  },
+  "lazernaya-rezka-146.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 146
+    }
+  },
+  "lazernaya-rezka-150.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medalnitsa"
+    ],
+    "order": {
+      "lazernaya-rezka": 150,
+      "medalnitsa": 2
+    }
+  },
+  "lazernaya-rezka-153.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 153
+    }
+  },
+  "lazernaya-rezka-154.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 154
+    }
+  },
+  "lazernaya-rezka-155.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 155,
+      "organajzery": 7
+    }
+  },
+  "lazernaya-rezka-157.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 157,
+      "organajzery": 8
+    }
+  },
+  "lazernaya-rezka-161.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 161
+    }
+  },
+  "lazernaya-rezka-167.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "ramki-foto"
+    ],
+    "order": {
+      "lazernaya-rezka": 167,
+      "ramki-foto": 3
+    }
+  },
+  "lazernaya-rezka-168.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 168
+    }
+  },
+  "lazernaya-rezka-170.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 170
+    }
+  },
+  "lazernaya-rezka-172.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 172,
+      "organajzery": 9
+    }
+  },
+  "lazernaya-rezka-174.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 174
+    }
+  },
+  "lazernaya-rezka-177.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 177,
+      "medali": 20
+    }
+  },
+  "lazernaya-rezka-179.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 179
+    }
+  },
+  "lazernaya-rezka-183.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 183
+    }
+  },
+  "lazernaya-rezka-187.jpg": {
+    "categories": [
+      "chasy",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "chasy": 5,
+      "lazernaya-rezka": 185
+    }
+  },
+  "lazernaya-rezka-191.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 191,
+      "organajzery": 11
+    }
+  },
+  "lazernaya-rezka-192.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 192,
+      "medali": 21
+    }
+  },
+  "lazernaya-rezka-193.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 193
+    }
+  },
+  "lazernaya-rezka-194.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "tablitchki"
+    ],
+    "order": {
+      "lazernaya-rezka": 194,
+      "tablitchki": 17
+    }
+  },
+  "lazernaya-rezka-199.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 199
+    }
+  },
+  "lazernaya-rezka-200.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 200
+    }
+  },
+  "lazernaya-rezka-203.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 203,
+      "organajzery": 12
+    }
+  },
+  "lazernaya-rezka-206.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 206,
+      "organajzery": 13
+    }
+  },
+  "lazernaya-rezka-207.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 207
+    }
+  },
+  "lazernaya-rezka-210.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 210,
+      "organajzery": 14
+    }
+  },
+  "lazernaya-rezka-211.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 211
+    }
+  },
+  "lazernaya-rezka-212.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 212
+    }
+  },
+  "lazernaya-rezka-217.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "ramki-foto"
+    ],
+    "order": {
+      "lazernaya-rezka": 217,
+      "ramki-foto": 4
+    }
+  },
+  "lazernaya-rezka-218.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 218
+    }
+  },
+  "lazernaya-rezka-220.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 220
+    }
+  },
+  "lazernaya-rezka-222.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 222
+    }
+  },
+  "lazernaya-rezka-223.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 223,
+      "organajzery": 15
+    }
+  },
+  "lazernaya-rezka-225.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 225
+    }
+  },
+  "lazernaya-rezka-226.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 226,
+      "organajzery": 16
+    }
+  },
+  "lazernaya-rezka-228.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 228
+    }
+  },
+  "lazernaya-rezka-229.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 229
+    }
+  },
+  "lazernaya-rezka-230.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 230
+    }
+  },
+  "lazernaya-rezka-231.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 231,
+      "organajzery": 18
+    }
+  },
+  "lazernaya-rezka-232.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 232,
+      "organajzery": 19
+    }
+  },
+  "lazernaya-rezka-234.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 234
+    }
+  },
+  "lazernaya-rezka-236.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 236
+    }
+  },
+  "lazernaya-rezka-237.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 237
+    }
+  },
+  "lazernaya-rezka-239.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 239,
+      "organajzery": 21
+    }
+  },
+  "lazernaya-rezka-242.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medalnitsa"
+    ],
+    "order": {
+      "lazernaya-rezka": 242,
+      "medalnitsa": 3
+    }
+  },
+  "lazernaya-rezka-244.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 244
+    }
+  },
+  "lazernaya-rezka-245.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "shkatulki-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": 245,
+      "shkatulki-fanera": 8
+    }
+  },
+  "lazernaya-rezka-247.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 247,
+      "organajzery": 24
+    }
+  },
+  "lazernaya-rezka-249.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 249
+    }
+  },
+  "lazernaya-rezka-250.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 250
+    }
+  },
+  "lazernaya-rezka-251.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 251
+    }
+  },
+  "lazernaya-rezka-253.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "shkatulki-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": 253,
+      "shkatulki-fanera": 9
+    }
+  },
+  "lazernaya-rezka-256.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 256,
+      "organajzery": 25
+    }
+  },
+  "lazernaya-rezka-258.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 258,
+      "organajzery": 26
+    }
+  },
+  "lazernaya-rezka-264.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "ramki-foto"
+    ],
+    "order": {
+      "lazernaya-rezka": 264,
+      "ramki-foto": 5
+    }
+  },
+  "lazernaya-rezka-265.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 265
+    }
+  },
+  "lazernaya-rezka-266.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 266
+    }
+  },
+  "lazernaya-rezka-270.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 270,
+      "organajzery": 27
+    }
+  },
+  "lazernaya-rezka-272.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 272,
+      "organajzery": 28
+    }
+  },
+  "lazernaya-rezka-273.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 273,
+      "organajzery": 29
+    }
+  },
+  "lazernaya-rezka-274.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 274,
+      "medali": 23
+    }
+  },
+  "lazernaya-rezka-275.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 275
+    }
+  },
+  "lazernaya-rezka-276.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 276
+    }
+  },
+  "lazernaya-rezka-278.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 278
+    }
+  },
+  "lazernaya-rezka-282.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 282,
+      "organajzery": 30
+    }
+  },
+  "lazernaya-rezka-283.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 283,
+      "organajzery": 31
+    }
+  },
+  "lazernaya-rezka-284.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 284,
+      "organajzery": 32
+    }
+  },
+  "lazernaya-rezka-285.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 285
+    }
+  },
+  "lazernaya-rezka-288.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 288
+    }
+  },
+  "lazernaya-rezka-289.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 289
+    }
+  },
+  "lazernaya-rezka-290.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 290
+    }
+  },
+  "lazernaya-rezka-291.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 291
+    }
+  },
+  "lazernaya-rezka-294.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "shkatulki-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": 294,
+      "shkatulki-fanera": 11
+    }
+  },
+  "lazernaya-rezka-296.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 296,
+      "organajzery": 34
+    }
+  },
+  "lazernaya-rezka-302.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 302
+    }
+  },
+  "lazernaya-rezka-307.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 307
+    }
+  },
+  "lazernaya-rezka-308.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 308
+    }
+  },
+  "lazernaya-rezka-309.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 309
+    }
+  },
+  "lazernaya-rezka-310.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 310
+    }
+  },
+  "lazernaya-rezka-312.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 312
+    }
+  },
+  "lazernaya-rezka-313.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 313
+    }
+  },
+  "lazernaya-rezka-314.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 314
+    }
+  },
+  "lazernaya-rezka-315.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 315
+    }
+  },
+  "lazernaya-rezka-316.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 316
+    }
+  },
+  "lazernaya-rezka-317.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 317
+    }
+  },
+  "lazernaya-rezka-318.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 318
+    }
+  },
+  "lazernaya-rezka-319.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 319
+    }
+  },
+  "lazernaya-rezka-320.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 320
+    }
+  },
+  "lazernaya-rezka-321.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "ramki-foto"
+    ],
+    "order": {
+      "lazernaya-rezka": 321,
+      "ramki-foto": 6
+    }
+  },
+  "lazernaya-rezka-322.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "ramki-foto"
+    ],
+    "order": {
+      "lazernaya-rezka": 322,
+      "ramki-foto": 7
+    }
+  },
+  "lazernaya-rezka-323.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "ramki-foto"
+    ],
+    "order": {
+      "lazernaya-rezka": 323,
+      "ramki-foto": 8
+    }
+  },
+  "lazernaya-rezka-324.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "ramki-foto"
+    ],
+    "order": {
+      "lazernaya-rezka": 324,
+      "ramki-foto": 9
+    }
+  },
+  "lazernaya-rezka-325.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 325,
+      "organajzery": 35
+    }
+  },
+  "lazernaya-rezka-326.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 326
+    }
+  },
+  "lazernaya-rezka-328.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 328
+    }
+  },
+  "lazernaya-rezka-333.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "tablitchki",
+      "vyveski"
+    ],
+    "order": {
+      "lazernaya-rezka": 333,
+      "tablitchki": 19,
+      "vyveski": 12
+    }
+  },
+  "lazernaya-rezka-336.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 336
+    }
+  },
+  "lazernaya-rezka-337.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 337
+    }
+  },
+  "lazernaya-rezka-339.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 339
+    }
+  },
+  "lazernaya-rezka-340.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 340
+    }
+  },
+  "lazernaya-rezka-343.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "ramki-foto"
+    ],
+    "order": {
+      "lazernaya-rezka": 343,
+      "ramki-foto": 10
+    }
+  },
+  "lazernaya-rezka-344.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 344
+    }
+  },
+  "lazernaya-rezka-345.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 345
+    }
+  },
+  "lazernaya-rezka-346.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 346
+    }
+  },
+  "lazernaya-rezka-349.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medalnitsa"
+    ],
+    "order": {
+      "lazernaya-rezka": 349,
+      "medalnitsa": 5
+    }
+  },
+  "lazernaya-rezka-350.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medalnitsa"
+    ],
+    "order": {
+      "lazernaya-rezka": 350,
+      "medalnitsa": 6
+    }
+  },
+  "lazernaya-rezka-351.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 351,
+      "organajzery": 36
+    }
+  },
+  "lazernaya-rezka-352.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 352,
+      "organajzery": 37
+    }
+  },
+  "lazernaya-rezka-353.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 353
+    }
+  },
+  "lazernaya-rezka-354.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 354
+    }
+  },
+  "lazernaya-rezka-356.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 356
+    }
+  },
+  "lazernaya-rezka-357.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 357
+    }
+  },
+  "lazernaya-rezka-358.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 358
+    }
+  },
+  "lazernaya-rezka-359.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 359
+    }
+  },
+  "lazernaya-rezka-361.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 361
+    }
+  },
+  "lazernaya-rezka-362.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 362
+    }
+  },
+  "lazernaya-rezka-363.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 363
+    }
+  },
+  "lazernaya-rezka-366.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "shkatulki-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": 366,
+      "shkatulki-fanera": 13
+    }
+  },
+  "lazernaya-rezka-368.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 368
+    }
+  },
+  "lazernaya-rezka-369.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "lazernaya-rezka": 369,
+      "nagradnye-statuetki": 22
+    }
+  },
+  "lazernaya-rezka-370.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 370
+    }
+  },
+  "lazernaya-rezka-371.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 371
+    }
+  },
+  "lazernaya-rezka-372.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 372
+    }
+  },
+  "lazernaya-rezka-373.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 373
+    }
+  },
+  "lazernaya-rezka-374.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 374
+    }
+  },
+  "lazernaya-rezka-375.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "tablitchki",
+      "vyveski"
+    ],
+    "order": {
+      "lazernaya-rezka": 375,
+      "tablitchki": 22,
+      "vyveski": 15
+    }
+  },
+  "lazernaya-rezka-376.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "lazernaya-rezka": 376,
+      "nagradnye-statuetki": 23
+    }
+  },
+  "lazernaya-rezka-377.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki",
+      "ramki-foto"
+    ],
+    "order": {
+      "lazernaya-rezka": 377,
+      "nagradnye-statuetki": 24,
+      "ramki-foto": 11
+    }
+  },
+  "lazernaya-rezka-378.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "lazernaya-rezka": 378,
+      "nagradnye-statuetki": 25
+    }
+  },
+  "lazernaya-rezka-379.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 379
+    }
+  },
+  "lazernaya-rezka-380.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": 380
+    }
+  },
+  "lazernaya-rezka-381.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "shildiki-abs"
+    ],
+    "order": {
+      "lazernaya-rezka": 381,
+      "shildiki-abs": 1
+    }
+  },
+  "lazernaya-rezka-382.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 382,
+      "medali": 25
+    }
+  },
+  "lazernaya-rezka-383.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "lazernaya-rezka": 383,
+      "nagradnye-statuetki": 26
+    }
+  },
+  "lazernaya-rezka-384.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "ramki-foto"
+    ],
+    "order": {
+      "lazernaya-rezka": 384,
+      "ramki-foto": 12
+    }
+  },
+  "medali-001.jpg": {
+    "categories": [
+      "medali"
+    ],
+    "order": {
+      "medali": 1
+    }
+  },
+  "medali-005.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 13,
+      "medali": 5
+    }
+  },
+  "medali-006.jpg": {
+    "categories": [
+      "medali"
+    ],
+    "order": {
+      "medali": 6
+    }
+  },
+  "medali-008.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 24,
+      "medali": 8
+    }
+  },
+  "medali-010.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 35,
+      "medali": 10
+    }
+  },
+  "medali-011.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 36,
+      "medali": 11
+    }
+  },
+  "medali-015.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": 92,
+      "medali": 15
+    }
+  },
+  "medalnitsa-001.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medalnitsa"
+    ],
+    "order": {
+      "lazernaya-rezka": 80,
+      "medalnitsa": 1
+    }
+  },
+  "medalnitsa-004.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medalnitsa"
+    ],
+    "order": {
+      "lazernaya-rezka": 261,
+      "medalnitsa": 4
+    }
+  },
+  "nagradnye-statuetki-005.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "lazernaya-rezka": 7,
+      "nagradnye-statuetki": 5
+    }
+  },
+  "nagradnye-statuetki-013.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "lazernaya-rezka": 53,
+      "nagradnye-statuetki": 13
+    }
+  },
+  "nagradnye-statuetki-018.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "lazernaya-rezka": 66,
+      "nagradnye-statuetki": 18
+    }
+  },
+  "nagradnye-statuetki-020.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "lazernaya-rezka": 104,
+      "nagradnye-statuetki": 20
+    }
+  },
+  "nomerki-garderob-001.jpg": {
+    "categories": [
+      "gravirovka",
+      "nomerki-garderob"
+    ],
+    "order": {
+      "gravirovka": 37,
+      "nomerki-garderob": 1
+    }
+  },
+  "nomerki-garderob-002.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nomerki-garderob"
+    ],
+    "order": {
+      "lazernaya-rezka": 5,
+      "nomerki-garderob": 2
+    }
+  },
+  "organajzery-001.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "organajzery"
+    ],
+    "order": {
+      "lazernaya-rezka": 117,
+      "organajzery": 1
+    }
+  },
+  "organajzery-020.jpg": {
+    "categories": [
+      "organajzery"
+    ],
+    "order": {
+      "organajzery": 20
+    }
+  },
+  "organajzery-022.jpg": {
+    "categories": [
+      "organajzery"
+    ],
+    "order": {
+      "organajzery": 22
+    }
+  },
+  "organajzery-023.jpg": {
+    "categories": [
+      "organajzery"
+    ],
+    "order": {
+      "organajzery": 23
+    }
+  },
+  "ramki-foto-001.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "ramki-foto"
+    ],
+    "order": {
+      "lazernaya-rezka": 115,
+      "ramki-foto": 1
+    }
+  },
+  "shildiki-abs-002.jpg": {
+    "categories": [
+      "shildiki-abs"
+    ],
+    "order": {
+      "shildiki-abs": 2
+    }
+  },
+  "shkatulki-fanera-002.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "shkatulki-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": 132,
+      "shkatulki-fanera": 2
+    }
+  },
+  "shkatulki-fanera-003.jpg": {
+    "categories": [
+      "koroba-fanera",
+      "lazernaya-rezka",
+      "shkatulki-fanera"
+    ],
+    "order": {
+      "koroba-fanera": 16,
+      "lazernaya-rezka": 148,
+      "shkatulki-fanera": 3
+    }
+  },
+  "shkatulki-fanera-005.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "shkatulki-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": 166,
+      "shkatulki-fanera": 5
+    }
+  },
+  "shkatulki-fanera-006.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "shkatulki-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": 215,
+      "shkatulki-fanera": 6
+    }
+  },
+  "shkatulki-fanera-007.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "shkatulki-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": 235,
+      "shkatulki-fanera": 7
+    }
+  },
+  "shkatulki-fanera-010.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "shkatulki-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": 286,
+      "shkatulki-fanera": 10
+    }
+  },
+  "shkatulki-fanera-012.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "shkatulki-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": 364,
+      "shkatulki-fanera": 12
+    }
+  },
+  "shkatulki-fanera-014.jpg": {
+    "categories": [
+      "shkatulki-fanera"
+    ],
+    "order": {
+      "shkatulki-fanera": 14
+    }
+  },
+  "tablitchki-002.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "tablitchki"
+    ],
+    "order": {
+      "lazernaya-rezka": 2,
+      "tablitchki": 2
+    }
+  },
+  "tablitchki-003.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "tablitchki"
+    ],
+    "order": {
+      "lazernaya-rezka": 34,
+      "tablitchki": 3
+    }
+  },
+  "tablitchki-004.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "tablitchki",
+      "vyveski"
+    ],
+    "order": {
+      "lazernaya-rezka": 61,
+      "tablitchki": 4,
+      "vyveski": 2
+    }
+  },
+  "tablitchki-005.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "tablitchki",
+      "vyveski"
+    ],
+    "order": {
+      "lazernaya-rezka": 62,
+      "tablitchki": 5,
+      "vyveski": 3
+    }
+  },
+  "tablitchki-006.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "tablitchki",
+      "tejbl-tenty"
+    ],
+    "order": {
+      "lazernaya-rezka": 64,
+      "tablitchki": 6,
+      "tejbl-tenty": 1
+    }
+  },
+  "tablitchki-007.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "tablitchki"
+    ],
+    "order": {
+      "lazernaya-rezka": 68,
+      "tablitchki": 7
+    }
+  },
+  "tablitchki-008.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "tablitchki"
+    ],
+    "order": {
+      "lazernaya-rezka": 69,
+      "tablitchki": 8
+    }
+  },
+  "tablitchki-009.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "tablitchki",
+      "tejbl-tenty"
+    ],
+    "order": {
+      "lazernaya-rezka": 70,
+      "tablitchki": 9,
+      "tejbl-tenty": 2
+    }
+  },
+  "tablitchki-010.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "tablitchki",
+      "tejbl-tenty"
+    ],
+    "order": {
+      "lazernaya-rezka": 71,
+      "tablitchki": 10,
+      "tejbl-tenty": 3
+    }
+  },
+  "tablitchki-011.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "tablitchki",
+      "tejbl-tenty"
+    ],
+    "order": {
+      "lazernaya-rezka": 72,
+      "tablitchki": 11,
+      "tejbl-tenty": 4
+    }
+  },
+  "tablitchki-012.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "tablitchki"
+    ],
+    "order": {
+      "lazernaya-rezka": 73,
+      "tablitchki": 12
+    }
+  },
+  "tablitchki-016.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "tablitchki"
+    ],
+    "order": {
+      "lazernaya-rezka": 81,
+      "tablitchki": 16
+    }
+  },
+  "tablitchki-020.jpg": {
+    "categories": [
+      "tablitchki"
+    ],
+    "order": {
+      "tablitchki": 20
+    }
+  },
+  "tablitchki-021.jpg": {
+    "categories": [
+      "tablitchki"
+    ],
+    "order": {
+      "tablitchki": 21
+    }
+  },
+  "uf-pechat-001.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 1
+    }
+  },
+  "uf-pechat-002.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 2
+    }
+  },
+  "uf-pechat-003.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 3
+    }
+  },
+  "uf-pechat-004.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 4
+    }
+  },
+  "uf-pechat-005.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "uf-pechat"
+    ],
+    "order": {
+      "lazernaya-rezka": 267,
+      "uf-pechat": 5
+    }
+  },
+  "uf-pechat-006.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 6
+    }
+  },
+  "uf-pechat-007.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 7
+    }
+  },
+  "uf-pechat-008.jpg": {
+    "categories": [
+      "uf-pechat",
+      "vyveski"
+    ],
+    "order": {
+      "uf-pechat": 8,
+      "vyveski": 14
+    }
+  },
+  "uf-pechat-009.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 9
+    }
+  },
+  "uf-pechat-010.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 10
+    }
+  },
+  "uf-pechat-011.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 11
+    }
+  },
+  "uf-pechat-012.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 12
+    }
+  },
+  "uf-pechat-013.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 13
+    }
+  },
+  "uf-pechat-014.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 14
+    }
+  },
+  "uf-pechat-015.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 15
+    }
+  },
+  "uf-pechat-016.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 16
+    }
+  },
+  "uf-pechat-017.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 17
+    }
+  },
+  "uf-pechat-018.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 18
+    }
+  },
+  "uf-pechat-019.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 19
+    }
+  },
+  "uf-pechat-020.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 20
+    }
+  },
+  "uf-pechat-021.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "uf-pechat"
+    ],
+    "order": {
+      "lazernaya-rezka": 20,
+      "uf-pechat": 21
+    }
+  },
+  "uf-pechat-022.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 22
+    }
+  },
+  "uf-pechat-023.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 23
+    }
+  },
+  "uf-pechat-024.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 24
+    }
+  },
+  "uf-pechat-025.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 25
+    }
+  },
+  "vyveski-001.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "vyveski"
+    ],
+    "order": {
+      "lazernaya-rezka": 47,
+      "vyveski": 1
+    }
+  },
+  "vyveski-005.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "vyveski"
+    ],
+    "order": {
+      "lazernaya-rezka": 163,
+      "vyveski": 5
+    }
+  },
+  "vyveski-006.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "vyveski"
+    ],
+    "order": {
+      "lazernaya-rezka": 169,
+      "vyveski": 6
+    }
+  },
+  "vyveski-007.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "vyveski"
+    ],
+    "order": {
+      "lazernaya-rezka": 176,
+      "vyveski": 7
+    }
+  },
+  "vyveski-008.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "vyveski"
+    ],
+    "order": {
+      "lazernaya-rezka": 190,
+      "vyveski": 8
+    }
+  },
+  "vyveski-009.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "vyveski"
+    ],
+    "order": {
+      "lazernaya-rezka": 214,
+      "vyveski": 9
+    }
+  },
+  "vyveski-010.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "vyveski"
+    ],
+    "order": {
+      "lazernaya-rezka": 280,
+      "vyveski": 10
+    }
+  },
+  "vyveski-011.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "tablitchki",
+      "vyveski"
+    ],
+    "order": {
+      "lazernaya-rezka": 331,
+      "tablitchki": 18,
+      "vyveski": 11
+    }
+  },
+  "vyveski-013.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "vyveski"
+    ],
+    "order": {
+      "lazernaya-rezka": 365,
+      "vyveski": 13
+    }
+  },
+  "zagotovki-001.jpg": {
+    "categories": [
+      "breloki",
+      "lazernaya-rezka",
+      "zagotovki"
+    ],
+    "order": {
+      "breloki": 9,
+      "lazernaya-rezka": 147,
+      "zagotovki": 1
+    }
+  },
+  "zagotovki-002.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "zagotovki"
+    ],
+    "order": {
+      "lazernaya-rezka": 360,
+      "zagotovki": 2
+    }
+  },
+  "zagotovki-003.jpg": {
+    "categories": [
+      "zagotovki"
+    ],
+    "order": {
+      "zagotovki": 3
+    }
+  }
+}

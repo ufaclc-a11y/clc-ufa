@@ -63,7 +63,7 @@ export default function BlogPage() {
       <div className="relative min-h-[360px] flex items-end bg-[#1A1A1A] overflow-hidden pt-24">
         <div className="absolute inset-0">
           <Image
-            src="/images/portfolio/tablitchki-001.jpg"
+            src="/images/portfolio/gravirovka-002.jpg"
             alt="Блог Центра лазерной резки — советы и статьи"
             fill priority
             className="object-cover opacity-25"

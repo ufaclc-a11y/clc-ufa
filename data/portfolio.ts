@@ -72,3 +72,25 @@ export const portfolioCategories: PortfolioCategory[] = [
     .map(c => ({ id: c.id, label: c.label, count: (portfolioFiles[c.id] ?? []).length }))
     .filter(c => c.count > 0),
 ]
+
+// ── Доступ к фото категории по манифесту (имя категории = portfolioPrefix) ────
+/** Полные пути всех фото категории, в порядке манифеста. */
+export function photosForCategory(catId?: string): string[] {
+  if (!catId) return []
+  return (portfolioFiles[catId] ?? []).map(f => `/images/portfolio/${f}`)
+}
+
+/** Первое (репрезентативное) фото категории — для hero / OG / превью. */
+export function firstPhoto(catId?: string): string | undefined {
+  return photosForCategory(catId)[0]
+}
+
+/** До `limit` фото категории, равномерно по всему набору. */
+export function samplePhotos(catId?: string, limit = 8): string[] {
+  const all = photosForCategory(catId)
+  if (all.length <= limit) return all
+  const step = Math.max(1, Math.floor(all.length / limit))
+  const out: string[] = []
+  for (let i = 0; i < all.length && out.length < limit; i += step) out.push(all[i])
+  return out
+}

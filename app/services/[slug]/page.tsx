@@ -12,6 +12,7 @@ import { FAQAccordion }   from '@/components/FAQAccordion'
 import { SymbolIcon }     from '@/components/Icons'
 import { GalleryGrid }   from '@/components/GalleryGrid'
 import { RichText }      from '@/components/RichText'
+import { samplePhotos, firstPhoto } from '@/data/portfolio'
 import { selectFaqItems, type FAQItem } from '@/data/faq'
 import { SITE, localBusinessRef, aggregateRating, faqPageLd } from '@/lib/seo'
 
@@ -54,18 +55,9 @@ function getPortfolioPhotos(service: {
     return service.portfolioPhotos
   }
   if (service.portfolioPrefixes?.length) {
-    return service.portfolioPrefixes.map(cat =>
-      `/images/portfolio/${cat.prefix}-001.jpg`
-    )
+    return service.portfolioPrefixes.flatMap(cat => firstPhoto(cat.prefix) ?? [])
   }
-  if (!service.portfolioPrefix || !service.portfolioCount) return []
-  const limit = 9
-  const photos: string[] = []
-  const step = Math.max(1, Math.floor(service.portfolioCount / limit))
-  for (let i = 1; i <= service.portfolioCount && photos.length < limit; i += step) {
-    photos.push(`/images/portfolio/${service.portfolioPrefix}-${String(i).padStart(3, '0')}.jpg`)
-  }
-  return photos
+  return samplePhotos(service.portfolioPrefix, 9)
 }
 
 export default function ServicePage({ params }: Props) {

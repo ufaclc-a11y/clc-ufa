@@ -28,7 +28,7 @@ const HERO_IMAGES = [
   '/images/portfolio/medali-011.jpg',
   '/images/portfolio/gravirovka-029.jpg',
   '/images/portfolio/lazernaya-rezka-187.jpg',
-  '/images/portfolio/nagradnye-statuetki-001.jpg',
+  '/images/portfolio/nagradnye-statuetki-005.jpg',
 ]
 
 export default function PortfolioPage({ searchParams }: Props) {

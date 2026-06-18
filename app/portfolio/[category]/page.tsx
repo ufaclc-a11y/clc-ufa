@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Image             from 'next/image'
 import Link              from 'next/link'
 import { notFound }      from 'next/navigation'
-import { portfolioCategories, portfolioItems } from '@/data/portfolio'
+import { portfolioCategories, portfolioItems, firstPhoto } from '@/data/portfolio'
 import { Breadcrumbs }   from '@/components/Breadcrumbs'
 import { CTASection }    from '@/components/CTASection'
 import { business }      from '@/data/contacts'
@@ -16,10 +16,10 @@ const categoryHeroImage: Record<string, string> = {
   'gravirovka':          '/images/portfolio/gravirovka-002.jpg',        // 1280×720
   'frezernaya-rezka':    '/images/portfolio/frezernaya-rezka-001.jpg',  // 1280×960
   'organajzery':         '/images/portfolio/organajzery-001.jpg',       // 1280×720
-  'nagradnye-statuetki': '/images/portfolio/nagradnye-statuetki-001.jpg', // 1280×960
+  'nagradnye-statuetki': '/images/portfolio/nagradnye-statuetki-005.jpg', // 1280×960
   'uf-pechat':           '/images/portfolio/uf-pechat-008.jpg',         // 1280×960
   'medali':              '/images/portfolio/medali-011.jpg',            // 960×1280 — «Мелодия Весны», выбрано вручную
-  'tablitchki':          '/images/portfolio/tablitchki-001.jpg',        // 1280×720
+  'tablitchki':          '/images/portfolio/gravirovka-002.jpg',        // 1280×720
   'breloki':             '/images/portfolio/breloki-011.jpg',           // 1280×960
   'kheshtegi':           '/images/portfolio/kheshtegi-001.jpg',         // 1280×720
   'shkatulki-fanera':    '/images/portfolio/shkatulki-fanera-012.jpg',  // 1280×960
@@ -28,9 +28,9 @@ const categoryHeroImage: Record<string, string> = {
   'chasy':               '/images/portfolio/chasy-001.jpg',             // 1280×720
   'medalnitsa':          '/images/portfolio/medalnitsa-004.jpg',        // 1280×960
   'nomerki-garderob':    '/images/portfolio/nomerki-garderob-001.jpg',  // portrait (единственный вариант)
-  'tejbl-tenty':         '/images/portfolio/tejbl-tenty-001.jpg',       // 1280×1280
+  'tejbl-tenty':         '/images/portfolio/tablitchki-006.jpg',       // 1280×1280
   'kormushki':           '/images/portfolio/kormushki-003.jpg',         // 1280×960
-  'bejdzhi':             '/images/portfolio/bejdzhi-002.jpg',           // 1280×960
+  'bejdzhi':             '/images/portfolio/bejdzhi-001.jpg',           // 1280×960
   'zagotovki':           '/images/portfolio/zagotovki-001.jpg',         // portrait (единственный вариант)
   'klyuchnitsa':         '/images/portfolio/klyuchnitsa-002.jpg',       // 600×450
 }
@@ -78,7 +78,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title:       `${meta?.title ?? cat.label} | Центр лазерной резки Уфа`,
       description: meta?.description,
-      images:      [{ url: `/images/portfolio/${cat.id}-001.jpg` }],
+      images:      firstPhoto(cat.id) ? [{ url: firstPhoto(cat.id)! }] : undefined,
     },
   }
 }
@@ -103,7 +103,7 @@ export default function PortfolioCategoryPage({ params }: Props) {
       <div className="relative min-h-[380px] flex items-end bg-[#1A1A1A] overflow-hidden pt-24">
         <div className="absolute inset-0">
           <Image
-            src={categoryHeroImage[cat.id] ?? `/images/portfolio/${cat.id}-001.jpg`}
+            src={categoryHeroImage[cat.id] ?? firstPhoto(cat.id)!}
             alt={cat.label}
             fill priority
             className="object-cover opacity-35"
@@ -191,7 +191,7 @@ export default function PortfolioCategoryPage({ params }: Props) {
               >
                 <div className="relative w-36 h-24 sm:w-44 sm:h-28">
                   <Image
-                    src={`/images/portfolio/${c.id}-001.jpg`}
+                    src={firstPhoto(c.id)!}
                     alt={c.label}
                     fill
                     sizes="176px"

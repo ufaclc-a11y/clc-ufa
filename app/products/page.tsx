@@ -11,6 +11,7 @@ import { GalleryGrid }     from '@/components/GalleryGrid'
 import { SymbolIcon }      from '@/components/Icons'
 import { RichText }        from '@/components/RichText'
 import { ContactButtons }  from '@/components/ContactButtons'
+import { samplePhotos, firstPhoto } from '@/data/portfolio'
 
 export const metadata: Metadata = {
   title:       'Изготовление изделий из фанеры и акрила в Уфе | ЦЛР',
@@ -22,14 +23,8 @@ export const metadata: Metadata = {
 function getPortfolioPhotos(service: typeof services[number]): string[] {
   if (service.portfolioPhotos?.length) return service.portfolioPhotos
   if (service.portfolioPrefixes?.length)
-    return service.portfolioPrefixes.map(c => `/images/portfolio/${c.prefix}-001.jpg`)
-  if (!service.portfolioPrefix || !service.portfolioCount) return []
-  const limit = 9
-  const step  = Math.max(1, Math.floor(service.portfolioCount / limit))
-  const photos: string[] = []
-  for (let i = 1; i <= service.portfolioCount && photos.length < limit; i += step)
-    photos.push(`/images/portfolio/${service.portfolioPrefix}-${String(i).padStart(3, '0')}.jpg`)
-  return photos
+    return service.portfolioPrefixes.flatMap(c => firstPhoto(c.prefix) ?? [])
+  return samplePhotos(service.portfolioPrefix, 9)
 }
 
 export default function ProductsPage() {

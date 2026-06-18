@@ -226,7 +226,7 @@ export const blogPosts: BlogPost[] = [
     date:        '2025-05-10',
     readTime:    4,
     category:    'Изделия',
-    image:       '/images/portfolio/breloki-001.jpg',
+    image:       '/images/portfolio/breloki-002.jpg',
     imageAlt:    'Корпоративные сувениры с логотипом',
     content: `## Что дарят на корпоративах
 

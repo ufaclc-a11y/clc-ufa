@@ -18,6 +18,17 @@ sys.stdout.reconfigure(encoding='utf-8')
 RESULTS_FILE = "D:/clc-ufa3/photo_tags.json"
 DEST         = "D:/clc-ufa3/public/images/portfolio"
 
+# ── LEGACY-ГВАРД ─────────────────────────────────────────────────────────────
+# Сайт перешёл на модель «один файл = одно фото» с манифестом data/portfolio-tags.json
+# (см. gen-portfolio.mjs, import_new.py, migrate_portfolio_dedup.py). Этот скрипт
+# раскладывает фото по СТАРОЙ схеме <prefix>-NNN.jpg и НЕ пишет манифест —
+# его запуск сломает дедуп и скроет фото (gen читает манифест, а не имена файлов).
+# Для дозагрузки используй import_new.py. Запуск только осознанно: --force.
+if "--force" not in sys.argv:
+    print("⛔ import_portfolio.py — LEGACY (старая схема <prefix>-NNN, без манифеста).")
+    print("   Используй import_new.py. Принудительно: python import_portfolio.py --force")
+    sys.exit(1)
+
 SERVICE_PREFIX = {
     "Лазерная резка фанеры":      "lazernaya-rezka",
     "Лазерная резка акрила":      "lazernaya-rezka",

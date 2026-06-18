@@ -109,7 +109,7 @@ export default function CasesPage() {
       <div className="relative min-h-[420px] flex items-end bg-[#1A1A1A] overflow-hidden pt-24">
         <div className="absolute inset-0">
           <Image
-            src="/images/portfolio/nagradnye-statuetki-001.jpg"
+            src="/images/portfolio/nagradnye-statuetki-005.jpg"
             alt="Кейсы — реальные заказы Центра лазерной резки"
             fill priority
             className="object-cover opacity-30"

@@ -12,3 +12,7 @@ tsconfig.tsbuildinfo
 
 # temp artifacts
 temporary screenshots/
+
+# python
+__pycache__/
+*.pyc
