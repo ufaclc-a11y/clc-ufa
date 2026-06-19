@@ -153,7 +153,12 @@ export const portfolioFiles: Record<string, string[]> = {
     "gravirovka-072.jpg",
     "gravirovka-073.jpg",
     "gravirovka-074.jpg",
-    "gravirovka-075.jpg"
+    "gravirovka-075.jpg",
+    "p-9dbaae55fb40.png",
+    "p-9ea763fd5b9b.png",
+    "p-d94527b09de2.png",
+    "p-b24ae3cc33d4.png",
+    "p-0e566a05484f.png"
   ],
   "gravirovka-chasy": [
     "gravirovka-chasy-001.jpg",
@@ -531,7 +536,6 @@ export const portfolioFiles: Record<string, string[]> = {
     "lazernaya-rezka-275.jpg",
     "lazernaya-rezka-276.jpg",
     "koroba-fanera-052.jpg",
-    "lazernaya-rezka-278.jpg",
     "koroba-fanera-053.jpg",
     "vyveski-010.jpg",
     "kheshtegi-013.jpg",
@@ -755,7 +759,12 @@ export const portfolioFiles: Record<string, string[]> = {
   ],
   "shildiki-abs": [
     "lazernaya-rezka-381.jpg",
-    "shildiki-abs-002.jpg"
+    "shildiki-abs-002.jpg",
+    "p-9dbaae55fb40.png",
+    "p-9ea763fd5b9b.png",
+    "p-d94527b09de2.png",
+    "p-b24ae3cc33d4.png",
+    "p-0e566a05484f.png"
   ],
   "shkatulki-fanera": [
     "koroba-fanera-012.jpg",

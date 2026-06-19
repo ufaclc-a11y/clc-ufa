@@ -670,8 +670,9 @@
       "Лазерная резка фанеры",
       "Органайзеры"
     ],
-    "frezernaya-rezka-fanery-002.jpg": [
-      "Фрезеровка фанеры"
+    "frezernaya-rezka-fanery-001.jpg": [
+      "Фрезеровка фанеры",
+      "Наградные статуэтки"
     ],
     "frezernaya-rezka-dereva-007.jpg": [
       "Фрезеровка дерева"
@@ -718,7 +719,7 @@
     "shildiki-iz-abs-plastika-001.jpg": [
       "Шилдики из АБС пластика"
     ],
-    "frezernaya-rezka-fanery-003.jpg": [
+    "frezernaya-rezka-fanery-002.jpg": [
       "Фрезеровка фанеры"
     ],
     "lazernaya-rezka-fanery-162.jpg": [
@@ -1245,6 +1246,9 @@
       "Лазерная резка акрила",
       "Печать на акриле"
     ],
+    "frezernaya-rezka-fanery-003.jpg": [
+      "Фрезеровка фанеры"
+    ],
     "frezernaya-rezka-fanery-004.jpg": [
       "Фрезеровка фанеры"
     ],
@@ -1257,11 +1261,11 @@
     "frezernaya-rezka-fanery-007.jpg": [
       "Фрезеровка фанеры"
     ],
-    "frezernaya-rezka-fanery-008.jpg": [
-      "Фрезеровка фанеры"
-    ],
     "lazernaya-rezka-kartona-004.jpg": [
       "Лазерная резка картона"
+    ],
+    "frezernaya-rezka-fanery-008.jpg": [
+      "Фрезеровка фанеры"
     ],
     "frezernaya-rezka-fanery-009.jpg": [
       "Фрезеровка фанеры"
@@ -1276,9 +1280,6 @@
       "Фрезеровка фанеры"
     ],
     "frezernaya-rezka-fanery-013.jpg": [
-      "Фрезеровка фанеры"
-    ],
-    "frezernaya-rezka-fanery-014.jpg": [
       "Фрезеровка фанеры"
     ],
     "lazernaya-rezka-akrila-060.jpg": [
@@ -1312,10 +1313,10 @@
       "Таблички и указатели",
       "Тейбл тенты и менюхолдеры"
     ],
-    "frezernaya-rezka-fanery-015.jpg": [
+    "frezernaya-rezka-fanery-014.jpg": [
       "Фрезеровка фанеры"
     ],
-    "frezernaya-rezka-fanery-016.jpg": [
+    "frezernaya-rezka-fanery-015.jpg": [
       "Фрезеровка фанеры"
     ],
     "lazernaya-rezka-fanery-224.jpg": [
@@ -1763,6 +1764,9 @@
     "frezernaya-rezka-dereva-015.jpg": [
       "Фрезеровка дерева"
     ],
+    "frezernaya-rezka-fanery-016.jpg": [
+      "Фрезеровка фанеры"
+    ],
     "frezernaya-rezka-fanery-017.jpg": [
       "Фрезеровка фанеры"
     ],
@@ -1770,9 +1774,6 @@
       "Фрезеровка фанеры"
     ],
     "frezernaya-rezka-fanery-019.jpg": [
-      "Фрезеровка фанеры"
-    ],
-    "frezernaya-rezka-fanery-020.jpg": [
       "Фрезеровка фанеры"
     ],
     "uf-pechat-na-fanere-011.jpg": [
@@ -1840,10 +1841,6 @@
     ],
     "frezernaya-rezka-dereva-001.jpg": [
       "Фрезеровка дерева",
-      "Наградные статуэтки"
-    ],
-    "frezernaya-rezka-fanery-001.jpg": [
-      "Фрезеровка фанеры",
       "Наградные статуэтки"
     ],
     "lazernaya-rezka-akrila-001.jpg": [
@@ -1992,9 +1989,6 @@
       "Гравировка на жетонах"
     ],
     "gravirovka-na-zhetone-012.png": [
-      "Гравировка на жетонах"
-    ],
-    "gravirovka-na-zhetone-013.png": [
       "Гравировка на жетонах"
     ],
     "lazernaya-rezka-fanery-009.png": [
@@ -2197,6 +2191,26 @@
     "рамка2.png": [
       "Лазерная резка фанеры",
       "Рамки для фото"
+    ],
+    "260309-163953-JF4qui4DoxgjEn2VPi3djxSHIgrf1vcc.png": [
+      "Гравировка на пластике",
+      "Шилдики из АБС пластика"
+    ],
+    "260313-094045-9b6BB6HpFE0FWvGzkdOYvuw1pnSZHzfh.png": [
+      "Гравировка на пластике",
+      "Шилдики из АБС пластика"
+    ],
+    "260415-141436-NF2NZJyBy5axUNgkafOFb4hqvmXX0y5p.png": [
+      "Гравировка на пластике",
+      "Шилдики из АБС пластика"
+    ],
+    "260416-164845-txLxFGd98g9ZKybHsm2it5LyhtLAvvvH.png": [
+      "Гравировка на пластике",
+      "Шилдики из АБС пластика"
+    ],
+    "260617-155048-rqVhtXnR9dofMRlTOKD0YozUlOVhkbuM.png": [
+      "Гравировка на пластике",
+      "Шилдики из АБС пластика"
     ]
   },
   "extra_cats": {

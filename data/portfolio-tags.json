@@ -3387,14 +3387,6 @@
       "lazernaya-rezka": 276
     }
   },
-  "lazernaya-rezka-278.jpg": {
-    "categories": [
-      "lazernaya-rezka"
-    ],
-    "order": {
-      "lazernaya-rezka": 278
-    }
-  },
   "lazernaya-rezka-282.jpg": {
     "categories": [
       "lazernaya-rezka",
@@ -4199,6 +4191,56 @@
     ],
     "order": {
       "organajzery": 23
+    }
+  },
+  "p-0e566a05484f.png": {
+    "categories": [
+      "gravirovka",
+      "shildiki-abs"
+    ],
+    "order": {
+      "gravirovka": 80,
+      "shildiki-abs": 7
+    }
+  },
+  "p-9dbaae55fb40.png": {
+    "categories": [
+      "gravirovka",
+      "shildiki-abs"
+    ],
+    "order": {
+      "gravirovka": 76,
+      "shildiki-abs": 3
+    }
+  },
+  "p-9ea763fd5b9b.png": {
+    "categories": [
+      "gravirovka",
+      "shildiki-abs"
+    ],
+    "order": {
+      "gravirovka": 77,
+      "shildiki-abs": 4
+    }
+  },
+  "p-b24ae3cc33d4.png": {
+    "categories": [
+      "gravirovka",
+      "shildiki-abs"
+    ],
+    "order": {
+      "gravirovka": 79,
+      "shildiki-abs": 6
+    }
+  },
+  "p-d94527b09de2.png": {
+    "categories": [
+      "gravirovka",
+      "shildiki-abs"
+    ],
+    "order": {
+      "gravirovka": 78,
+      "shildiki-abs": 5
     }
   },
   "ramki-foto-001.jpg": {
