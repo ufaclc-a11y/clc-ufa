@@ -44,11 +44,18 @@ new_keys = [k for k in tagged if k not in head]
 prev_dropped = [k for k, t in head.items() if not categories_for(t) and categories_for(tagged.get(k, t))]
 import_list = list(dict.fromkeys(new_keys + prev_dropped))
 
-# Текущий максимум order по каждой категории — чтобы дописывать в конец
-maxorder = collections.defaultdict(int)
+# Новые фото идут В НАЧАЛО категории: order ниже текущего минимума и убывает,
+# так что самые свежие оказываются первыми (gen сортирует по order по возрастанию).
+minorder = {}
 for meta in manifest.values():
     for c, n in (meta.get("order") or {}).items():
-        maxorder[c] = max(maxorder[c], n)
+        minorder[c] = min(minorder.get(c, n), n)
+front = {}
+def next_order(c):
+    if c not in front:
+        front[c] = minorder.get(c, 1) - 1
+    o = front[c]; front[c] -= 1
+    return o
 
 planned, warnings, missing = [], [], []
 for name in import_list:
@@ -64,10 +71,7 @@ for name in import_list:
         continue  # совсем нечего раскладывать
     ext  = os.path.splitext(src)[1].lower() or ".jpg"
     dest_name = f"p-{hashlib.md5(open(src,'rb').read()).hexdigest()[:12]}{ext}"
-    order = {}
-    for c in cats:
-        maxorder[c] += 1
-        order[c] = maxorder[c]
+    order = {c: next_order(c) for c in cats}
     planned.append((src, dest_name, cats, order))
 
 # ── Предупреждения о незамапленных тегах ─────────────────────────────────────

@@ -4199,8 +4199,8 @@
       "shildiki-abs"
     ],
     "order": {
-      "gravirovka": 80,
-      "shildiki-abs": 7
+      "gravirovka": -4,
+      "shildiki-abs": -4
     }
   },
   "p-9dbaae55fb40.png": {
@@ -4209,8 +4209,8 @@
       "shildiki-abs"
     ],
     "order": {
-      "gravirovka": 76,
-      "shildiki-abs": 3
+      "gravirovka": -3,
+      "shildiki-abs": -3
     }
   },
   "p-9ea763fd5b9b.png": {
@@ -4219,8 +4219,8 @@
       "shildiki-abs"
     ],
     "order": {
-      "gravirovka": 77,
-      "shildiki-abs": 4
+      "gravirovka": -2,
+      "shildiki-abs": -2
     }
   },
   "p-b24ae3cc33d4.png": {
@@ -4229,8 +4229,8 @@
       "shildiki-abs"
     ],
     "order": {
-      "gravirovka": 79,
-      "shildiki-abs": 6
+      "gravirovka": -1,
+      "shildiki-abs": -1
     }
   },
   "p-d94527b09de2.png": {
@@ -4239,8 +4239,8 @@
       "shildiki-abs"
     ],
     "order": {
-      "gravirovka": 78,
-      "shildiki-abs": 5
+      "gravirovka": 0,
+      "shildiki-abs": 0
     }
   },
   "ramki-foto-001.jpg": {
