@@ -2,6 +2,10 @@
 // Источник: data/portfolio-tags.json. Обновляется в predev/prebuild.
 
 export const portfolioFiles: Record<string, string[]> = {
+  "adresniki": [
+    "p-7284ebf0abba.png",
+    "p-f5ef0b882ff1.jpg"
+  ],
   "akril-klishe": [
     "akril-klishe-001.jpg",
     "akril-klishe-002.jpg"
@@ -87,6 +91,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "frezernaya-rezka-050.jpg"
   ],
   "gravirovka": [
+    "p-7284ebf0abba.png",
     "p-0e566a05484f.png",
     "p-9dbaae55fb40.png",
     "p-9ea763fd5b9b.png",
@@ -783,6 +788,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "shkatulki-fanera-014.jpg"
   ],
   "tablitchki": [
+    "p-f5ef0b882ff1.jpg",
     "gravirovka-002.jpg",
     "tablitchki-002.jpg",
     "tablitchki-003.jpg",

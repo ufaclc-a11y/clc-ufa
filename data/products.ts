@@ -38,6 +38,7 @@ const PREFIX_TO_CAT: Record<string, string> = {
   'gravirovka':          'gravirovka',
   'gravirovka-chasy':    'gravirovka-chasy',
   'shildiki-abs':        'shildiki-abs',
+  'adresniki':           'adresniki',
   'frezernaya-rezka':    'frezernaya-rezka',
   'uf-pechat':           'uf-pechat',
   'koroba-fanera':       'lazernaya-rezka',
@@ -789,7 +790,7 @@ export const products: Product[] = [
     tags:            ['металл', 'нержавейка', 'гравировка', 'питомцы'],
     category:        'podarki',
     popularFor:      'Собаки, кошки, питомцы',
-    portfolioPrefix: 'gravirovka',
+    portfolioPrefix: 'adresniki',
     body:
       'Адресник с номером телефона — самый простой способ вернуть питомца домой, если он потеряется. ' +
       'Делаем прочные металлические адресники из нержавейки — надпись не стирается со временем и не боится воды, снега и грязи.\n\n' +

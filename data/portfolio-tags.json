@@ -4203,6 +4203,16 @@
       "shildiki-abs": -4
     }
   },
+  "p-7284ebf0abba.png": {
+    "categories": [
+      "adresniki",
+      "gravirovka"
+    ],
+    "order": {
+      "adresniki": -1,
+      "gravirovka": -5
+    }
+  },
   "p-9dbaae55fb40.png": {
     "categories": [
       "gravirovka",
@@ -4241,6 +4251,16 @@
     "order": {
       "gravirovka": 0,
       "shildiki-abs": 0
+    }
+  },
+  "p-f5ef0b882ff1.jpg": {
+    "categories": [
+      "adresniki",
+      "tablitchki"
+    ],
+    "order": {
+      "adresniki": 0,
+      "tablitchki": 0
     }
   },
   "ramki-foto-001.jpg": {

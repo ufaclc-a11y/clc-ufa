@@ -33,6 +33,7 @@ const CATEGORY_META: { id: string; label: string }[] = [
   { id: 'medali',              label: 'Медали'              },
   { id: 'tablitchki',          label: 'Таблички'            },
   { id: 'shildiki-abs',        label: 'Шильдики'            },
+  { id: 'adresniki',           label: 'Адресники'           },
   { id: 'breloki',             label: 'Брелоки'             },
   { id: 'kheshtegi',           label: 'Хештеги'             },
   { id: 'shkatulki-fanera',    label: 'Шкатулки'            },
