@@ -445,7 +445,7 @@ export const products: Product[] = [
     id:              'shildiki-abs',
     title:           'Шильдики из АБС пластика',
     description:     'Шильдики и таблички из АБС пластика с гравировкой или УФ-печатью. Прочные, влагостойкие, для промышленного и офисного применения.',
-    image:           '/images/products/tablichka-akril-shildik.jpg',
+    image:           '/images/portfolio/lazernaya-rezka-381.jpg',
     alt:             'Шильдики из АБС пластика с гравировкой Уфа',
     tags:            ['абс пластик', 'гравировка', 'уф-печать'],
     category:        'ofis',
