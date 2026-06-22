@@ -4,7 +4,6 @@
 export const portfolioFiles: Record<string, string[]> = {
   "adresniki": [
     "p-7284ebf0abba.png",
-    "p-f5ef0b882ff1.jpg",
     "gravirovka-047.jpg",
     "gravirovka-067.jpg",
     "gravirovka-068.jpg"
