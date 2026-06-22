@@ -4,7 +4,10 @@
 export const portfolioFiles: Record<string, string[]> = {
   "adresniki": [
     "p-7284ebf0abba.png",
-    "p-f5ef0b882ff1.jpg"
+    "p-f5ef0b882ff1.jpg",
+    "gravirovka-047.jpg",
+    "gravirovka-067.jpg",
+    "gravirovka-068.jpg"
   ],
   "akril-klishe": [
     "akril-klishe-001.jpg",
@@ -270,6 +273,11 @@ export const portfolioFiles: Record<string, string[]> = {
     "koroba-fanera-072.jpg",
     "koroba-fanera-073.jpg",
     "koroba-fanera-074.jpg"
+  ],
+  "kulony": [
+    "gravirovka-044.jpg",
+    "gravirovka-066.jpg",
+    "gravirovka-073.jpg"
   ],
   "lazernaya-rezka": [
     "lazernaya-rezka-001.jpg",
@@ -817,6 +825,11 @@ export const portfolioFiles: Record<string, string[]> = {
     "tablitchki-011.jpg",
     "lazernaya-rezka-075.jpg"
   ],
+  "termosy": [
+    "gravirovka-038.jpg",
+    "gravirovka-039.jpg",
+    "gravirovka-041.jpg"
+  ],
   "uf-pechat": [
     "uf-pechat-001.jpg",
     "uf-pechat-002.jpg",
@@ -864,5 +877,23 @@ export const portfolioFiles: Record<string, string[]> = {
     "zagotovki-001.jpg",
     "zagotovki-002.jpg",
     "zagotovki-003.jpg"
+  ],
+  "zhetony": [
+    "gravirovka-001.jpg",
+    "gravirovka-043.jpg",
+    "gravirovka-045.jpg",
+    "gravirovka-046.jpg",
+    "gravirovka-050.jpg",
+    "gravirovka-051.jpg",
+    "gravirovka-052.jpg",
+    "gravirovka-053.jpg",
+    "gravirovka-054.jpg",
+    "gravirovka-055.jpg",
+    "gravirovka-056.jpg",
+    "gravirovka-057.jpg",
+    "gravirovka-060.jpg",
+    "gravirovka-061.jpg",
+    "gravirovka-062.jpg",
+    "gravirovka-069.jpg"
   ]
 }

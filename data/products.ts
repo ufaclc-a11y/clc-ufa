@@ -39,6 +39,9 @@ const PREFIX_TO_CAT: Record<string, string> = {
   'gravirovka-chasy':    'gravirovka-chasy',
   'shildiki-abs':        'shildiki-abs',
   'adresniki':           'adresniki',
+  'zhetony':             'zhetony',
+  'kulony':              'kulony',
+  'termosy':             'termosy',
   'frezernaya-rezka':    'frezernaya-rezka',
   'uf-pechat':           'uf-pechat',
   'koroba-fanera':       'lazernaya-rezka',
@@ -180,7 +183,7 @@ export const products: Product[] = [
     tags:            ['металл', 'нержавейка', 'гравировка', 'маркировка'],
     category:        'nagrady',
     popularFor:      'Корпоративная атрибутика, сувениры',
-    portfolioPrefix: 'gravirovka',
+    portfolioPrefix: 'zhetony',
     portfolioCount:  15,
     body:
       'Жетоны с гравировкой — стильные, долговечные и персонализированные изделия для корпоративной атрибутики, военной сферы, сувениров и коллекционирования. ' +
@@ -816,7 +819,7 @@ export const products: Product[] = [
     tags:            ['металл', 'нержавейка', 'гравировка', 'подарки'],
     category:        'podarki',
     popularFor:      'Именные подарки, украшения',
-    portfolioPrefix: 'gravirovka',
+    portfolioPrefix: 'kulony',
     body:
       'Кулоны с гравировкой из нержавеющей стали — персонализированный подарок, который будут носить. ' +
       'Заготовки металлических кулонов, подвесок и жетонов всегда в наличии — делаем быстро, без ожидания.\n\n' +
@@ -882,7 +885,7 @@ export const products: Product[] = [
     tags:            ['металл', 'нержавейка', 'гравировка', 'подарки'],
     category:        'podarki',
     popularFor:      'Корпоративные подарки, именные сувениры',
-    portfolioPrefix: 'gravirovka',
+    portfolioPrefix: 'termosy',
     body:
       'Наносим гравировку на ваши термосы — создаём персонализированные подарки и брендированную корпоративную продукцию. ' +
       'Используем оптоволоконный лазерный маркиратор — надпись получается чёткой, аккуратной и долговечной.\n\n' +
