@@ -827,7 +827,8 @@ export const portfolioFiles: Record<string, string[]> = {
   "termosy": [
     "gravirovka-038.jpg",
     "gravirovka-039.jpg",
-    "gravirovka-041.jpg"
+    "gravirovka-041.jpg",
+    "gravirovka-040.jpg"
   ],
   "uf-pechat": [
     "uf-pechat-001.jpg",
@@ -876,6 +877,12 @@ export const portfolioFiles: Record<string, string[]> = {
     "zagotovki-001.jpg",
     "zagotovki-002.jpg",
     "zagotovki-003.jpg"
+  ],
+  "zazhigalki": [
+    "gravirovka-042.jpg",
+    "gravirovka-070.jpg",
+    "gravirovka-071.jpg",
+    "gravirovka-072.jpg"
   ],
   "zhetony": [
     "gravirovka-001.jpg",

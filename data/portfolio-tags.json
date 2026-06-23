@@ -905,10 +905,12 @@
   },
   "gravirovka-040.jpg": {
     "categories": [
-      "gravirovka"
+      "gravirovka",
+      "termosy"
     ],
     "order": {
-      "gravirovka": 40
+      "gravirovka": 40,
+      "termosy": 4
     }
   },
   "gravirovka-041.jpg": {
@@ -923,10 +925,12 @@
   },
   "gravirovka-042.jpg": {
     "categories": [
-      "gravirovka"
+      "gravirovka",
+      "zazhigalki"
     ],
     "order": {
-      "gravirovka": 42
+      "gravirovka": 42,
+      "zazhigalki": 1
     }
   },
   "gravirovka-043.jpg": {
@@ -1147,26 +1151,32 @@
   },
   "gravirovka-070.jpg": {
     "categories": [
-      "gravirovka"
+      "gravirovka",
+      "zazhigalki"
     ],
     "order": {
-      "gravirovka": 70
+      "gravirovka": 70,
+      "zazhigalki": 2
     }
   },
   "gravirovka-071.jpg": {
     "categories": [
-      "gravirovka"
+      "gravirovka",
+      "zazhigalki"
     ],
     "order": {
-      "gravirovka": 71
+      "gravirovka": 71,
+      "zazhigalki": 3
     }
   },
   "gravirovka-072.jpg": {
     "categories": [
-      "gravirovka"
+      "gravirovka",
+      "zazhigalki"
     ],
     "order": {
-      "gravirovka": 72
+      "gravirovka": 72,
+      "zazhigalki": 4
     }
   },
   "gravirovka-073.jpg": {

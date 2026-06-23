@@ -29,6 +29,7 @@ const CATEGORY_META: { id: string; label: string }[] = [
   { id: 'zhetony',             label: 'Жетоны'              },
   { id: 'kulony',              label: 'Кулоны'              },
   { id: 'termosy',             label: 'Термосы'             },
+  { id: 'zazhigalki',          label: 'Зажигалки'           },
   { id: 'frezernaya-rezka',    label: 'Фрезеровка'          },
   { id: 'organajzery',         label: 'Органайзеры'         },
   { id: 'nagradnye-statuetki', label: 'Наградные статуэтки' },

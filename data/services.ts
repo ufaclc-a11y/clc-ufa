@@ -308,6 +308,7 @@ export const services: Service[] = [
       'Гравировка на кружках':   '/products/kruzhki-gravir',
       'Гравировка на термосах':  '/products/termosy-gravir',
       'Гравировка на ножах':     '/products/nozhi-gravir',
+      'Гравировка на зажигалках':'/products/zazhigalki',
       'Персонализация подарков': '/suveniry-na-zakaz-ufa',
       'Корпоративная маркировка':'/korporativnaya-markirovka-ufa',
     },
