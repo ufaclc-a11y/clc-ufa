@@ -13,6 +13,8 @@ export const portfolioFiles: Record<string, string[]> = {
     "akril-klishe-002.jpg"
   ],
   "bejdzhi": [
+    "p-2207b4e3c2f3.png",
+    "p-b227e774fcf5.png",
     "bejdzhi-001.jpg",
     "bejdzhi-003.jpg",
     "bejdzhi-004.jpg",
@@ -42,6 +44,8 @@ export const portfolioFiles: Record<string, string[]> = {
     "chasy-008.jpg"
   ],
   "frezernaya-rezka": [
+    "p-d4f061680590.png",
+    "p-9af3bf9815d2.png",
     "frezernaya-rezka-001.jpg",
     "frezernaya-rezka-002.jpg",
     "frezernaya-rezka-003.jpg",
@@ -93,6 +97,8 @@ export const portfolioFiles: Record<string, string[]> = {
     "frezernaya-rezka-050.jpg"
   ],
   "gravirovka": [
+    "p-4edcc7fd4d06.png",
+    "p-ad57c350cf34.jpg",
     "p-7284ebf0abba.png",
     "p-0e566a05484f.png",
     "p-9dbaae55fb40.png",
@@ -274,11 +280,18 @@ export const portfolioFiles: Record<string, string[]> = {
     "koroba-fanera-074.jpg"
   ],
   "kulony": [
+    "p-258e5ce4a643.jpg",
     "gravirovka-044.jpg",
     "gravirovka-066.jpg",
     "gravirovka-073.jpg"
   ],
   "lazernaya-rezka": [
+    "p-4edcc7fd4d06.png",
+    "p-d4f061680590.png",
+    "p-9af3bf9815d2.png",
+    "p-14bb74ef85c1.png",
+    "p-2207b4e3c2f3.png",
+    "p-b227e774fcf5.png",
     "lazernaya-rezka-001.jpg",
     "tablitchki-002.jpg",
     "lazernaya-rezka-003.jpg",
@@ -689,6 +702,11 @@ export const portfolioFiles: Record<string, string[]> = {
     "lazernaya-rezka-350.jpg"
   ],
   "nagradnye-statuetki": [
+    "p-4edcc7fd4d06.png",
+    "p-d4f061680590.png",
+    "p-9af3bf9815d2.png",
+    "p-14bb74ef85c1.png",
+    "p-ad57c350cf34.jpg",
     "frezernaya-rezka-002.jpg",
     "nagradnye-statuetki-005.jpg",
     "lazernaya-rezka-030.jpg",
@@ -831,6 +849,12 @@ export const portfolioFiles: Record<string, string[]> = {
     "gravirovka-040.jpg"
   ],
   "uf-pechat": [
+    "p-d4f061680590.png",
+    "p-9af3bf9815d2.png",
+    "p-14bb74ef85c1.png",
+    "p-2207b4e3c2f3.png",
+    "p-b227e774fcf5.png",
+    "p-ad57c350cf34.jpg",
     "uf-pechat-001.jpg",
     "uf-pechat-002.jpg",
     "uf-pechat-003.jpg",

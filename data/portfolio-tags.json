@@ -4263,6 +4263,50 @@
       "shildiki-abs": -4
     }
   },
+  "p-14bb74ef85c1.png": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki",
+      "uf-pechat"
+    ],
+    "order": {
+      "lazernaya-rezka": -2,
+      "uf-pechat": -3,
+      "nagradnye-statuetki": 0
+    }
+  },
+  "p-2207b4e3c2f3.png": {
+    "categories": [
+      "bejdzhi",
+      "lazernaya-rezka",
+      "uf-pechat"
+    ],
+    "order": {
+      "lazernaya-rezka": -1,
+      "uf-pechat": -2,
+      "bejdzhi": -1
+    }
+  },
+  "p-258e5ce4a643.jpg": {
+    "categories": [
+      "kulony"
+    ],
+    "order": {
+      "kulony": 0
+    }
+  },
+  "p-4edcc7fd4d06.png": {
+    "categories": [
+      "gravirovka",
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "lazernaya-rezka": -5,
+      "gravirovka": -7,
+      "nagradnye-statuetki": -3
+    }
+  },
   "p-7284ebf0abba.png": {
     "categories": [
       "adresniki",
@@ -4271,6 +4315,20 @@
     "order": {
       "adresniki": -1,
       "gravirovka": -5
+    }
+  },
+  "p-9af3bf9815d2.png": {
+    "categories": [
+      "frezernaya-rezka",
+      "lazernaya-rezka",
+      "nagradnye-statuetki",
+      "uf-pechat"
+    ],
+    "order": {
+      "lazernaya-rezka": -3,
+      "uf-pechat": -4,
+      "frezernaya-rezka": 0,
+      "nagradnye-statuetki": -1
     }
   },
   "p-9dbaae55fb40.png": {
@@ -4293,6 +4351,30 @@
       "shildiki-abs": -2
     }
   },
+  "p-ad57c350cf34.jpg": {
+    "categories": [
+      "gravirovka",
+      "nagradnye-statuetki",
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": 0,
+      "gravirovka": -6,
+      "nagradnye-statuetki": 1
+    }
+  },
+  "p-b227e774fcf5.png": {
+    "categories": [
+      "bejdzhi",
+      "lazernaya-rezka",
+      "uf-pechat"
+    ],
+    "order": {
+      "lazernaya-rezka": 0,
+      "uf-pechat": -1,
+      "bejdzhi": 0
+    }
+  },
   "p-b24ae3cc33d4.png": {
     "categories": [
       "gravirovka",
@@ -4301,6 +4383,20 @@
     "order": {
       "gravirovka": -1,
       "shildiki-abs": -1
+    }
+  },
+  "p-d4f061680590.png": {
+    "categories": [
+      "frezernaya-rezka",
+      "lazernaya-rezka",
+      "nagradnye-statuetki",
+      "uf-pechat"
+    ],
+    "order": {
+      "lazernaya-rezka": -4,
+      "uf-pechat": -5,
+      "frezernaya-rezka": -1,
+      "nagradnye-statuetki": -2
     }
   },
   "p-d94527b09de2.png": {

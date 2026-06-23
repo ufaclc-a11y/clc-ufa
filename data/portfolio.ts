@@ -9,7 +9,7 @@ export type PortfolioItem = {
   alt:      string
 }
 
-export type PortfolioCategory = { id: string; label: string; count: number }
+export type PortfolioCategory = { id: string; label: string; count: number; sourceCount?: number }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Единственное, что поддерживается вручную — порядок категорий и их подписи.
