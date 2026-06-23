@@ -257,7 +257,7 @@ export default function ServicePage({ params }: Props) {
             <div>
               <div className="mb-5">
                 <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Применение</span>
-                <h2 className="font-display text-3xl text-[#1A1A1A] tracking-wider mt-1">Что изготавливаем</h2>
+                <h2 className="font-display text-3xl text-[#1A1A1A] tracking-wider mt-1">{service.useCasesTitle ?? 'Что изготавливаем'}</h2>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {service.useCases.map(u => {

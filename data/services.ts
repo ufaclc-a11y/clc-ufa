@@ -14,6 +14,7 @@ export type Service = {
   shortDescription: string
   materials:        string[]
   useCases:         string[]
+  useCasesTitle?:   string     // заголовок раздела «Что изготавливаем» (по умолчанию)
   image:            string
   seoTitle:         string
   seoDescription:   string
@@ -279,9 +280,11 @@ export const services: Service[] = [
       'Гравировка на кружках',
       'Гравировка на термосах',
       'Гравировка на ножах',
+      'Гравировка на зажигалках',
       'Персонализация подарков',
       'Корпоративная маркировка',
     ],
+    useCasesTitle: 'Что гравируем',
     image:          '/images/services/gravirovka-na-metalle.jpg',
     seoTitle:       'Гравировка на металле в Уфе — кружки, ножи | ЦЛР',
     seoDescription: 'Гравировка на металле в Уфе: жетоны, медали, кулоны, адресники, кружки, термосы, ножи. Лазерная и маркировочная гравировка. Срочно — за 1 час.',
