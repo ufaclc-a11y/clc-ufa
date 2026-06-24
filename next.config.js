@@ -31,6 +31,10 @@ const securityHeaders = [
 
 const nextConfig = {
   output: 'standalone',
+  // Dev и prod-сборка пишут в РАЗНЫЕ папки, чтобы `next build` (например, запущенный
+  // во время работающего `next dev`) не перетирал .next дев-сервера и не ронял его
+  // (Cannot find module './vendor-chunks/...'). Деплой всегда prod → .next.
+  distDir: isProd ? '.next' : '.next-dev',
   poweredByHeader: false,          // убирает X-Powered-By: Next.js
   images: {
     formats: ['image/avif', 'image/webp'],
