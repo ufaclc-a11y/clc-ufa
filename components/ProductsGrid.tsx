@@ -83,8 +83,8 @@ export function ProductsGrid() {
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
 
-            {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+            {/* Legibility scrim: bottom half nearly solid, fades out toward the top */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.97)_0%,rgba(0,0,0,0.94)_45%,rgba(0,0,0,0.55)_65%,rgba(0,0,0,0.10)_100%)]" />
 
             {/* Top: category badge */}
             <div className="absolute top-3 left-3">
@@ -94,19 +94,19 @@ export function ProductsGrid() {
             </div>
 
             {/* Bottom: text */}
-            <div className="absolute inset-x-0 bottom-0 p-5">
+            <div className="absolute inset-x-0 bottom-0 p-5 [text-shadow:0_1px_4px_rgba(0,0,0,0.55)]">
               {p.popularFor && (
                 <p className="text-[10px] text-[#FF6B00] font-semibold uppercase tracking-wider mb-1.5">
                   {p.popularFor}
                 </p>
               )}
-              <h2 className="font-display text-xl text-white tracking-wider mb-2 leading-snug group-hover:text-[#FF6B00] transition-colors duration-200">
+              <h2 className="font-display text-2xl text-white tracking-wider mb-2 leading-snug group-hover:text-[#FF6B00] transition-colors duration-200">
                 {p.title}
               </h2>
-              <p className="text-xs text-white/60 leading-relaxed line-clamp-2">{p.description}</p>
-              <div className="flex flex-wrap gap-1.5 mt-3">
+              <p className="text-xs text-white/85 leading-relaxed line-clamp-2">{p.description}</p>
+              <div className="flex flex-wrap gap-1.5 mt-3 [text-shadow:none]">
                 {p.tags.slice(0, 3).map(t => (
-                  <span key={t} className="text-[10px] bg-white/10 backdrop-blur-sm text-white/80 px-2 py-0.5 rounded-full border border-white/10">
+                  <span key={t} className="text-[10px] bg-black/35 backdrop-blur-sm text-white/90 px-2 py-0.5 rounded-full border border-white/15">
                     {t}
                   </span>
                 ))}

@@ -18,8 +18,8 @@ export function ServiceCard({ service }: { service: Service }) {
         className="object-cover group-hover:scale-105 transition-transform duration-500"
       />
 
-      {/* Legibility scrim: strong where the text sits (bottom ~half), fades up */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.80)_24%,rgba(0,0,0,0.45)_50%,rgba(0,0,0,0.08)_100%)]" />
+      {/* Legibility scrim: bottom half nearly solid, fades out toward the top */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.97)_0%,rgba(0,0,0,0.94)_45%,rgba(0,0,0,0.55)_65%,rgba(0,0,0,0.10)_100%)]" />
 
       {/* Top: icon (own shadow so it reads on bright photos) */}
       <div className="absolute top-4 right-4 text-white/80 drop-shadow-[0_1px_3px_rgba(0,0,0,0.7)] group-hover:text-[#FF6B00] transition-colors duration-200">
@@ -28,7 +28,7 @@ export function ServiceCard({ service }: { service: Service }) {
 
       {/* Bottom: text */}
       <div className="absolute inset-x-0 bottom-0 p-5 [text-shadow:0_1px_4px_rgba(0,0,0,0.55)]">
-        <h3 className="font-display text-2xl text-white tracking-wider mb-2 leading-tight group-hover:text-[#FF6B00] transition-colors duration-200">
+        <h3 className="font-display text-[1.7rem] text-white tracking-wider mb-2 leading-tight group-hover:text-[#FF6B00] transition-colors duration-200">
           {service.shortTitle}
         </h3>
         <p className="text-xs text-white/85 leading-relaxed line-clamp-2 mb-3">
