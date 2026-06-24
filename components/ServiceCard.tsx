@@ -18,25 +18,25 @@ export function ServiceCard({ service }: { service: Service }) {
         className="object-cover group-hover:scale-105 transition-transform duration-500"
       />
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+      {/* Legibility scrim: strong where the text sits (bottom ~half), fades up */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.80)_24%,rgba(0,0,0,0.45)_50%,rgba(0,0,0,0.08)_100%)]" />
 
-      {/* Top: icon */}
-      <div className="absolute top-4 right-4 text-white/60 group-hover:text-[#FF6B00] transition-colors duration-200">
+      {/* Top: icon (own shadow so it reads on bright photos) */}
+      <div className="absolute top-4 right-4 text-white/80 drop-shadow-[0_1px_3px_rgba(0,0,0,0.7)] group-hover:text-[#FF6B00] transition-colors duration-200">
         <SymbolIcon symbol={service.icon} size={24} />
       </div>
 
       {/* Bottom: text */}
-      <div className="absolute inset-x-0 bottom-0 p-5">
+      <div className="absolute inset-x-0 bottom-0 p-5 [text-shadow:0_1px_4px_rgba(0,0,0,0.55)]">
         <h3 className="font-display text-2xl text-white tracking-wider mb-2 leading-tight group-hover:text-[#FF6B00] transition-colors duration-200">
           {service.shortTitle}
         </h3>
-        <p className="text-xs text-white/60 leading-relaxed line-clamp-2 mb-3">
+        <p className="text-xs text-white/85 leading-relaxed line-clamp-2 mb-3">
           {service.shortDescription}
         </p>
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-1.5 [text-shadow:none]">
           {service.materials.slice(0, 4).map(m => (
-            <span key={m} className="text-[10px] bg-white/10 backdrop-blur-sm text-white/75 px-2 py-0.5 rounded-full border border-white/10">
+            <span key={m} className="text-[10px] bg-black/35 backdrop-blur-sm text-white/90 px-2 py-0.5 rounded-full border border-white/15">
               {m}
             </span>
           ))}
