@@ -9,6 +9,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "gravirovka-068.jpg"
   ],
   "akril-klishe": [
+    "p-e4aa59aed87a.png",
     "akril-klishe-001.jpg",
     "akril-klishe-002.jpg"
   ],
