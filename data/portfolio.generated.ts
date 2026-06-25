@@ -287,6 +287,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "gravirovka-073.jpg"
   ],
   "lazernaya-rezka": [
+    "p-5a67e3e4cc28.png",
     "p-4edcc7fd4d06.png",
     "p-d4f061680590.png",
     "p-9af3bf9815d2.png",
