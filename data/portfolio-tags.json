@@ -4253,6 +4253,16 @@
       "organajzery": 23
     }
   },
+  "p-0b995555a72d.png": {
+    "categories": [
+      "gravirovka",
+      "shildiki-abs"
+    ],
+    "order": {
+      "gravirovka": -8,
+      "shildiki-abs": -5
+    }
+  },
   "p-0e566a05484f.png": {
     "categories": [
       "gravirovka",
@@ -4309,10 +4319,10 @@
   },
   "p-5a67e3e4cc28.png": {
     "categories": [
-      "lazernaya-rezka"
+      "trafarety"
     ],
     "order": {
-      "lazernaya-rezka": -6
+      "trafarety": 1
     }
   },
   "p-7284ebf0abba.png": {
@@ -4323,6 +4333,16 @@
     "order": {
       "adresniki": -1,
       "gravirovka": -5
+    }
+  },
+  "p-911ea20d24db.png": {
+    "categories": [
+      "lazernaya-rezka",
+      "toppery"
+    ],
+    "order": {
+      "lazernaya-rezka": -6,
+      "toppery": 0
     }
   },
   "p-9af3bf9815d2.png": {
