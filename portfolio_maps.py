@@ -9,7 +9,7 @@
 # Сервисные теги (лазер/печать/гравировка/фрезеровка)
 SERVICE_PREFIX = {
     "Лазерная резка фанеры": "lazernaya-rezka", "Лазерная резка акрила": "lazernaya-rezka",
-    "Лазерная резка картона": "lazernaya-rezka", "Лазерная резка трафаретов": "lazernaya-rezka",
+    "Лазерная резка картона": "lazernaya-rezka", "Лазерная резка трафаретов": "trafarety",
     "Печать на фанере": "uf-pechat", "Печать на акриле": "uf-pechat",
     "Печать на пластике": "uf-pechat", "Печать на коже": "uf-pechat", "UV DTF-наклейки": "uf-pechat",
     "Гравировка на жетонах": "zhetony", "Гравировка на адресниках": "adresniki",
@@ -36,6 +36,8 @@ PRODUCT_PREFIX = {
     "Ключница": "klyuchnitsa", "Тейбл тенты и менюхолдеры": "tejbl-tenty",
     "Заготовки для творчества": "zagotovki",
     "Шилдики из АБС пластика": "shildiki-abs", "Гравировка на часах": "gravirovka-chasy",
+    "Акриловое клише": "akril-klishe",
+    "Топперы": "toppery",
 }
 
 ALL_PREFIX = {**SERVICE_PREFIX, **PRODUCT_PREFIX}
