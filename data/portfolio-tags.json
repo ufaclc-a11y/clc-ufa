@@ -4253,6 +4253,14 @@
       "organajzery": 23
     }
   },
+  "p-05f7bca5ba46.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": -3
+    }
+  },
   "p-0b995555a72d.png": {
     "categories": [
       "gravirovka",
@@ -4305,6 +4313,30 @@
       "kulony": 0
     }
   },
+  "p-2fe5f52885d0.jpg": {
+    "categories": [
+      "zhetony"
+    ],
+    "order": {
+      "zhetony": -4
+    }
+  },
+  "p-2fe6dcc2f1fe.png": {
+    "categories": [
+      "tablitchki"
+    ],
+    "order": {
+      "tablitchki": -1
+    }
+  },
+  "p-3c7f6d110e1b.jpg": {
+    "categories": [
+      "zhetony"
+    ],
+    "order": {
+      "zhetony": -1
+    }
+  },
   "p-4edcc7fd4d06.png": {
     "categories": [
       "gravirovka",
@@ -4347,6 +4379,14 @@
       "medali": 0
     }
   },
+  "p-8bee55a93d30.jpg": {
+    "categories": [
+      "zhetony"
+    ],
+    "order": {
+      "zhetony": -3
+    }
+  },
   "p-911ea20d24db.png": {
     "categories": [
       "lazernaya-rezka",
@@ -4355,6 +4395,22 @@
     "order": {
       "lazernaya-rezka": -6,
       "toppery": 0
+    }
+  },
+  "p-9318b7209037.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": -4
+    }
+  },
+  "p-965c06827092.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": -2
     }
   },
   "p-9af3bf9815d2.png": {
@@ -4389,6 +4445,14 @@
     "order": {
       "gravirovka": -2,
       "shildiki-abs": -2
+    }
+  },
+  "p-ab3ab4e7408c.jpg": {
+    "categories": [
+      "zhetony"
+    ],
+    "order": {
+      "zhetony": -2
     }
   },
   "p-ad57c350cf34.jpg": {
@@ -4455,6 +4519,22 @@
     ],
     "order": {
       "akril-klishe": 0
+    }
+  },
+  "p-e715a7482e17.jpg": {
+    "categories": [
+      "zhetony"
+    ],
+    "order": {
+      "zhetony": -5
+    }
+  },
+  "p-f587dc46edd8.jpg": {
+    "categories": [
+      "zhetony"
+    ],
+    "order": {
+      "zhetony": 0
     }
   },
   "p-f5ef0b882ff1.jpg": {
