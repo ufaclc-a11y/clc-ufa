@@ -288,6 +288,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "gravirovka-073.jpg"
   ],
   "lazernaya-rezka": [
+    "p-758809edd8db.jpg",
     "p-911ea20d24db.png",
     "p-4edcc7fd4d06.png",
     "p-d4f061680590.png",
@@ -671,6 +672,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "lazernaya-rezka-384.jpg"
   ],
   "medali": [
+    "p-758809edd8db.jpg",
     "medali-001.jpg",
     "lazernaya-rezka-004.jpg",
     "lazernaya-rezka-009.jpg",
@@ -860,6 +862,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "p-5a67e3e4cc28.png"
   ],
   "uf-pechat": [
+    "p-758809edd8db.jpg",
     "p-f756521ce627.jfif",
     "p-d4f061680590.png",
     "p-9af3bf9815d2.png",
