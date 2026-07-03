@@ -1136,7 +1136,7 @@ export const products: Product[] = [
     id:              'toppery',
     title:           'Топперы на торт',
     description:     'Топперы на торт из акрила и фанеры — имена, даты, надписи и фигуры. Лазерная резка любой сложности, от 1 штуки.',
-    image:           '/images/portfolio/p-911ea20d24db.png',
+    image:           '/images/portfolio/p-911ea20d24db.jpg',
     alt:             'Топперы на торт из акрила и фанеры лазерная резка Уфа',
     portfolioPrefix: 'toppery',
     tags:            ['акрил', 'фанера', 'лазерная резка', 'праздник', 'торт'],

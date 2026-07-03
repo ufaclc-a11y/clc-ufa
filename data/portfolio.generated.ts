@@ -49,7 +49,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "p-05f7bca5ba46.jpg",
     "p-965c06827092.jpg",
     "p-d4f061680590.png",
-    "p-9af3bf9815d2.png",
+    "p-9af3bf9815d2.jpg",
     "frezernaya-rezka-001.jpg",
     "frezernaya-rezka-002.jpg",
     "frezernaya-rezka-003.jpg",
@@ -101,15 +101,15 @@ export const portfolioFiles: Record<string, string[]> = {
     "frezernaya-rezka-050.jpg"
   ],
   "gravirovka": [
-    "p-0b995555a72d.png",
+    "p-0b995555a72d.jpg",
     "p-4edcc7fd4d06.png",
     "p-ad57c350cf34.jpg",
     "p-7284ebf0abba.png",
-    "p-0e566a05484f.png",
-    "p-9dbaae55fb40.png",
+    "p-0e566a05484f.jpg",
+    "p-9dbaae55fb40.jpg",
     "p-9ea763fd5b9b.png",
-    "p-b24ae3cc33d4.png",
-    "p-d94527b09de2.png",
+    "p-b24ae3cc33d4.jpg",
+    "p-d94527b09de2.jpg",
     "gravirovka-001.jpg",
     "gravirovka-002.jpg",
     "gravirovka-003.jpg",
@@ -292,10 +292,10 @@ export const portfolioFiles: Record<string, string[]> = {
   ],
   "lazernaya-rezka": [
     "p-758809edd8db.jpg",
-    "p-911ea20d24db.png",
+    "p-911ea20d24db.jpg",
     "p-4edcc7fd4d06.png",
     "p-d4f061680590.png",
-    "p-9af3bf9815d2.png",
+    "p-9af3bf9815d2.jpg",
     "p-14bb74ef85c1.png",
     "p-2207b4e3c2f3.png",
     "p-b227e774fcf5.png",
@@ -712,7 +712,7 @@ export const portfolioFiles: Record<string, string[]> = {
   "nagradnye-statuetki": [
     "p-4edcc7fd4d06.png",
     "p-d4f061680590.png",
-    "p-9af3bf9815d2.png",
+    "p-9af3bf9815d2.jpg",
     "p-14bb74ef85c1.png",
     "p-ad57c350cf34.jpg",
     "frezernaya-rezka-002.jpg",
@@ -796,12 +796,12 @@ export const portfolioFiles: Record<string, string[]> = {
     "lazernaya-rezka-384.jpg"
   ],
   "shildiki-abs": [
-    "p-0b995555a72d.png",
-    "p-0e566a05484f.png",
-    "p-9dbaae55fb40.png",
+    "p-0b995555a72d.jpg",
+    "p-0e566a05484f.jpg",
+    "p-9dbaae55fb40.jpg",
     "p-9ea763fd5b9b.png",
-    "p-b24ae3cc33d4.png",
-    "p-d94527b09de2.png",
+    "p-b24ae3cc33d4.jpg",
+    "p-d94527b09de2.jpg",
     "lazernaya-rezka-381.jpg",
     "shildiki-abs-002.jpg"
   ],
@@ -853,23 +853,23 @@ export const portfolioFiles: Record<string, string[]> = {
     "lazernaya-rezka-075.jpg"
   ],
   "termosy": [
-    "p-f756521ce627.jfif",
+    "p-f756521ce627.jpg",
     "gravirovka-038.jpg",
     "gravirovka-039.jpg",
     "gravirovka-041.jpg",
     "gravirovka-040.jpg"
   ],
   "toppery": [
-    "p-911ea20d24db.png"
+    "p-911ea20d24db.jpg"
   ],
   "trafarety": [
-    "p-5a67e3e4cc28.png"
+    "p-5a67e3e4cc28.jpg"
   ],
   "uf-pechat": [
     "p-758809edd8db.jpg",
-    "p-f756521ce627.jfif",
+    "p-f756521ce627.jpg",
     "p-d4f061680590.png",
-    "p-9af3bf9815d2.png",
+    "p-9af3bf9815d2.jpg",
     "p-14bb74ef85c1.png",
     "p-2207b4e3c2f3.png",
     "p-b227e774fcf5.png",
