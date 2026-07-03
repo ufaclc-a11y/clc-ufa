@@ -49,8 +49,8 @@ export function CookieConsent() {
     setShow(true)
   }, [])
 
-  const decide = (value: 'accepted' | 'declined') => {
-    try { localStorage.setItem(KEY, value) } catch { /* приватный режим */ }
+  const acknowledge = () => {
+    try { localStorage.setItem(KEY, 'accepted') } catch { /* приватный режим */ }
     setShow(false)
   }
 
@@ -58,30 +58,24 @@ export function CookieConsent() {
 
   return (
     <div
-      role="dialog"
-      aria-label="Согласие на использование cookie"
+      role="status"
+      aria-label="Уведомление об использовании cookie"
       className="fixed inset-x-0 bottom-0 z-[9998] p-3 sm:p-4 animate-fade-up"
     >
       <div className="max-w-3xl mx-auto bg-[#1A1A1A] text-white rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.35)] border border-white/10 p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-4">
         <p className="text-sm text-white/70 leading-relaxed flex-1">
           Мы используем cookie и Яндекс.Метрику, чтобы сайт работал лучше и удобнее.
-          Подробнее — в{' '}
+          Оставаясь на сайте, вы соглашаетесь с{' '}
           <Link href="/privacy" className="text-[#FF6B00] hover:underline underline-offset-2">
-            политике конфиденциальности
+            политикой конфиденциальности
           </Link>.
         </p>
         <div className="flex gap-2.5 shrink-0">
           <button
-            onClick={() => decide('declined')}
-            className="px-4 py-2.5 rounded-full text-sm font-semibold text-white/70 hover:text-white hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
-          >
-            Только необходимые
-          </button>
-          <button
-            onClick={() => decide('accepted')}
+            onClick={acknowledge}
             className="px-5 py-2.5 rounded-full text-sm font-semibold bg-[#FF6B00] text-white hover:bg-[#e85f00] transition-colors shadow-[0_2px_12px_rgba(255,107,0,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A1A1A]"
           >
-            Принять
+            Понятно
           </button>
         </div>
       </div>
