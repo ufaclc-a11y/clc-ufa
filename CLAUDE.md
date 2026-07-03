@@ -1,4 +1,60 @@
-# CLAUDE.md — Frontend Website Rules
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project
+
+Production website for **clc-ufa.ru** — a laser-cutting / UV-printing / engraving / CNC-milling business in Ufa, Russia. All UI copy is Russian. Next.js 14 App Router, TypeScript (strict), Tailwind. Live in production; `git push` to `main` auto-deploys (see Deploy).
+
+## Commands
+
+```bash
+npm run dev          # dev server on :3000 (runs gen-portfolio first via predev)
+npm run build        # production build, output: 'standalone' (runs gen-portfolio via prebuild)
+npm run start        # serve the production build
+npm run lint         # next lint (ESLint)
+npm test             # node:test suites under tests/*.test.ts (via tsx)
+npx tsc --noEmit     # type check
+npm run gen:portfolio    # regenerate data/portfolio.generated.ts from disk
+```
+
+Run a single test: `node --import tsx --test tests/wb-cdn.test.ts`
+
+CI (`.github/workflows/deploy.yml`) runs `npm ci → tsc --noEmit → next lint → npm test → next build` on every push, gating deploy. **Before committing, run the same four locally.** Always set `PUPPETEER_SKIP_DOWNLOAD=true` in CI-like contexts — puppeteer is a devDep and must not fetch Chrome on the server.
+
+### Screenshots (design verification)
+
+Local-only tooling for visual QA — see the design rules below. `node serve.mjs` serves the root; `node screenshot.mjs <url> [label]` saves auto-incremented PNGs to `./temporary screenshots/`. These are dev tools, not deployed.
+
+## Architecture
+
+**Content is data-driven.** Pages are thin; the substance lives in `data/*.ts` (`services`, `products`, `shop`, `blog`, `cases`, `faq`, `reviews`, `seo-pages`, `contacts`). Dynamic routes map a slug/id to a record — e.g. `app/services/[slug]`, `app/products/[id]`, `app/blog/[slug]`, `app/portfolio/[category]`, and the root catch-all `app/[slug]` (driven by `data/seo-pages.ts`). To add/change content, edit the data file, not just the page.
+
+**Root `app/[slug]` is a catch-all and shadows root-level routes.** A new file like `app/foo.xml/route.ts` will 404 because the catch-all wins. Put route handlers under a non-catch-all parent (that's why the image sitemap lives at `app/sitemaps/images.xml/route.ts`, not the root).
+
+**Portfolio is filesystem-driven.** `scripts/gen-portfolio.mjs` scans `public/images/portfolio/` for `<prefix>-NNN.ext` files, groups by prefix, and writes `data/portfolio.generated.ts` (committed). It runs automatically on `predev`/`prebuild`. `data/portfolio.ts` derives all items/categories from that manifest — the **only** hand-maintained part is `CATEGORY_META` (category order + Russian labels). Dropping a photo file into the folder or deleting one is enough; do not hardcode counts or filenames. Regenerate with `npm run gen:portfolio` after touching the folder outside a dev/build run.
+
+**SEO / structured data is centralized in `lib/seo.ts`.** Shared JSON-LD builders (`localBusinessRef`, `aggregateRating`/`reviewLd` from `data/reviews.ts`, `offerCatalog` from `data/services.ts`, `breadcrumbLd()`, `SITE` constant) feed `<JsonLd>` (`components/JsonLd.tsx`) across pages. `app/layout.tsx` emits the root LocalBusiness + WebSite schema. The site is tuned for GEO/AI crawlers: `app/robots.ts` allowlists AI bots, `public/llms.txt` is a machine index, sitemaps are split (`app/sitemap.ts` + `app/sitemaps/images.xml`). When adding a page type, wire its schema through `lib/seo.ts` rather than inlining ad-hoc JSON-LD.
+
+**Analytics are consent-gated.** Yandex Metrika (counter `53776969`) loads **only** after cookie consent via `components/CookieConsent.tsx` (external script, no inline — CSP-friendly). Track conversions with `trackGoal(goal)` from `lib/analytics.ts`; goal identifiers are documented in `docs/metrika-goals.md` and must already exist in the Metrika dashboard. Never re-add an inline Metrika `<Script>` to the layout.
+
+**Order form is dual-purpose: usable by AI agents, hardened against spam.** `components/OrderForm.tsx` → `app/api/send-email/route.ts`. The route enforces IP rate limiting (`lib/rate-limit.ts`), file size/count/extension limits, a required `contact` field, and a **honeypot** (`company` field — if non-empty, silently returns ok without sending). `public/llms.txt` documents the real fields for agents but deliberately does not reveal the honeypot. **`.env.local` has working SMTP, so the dev server sends real email** — when testing the API, fill the honeypot so the request is dropped.
+
+**External image proxy is SSRF-guarded.** `app/api/wb-img/route.ts` proxies Wildberries CDN images; `lib/wb-cdn.ts` (`parseWbImageUrl`) validates protocol + hostname against `basket-N.wbbasket.ru` and returns null otherwise. Covered by `tests/wb-cdn.test.ts`.
+
+**Fonts are self-hosted via `next/font`** in `lib/fonts.ts` (Bebas Neue display — Latin only, Cyrillic falls back to Manrope; Manrope body; JetBrains Mono). CSS vars `--f-display/--f-body/--f-mono` are applied on `<html>` and consumed in `app/globals.css`. No Google Fonts `@import`.
+
+**Security headers + legacy redirects live in `next.config.js`.** CSP is **production-only** (`isProd`) because dev HMR needs `eval`. There are ~60 permanent redirects from old WordPress URLs — preserve them when changing routes.
+
+## Deploy
+
+Push to `main` → GitHub Actions `check` job → SSH deploy (`appleboy/ssh-action`) to `/var/www/clc-ufa`, pm2 process `clc-ufa`, nginx reverse proxy. The deploy script is hardened (`set -euo pipefail`, `git reset --hard origin/main`, clean `npm ci`, `rm -rf .next`, rebuild, copy `public`/`.next/static` into `.next/standalone` without nesting, pm2 restart, curl health check). A green Actions run is not proof of a live update — if prod looks stale, check the deploy job log, not just that it's green.
+
+---
+
+# Frontend Website Rules
+
+The sections below are the standing design/build rules for this repo. `AGENTS.md` mirrors them for other agents — keep the two in sync.
 
 ## Always Do First
 - **Invoke the `frontend-design` skill and the `ui-ux-pro-max` skill** before writing any frontend code, every session, no exceptions.

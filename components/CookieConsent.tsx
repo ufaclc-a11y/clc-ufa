@@ -42,16 +42,15 @@ export function CookieConsent() {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
+    loadMetrika()
     let v: string | null = null
     try { v = localStorage.getItem(KEY) } catch { /* приватный режим */ }
-    if (v === 'accepted') { loadMetrika(); return }
-    if (v === 'declined') return
+    if (v === 'accepted' || v === 'declined') return
     setShow(true)
   }, [])
 
   const decide = (value: 'accepted' | 'declined') => {
     try { localStorage.setItem(KEY, value) } catch { /* приватный режим */ }
-    if (value === 'accepted') loadMetrika()
     setShow(false)
   }
 
