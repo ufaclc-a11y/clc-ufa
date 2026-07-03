@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo, useEffect, useCallback } from 'react'
+import { useState, useMemo, useEffect, useCallback, useRef } from 'react'
 import Image from 'next/image'
 import Link  from 'next/link'
 import { portfolioItems, portfolioCategories, type PortfolioItem } from '@/data/portfolio'
@@ -179,15 +179,53 @@ function Lightbox({
   onNext: () => void
 }) {
   const item = items[index]
+  const rootRef  = useRef<HTMLDivElement>(null)
+  const touchX   = useRef<number | null>(null)
+
+  // Фокус внутрь диалога при открытии + возврат при закрытии
+  useEffect(() => {
+    const prev = document.activeElement as HTMLElement | null
+    rootRef.current?.querySelector<HTMLElement>('[data-lb-close]')?.focus()
+    return () => prev?.focus()
+  }, [])
+
+  // Простая ловушка фокуса: Tab циклится по кнопкам лайтбокса
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key !== 'Tab' || !rootRef.current) return
+    const focusables = rootRef.current.querySelectorAll<HTMLElement>('button')
+    if (focusables.length === 0) return
+    const first = focusables[0]
+    const last  = focusables[focusables.length - 1]
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus() }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus() }
+  }
+
+  // Свайп влево/вправо на тач-экранах
+  const onTouchStart = (e: React.TouchEvent) => { touchX.current = e.touches[0].clientX }
+  const onTouchEnd   = (e: React.TouchEvent) => {
+    if (touchX.current === null) return
+    const dx = e.changedTouches[0].clientX - touchX.current
+    touchX.current = null
+    if (Math.abs(dx) < 50) return
+    if (dx < 0) onNext(); else onPrev()
+  }
 
   return (
     <div
+      ref={rootRef}
+      role="dialog"
+      aria-modal="true"
+      aria-label={item.alt}
       className="fixed inset-0 z-[200] flex items-center justify-center"
       style={{ background: 'rgba(10,10,10,0.92)' }}
       onClick={onClose}
+      onKeyDown={onKeyDown}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
     >
       {/* Close */}
       <button
+        data-lb-close
         onClick={onClose}
         className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
         aria-label="Закрыть"
