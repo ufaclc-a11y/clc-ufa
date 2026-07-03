@@ -5,9 +5,10 @@ import { blogPosts }          from '@/data/blog'
 import { products }           from '@/data/products'
 import { portfolioCategories } from '@/data/portfolio'
 
+// lastModified указываем только там, где знаем реальную дату (посты блога).
+// «Дата билда» у всех URL сразу обесценивает lastmod для поисковиков.
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://clc-ufa.ru'
-  const now  = new Date()
 
   const statics: MetadataRoute.Sitemap = [
     { url: base,                   priority: 1.0, changeFrequency: 'weekly'  as const },
@@ -27,18 +28,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/partners`,     priority: 0.7, changeFrequency: 'monthly' as const },
     { url: `${base}/contacts`,     priority: 0.7, changeFrequency: 'yearly'  as const },
     { url: `${base}/privacy`,      priority: 0.2, changeFrequency: 'yearly'  as const },
-  ].map(p => ({ ...p, lastModified: now }))
+  ]
 
   const servicePages: MetadataRoute.Sitemap = services.map(s => ({
     url:             `${base}/services/${s.slug}`,
-    lastModified:    now,
     changeFrequency: 'monthly',
     priority:        0.85,
   }))
 
   const seoLandings: MetadataRoute.Sitemap = seoPages.map(p => ({
     url:             `${base}/${p.slug}`,
-    lastModified:    now,
     changeFrequency: 'monthly',
     priority:        0.75,
   }))
@@ -52,7 +51,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const productPages: MetadataRoute.Sitemap = products.map(p => ({
     url:             `${base}/products/${p.id}`,
-    lastModified:    now,
     changeFrequency: 'monthly' as const,
     priority:        0.7,
   }))
@@ -61,7 +59,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .filter(c => c.id !== 'all')
     .map(c => ({
       url:             `${base}/portfolio/${c.id}`,
-      lastModified:    now,
       changeFrequency: 'monthly' as const,
       priority:        0.75,
     }))
