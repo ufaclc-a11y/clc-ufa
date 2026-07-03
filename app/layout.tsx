@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from 'next'
+import { Suspense } from 'react'
 import './globals.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { CookieConsent } from '@/components/CookieConsent'
+import { MetrikaRouteTracker } from '@/components/MetrikaRouteTracker'
 import { business } from '@/data/contacts'
 import { sameAs, aggregateRating, reviewLd, offerCatalog, openingHoursSpecification } from '@/lib/seo'
 import { fontVariables } from '@/lib/fonts'
@@ -111,8 +113,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main-content">{children}</main>
         <Footer />
 
-        {/* Яндекс.Метрика грузится только после согласия (см. CookieConsent) */}
         <CookieConsent />
+        <Suspense fallback={null}>
+          <MetrikaRouteTracker />
+        </Suspense>
       </body>
     </html>
   )

@@ -234,7 +234,10 @@
       "Bash(PUPPETEER_SKIP_DOWNLOAD=true node scripts/compress-images.mjs)",
       "PowerShell(Get-CimInstance Win32_Process -Filter \"Name='node.exe'\" | Where-Object { $_.CommandLine -match 'next' } | Select-Object ProcessId, CreationDate, @{n='CL';e={$_.CommandLine}} | Format-Table -Wrap -AutoSize | Out-String -Width 300)",
       "PowerShell(Get-Process -Id 27012,19172 -ErrorAction SilentlyContinue)",
-      "Bash(grep -viE '\\\\.\\(jpg|jpeg|png|webp\\)$')"
+      "Bash(grep -viE '\\\\.\\(jpg|jpeg|png|webp\\)$')",
+      "Bash(echo \"PUSH_EXIT=$?\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} time %{time_total}s\\\\n\" --max-time 15 https://clc-ufa.ru/)",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"Name='node.exe'\" | Select-Object ProcessId, CreationDate, @{n='CL';e={$_.CommandLine}} | Format-Table -Wrap -AutoSize | Out-String -Width 300)"
     ]
   }
 }
