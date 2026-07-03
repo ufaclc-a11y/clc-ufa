@@ -22,7 +22,7 @@ publish_photos.py — одно окно: разметить новые фото 
 import os, sys, json, hashlib, shutil, subprocess, threading, collections
 import tkinter as tk
 from tkinter import messagebox
-from PIL import Image, ImageTk
+from PIL import Image, ImageTk, ImageOps
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from photo_tagger import CATEGORY_GROUPS          # тот же набор категорий, что в тэггере
@@ -47,6 +47,53 @@ _NO_WINDOW = subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
 
 # базовые (неудаляемые) категории
 BASE_CATS = {c for _, cats in CATEGORY_GROUPS for c in cats}
+
+
+# ─── Оптимизация фото под быструю загрузку страниц ───────────────────────────
+MAX_SIDE     = 1920     # длинная сторона (как в scripts/compress-images.mjs)
+JPEG_QUALITY = 82       # качество JPEG (визуально без потерь, но заметно легче)
+
+def _has_real_transparency(img):
+    """PNG/RGBA с реально прозрачными пикселями (а не полностью непрозрачным альфа)."""
+    if img.mode == "P":
+        return "transparency" in img.info
+    if img.mode in ("RGBA", "LA"):
+        try:
+            return img.getchannel("A").getextrema()[0] < 255
+        except Exception:
+            return True
+    return False
+
+def output_ext(src):
+    """Расширение публикуемого файла: фото → .jpg, с прозрачностью → сохраняем формат."""
+    try:
+        with Image.open(src) as im:
+            if _has_real_transparency(im):
+                return os.path.splitext(src)[1].lower() or ".png"
+    except Exception:
+        return os.path.splitext(src)[1].lower() or ".jpg"
+    return ".jpg"
+
+def optimize_image(src, dst):
+    """Ресайз до MAX_SIDE + пережатие. Фото → JPEG, прозрачные → PNG. Поворот по EXIF.
+    Если оптимизация не уменьшила файл (и формат тот же) — оставляем оригинал.
+    Возвращает (размер_до, размер_после) в байтах."""
+    with Image.open(src) as im:
+        im = ImageOps.exif_transpose(im)          # применяем поворот из EXIF
+        if max(im.size) > MAX_SIDE:
+            im.thumbnail((MAX_SIDE, MAX_SIDE), Image.LANCZOS)
+        if dst.lower().endswith(".png"):
+            im.save(dst, "PNG", optimize=True)
+        elif dst.lower().endswith(".webp"):
+            im.save(dst, "WEBP", quality=JPEG_QUALITY, method=5)
+        else:
+            im.convert("RGB").save(dst, "JPEG", quality=JPEG_QUALITY,
+                                   optimize=True, progressive=True)
+    # если формат тот же и меньше не стало — вернём оригинал (не портим то, что уже лёгкое)
+    if (os.path.splitext(src)[1].lower() == os.path.splitext(dst)[1].lower()
+            and os.path.getsize(dst) >= os.path.getsize(src)):
+        shutil.copy2(src, dst)
+    return os.path.getsize(src), os.path.getsize(dst)
 
 
 # ─── Данные ──────────────────────────────────────────────────────────────────
@@ -482,7 +529,7 @@ class PublishApp:
                     no_cat_after.append(name); continue
                 with open(src, "rb") as fh:
                     h = hashlib.md5(fh.read()).hexdigest()[:12]
-                ext = os.path.splitext(src)[1].lower() or ".jpg"
+                ext = output_ext(src)
                 plan.append((name, src, f"p-{h}{ext}", cats))
 
             if warnings:
@@ -515,10 +562,17 @@ class PublishApp:
                     order_for[(dest, c)] = base + i
 
             copied, published, bycat = 0, [], collections.Counter()
+            orig_bytes = new_bytes = 0
             for name, src, dest, cats in plan:
                 dst = os.path.join(DEST, dest)
                 if not os.path.exists(dst):
-                    shutil.copy2(src, dst); copied += 1
+                    try:
+                        o_sz, n_sz = optimize_image(src, dst)
+                    except Exception as e:               # если PIL не смог — кладём как есть
+                        self._log(f"  оптимизация не удалась ({name}): {e} — копирую оригинал")
+                        shutil.copy2(src, dst)
+                        o_sz = n_sz = os.path.getsize(src)
+                    orig_bytes += o_sz; new_bytes += n_sz; copied += 1
                 entry = manifest.get(dest, {"categories": [], "order": {}})
                 ecats, eorder = set(entry.get("categories", [])), dict(entry.get("order", {}))
                 for c in cats:
@@ -534,6 +588,9 @@ class PublishApp:
             json.dump(dict(sorted(manifest.items())), open(MANIFEST, "w", encoding="utf-8"),
                       ensure_ascii=False, indent=2)
             self._log(f"Манифест обновлён. Новых файлов скопировано: {copied}.")
+            if copied and orig_bytes:
+                saved = 100 * (orig_bytes - new_bytes) / orig_bytes
+                self._log(f"Оптимизация: {orig_bytes/1e6:.1f} → {new_bytes/1e6:.1f} МБ  (−{saved:.0f}%)")
             for c, n in sorted(bycat.items(), key=lambda x: -x[1]):
                 self._log(f"  +{n}  {c}")
             if no_cat_after:
