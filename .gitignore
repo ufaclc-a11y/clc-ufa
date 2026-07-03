@@ -17,3 +17,6 @@ temporary screenshots/
 # python
 __pycache__/
 *.pyc
+
+# исходники для publish_photos.py (на сайт уезжают копии в public/images/portfolio)
+NewPhoto/
