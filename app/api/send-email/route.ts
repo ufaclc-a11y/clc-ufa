@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import { business } from '@/data/contacts'
 import { rateLimit, clientIp } from '@/lib/rate-limit'
+import {
+  MAX_FILES, MAX_FIELD_LEN, isSpam, hasContact, checkAttachment, escapeHtml,
+} from '@/lib/order-validation'
 
 // Создаём транспортер один раз на весь процесс (DNS резолвится при первом sendMail)
 let _transporter: ReturnType<typeof nodemailer.createTransport> | null = null
@@ -28,14 +31,8 @@ if (process.env.SMTP_USER && process.env.SMTP_PASS) {
   getTransporter().verify().catch(() => { /* тихая ошибка при старте */ })
 }
 
-// Лимиты защиты от злоупотреблений (дублируют клиентскую проверку OrderForm)
-const MAX_FILES      = 5
-const MAX_FILE_BYTES = 20 * 1024 * 1024   // 20 МБ на файл
-const MAX_TOTAL_BYTES = 40 * 1024 * 1024  // 40 МБ суммарно
-const MAX_FIELD_LEN  = 2000               // максимум символов в текстовом поле
-const ALLOWED_EXT = new Set([
-  'jpg', 'jpeg', 'png', 'webp', 'gif', 'pdf', 'ai', 'eps', 'svg', 'dxf', 'cdr', 'zip',
-])
+// Лимиты защиты от злоупотреблений — в lib/order-validation.ts (покрыты тестами,
+// дублируют клиентскую проверку OrderForm).
 
 // Лимит подачи заявок с одного IP: 5 запросов за 10 минут.
 const RL_LIMIT  = 5
@@ -68,17 +65,11 @@ export async function POST(req: Request) {
       for (const [key, value] of entries) {
         if (key === 'files' && value instanceof File && value.size > 0) {
           if (attachments.length >= MAX_FILES) continue
-          const ext = value.name.split('.').pop()?.toLowerCase() ?? ''
-          if (!ALLOWED_EXT.has(ext)) {
-            return NextResponse.json({ error: `Недопустимый тип файла: ${value.name}` }, { status: 400 })
-          }
-          if (value.size > MAX_FILE_BYTES) {
-            return NextResponse.json({ error: `Файл слишком большой: ${value.name}` }, { status: 413 })
+          const check = checkAttachment(value.name, value.size, totalBytes)
+          if (!check.ok) {
+            return NextResponse.json({ error: check.error }, { status: check.status })
           }
           totalBytes += value.size
-          if (totalBytes > MAX_TOTAL_BYTES) {
-            return NextResponse.json({ error: 'Суммарный размер файлов превышает лимит' }, { status: 413 })
-          }
           const buf = Buffer.from(await value.arrayBuffer())
           attachments.push({ filename: value.name, content: buf })
         } else if (typeof value === 'string') {
@@ -90,12 +81,12 @@ export async function POST(req: Request) {
     }
 
     // Honeypot: поле скрыто от людей, заполняют только боты — тихо «успех», ничего не шлём
-    if (body.company && body.company.trim() !== '') {
+    if (isSpam(body)) {
       return NextResponse.json({ ok: true })
     }
 
     // Требуем хотя бы контакт — отсекаем пустые автозапросы
-    if (!body.contact || body.contact.trim() === '') {
+    if (!hasContact(body)) {
       return NextResponse.json({ error: 'Укажите контакт для связи' }, { status: 400 })
     }
 
@@ -110,15 +101,17 @@ export async function POST(req: Request) {
       today: 'Срочно сегодня',
     }
 
+    // Пользовательский ввод экранируем — иначе заявка может вставить в письмо свой HTML
+    const esc = (v: string | undefined) => (v ? escapeHtml(v) : v)
     const lines = [
-      body.name     && `<b>Имя:</b> ${body.name}`,
-      body.contact  && `<b>Контакт:</b> ${body.contact}`,
-      body.product  && `<b>Изделие:</b> ${body.product}`,
-      body.size     && `<b>Размер:</b> ${body.size}`,
-      body.qty      && `<b>Количество:</b> ${body.qty}`,
-      body.material && `<b>Материал:</b> ${body.material}`,
-      body.urgency  && `<b>Срочность:</b> ${urgencyLabels[body.urgency] ?? body.urgency}`,
-      body.comment  && `<b>Комментарий:</b> ${body.comment}`,
+      body.name     && `<b>Имя:</b> ${esc(body.name)}`,
+      body.contact  && `<b>Контакт:</b> ${esc(body.contact)}`,
+      body.product  && `<b>Изделие:</b> ${esc(body.product)}`,
+      body.size     && `<b>Размер:</b> ${esc(body.size)}`,
+      body.qty      && `<b>Количество:</b> ${esc(body.qty)}`,
+      body.material && `<b>Материал:</b> ${esc(body.material)}`,
+      body.urgency  && `<b>Срочность:</b> ${esc(urgencyLabels[body.urgency] ?? body.urgency)}`,
+      body.comment  && `<b>Комментарий:</b> ${esc(body.comment)}`,
       attachments.length && `<b>Файлов:</b> ${attachments.length}`,
     ].filter(Boolean)
 
