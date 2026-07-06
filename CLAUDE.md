@@ -22,6 +22,8 @@ Run a single test: `node --import tsx --test tests/wb-cdn.test.ts`
 
 CI (`.github/workflows/deploy.yml`) runs `npm ci → tsc --noEmit → next lint → npm test → next build` on every push, gating deploy. **Before committing, run the same four locally.** Always set `PUPPETEER_SKIP_DOWNLOAD=true` in CI-like contexts — puppeteer is a devDep and must not fetch Chrome on the server.
 
+**Local `next build` may hang forever on this machine.** The `/fonts` page (`lib/fonts-preview.ts`) pulls dozens of Google Fonts via `next/font/google`, which downloads them at build time; `fonts.gstatic.com` is unreachable from here (endless `socket hang up` retries), so the build never finishes locally. Don't wait it out — rely on tsc/lint/test locally and let CI do the build (deploy only happens on green). A real fix would be self-hosting the preview fonts via `next/font/local`.
+
 ### Screenshots (design verification)
 
 Local-only tooling for visual QA — see the design rules below. `node serve.mjs` serves the root; `node screenshot.mjs <url> [label]` saves auto-incremented PNGs to `./temporary screenshots/`. These are dev tools, not deployed.
