@@ -22,7 +22,7 @@ Run a single test: `node --import tsx --test tests/wb-cdn.test.ts`
 
 CI (`.github/workflows/deploy.yml`) runs `npm ci → tsc --noEmit → next lint → npm test → next build` on every push, gating deploy. **Before committing, run the same four locally.** Always set `PUPPETEER_SKIP_DOWNLOAD=true` in CI-like contexts — puppeteer is a devDep and must not fetch Chrome on the server.
 
-**Local `next build` may hang forever on this machine.** The `/fonts` page (`lib/fonts-preview.ts`) pulls dozens of Google Fonts via `next/font/google`, which downloads them at build time; `fonts.gstatic.com` is unreachable from here (endless `socket hang up` retries), so the build never finishes locally. Don't wait it out — rely on tsc/lint/test locally and let CI do the build (deploy only happens on green). A real fix would be self-hosting the preview fonts via `next/font/local`.
+**The build needs no network for fonts.** All fonts (site fonts in `lib/fonts.ts`, the 60 preview fonts in `lib/fonts-preview.ts`) are `next/font/local` with woff2 files committed in `assets/fonts/` (latin+cyrillic combined, downloaded once via google-webfonts-helper). Never switch back to `next/font/google` — it downloads fonts at build time and `fonts.gstatic.com` is unreachable/flaky from this machine, which used to hang local builds forever. To add a font: fetch its woff2 from https://gwfh.mranftl.com (subsets latin,cyrillic), drop it in `assets/fonts/`, declare via `localFont()`.
 
 ### Screenshots (design verification)
 
@@ -44,7 +44,7 @@ Local-only tooling for visual QA — see the design rules below. `node serve.mjs
 
 **External image proxy is SSRF-guarded.** `app/api/wb-img/route.ts` proxies Wildberries CDN images; `lib/wb-cdn.ts` (`parseWbImageUrl`) validates protocol + hostname against `basket-N.wbbasket.ru` and returns null otherwise. Covered by `tests/wb-cdn.test.ts`.
 
-**Fonts are self-hosted via `next/font`** in `lib/fonts.ts` (Bebas Neue display — Latin only, Cyrillic falls back to Manrope; Manrope body; JetBrains Mono). CSS vars `--f-display/--f-body/--f-mono` are applied on `<html>` and consumed in `app/globals.css`. No Google Fonts `@import`.
+**Fonts are self-hosted via `next/font/local`** in `lib/fonts.ts` (Bebas Neue display — Latin only, Cyrillic falls back to Manrope; Manrope body; JetBrains Mono), files in `assets/fonts/`. CSS vars `--f-display/--f-body/--f-mono` are applied on `<html>` and consumed in `app/globals.css`. No Google Fonts `@import`, no `next/font/google` anywhere (see Commands — it hangs local builds).
 
 **Security headers + legacy redirects live in `next.config.js`.** CSP is **production-only** (`isProd`) because dev HMR needs `eval`. There are ~60 permanent redirects from old WordPress URLs — preserve them when changing routes.
 

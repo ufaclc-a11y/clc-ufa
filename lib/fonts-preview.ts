@@ -1,97 +1,82 @@
-import {
-  // script / рукописные
-  Lobster, Caveat, Marck_Script, Bad_Script, Pangolin, Pacifico,
-  Lobster_Two, Pattaya, Neucha,
-  Comforter, Comforter_Brush, Amatic_SC, Balsamiq_Sans, Bellota,
-  Shantell_Sans, Yomogi, Klee_One, Hachi_Maru_Pop, Zen_Kurenaido,
-  // serif / с засечками
-  Yeseva_One, Playfair_Display, Prata, Forum, PT_Serif, Merriweather,
-  Lora, Cormorant, EB_Garamond, Spectral, Vollkorn, Old_Standard_TT,
-  Tenor_Sans, Philosopher, Noto_Serif,
-  // decor / декоративные
-  Ruslan_Display, Underdog, Press_Start_2P, Seymour_One, Rubik_Mono_One,
-  Stalinist_One, Kelly_Slab, Podkova,
-  // sans / без засечек
-  Russo_One, Oswald, Roboto, Open_Sans, Montserrat, PT_Sans, Raleway,
-  Ubuntu, Nunito, Rubik, Inter, Fira_Sans, Exo_2, Play, Comfortaa,
-  Yanone_Kaffeesatz, Jura, Cuprum,
-} from 'next/font/google'
+import localFont from 'next/font/local'
 
-// Самохостинг через next/font — без запроса к Google Fonts в рантайме (CSP-friendly,
-// важно для 152-ФЗ). preload: false — чтобы 50 шрифтов не создавали десятки <link
-// rel=preload>; браузер подгружает их по мере отображения карточек (display: swap).
+// Самохостинг через next/font/local — woff2 лежат в assets/fonts (latin+cyrillic одним
+// файлом, скачаны через google-webfonts-helper). Раньше был next/font/google, который
+// скачивает шрифты при сборке — fonts.gstatic.com отсюда недоступен, build зависал.
+// preload: false — чтобы 60 шрифтов не создавали десятки <link rel=preload>; браузер
+// подгружает их по мере отображения карточек (display: swap).
 // Свободные шрифты, у большинства есть кириллица; те, что только латиница, помечены
 // cyrillic: false и показываются как «ENG».
 
 // next/font требует литералы в каждом вызове (SWC-плагин не поддерживает spread).
 
 // ── script / рукописные ──────────────────────────────────────────────────────
-const lobster    = Lobster({         weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-lobster'    })
-const caveat     = Caveat({          weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-caveat'     })
-const marck      = Marck_Script({    weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-marck'      })
-const badScript  = Bad_Script({      weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-bad'        })
-const pangolin   = Pangolin({        weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-pangolin'   })
-const pacifico   = Pacifico({        weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-pacifico'   })
-const lobsterTwo = Lobster_Two({     weight: '400', subsets: ['latin'], display: 'swap', preload: false, variable: '--fp-lobstertwo' })
-const pattaya    = Pattaya({         weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-pattaya'    })
-const neucha     = Neucha({          weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-neucha'     })
-const comforter  = Comforter({       weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-comforter' })
-const comforterBr= Comforter_Brush({ weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-comfortbr' })
-const amatic     = Amatic_SC({       weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-amatic'    })
-const balsamiq   = Balsamiq_Sans({   weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-balsamiq'  })
-const bellota    = Bellota({         weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-bellota'   })
-const shantell   = Shantell_Sans({   weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-shantell'  })
-const yomogi     = Yomogi({          weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-yomogi'    })
-const kleeOne    = Klee_One({        weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-klee'      })
-const hachiMaru  = Hachi_Maru_Pop({  weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-hachimaru' })
-const zenKure    = Zen_Kurenaido({   weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-zenkure'   })
+const lobster    = localFont({ src: '../assets/fonts/lobster-400.woff2',          weight: '400', display: 'swap', preload: false, variable: '--fp-lobster'    })
+const caveat     = localFont({ src: '../assets/fonts/caveat-400.woff2',           weight: '400', display: 'swap', preload: false, variable: '--fp-caveat'     })
+const marck      = localFont({ src: '../assets/fonts/marck-script-400.woff2',     weight: '400', display: 'swap', preload: false, variable: '--fp-marck'      })
+const badScript  = localFont({ src: '../assets/fonts/bad-script-400.woff2',       weight: '400', display: 'swap', preload: false, variable: '--fp-bad'        })
+const pangolin   = localFont({ src: '../assets/fonts/pangolin-400.woff2',         weight: '400', display: 'swap', preload: false, variable: '--fp-pangolin'   })
+const pacifico   = localFont({ src: '../assets/fonts/pacifico-400.woff2',         weight: '400', display: 'swap', preload: false, variable: '--fp-pacifico'   })
+const lobsterTwo = localFont({ src: '../assets/fonts/lobster-two-400.woff2',      weight: '400', display: 'swap', preload: false, variable: '--fp-lobstertwo' })
+const pattaya    = localFont({ src: '../assets/fonts/pattaya-400.woff2',          weight: '400', display: 'swap', preload: false, variable: '--fp-pattaya'    })
+const neucha     = localFont({ src: '../assets/fonts/neucha-400.woff2',           weight: '400', display: 'swap', preload: false, variable: '--fp-neucha'     })
+const comforter  = localFont({ src: '../assets/fonts/comforter-400.woff2',        weight: '400', display: 'swap', preload: false, variable: '--fp-comforter'  })
+const comforterBr= localFont({ src: '../assets/fonts/comforter-brush-400.woff2',  weight: '400', display: 'swap', preload: false, variable: '--fp-comfortbr'  })
+const amatic     = localFont({ src: '../assets/fonts/amatic-sc-400.woff2',        weight: '400', display: 'swap', preload: false, variable: '--fp-amatic'     })
+const balsamiq   = localFont({ src: '../assets/fonts/balsamiq-sans-400.woff2',    weight: '400', display: 'swap', preload: false, variable: '--fp-balsamiq'   })
+const bellota    = localFont({ src: '../assets/fonts/bellota-400.woff2',          weight: '400', display: 'swap', preload: false, variable: '--fp-bellota'    })
+const shantell   = localFont({ src: '../assets/fonts/shantell-sans-400.woff2',    weight: '400', display: 'swap', preload: false, variable: '--fp-shantell'   })
+const yomogi     = localFont({ src: '../assets/fonts/yomogi-400.woff2',           weight: '400', display: 'swap', preload: false, variable: '--fp-yomogi'     })
+const kleeOne    = localFont({ src: '../assets/fonts/klee-one-400.woff2',         weight: '400', display: 'swap', preload: false, variable: '--fp-klee'       })
+const hachiMaru  = localFont({ src: '../assets/fonts/hachi-maru-pop-400.woff2',   weight: '400', display: 'swap', preload: false, variable: '--fp-hachimaru'  })
+const zenKure    = localFont({ src: '../assets/fonts/zen-kurenaido-400.woff2',    weight: '400', display: 'swap', preload: false, variable: '--fp-zenkure'    })
 
 // ── serif / с засечками ──────────────────────────────────────────────────────
-const yeseva     = Yeseva_One({      weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-yeseva'    })
-const playfair   = Playfair_Display({weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-playfair'  })
-const prata      = Prata({           weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-prata'     })
-const forum      = Forum({           weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-forum'     })
-const ptSerif    = PT_Serif({        weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-ptserif'   })
-const merriweather = Merriweather({  weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-merri'     })
-const lora       = Lora({            weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-lora'      })
-const cormorant  = Cormorant({       weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-cormorant' })
-const ebGaramond = EB_Garamond({     weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-garamond'  })
-const spectral   = Spectral({        weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-spectral'  })
-const vollkorn   = Vollkorn({        weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-vollkorn'  })
-const oldStandard= Old_Standard_TT({ weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-oldstd'    })
-const tenor      = Tenor_Sans({      weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-tenor'     })
-const philosopher= Philosopher({     weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-philo'     })
-const notoSerif  = Noto_Serif({      weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-notoserif' })
+const yeseva     = localFont({ src: '../assets/fonts/yeseva-one-400.woff2',       weight: '400', display: 'swap', preload: false, variable: '--fp-yeseva'     })
+const playfair   = localFont({ src: '../assets/fonts/playfair-display-400.woff2', weight: '400', display: 'swap', preload: false, variable: '--fp-playfair'   })
+const prata      = localFont({ src: '../assets/fonts/prata-400.woff2',            weight: '400', display: 'swap', preload: false, variable: '--fp-prata'      })
+const forum      = localFont({ src: '../assets/fonts/forum-400.woff2',            weight: '400', display: 'swap', preload: false, variable: '--fp-forum'      })
+const ptSerif    = localFont({ src: '../assets/fonts/pt-serif-400.woff2',         weight: '400', display: 'swap', preload: false, variable: '--fp-ptserif'    })
+const merriweather = localFont({ src: '../assets/fonts/merriweather-400.woff2',   weight: '400', display: 'swap', preload: false, variable: '--fp-merri'      })
+const lora       = localFont({ src: '../assets/fonts/lora-400.woff2',             weight: '400', display: 'swap', preload: false, variable: '--fp-lora'       })
+const cormorant  = localFont({ src: '../assets/fonts/cormorant-400.woff2',        weight: '400', display: 'swap', preload: false, variable: '--fp-cormorant'  })
+const ebGaramond = localFont({ src: '../assets/fonts/eb-garamond-400.woff2',      weight: '400', display: 'swap', preload: false, variable: '--fp-garamond'   })
+const spectral   = localFont({ src: '../assets/fonts/spectral-400.woff2',         weight: '400', display: 'swap', preload: false, variable: '--fp-spectral'   })
+const vollkorn   = localFont({ src: '../assets/fonts/vollkorn-400.woff2',         weight: '400', display: 'swap', preload: false, variable: '--fp-vollkorn'   })
+const oldStandard= localFont({ src: '../assets/fonts/old-standard-tt-400.woff2',  weight: '400', display: 'swap', preload: false, variable: '--fp-oldstd'     })
+const tenor      = localFont({ src: '../assets/fonts/tenor-sans-400.woff2',       weight: '400', display: 'swap', preload: false, variable: '--fp-tenor'      })
+const philosopher= localFont({ src: '../assets/fonts/philosopher-400.woff2',      weight: '400', display: 'swap', preload: false, variable: '--fp-philo'      })
+const notoSerif  = localFont({ src: '../assets/fonts/noto-serif-400.woff2',       weight: '400', display: 'swap', preload: false, variable: '--fp-notoserif'  })
 
 // ── decor / декоративные ─────────────────────────────────────────────────────
-const ruslan     = Ruslan_Display({  weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-ruslan'    })
-const underdog   = Underdog({        weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-underdog'  })
-const pressStart = Press_Start_2P({  weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-press'     })
-const seymour    = Seymour_One({     weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-seymour'   })
-const rubikMono  = Rubik_Mono_One({  weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-rubikmono' })
-const stalinist  = Stalinist_One({   weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-stalinist' })
-const kellySlab  = Kelly_Slab({      weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-kelly'     })
-const podkova    = Podkova({         weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-podkova'   })
+const ruslan     = localFont({ src: '../assets/fonts/ruslan-display-400.woff2',   weight: '400', display: 'swap', preload: false, variable: '--fp-ruslan'     })
+const underdog   = localFont({ src: '../assets/fonts/underdog-400.woff2',         weight: '400', display: 'swap', preload: false, variable: '--fp-underdog'   })
+const pressStart = localFont({ src: '../assets/fonts/press-start-2p-400.woff2',   weight: '400', display: 'swap', preload: false, variable: '--fp-press'      })
+const seymour    = localFont({ src: '../assets/fonts/seymour-one-400.woff2',      weight: '400', display: 'swap', preload: false, variable: '--fp-seymour'    })
+const rubikMono  = localFont({ src: '../assets/fonts/rubik-mono-one-400.woff2',   weight: '400', display: 'swap', preload: false, variable: '--fp-rubikmono'  })
+const stalinist  = localFont({ src: '../assets/fonts/stalinist-one-400.woff2',    weight: '400', display: 'swap', preload: false, variable: '--fp-stalinist'  })
+const kellySlab  = localFont({ src: '../assets/fonts/kelly-slab-400.woff2',       weight: '400', display: 'swap', preload: false, variable: '--fp-kelly'      })
+const podkova    = localFont({ src: '../assets/fonts/podkova-400.woff2',          weight: '400', display: 'swap', preload: false, variable: '--fp-podkova'    })
 
 // ── sans / без засечек ───────────────────────────────────────────────────────
-const russo      = Russo_One({       weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-russo'     })
-const oswald     = Oswald({          weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-oswald'    })
-const roboto     = Roboto({          weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-roboto'    })
-const openSans   = Open_Sans({       weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-opensans'  })
-const montserrat = Montserrat({      weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-montserrat'})
-const ptSans     = PT_Sans({         weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-ptsans'    })
-const raleway    = Raleway({         weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-raleway'   })
-const ubuntu     = Ubuntu({          weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-ubuntu'    })
-const nunito     = Nunito({          weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-nunito'    })
-const rubik      = Rubik({           weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-rubik'     })
-const inter      = Inter({           weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-inter'     })
-const firaSans   = Fira_Sans({       weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-fira'      })
-const exo2       = Exo_2({           weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-exo'       })
-const play       = Play({            weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-play'      })
-const comfortaa  = Comfortaa({       weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-comfortaa' })
-const yanone     = Yanone_Kaffeesatz({weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-yanone'  })
-const jura       = Jura({            weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-jura'      })
-const cuprum     = Cuprum({          weight: '400', subsets: ['latin', 'cyrillic'], display: 'swap', preload: false, variable: '--fp-cuprum'    })
+const russo      = localFont({ src: '../assets/fonts/russo-one-400.woff2',        weight: '400', display: 'swap', preload: false, variable: '--fp-russo'      })
+const oswald     = localFont({ src: '../assets/fonts/oswald-400.woff2',           weight: '400', display: 'swap', preload: false, variable: '--fp-oswald'     })
+const roboto     = localFont({ src: '../assets/fonts/roboto-400.woff2',           weight: '400', display: 'swap', preload: false, variable: '--fp-roboto'     })
+const openSans   = localFont({ src: '../assets/fonts/open-sans-400.woff2',        weight: '400', display: 'swap', preload: false, variable: '--fp-opensans'   })
+const montserrat = localFont({ src: '../assets/fonts/montserrat-400.woff2',       weight: '400', display: 'swap', preload: false, variable: '--fp-montserrat' })
+const ptSans     = localFont({ src: '../assets/fonts/pt-sans-400.woff2',          weight: '400', display: 'swap', preload: false, variable: '--fp-ptsans'     })
+const raleway    = localFont({ src: '../assets/fonts/raleway-400.woff2',          weight: '400', display: 'swap', preload: false, variable: '--fp-raleway'    })
+const ubuntu     = localFont({ src: '../assets/fonts/ubuntu-400.woff2',           weight: '400', display: 'swap', preload: false, variable: '--fp-ubuntu'     })
+const nunito     = localFont({ src: '../assets/fonts/nunito-400.woff2',           weight: '400', display: 'swap', preload: false, variable: '--fp-nunito'     })
+const rubik      = localFont({ src: '../assets/fonts/rubik-400.woff2',            weight: '400', display: 'swap', preload: false, variable: '--fp-rubik'      })
+const inter      = localFont({ src: '../assets/fonts/inter-400.woff2',            weight: '400', display: 'swap', preload: false, variable: '--fp-inter'      })
+const firaSans   = localFont({ src: '../assets/fonts/fira-sans-400.woff2',        weight: '400', display: 'swap', preload: false, variable: '--fp-fira'       })
+const exo2       = localFont({ src: '../assets/fonts/exo-2-400.woff2',            weight: '400', display: 'swap', preload: false, variable: '--fp-exo'        })
+const play       = localFont({ src: '../assets/fonts/play-400.woff2',             weight: '400', display: 'swap', preload: false, variable: '--fp-play'       })
+const comfortaa  = localFont({ src: '../assets/fonts/comfortaa-400.woff2',        weight: '400', display: 'swap', preload: false, variable: '--fp-comfortaa'  })
+const yanone     = localFont({ src: '../assets/fonts/yanone-kaffeesatz-400.woff2',weight: '400', display: 'swap', preload: false, variable: '--fp-yanone'     })
+const jura       = localFont({ src: '../assets/fonts/jura-400.woff2',             weight: '400', display: 'swap', preload: false, variable: '--fp-jura'       })
+const cuprum     = localFont({ src: '../assets/fonts/cuprum-400.woff2',           weight: '400', display: 'swap', preload: false, variable: '--fp-cuprum'     })
 
 export type FontCategory = 'script' | 'serif' | 'decor' | 'sans'
 
