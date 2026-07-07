@@ -14,7 +14,7 @@ import { CTASection }    from '@/components/CTASection'
 import { FAQAccordion }  from '@/components/FAQAccordion'
 import { IconCheck, IconBolt, IconTarget, IconArrowUpRight, SymbolIcon } from '@/components/Icons'
 import { selectFaqItems, type FAQItem } from '@/data/faq'
-import { faqPageLd } from '@/lib/seo'
+import { SITE, aggregateRating, faqPageLd } from '@/lib/seo'
 
 /** Те же категории/лимит, что у <FAQAccordion> ниже — schema совпадает с видимым блоком. */
 const faqSelection: { limit: number; categories: FAQItem['category'][] } = {
@@ -85,6 +85,10 @@ export default function SeoLandingPage({ params }: Props) {
     '@type':     'Service',
     name:         page.h1,
     description:  page.description,
+    '@id':        `${SITE}/${page.slug}#service`,
+    url:          `${SITE}/${page.slug}`,
+    inLanguage:   'ru-RU',
+    mainEntityOfPage: `${SITE}/${page.slug}`,
     provider: {
       '@type':     'LocalBusiness',
       name:        'Центр лазерной резки',
@@ -95,6 +99,17 @@ export default function SeoLandingPage({ params }: Props) {
       },
     },
     areaServed: { '@type': 'City', name: 'Уфа' },
+    aggregateRating,
+    category:     page.material,
+    serviceType:  page.service,
+    ...(heroImage ? { image: `${SITE}${heroImage}` } : {}),
+    offers: {
+      '@type': 'AggregateOffer',
+      priceCurrency: 'RUB',
+      lowPrice: '400',
+      availability: 'https://schema.org/InStock',
+      url: `${SITE}/${page.slug}`,
+    },
   }
 
   return (

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { blogPosts } from '@/data/blog'
 import { CTASection } from '@/components/CTASection'
+import { SITE, organizationRef } from '@/lib/seo'
 
 type Props = { params: { slug: string } }
 
@@ -154,10 +155,17 @@ export default function BlogPostPage({ params }: Props) {
   const jsonLd = {
     '@context':       'https://schema.org',
     '@type':          'Article',
+    '@id':            `${SITE}/blog/${post.slug}#article`,
+    mainEntityOfPage: `${SITE}/blog/${post.slug}`,
     headline:         post.title,
     description:      post.description,
-    image:            `https://clc-ufa.ru${post.image}`,
+    image:            `${SITE}${post.image}`,
     datePublished:    post.date,
+    dateModified:     post.date,
+    articleSection:   post.category,
+    inLanguage:       'ru-RU',
+    timeRequired:     `PT${post.readTime}M`,
+    sourceOrganization: organizationRef,
     author: {
       '@type': 'Organization',
       name:    'Центр лазерной резки',

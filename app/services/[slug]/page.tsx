@@ -75,14 +75,35 @@ export default function ServicePage({ params }: Props) {
   const serviceLd = {
     '@context': 'https://schema.org',
     '@type':    'Service',
+    '@id':       `${SITE}/services/${service.slug}#service`,
     name:        service.title,
     serviceType: service.title,
     description: service.description,
     url:         `${SITE}/services/${service.slug}`,
+    inLanguage:  'ru-RU',
+    mainEntityOfPage: `${SITE}/services/${service.slug}`,
     ...(service.heroImage ? { image: `${SITE}${service.heroImage}` } : {}),
     provider:    localBusinessRef,
     areaServed:  { '@type': 'City', name: 'Уфа' },
     aggregateRating,
+    category:    service.materials,
+    additionalProperty: [
+      { '@type': 'PropertyValue', name: 'minimumOrder', value: '400 RUB' },
+      { '@type': 'PropertyValue', name: 'productionTime', value: '1-3 days' },
+      { '@type': 'PropertyValue', name: 'rushProduction', value: 'from 1 hour' },
+      { '@type': 'PropertyValue', name: 'acceptedFiles', value: 'DXF, SVG, CDR, AI, PDF' },
+    ],
+    ...(service.priceTables?.length
+      ? {
+          offers: {
+            '@type': 'AggregateOffer',
+            priceCurrency: 'RUB',
+            lowPrice: '400',
+            availability: 'https://schema.org/InStock',
+            url: `${SITE}/services/${service.slug}`,
+          },
+        }
+      : {}),
   }
 
   return (

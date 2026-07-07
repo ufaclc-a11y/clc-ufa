@@ -61,6 +61,54 @@ export const localBusinessRef = {
   image: `${SITE}/images/og-image.jpg`,
 }
 
+export const organizationRef = {
+  '@type': 'Organization',
+  '@id': `${SITE}/#organization`,
+  name: business.name,
+  alternateName: business.brand,
+  url: SITE,
+  telephone: business.phone,
+  email: business.email,
+  logo: `${SITE}/logo.svg`,
+  image: `${SITE}/images/og-image.jpg`,
+  sameAs,
+}
+
+export const contactPointLd = [
+  {
+    '@type': 'ContactPoint',
+    telephone: business.phone,
+    contactType: 'customer service',
+    areaServed: 'RU',
+    availableLanguage: ['ru'],
+  },
+  {
+    '@type': 'ContactPoint',
+    url: business.whatsapp,
+    contactType: 'sales',
+    areaServed: 'RU',
+    availableLanguage: ['ru'],
+  },
+  {
+    '@type': 'ContactPoint',
+    url: business.telegram,
+    contactType: 'sales',
+    areaServed: 'RU',
+    availableLanguage: ['ru'],
+  },
+]
+
+export const serviceOutputFacts = [
+  'laser cutting',
+  'UV printing',
+  'laser engraving',
+  'CNC routing',
+  'custom awards',
+  'signage',
+  'nameplates',
+  'souvenirs',
+]
+
 /** Хлебные крошки. Передавай элементы в порядке от корня; url — без домена. */
 export function breadcrumbLd(items: { name: string; url?: string }[]) {
   return {

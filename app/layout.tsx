@@ -6,7 +6,15 @@ import { Footer } from '@/components/Footer'
 import { CookieConsent } from '@/components/CookieConsent'
 import { MetrikaRouteTracker } from '@/components/MetrikaRouteTracker'
 import { business } from '@/data/contacts'
-import { sameAs, aggregateRating, reviewLd, offerCatalog, openingHoursSpecification } from '@/lib/seo'
+import {
+  sameAs,
+  aggregateRating,
+  reviewLd,
+  offerCatalog,
+  openingHoursSpecification,
+  contactPointLd,
+  serviceOutputFacts,
+} from '@/lib/seo'
 import { fontVariables } from '@/lib/fonts'
 
 export const metadata: Metadata = {
@@ -79,6 +87,8 @@ const jsonLd = {
   priceRange:   '₽₽',
   image:        'https://clc-ufa.ru/images/og-image.jpg',
   sameAs,
+  contactPoint: contactPointLd,
+  knowsAbout:   serviceOutputFacts,
   aggregateRating,
   review:           reviewLd,
   hasOfferCatalog:  offerCatalog,

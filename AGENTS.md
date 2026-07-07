@@ -3,6 +3,12 @@
 ## Always Do First
 - **Invoke the `frontend-design` skill and the `ui-ux-pro-max` skill** before writing any frontend code, every session, no exceptions.
 
+## Token/Usage Economy
+- If the user asks for a small or exploratory task, default to the economical formula:
+  "Make minimal changes only in the necessary files. Do not browse the web. Do not run a full build unless explicitly requested. Use no more than 5 shell commands where practical. At the end, briefly state what changed and what the user must do manually."
+- Do not perform a broad project audit, internet research, screenshots, full builds, or repeated verification loops unless the user explicitly asks for them or the task cannot be completed safely without them.
+- If a task may expand beyond a narrow change, ask before continuing with deeper investigation.
+
 ## Reference Images
 - If a reference image is provided: match layout, spacing, typography, and color exactly. Swap in placeholder content (images via `https://placehold.co/`, generic copy). Do not improve or add to the design.
 - If no reference image: design from scratch with high craft (see guardrails below).

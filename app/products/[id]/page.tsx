@@ -15,7 +15,7 @@ import { GalleryGrid } from '@/components/GalleryGrid'
 import { samplePhotos } from '@/data/portfolio'
 import { RichText }   from '@/components/RichText'
 import { selectFaqItems, type FAQItem } from '@/data/faq'
-import { aggregateRating, faqPageLd } from '@/lib/seo'
+import { SITE, localBusinessRef, aggregateRating, faqPageLd } from '@/lib/seo'
 
 /** Те же категории/лимит, что у <FAQAccordion> ниже — schema совпадает с видимым блоком. */
 const faqSelection: { limit: number; categories: FAQItem['category'][] } = {
@@ -72,20 +72,32 @@ export default function ProductPage({ params }: Props) {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type':    'Product',
+    '@id':       `${SITE}/products/${product.id}#product`,
     name:        product.title,
     description: product.description,
-    image:       `https://clc-ufa.ru${product.image}`,
+    image:       `${SITE}${product.image}`,
+    url:         `${SITE}/products/${product.id}`,
+    inLanguage:  'ru-RU',
+    category:    product.category,
+    material:    product.tags,
     brand: {
       '@type': 'Brand',
       name:    'Центр лазерной резки',
     },
+    manufacturer: localBusinessRef,
+    additionalProperty: [
+      { '@type': 'PropertyValue', name: 'minimumOrder', value: '400 RUB' },
+      { '@type': 'PropertyValue', name: 'productionTime', value: '1-3 days' },
+      { '@type': 'PropertyValue', name: 'city', value: business.city },
+      ...(product.popularFor ? [{ '@type': 'PropertyValue', name: 'popularFor', value: product.popularFor }] : []),
+    ],
     offers: {
       // Цена индивидуальная (по макету), заказ от 400 ₽ — выражаем через AggregateOffer/lowPrice.
       '@type':        'AggregateOffer',
       priceCurrency:  'RUB',
       lowPrice:       '400',
       availability:   'https://schema.org/InStock',
-      url:            `https://clc-ufa.ru/products/${product.id}`,
+      url:            `${SITE}/products/${product.id}`,
       seller: {
         '@type': 'Organization',
         name:    'Центр лазерной резки',

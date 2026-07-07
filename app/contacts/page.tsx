@@ -4,6 +4,8 @@ import { business }      from '@/data/contacts'
 import { Breadcrumbs }   from '@/components/Breadcrumbs'
 import { ContactButtons } from '@/components/ContactButtons'
 import { FounderPhone }   from '@/components/FounderPhone'
+import { JsonLd }          from '@/components/JsonLd'
+import { SITE, localBusinessRef, contactPointLd } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title:       'Контакты — Центр лазерной резки, Уфа, ул. Менделеева 177',
@@ -12,9 +14,30 @@ export const metadata: Metadata = {
   alternates:  { canonical: 'https://clc-ufa.ru/contacts' },
 }
 
+const contactPageLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  '@id': `${SITE}/contacts#contactpage`,
+  url: `${SITE}/contacts`,
+  inLanguage: 'ru-RU',
+  name: 'Contacts',
+  mainEntity: {
+    ...localBusinessRef,
+    email: business.email,
+    contactPoint: contactPointLd,
+    hasMap: business.yandexMaps,
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: business.coords.lat,
+      longitude: business.coords.lng,
+    },
+  },
+}
+
 export default function ContactsPage() {
   return (
     <>
+      <JsonLd data={contactPageLd} />
       {/* ── HERO ── */}
       <div className="relative min-h-[360px] flex items-end bg-[#1A1A1A] overflow-hidden pt-24">
         <div className="absolute inset-0">
