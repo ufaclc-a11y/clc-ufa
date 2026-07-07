@@ -854,7 +854,6 @@ export const portfolioFiles: Record<string, string[]> = {
   ],
   "termosy": [
     "p-f756521ce627.jpg",
-    "gravirovka-038.jpg",
     "gravirovka-039.jpg",
     "gravirovka-041.jpg",
     "gravirovka-040.jpg"

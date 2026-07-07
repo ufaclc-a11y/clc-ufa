@@ -885,12 +885,10 @@
   },
   "gravirovka-038.jpg": {
     "categories": [
-      "gravirovka",
-      "termosy"
+      "gravirovka"
     ],
     "order": {
-      "gravirovka": 38,
-      "termosy": 1
+      "gravirovka": 38
     }
   },
   "gravirovka-039.jpg": {
