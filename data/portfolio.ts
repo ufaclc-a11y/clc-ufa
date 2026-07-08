@@ -40,6 +40,7 @@ const CATEGORY_META: { id: string; label: string }[] = [
   { id: 'adresniki',           label: 'Адресники'           },
   { id: 'breloki',             label: 'Брелоки'             },
   { id: 'kheshtegi',           label: 'Хештеги'             },
+  { id: 'toppery',             label: 'Топперы'             },
   { id: 'shkatulki-fanera',    label: 'Шкатулки'            },
   { id: 'vyveski',             label: 'Вывески'             },
   { id: 'ramki-foto',          label: 'Рамки для фото'      },
