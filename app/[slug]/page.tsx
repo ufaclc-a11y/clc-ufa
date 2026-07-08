@@ -14,7 +14,7 @@ import { CTASection }    from '@/components/CTASection'
 import { FAQAccordion }  from '@/components/FAQAccordion'
 import { IconCheck, IconBolt, IconTarget, IconArrowUpRight, SymbolIcon } from '@/components/Icons'
 import { selectFaqItems, type FAQItem } from '@/data/faq'
-import { SITE, aggregateRating, faqPageLd } from '@/lib/seo'
+import { SITE, faqPageLd } from '@/lib/seo'
 
 /** Те же категории/лимит, что у <FAQAccordion> ниже — schema совпадает с видимым блоком. */
 const faqSelection: { limit: number; categories: FAQItem['category'][] } = {
@@ -87,7 +87,6 @@ export default function SeoLandingPage({ params }: Props) {
     description:  page.description,
     '@id':        `${SITE}/${page.slug}#service`,
     url:          `${SITE}/${page.slug}`,
-    inLanguage:   'ru-RU',
     mainEntityOfPage: `${SITE}/${page.slug}`,
     provider: {
       '@type':     'LocalBusiness',
@@ -99,7 +98,8 @@ export default function SeoLandingPage({ params }: Props) {
       },
     },
     areaServed: { '@type': 'City', name: 'Уфа' },
-    aggregateRating,
+    // aggregateRating на Service нельзя — Google Review snippets не поддерживает
+    // Service и выдаёт «Invalid object type <parent_node>» (рейтинг — на LocalBusiness).
     category:     page.material,
     serviceType:  page.service,
     ...(heroImage ? { image: `${SITE}${heroImage}` } : {}),

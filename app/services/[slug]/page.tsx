@@ -14,7 +14,7 @@ import { GalleryGrid }   from '@/components/GalleryGrid'
 import { RichText }      from '@/components/RichText'
 import { samplePhotos, firstPhoto } from '@/data/portfolio'
 import { selectFaqItems, type FAQItem } from '@/data/faq'
-import { SITE, localBusinessRef, aggregateRating, faqPageLd } from '@/lib/seo'
+import { SITE, localBusinessRef, faqPageLd } from '@/lib/seo'
 
 /** Те же категории/лимит, что у <FAQAccordion> ниже — schema совпадает с видимым блоком. */
 const faqSelection: { limit: number; categories: FAQItem['category'][] } = {
@@ -80,12 +80,13 @@ export default function ServicePage({ params }: Props) {
     serviceType: service.title,
     description: service.description,
     url:         `${SITE}/services/${service.slug}`,
-    inLanguage:  'ru-RU',
     mainEntityOfPage: `${SITE}/services/${service.slug}`,
     ...(service.heroImage ? { image: `${SITE}${service.heroImage}` } : {}),
     provider:    localBusinessRef,
     areaServed:  { '@type': 'City', name: 'Уфа' },
-    aggregateRating,
+    // aggregateRating на Service не вешаем: Google не поддерживает Service как
+    // itemReviewed для review snippets и ругается «Invalid object type <parent_node>».
+    // Рейтинг бизнеса живёт на LocalBusiness в layout.
     category:    service.materials,
     additionalProperty: [
       { '@type': 'PropertyValue', name: 'minimumOrder', value: '400 RUB' },

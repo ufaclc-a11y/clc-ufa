@@ -15,7 +15,7 @@ import { GalleryGrid } from '@/components/GalleryGrid'
 import { samplePhotos } from '@/data/portfolio'
 import { RichText }   from '@/components/RichText'
 import { selectFaqItems, type FAQItem } from '@/data/faq'
-import { SITE, localBusinessRef, aggregateRating, faqPageLd } from '@/lib/seo'
+import { SITE, localBusinessRef, aggregateRating, reviewLd, faqPageLd } from '@/lib/seo'
 
 /** Те же категории/лимит, что у <FAQAccordion> ниже — schema совпадает с видимым блоком. */
 const faqSelection: { limit: number; categories: FAQItem['category'][] } = {
@@ -77,7 +77,6 @@ export default function ProductPage({ params }: Props) {
     description: product.description,
     image:       `${SITE}${product.image}`,
     url:         `${SITE}/products/${product.id}`,
-    inLanguage:  'ru-RU',
     category:    product.category,
     material:    product.tags,
     brand: {
@@ -93,9 +92,11 @@ export default function ProductPage({ params }: Props) {
     ],
     offers: {
       // Цена индивидуальная (по макету), заказ от 400 ₽ — выражаем через AggregateOffer/lowPrice.
+      // offerCount: одна позиция под заказ у одного продавца.
       '@type':        'AggregateOffer',
       priceCurrency:  'RUB',
       lowPrice:       '400',
+      offerCount:     1,
       availability:   'https://schema.org/InStock',
       url:            `${SITE}/products/${product.id}`,
       seller: {
@@ -104,7 +105,7 @@ export default function ProductPage({ params }: Props) {
       },
     },
     aggregateRating,
-    areaServed: { '@type': 'City', name: 'Уфа' },
+    review: reviewLd,
   }
 
   return (
