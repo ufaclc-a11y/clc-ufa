@@ -62,6 +62,14 @@ const categoryMeta: Record<string, { title: string; description: string }> = {
   'klyuchnitsa':         { title: 'Ключницы из фанеры на заказ — Уфа',             description: 'Ключницы из берёзовой фанеры с гравировкой. Именные, с монограммой, с логотипом — от 450 ₽.' },
 }
 
+/*
+ * Все категории известны на этапе билда (манифест генерируется из файловой
+ * системы). Без этого флага app/portfolio/loading.tsx начинает стримить ответ
+ * со статусом 200 до того, как notFound() на странице успеет сработать, —
+ * несуществующие категории отдавали soft-404 (200 вместо 404).
+ */
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return portfolioCategories
     .filter(c => c.id !== 'all')
@@ -70,7 +78,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cat = portfolioCategories.find(c => c.id === params.category)
-  if (!cat) return {}
+  if (!cat || cat.id === 'all') notFound()
   const meta = categoryMeta[cat.id]
   return {
     title:       `${meta?.title ?? cat.label} | Центр лазерной резки Уфа`,
