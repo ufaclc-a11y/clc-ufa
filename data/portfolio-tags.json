@@ -4251,12 +4251,32 @@
       "organajzery": 23
     }
   },
+  "p-005e7f9be041.jpg": {
+    "categories": [
+      "trafarety"
+    ],
+    "order": {
+      "trafarety": 0
+    }
+  },
   "p-05f7bca5ba46.jpg": {
     "categories": [
       "frezernaya-rezka"
     ],
     "order": {
       "frezernaya-rezka": -3
+    }
+  },
+  "p-06c2f66b49dc.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki",
+      "uf-pechat"
+    ],
+    "order": {
+      "lazernaya-rezka": -11,
+      "uf-pechat": -11,
+      "nagradnye-statuetki": -6
     }
   },
   "p-0b995555a72d.jpg": {
@@ -4289,6 +4309,18 @@
       "lazernaya-rezka": -2,
       "uf-pechat": -3,
       "nagradnye-statuetki": 0
+    }
+  },
+  "p-1dd3be431c81.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki",
+      "uf-pechat"
+    ],
+    "order": {
+      "lazernaya-rezka": -10,
+      "uf-pechat": -10,
+      "nagradnye-statuetki": -5
     }
   },
   "p-2207b4e3c2f3.png": {
@@ -4335,6 +4367,24 @@
       "zhetony": -1
     }
   },
+  "p-3d6a63d4e312.jpg": {
+    "categories": [
+      "gravirovka",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": -12,
+      "gravirovka": -9
+    }
+  },
+  "p-40575f24858b.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": -5
+    }
+  },
   "p-4edcc7fd4d06.png": {
     "categories": [
       "gravirovka",
@@ -4353,6 +4403,36 @@
     ],
     "order": {
       "trafarety": 1
+    }
+  },
+  "p-5a6f2f888560.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "ramki-foto",
+      "uf-pechat"
+    ],
+    "order": {
+      "lazernaya-rezka": -8,
+      "uf-pechat": -8,
+      "ramki-foto": 0
+    }
+  },
+  "p-66c1f6aac9e7.jpg": {
+    "categories": [
+      "trafarety"
+    ],
+    "order": {
+      "trafarety": -1
+    }
+  },
+  "p-71c2a83903e8.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "toppery"
+    ],
+    "order": {
+      "lazernaya-rezka": -14,
+      "toppery": -1
     }
   },
   "p-7284ebf0abba.png": {
@@ -4375,6 +4455,18 @@
       "lazernaya-rezka": -7,
       "uf-pechat": -7,
       "medali": 0
+    }
+  },
+  "p-7b4fbd2b68cd.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki",
+      "uf-pechat"
+    ],
+    "order": {
+      "lazernaya-rezka": -9,
+      "uf-pechat": -9,
+      "nagradnye-statuetki": -4
     }
   },
   "p-8bee55a93d30.jpg": {
@@ -4445,6 +4537,14 @@
       "shildiki-abs": -2
     }
   },
+  "p-9ffe5df5aaca.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": -6
+    }
+  },
   "p-ab3ab4e7408c.jpg": {
     "categories": [
       "zhetony"
@@ -4487,6 +4587,16 @@
       "shildiki-abs": -1
     }
   },
+  "p-c5ee0818eacb.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "toppery"
+    ],
+    "order": {
+      "lazernaya-rezka": -15,
+      "toppery": -2
+    }
+  },
   "p-d4f061680590.png": {
     "categories": [
       "frezernaya-rezka",
@@ -4509,6 +4619,18 @@
     "order": {
       "gravirovka": 0,
       "shildiki-abs": 0
+    }
+  },
+  "p-e3d35e67bb2a.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "tablitchki",
+      "vyveski"
+    ],
+    "order": {
+      "lazernaya-rezka": -13,
+      "vyveski": 0,
+      "tablitchki": -2
     }
   },
   "p-e4aa59aed87a.png": {
