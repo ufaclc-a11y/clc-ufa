@@ -618,6 +618,25 @@ class PublishApp:
             if not ok:
                 raise RuntimeError("git commit не прошёл — см. лог.")
 
+            # Синхронизация: если origin успел уйти вперёд (другая правка/другой ПК),
+            # обычный push отклонится. Подтягиваем изменения и кладём свой коммит сверху.
+            # Файлы фото и код сайта обычно разные — rebase проходит без конфликтов.
+            self._set_status("Синхронизация с GitHub…", ORANGE)
+            self._log("Подтягиваю свежие изменения (git pull --rebase)…")
+            ok, _ = self._run(["git", "pull", "--rebase", "--autostash", "origin", "main"],
+                              "git pull --rebase")
+            if not ok:
+                self._run(["git", "rebase", "--abort"], "git rebase --abort")
+                self._set_status("Не синхронизировалось — закоммичено локально, нужен ручной git pull.", "#e9a000")
+                self.root.after(0, lambda: messagebox.showwarning(
+                    "Нужна ручная синхронизация",
+                    "Фото добавлены и закоммичены локально, но синхронизироваться с GitHub "
+                    "не вышло — либо конфликт (кто-то менял те же файлы), либо нет связи.\n\n"
+                    "Ничего не потеряно. Нужен ручной git pull --rebase и git push "
+                    "(позови того, кто помогает с сайтом).\n\nПодробности — в логе."))
+                self._finish_ui(published, pushed=False); return
+
+            self._set_status("Отправляю на сайт…", ORANGE)
             self._log("Отправляю на сервер (git push)…")
             ok, _ = self._run(["git", "push"], "git push")
             if not ok:
