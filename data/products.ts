@@ -13,6 +13,14 @@ export type ProductMaterial = {
   desc: string
 }
 
+/** Таблица цен — та же форма, что у priceTables в data/services.ts. */
+export type ProductPriceTable = {
+  title: string
+  unit:  string            // «цена за 1 лист», «цена за 1 шт»
+  note?: string
+  rows:  { label: string; price: string }[]
+}
+
 export type Product = {
   id:               string
   title:            string
@@ -28,6 +36,7 @@ export type Product = {
   // Расширенный контент (перенесён со старого сайта)
   body?:            string    // Основной текст (абзацы через \n\n)
   materials?:       ProductMaterial[]
+  priceTables?:     ProductPriceTable[]
   howToOrder?:      string    // Инструкция по заказу
   advantages?:      string[]  // Преимущества списком
 }
@@ -1058,10 +1067,17 @@ export const products: Product[] = [
       'Изображение печатается на прозрачную плёнку УФ-чернилами, затем переносится на выбранную поверхность — как переводная картинка.\n\n' +
       'Наклейка не имеет видимого фона — эффект «нарисовано прямо на предмете». ' +
       'Подходит для любых твёрдых поверхностей: металл, пластик, стекло, дерево, керамика.',
-    materials: [
+    priceTables: [
       {
-        name: 'Формат A3',
-        desc: '1–2 листа — 1 100 ₽; 3–10 листов — 900 ₽; 10–30 листов — 750 ₽; от 30 листов — 650 ₽.',
+        title: 'Печать на листе A3',
+        unit:  'цена за 1 лист',
+        note:  'Печатаем листами A3. Цена листа зависит от тиража.',
+        rows: [
+          { label: '1–2 листа',    price: '1100' },
+          { label: '3–10 листов',  price: '900'  },
+          { label: '10–30 листов', price: '750'  },
+          { label: 'От 30 листов', price: '650'  },
+        ],
       },
     ],
     howToOrder:

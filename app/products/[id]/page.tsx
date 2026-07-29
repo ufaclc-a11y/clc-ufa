@@ -69,6 +69,12 @@ export default function ProductPage({ params }: Props) {
     `Здравствуйте! Хочу заказать: ${product.title}. Подскажите стоимость.`
   )
 
+  /* Цены из таблиц — чтобы lowPrice/highPrice в разметке совпадали с видимыми на странице. */
+  const tablePrices = (product.priceTables ?? [])
+    .flatMap(t => t.rows)
+    .map(r => Number(r.price.replace(/\D/g, '')))
+    .filter(n => n > 0)
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type':    'Product',
@@ -95,8 +101,9 @@ export default function ProductPage({ params }: Props) {
       // offerCount: одна позиция под заказ у одного продавца.
       '@type':        'AggregateOffer',
       priceCurrency:  'RUB',
-      lowPrice:       '400',
-      offerCount:     1,
+      lowPrice:       tablePrices.length ? String(Math.min(...tablePrices)) : '400',
+      ...(tablePrices.length ? { highPrice: String(Math.max(...tablePrices)) } : {}),
+      offerCount:     tablePrices.length || 1,
       availability:   'https://schema.org/InStock',
       url:            `${SITE}/products/${product.id}`,
       seller: {
@@ -226,6 +233,48 @@ export default function ProductPage({ params }: Props) {
               )}
 
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* Прайс */}
+      {product.priceTables && product.priceTables.length > 0 && (
+        <section className="py-14 bg-[#F5F4F0]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <h2 className="font-display text-2xl text-[#1A1A1A] tracking-wide mb-6">Цены</h2>
+            <div className={`grid grid-cols-1 gap-6 ${
+              product.priceTables.length > 1 ? 'sm:grid-cols-2 lg:grid-cols-3' : 'max-w-md'
+            }`}>
+              {product.priceTables.map(table => (
+                <div key={table.title} className="bg-white rounded-2xl border border-[#E8E6E0] overflow-hidden">
+                  {/* Шапка */}
+                  <div className="bg-[#1A1A1A] px-6 py-4">
+                    <h3 className="font-display text-lg text-white tracking-wide">{table.title}</h3>
+                    <span className="text-xs text-white/40 font-mono">{table.unit}</span>
+                  </div>
+                  {/* Строки */}
+                  <div className="divide-y divide-[#F5F4F0]">
+                    {table.rows.map(row => (
+                      <div key={row.label} className="flex items-center justify-between px-6 py-3">
+                        <span className="text-sm text-[#2D2D2D]">{row.label}</span>
+                        <span className="font-semibold text-[#FF6B00] font-mono text-sm tabular-nums">
+                          {row.price} ₽
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  {/* Сноска */}
+                  {table.note && (
+                    <div className="px-6 py-3 bg-[#F5F4F0] border-t border-[#E8E6E0]">
+                      <p className="text-xs text-[#6E6A64]">{table.note}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            <p className="text-sm text-[#6E6A64] mt-6">
+              Цены ориентировочные. Точную стоимость рассчитаем по вашему макету.
+            </p>
           </div>
         </section>
       )}
