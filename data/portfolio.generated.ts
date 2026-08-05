@@ -22,6 +22,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "bejdzhi-005.jpg"
   ],
   "breloki": [
+    "p-f57f50285071.jpg",
     "breloki-002.jpg",
     "breloki-003.jpg",
     "breloki-004.jpg",
@@ -45,6 +46,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "chasy-008.jpg"
   ],
   "frezernaya-rezka": [
+    "p-ea6a1d93f86d.jpg",
     "p-9ffe5df5aaca.jpg",
     "p-40575f24858b.jpg",
     "p-9318b7209037.jpg",
@@ -103,6 +105,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "frezernaya-rezka-050.jpg"
   ],
   "gravirovka": [
+    "p-f57f50285071.jpg",
     "p-3d6a63d4e312.jpg",
     "p-0b995555a72d.jpg",
     "p-4edcc7fd4d06.png",
@@ -294,6 +297,15 @@ export const portfolioFiles: Record<string, string[]> = {
     "gravirovka-073.jpg"
   ],
   "lazernaya-rezka": [
+    "p-e3111eb07a6b.jpg",
+    "p-2f31b2a1f7f7.jpg",
+    "p-06aa210221d5.jpg",
+    "p-19b4e276b631.jpg",
+    "p-f57f50285071.jpg",
+    "p-ea6a1d93f86d.jpg",
+    "p-45896cac5290.jpg",
+    "p-138a7b77f8d6.jpg",
+    "p-46a27a109ec9.jpg",
     "p-c5ee0818eacb.jpg",
     "p-71c2a83903e8.jpg",
     "p-e3d35e67bb2a.jpg",
@@ -686,6 +698,9 @@ export const portfolioFiles: Record<string, string[]> = {
     "lazernaya-rezka-384.jpg"
   ],
   "medali": [
+    "p-19b4e276b631.jpg",
+    "p-138a7b77f8d6.jpg",
+    "p-46a27a109ec9.jpg",
     "p-758809edd8db.jpg",
     "medali-001.jpg",
     "lazernaya-rezka-004.jpg",
@@ -721,6 +736,8 @@ export const portfolioFiles: Record<string, string[]> = {
     "lazernaya-rezka-350.jpg"
   ],
   "nagradnye-statuetki": [
+    "p-e3111eb07a6b.jpg",
+    "p-2f31b2a1f7f7.jpg",
     "p-06c2f66b49dc.jpg",
     "p-1dd3be431c81.jpg",
     "p-7b4fbd2b68cd.jpg",
@@ -811,6 +828,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "lazernaya-rezka-384.jpg"
   ],
   "shildiki-abs": [
+    "p-06aa210221d5.jpg",
     "p-0b995555a72d.jpg",
     "p-0e566a05484f.jpg",
     "p-9dbaae55fb40.jpg",
@@ -837,6 +855,8 @@ export const portfolioFiles: Record<string, string[]> = {
     "shkatulki-fanera-014.jpg"
   ],
   "tablitchki": [
+    "p-ea6a1d93f86d.jpg",
+    "p-45896cac5290.jpg",
     "p-e3d35e67bb2a.jpg",
     "p-2fe6dcc2f1fe.png",
     "p-f5ef0b882ff1.jpg",
@@ -885,6 +905,12 @@ export const portfolioFiles: Record<string, string[]> = {
     "p-5a67e3e4cc28.jpg"
   ],
   "uf-pechat": [
+    "p-06aa210221d5.jpg",
+    "p-19b4e276b631.jpg",
+    "p-ea6a1d93f86d.jpg",
+    "p-45896cac5290.jpg",
+    "p-138a7b77f8d6.jpg",
+    "p-46a27a109ec9.jpg",
     "p-06c2f66b49dc.jpg",
     "p-1dd3be431c81.jpg",
     "p-7b4fbd2b68cd.jpg",
@@ -924,6 +950,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "uf-pechat-025.jpg"
   ],
   "vyveski": [
+    "p-ea6a1d93f86d.jpg",
     "p-e3d35e67bb2a.jpg",
     "vyveski-001.jpg",
     "tablitchki-004.jpg",
