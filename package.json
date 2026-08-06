@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "gen:portfolio": "node scripts/gen-portfolio.mjs",
+    "gen:wb-dimensions": "node scripts/fetch-wb-dimensions.mjs",
     "predev": "node scripts/gen-portfolio.mjs",
     "dev": "next dev",
     "prebuild": "node scripts/gen-portfolio.mjs",

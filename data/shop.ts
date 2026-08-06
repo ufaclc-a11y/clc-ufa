@@ -1,3 +1,5 @@
+import { wbPackaging, type WbPackaging } from './wb-dimensions.generated'
+
 export type ShopCategory = {
   id: string
   name: string
@@ -13,6 +15,8 @@ export type ShopItem = {
   image: string
   wbUrl: string
   desc: string
+  /** Габариты упаковки и вес — нужны для расчёта доставки. Из выгрузки WB. */
+  packaging?: WbPackaging
 }
 
 export const shopCategories: ShopCategory[] = [
@@ -30,7 +34,7 @@ export const shopCategories: ShopCategory[] = [
   { id: 'orgsteklo',    name: 'Оргстекло',             emoji: '💎' },
 ]
 
-export const shopItems: ShopItem[] = [
+const catalog: ShopItem[] = [
   {
     "id": 355794658,
     "title": "Декоративный серф для интерьера Summer summer summer",
@@ -702,3 +706,13 @@ export const shopItems: ShopItem[] = [
     "desc": "Прозрачная разборная копилка - это функциональный и стильный аксессуар для хранения ваших сбережений. Изготовлена из прозрачного акрилового оргстекла толщиной 3 мм, что обеспечивает прочность и долговечность изделия.  Копилка имеет размеры 10х10х13 с"
   }
 ]
+
+/**
+ * Каталог редактируется вручную, а габариты и вес подтягиваются из выгрузки
+ * карточек Wildberries (npm run gen:wb-dimensions) — так повторная выгрузка
+ * не затирает цены и тексты.
+ */
+export const shopItems: ShopItem[] = catalog.map(item => ({
+  ...item,
+  packaging: wbPackaging[item.id],
+}))
