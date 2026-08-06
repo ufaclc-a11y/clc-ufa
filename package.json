@@ -5,6 +5,7 @@
   "scripts": {
     "gen:portfolio": "node scripts/gen-portfolio.mjs",
     "gen:wb-dimensions": "node scripts/fetch-wb-dimensions.mjs",
+    "gen:shop-descriptions": "node scripts/gen-shop-descriptions.mjs",
     "predev": "node scripts/gen-portfolio.mjs",
     "dev": "next dev",
     "prebuild": "node scripts/gen-portfolio.mjs",

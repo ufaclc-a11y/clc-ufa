@@ -8,12 +8,23 @@ export type ShopCategory = {
 
 export type ShopItem = {
   id: number
+  /**
+   * Публичный адрес товара: /shop/<slug>. Значение зафиксировано в каталоге и
+   * менять его нельзя — это сломает внешние ссылки и позиции в выдаче.
+   * Изначально взят из карточки WB, одинаковые разведены суффиксом -2.
+   */
+  slug: string
+  /** Артикул продавца (vendorCode на WB) — уходит в письмо о заказе. */
+  sku: string
+  /** Наличие. Ведётся вручную: на сайте свой склад, а не остатки WB. */
+  inStock: boolean
   title: string
   category: string
   categoryName: string
   price: number
   image: string
   wbUrl: string
+  /** Короткий текст для карточки в списке. Полный — в shop-descriptions.generated. */
   desc: string
   /** Габариты упаковки и вес — нужны для расчёта доставки. Из выгрузки WB. */
   packaging?: WbPackaging
@@ -37,6 +48,9 @@ export const shopCategories: ShopCategory[] = [
 const catalog: ShopItem[] = [
   {
     "id": 355794658,
+    "slug": "dekorativnyj-serf-dlya-interera-summer-summer-summer",
+    "sku": "surf_summer_summer_summer",
+    "inStock": true,
     "title": "Декоративный серф для интерьера Summer summer summer",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -47,6 +61,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 762364207,
+    "slug": "dekorativnyj-serf-dlya-interera-surfer-girl-zheltyj",
+    "sku": "surfer_girl",
+    "inStock": true,
     "title": "Декоративный серф для интерьера Surfer Girl желтый",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -57,6 +74,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 895567312,
+    "slug": "dekorativnyj-serf-chanel-oblaka-75kh23-5kh0-6-sm",
+    "sku": "chanel_pink_clouds",
+    "inStock": true,
     "title": "Декоративный серф chanel (облака) , 75х23,5х0,6 см",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -67,6 +87,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 895563652,
+    "slug": "dekorativnyj-serf-chanel-bel-75kh23-5kh0-6-sm",
+    "sku": "chanel_white",
+    "inStock": true,
     "title": "Декоративный серф chanel (бел) , 75х23,5х0,6 см",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -77,6 +100,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 895553579,
+    "slug": "dekorativnyj-serf-dlya-interer-guchchi-zhelt-75kh23-5kh0-6-sm",
+    "sku": "gucci_yellow",
+    "inStock": true,
     "title": "Декоративный серф для интерьер гуччи (желт) , 75х23,5х0,6 см",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -87,6 +113,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 895306269,
+    "slug": "dekorativnyj-serf-dlya-interera-lui-vitton-75kh23-5kh0-6-sm",
+    "sku": "louis_pattern",
+    "inStock": true,
     "title": "Декоративный серф для интерьера луи виттон , 75х23,5х0,6 см",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -97,6 +126,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 895289684,
+    "slug": "serf-dekor-lv-ufpechat-zolotogo-logotipa-7523-50-6-sm",
+    "sku": "louis_gold",
+    "inStock": true,
     "title": "Серф-декор LV, УФ‑печать золотого логотипа, 75×23,5×0,6 см",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -107,6 +139,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 892849768,
+    "slug": "dekorativnyj-serf-gucci-7523-50-6-sm-panno-na-stenu",
+    "sku": "gucci_pink",
+    "inStock": true,
     "title": "Декоративный серф Gucci, 75×23,5×0,6 см, панно на стену",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -117,6 +152,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 892560422,
+    "slug": "dekorativnyj-serf-dlya-interera-chernyj-75kh23-5kh0-6-sm-1-sht",
+    "sku": "chanel_black",
+    "inStock": true,
     "title": "Декоративный серф для интерьера черный, 75х23,5х0,6 см, 1 шт",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -127,6 +165,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 768647477,
+    "slug": "dekorativnyj-serf-dlya-interera-live-in-motion",
+    "sku": "live in motion",
+    "inStock": true,
     "title": "Декоративный серф для интерьера live in motion",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -137,6 +178,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 768615262,
+    "slug": "dekorativnyj-serf-dlya-interera-summer-vibes-men",
+    "sku": "summer_viber_new",
+    "inStock": true,
     "title": "Декоративный серф для интерьера summer vibes men",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -147,6 +191,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 767110860,
+    "slug": "dekorativnyj-serf-dlya-interera-lazurnyj-plyazh",
+    "sku": "лазурный пляж",
+    "inStock": true,
     "title": "Декоративный серф для интерьера лазурный пляж",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -157,6 +204,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 766941530,
+    "slug": "dekorativnyj-serf-dlya-interera-plyazh-s-kokosami",
+    "sku": "сёрф_пляж_с_кокосами",
+    "inStock": true,
     "title": "Декоративный серф для интерьера Пляж с кокосами",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -167,6 +217,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 766679469,
+    "slug": "dekorativnyj-serf-dlya-interera-osminog",
+    "sku": "сёрф_осьминог",
+    "inStock": true,
     "title": "Декоративный серф для интерьера Осьминог",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -177,6 +230,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 766652532,
+    "slug": "dekorativnyj-serf-dlya-interera-life-comes-in-waves",
+    "sku": "life comes in waves",
+    "inStock": true,
     "title": "Декоративный серф для интерьера life comes in waves",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -187,6 +243,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 766630278,
+    "slug": "dekorativnyj-serf-dlya-interera-aloha-hawaii",
+    "sku": "aloha_hawaii",
+    "inStock": true,
     "title": "Декоративный серф для интерьера ALOHA HAWAII",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -197,6 +256,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 766603348,
+    "slug": "dekorativnyj-serf-dlya-interera-life-is-a-beach",
+    "sku": "surf_life_is_a_beach",
+    "inStock": true,
     "title": "Декоративный серф для интерьера LIFE is a BEACH",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -207,6 +269,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 766395251,
+    "slug": "dekorativnyj-serf-dlya-interera-born-to-surf",
+    "sku": "burn_to_surf",
+    "inStock": true,
     "title": "Декоративный серф для интерьера BORN to SURF",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -217,6 +282,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 766247563,
+    "slug": "dekorativnyj-serf-dlya-interera-summer-vibes-2",
+    "sku": "surf_sponge_bob",
+    "inStock": true,
     "title": "Декоративный серф для интерьера Summer vibes",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -227,6 +295,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 766189423,
+    "slug": "dekorativnyj-serf-dlya-interera-surfer-girl-rozovyj",
+    "sku": "surfer girl_pink",
+    "inStock": true,
     "title": "Декоративный серф для интерьера Surfer Girl розовый",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -237,6 +308,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 355794659,
+    "slug": "dekorativnyj-serf-dlya-interera-summer-vibes",
+    "sku": "surf_summer_vibes",
+    "inStock": true,
     "title": "Декоративный серф для интерьера Summer vibes",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -247,6 +321,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 355782508,
+    "slug": "dekorativnyj-serf-dlya-interera-ray-of-sunshine",
+    "sku": "surf_ray_of_sunshine",
+    "inStock": true,
     "title": "Декоративный серф для интерьера Ray of sunshine",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -257,6 +334,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 355771751,
+    "slug": "dekorativnyj-serf-dlya-interera-summer-state-mind",
+    "sku": "surf_summer_state_mind",
+    "inStock": true,
     "title": "Декоративный серф для интерьера Summer state mind",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -267,6 +347,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 351070743,
+    "slug": "dekorativnyj-serf-dlya-interera-find-your-flow",
+    "sku": "surf_find your flow",
+    "inStock": true,
     "title": "Декоративный серф для интерьера Find your flow",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -277,6 +360,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 351065503,
+    "slug": "dekorativnyj-serf-dlya-interera-follow-your-dream",
+    "sku": "surf_follow_your_dream",
+    "inStock": true,
     "title": "Декоративный серф для интерьера Follow your dream",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -287,6 +373,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 263033507,
+    "slug": "dekorativnyj-serf-dlya-interera-your-amazing-summer",
+    "sku": "surf_amazing_summer",
+    "inStock": true,
     "title": "Декоративный серф для интерьера Your amazing summer",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -297,6 +386,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 263033506,
+    "slug": "dekorativnyj-serf-dlya-interera-ocean-spirit",
+    "sku": "surf_ocean_spirit",
+    "inStock": true,
     "title": "Декоративный серф для интерьера Ocean Spirit",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -307,6 +399,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 263030506,
+    "slug": "dekorativnyj-serf-dlya-interera-hello-summer",
+    "sku": "surf_hello_summer",
+    "inStock": true,
     "title": "Декоративный серф для интерьера Hello Summer",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -317,6 +412,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 186737476,
+    "slug": "sortirovshhik-detalej-konstruktora-lego",
+    "sku": "sortlego5level",
+    "inStock": true,
     "title": "Сортировщик деталей конструктора лего",
     "category": "konstruktory",
     "categoryName": "Конструкторы",
@@ -327,6 +425,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 817567205,
+    "slug": "sortirovshhik-detalej-konstruktora-po-razmeram-4-urovnya",
+    "sku": "sortlego_mini",
+    "inStock": true,
     "title": "Сортировщик деталей конструктора по размерам, 4 уровня",
     "category": "konstruktory",
     "categoryName": "Конструкторы",
@@ -337,6 +438,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 963848845,
+    "slug": "altar-runicheskij-valknut-koltsa-borromeo-bestsvetnyj",
+    "sku": "big_valknut_colorless",
+    "inStock": true,
     "title": "Алтарь рунический Валькнут кольца Борромео бесцветный",
     "category": "runy",
     "categoryName": "Предсказания сувенирные",
@@ -347,6 +451,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 592856777,
+    "slug": "magicheskij-altar-zarya-alatyr-krest-svaroga-seryj",
+    "sku": "altar_alatyr_gray",
+    "inStock": true,
     "title": "Магический алтарь \"Заря-Алатырь, Крест Сварога\", серый",
     "category": "runy",
     "categoryName": "Предсказания сувенирные",
@@ -357,6 +464,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 567285841,
+    "slug": "magicheskij-altar-zarya-alatyr-krest-svaroga-bestsvetnyj",
+    "sku": "altar_alatyr_colorless",
+    "inStock": true,
     "title": "Магический алтарь \"Заря-Алатырь, Крест Сварога\", бесцветный",
     "category": "runy",
     "categoryName": "Предсказания сувенирные",
@@ -367,6 +477,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 541345760,
+    "slug": "altar-runicheskij-s-risunkom-valknut-koltsa-borromeo-seryj",
+    "sku": "big_valknut_gray",
+    "inStock": true,
     "title": "Алтарь рунический с рисунком Валькнут кольца Борромео, серый",
     "category": "runy",
     "categoryName": "Предсказания сувенирные",
@@ -377,6 +490,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 200084636,
+    "slug": "altar-dlya-ritualov-runicheskij-krug-s-risunkom-valknut-2",
+    "sku": "altar_valknut_colorless",
+    "inStock": true,
     "title": "Алтарь для ритуалов рунический круг с рисунком Валькнут",
     "category": "runy",
     "categoryName": "Предсказания сувенирные",
@@ -387,6 +503,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 155757277,
+    "slug": "altar-dlya-ritualov-s-derevom-zhizni-tsvet-naturalnyj",
+    "sku": "altar_tree_colorless",
+    "inStock": true,
     "title": "Алтарь для ритуалов с деревом жизни цвет натуральный",
     "category": "runy",
     "categoryName": "Предсказания сувенирные",
@@ -397,6 +516,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 146375573,
+    "slug": "altar-dlya-ritualov-runicheskij-krug-s-risunkom-valknut",
+    "sku": "altar_valknut_gray",
+    "inStock": true,
     "title": "Алтарь для ритуалов рунический круг с рисунком Валькнут",
     "category": "runy",
     "categoryName": "Предсказания сувенирные",
@@ -407,6 +529,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 146373712,
+    "slug": "altar-dlya-ritualov-runicheskij-krug-s-derevom-zhizni-seryj",
+    "sku": "altar_tree_gray",
+    "inStock": true,
     "title": "Алтарь для ритуалов, рунический круг с деревом жизни серый",
     "category": "runy",
     "categoryName": "Предсказания сувенирные",
@@ -417,6 +542,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 943569661,
+    "slug": "gerb-sakhalinskaya-oblast",
+    "sku": "gerb_sakhalinskaya_oblast",
+    "inStock": true,
     "title": "Герб Сахалинская область",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -427,6 +555,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 943605517,
+    "slug": "gerb-uglegorskogo-rajona-sakhalinskoj-oblasti",
+    "sku": "gerb uglerodskogo rayona sakhalinskoy oblasti",
+    "inStock": true,
     "title": "Герб Углегорского района Сахалинской области",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -437,6 +568,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 320858711,
+    "slug": "lyustra-loft-potolochnaya-podvesnaya-shishka",
+    "sku": "lustra_shishka",
+    "inStock": true,
     "title": "Люстра лофт потолочная подвесная \"Шишка\"",
     "category": "lustry",
     "categoryName": "Люстры",
@@ -447,6 +581,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 322268543,
+    "slug": "lyustra-loft-potolochnaya-podvesnaya-evolyutsiya",
+    "sku": "lustra_evolution",
+    "inStock": true,
     "title": "Люстра лофт потолочная подвесная \"Эволюция\"",
     "category": "lustry",
     "categoryName": "Люстры",
@@ -457,6 +594,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 924989835,
+    "slug": "panno-znaki-urbanart-your-way-50kh62sm-mdf",
+    "sku": "znak_your_way",
+    "inStock": true,
     "title": "Панно-знаки: урбанарт your way 50х62см, мдф",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -467,6 +607,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 922780000,
+    "slug": "panno-znaki-urbanart-stop-50kh50sm-mdf",
+    "sku": "znak_stop",
+    "inStock": true,
     "title": "Панно-знаки: урбанарт stop 50х50см, мдф",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -477,6 +620,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 924980141,
+    "slug": "panno-znaki-urbanart-no-mercy-white-50kh50sm-mdf",
+    "sku": "znak_no_mercy_white",
+    "inStock": true,
     "title": "Панно-знаки: урбанарт no mercy white 50х50см, мдф",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -487,6 +633,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 924977920,
+    "slug": "panno-znaki-urbanart-no-mercy-black-50kh50sm-mdf",
+    "sku": "znak_no_mercy_black",
+    "inStock": true,
     "title": "Панно-знаки: урбанарт no mercy black 50х50см, мдф",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -497,6 +646,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 924983092,
+    "slug": "panno-znaki-urbanart-no-limits-black-50kh50sm-mdf",
+    "sku": "znak_no_limits",
+    "inStock": true,
     "title": "Панно-знаки: урбанарт no limits black 50х50см, мдф",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -507,6 +659,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 922778456,
+    "slug": "panno-znaki-urbanart-eyes-50kh57sm-mdf",
+    "sku": "znak_eyes",
+    "inStock": true,
     "title": "Панно-знаки: урбанарт eyes 50х57см, мдф",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -517,6 +672,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 924966578,
+    "slug": "panno-znaki-urbanart-dont-panic-50kh50sm-mdf",
+    "sku": "znak_dontpanic",
+    "inStock": true,
     "title": "Панно-знаки: урбанарт dont panic 50х50см, мдф",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -527,6 +685,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 924972620,
+    "slug": "panno-znaki-urbanart-disrup-50kh50sm-mdf",
+    "sku": "znak_disrup",
+    "inStock": true,
     "title": "Панно-знаки: урбанарт disrup 50х50см, мдф",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -537,6 +698,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 924997223,
+    "slug": "panno-znaki-urbanart-obsession-50kh46sm-mdf",
+    "sku": "znak_obsession",
+    "inStock": true,
     "title": "Панно-знаки: урбанарт obsession 50х46см, мдф",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -547,6 +711,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 901681341,
+    "slug": "stellazh-montessori-s-zadnej-stenkoj-3-urovnya-77kh75kh36-sm",
+    "sku": "polka_montessory",
+    "inStock": true,
     "title": "Стеллаж Монтессори с задней стенкой, 3 уровня, 77х75х36 см",
     "category": "stellazhi",
     "categoryName": "Стеллажи",
@@ -557,6 +724,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 903431735,
+    "slug": "gerb-adygeya-nastennaya-dekoratsiya",
+    "sku": "gerb_adygea",
+    "inStock": true,
     "title": "Герб Адыгея настенная декорация",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -567,6 +737,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 815153196,
+    "slug": "gerb-tatarstana-na-stenu",
+    "sku": "gerb_tatarstan",
+    "inStock": true,
     "title": "Герб Татарстана на стену",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -577,6 +750,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 861431291,
+    "slug": "gerb-tatarstana-na-stenu-2",
+    "sku": "tatartstan_2_gerb",
+    "inStock": true,
     "title": "Герб Татарстана на стену",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -587,6 +763,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 861520779,
+    "slug": "gerb-bashkortostana-nastennaya-dekoratsiya",
+    "sku": "gerb_bashkortostan",
+    "inStock": true,
     "title": "Герб Башкортостана настенная декорация",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -597,6 +776,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 223845904,
+    "slug": "gerb-rossii-na-stenu",
+    "sku": "gerb_russia",
+    "inStock": true,
     "title": "Герб России на стену",
     "category": "dekor",
     "categoryName": "Декорации настенные",
@@ -607,6 +789,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 874246986,
+    "slug": "nastennaya-stellazh-polka-organajzer-dlya-instrumentov-v-garazh",
+    "sku": "Polka_organaizer_instr",
+    "inStock": true,
     "title": "Настенная стеллаж полка органайзер для инструментов в гараж",
     "category": "organajzery",
     "categoryName": "Органайзеры подвесные",
@@ -617,6 +802,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 293800230,
+    "slug": "kormushka-na-okno-dlya-ptits-prozrachnaya-na-prisoskakh",
+    "sku": "kormushka_3_okna",
+    "inStock": true,
     "title": "Кормушка на окно для птиц прозрачная на присосках",
     "category": "kormushki",
     "categoryName": "Кормушки для животных",
@@ -627,6 +815,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 234003775,
+    "slug": "3d-konstruktor-iz-orgstekla-kotyonok",
+    "sku": "cat",
+    "inStock": true,
     "title": "3D конструктор из оргстекла Котёнок",
     "category": "konstruktory",
     "categoryName": "Конструкторы",
@@ -637,6 +828,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 316175243,
+    "slug": "kormushka-na-okno-dlya-ptits-prozrachnaya-na-prisoskakh-antigolub",
+    "sku": "kormushka_2_okna",
+    "inStock": true,
     "title": "Кормушка на окно для птиц прозрачная на присосках антиголубь",
     "category": "kormushki",
     "categoryName": "Кормушки для животных",
@@ -647,6 +841,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 159057738,
+    "slug": "runy-dlya-gadaniya-skandinavskie",
+    "sku": "runes",
+    "inStock": true,
     "title": "Руны для гадания скандинавские",
     "category": "runy",
     "categoryName": "Предсказания сувенирные",
@@ -657,6 +854,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 376412948,
+    "slug": "klyuchnitsa-nastennaya-dlya-prikhozhej-v-stile-loft",
+    "sku": "kluch_loft_cherniy",
+    "inStock": true,
     "title": "Ключница настенная для прихожей в стиле лофт",
     "category": "klyuchnitsy",
     "categoryName": "Ключницы настенные",
@@ -667,6 +867,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 146469601,
+    "slug": "zagotovka-derevo-zhizni-diametr-50-sm-pod-mokh-iz-fanery-6-mm",
+    "sku": "tree50",
+    "inStock": true,
     "title": "Заготовка Дерево жизни диаметр 50 см под мох из фанеры 6 мм",
     "category": "zagotovki",
     "categoryName": "Заготовки для поделок",
@@ -677,6 +880,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 365052748,
+    "slug": "orgsteklo-prozrachnoe-10kh15-sm-2-mm",
+    "sku": "steklo_10х15_5sht",
+    "inStock": true,
     "title": "Оргстекло прозрачное 10х15 см 2 мм",
     "category": "orgsteklo",
     "categoryName": "Оргстекла",
@@ -687,6 +893,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 147753967,
+    "slug": "shesterenki-iz-fanery-6-mm-10-sht",
+    "sku": "shesterenki10sh6mm",
+    "inStock": true,
     "title": "Шестеренки из фанеры 6 мм, 10 шт",
     "category": "zagotovki",
     "categoryName": "Заготовки для поделок",
@@ -697,6 +906,9 @@ const catalog: ShopItem[] = [
   },
   {
     "id": 227895517,
+    "slug": "kopilka-prozrachnaya-razbornaya-10kh10kh13-sm",
+    "sku": "kopilka10x10x13",
+    "inStock": true,
     "title": "Копилка прозрачная разборная 10х10х13 см",
     "category": "kopilki",
     "categoryName": "Копилки",
