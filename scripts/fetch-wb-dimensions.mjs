@@ -12,44 +12,16 @@
 import fs   from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { parseImageUrl, createBasketResolver } from './lib/wb-basket.mjs'
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..')
 const RAW  = path.join(ROOT, 'data', 'wb-products-raw.json')
 const OUT  = path.join(ROOT, 'data', 'wb-dimensions.generated.ts')
 
 const CONCURRENCY = 4
-const RETRIES     = 3
-const TIMEOUT_MS  = 20_000
 const HOST_MAX    = 60   // WB со временем добавляет basket-хосты
-const PROBE_BATCH = 8
 
-/** Только CDN WB — та же защита, что в lib/wb-cdn.ts. */
-const WB_HOST = /^basket-\d+\.wbbasket\.ru$/
-
-/**
- * Хост в сохранённом экспорте устаревает: WB переносит товары между basket-N.
- * Поэтому храним найденные хосты — соседние vol обычно лежат на одном хосте,
- * и это резко сокращает перебор.
- */
-const hostByVol = new Map()
-let lastGoodHost = null
-
-const host = n => `basket-${String(n).padStart(2, '0')}.wbbasket.ru`
-const cardUrlOn = (n, vol, part, nm) =>
-  `https://${host(n)}/vol${vol}/part${part}/${nm}/info/ru/card.json`
-
-/** Из URL картинки достаём vol / part / nmId и номер записанного хоста. */
-function parseImageUrl(imageUrl) {
-  let u
-  try { u = new URL(imageUrl) } catch { return null }
-  if (u.protocol !== 'https:' || !WB_HOST.test(u.hostname)) return null
-  const m = u.pathname.match(/^\/vol(\d+)\/part(\d+)\/(\d+)\//)
-  if (!m) return null
-  return {
-    vol: m[1], part: m[2], nm: m[3],
-    host: Number(u.hostname.match(/^basket-(\d+)\./)[1]),
-  }
-}
+const resolver = createBasketResolver({ hostMax: HOST_MAX })
 
 /** «77 см» → 77; «0.5 кг» / «0,5 кг» → 0.5. Возвращает null, если числа нет. */
 function num(value) {
@@ -87,67 +59,8 @@ function extract(card) {
     packHeightCm: hei,
     weightGrams:  grams,
     slug:         typeof card.slug === 'string' ? card.slug : null,
+    photoCount:   Number.isInteger(card.media?.photo_count) ? card.media.photo_count : null,
   }
-}
-
-async function fetchCard(url) {
-  for (let attempt = 1; attempt <= RETRIES; attempt++) {
-    const ctrl = AbortSignal.timeout(TIMEOUT_MS)
-    try {
-      const res = await fetch(url, { signal: ctrl, headers: { accept: 'application/json' } })
-      if (res.status === 404) return { notFound: true }
-      if (!res.ok) throw new Error(`HTTP ${res.status}`)
-      return { card: await res.json() }
-    } catch (e) {
-      if (attempt === RETRIES) return { error: e.message }
-      await new Promise(r => setTimeout(r, 400 * attempt))
-    }
-  }
-}
-
-/** Быстрая проверка одного хоста без ретраев — для перебора. */
-async function tryHost(n, vol, part, nm) {
-  try {
-    const res = await fetch(cardUrlOn(n, vol, part, nm), {
-      signal:  AbortSignal.timeout(8_000),
-      headers: { accept: 'application/json' },
-    })
-    return res.ok ? await res.json() : null
-  } catch {
-    return null
-  }
-}
-
-/**
- * Ищет карточку: сперва подсказки (кэш по vol, последний удачный хост,
- * хост из экспорта), затем полный перебор basket-01..HOST_MAX.
- */
-async function resolveCard({ vol, part, nm, host: recordedHost }) {
-  const hints = [hostByVol.get(vol), lastGoodHost, recordedHost]
-    .filter(h => Number.isInteger(h))
-
-  // По вероятным хостам идём с ретраями, чтобы сетевой сбой не выглядел как «нет товара».
-  for (const h of [...new Set(hints)]) {
-    const r = await fetchCard(cardUrlOn(h, vol, part, nm))
-    if (r.card) { hostByVol.set(vol, h); lastGoodHost = h; return { card: r.card, host: h } }
-  }
-
-  const skip = new Set(hints)
-  for (let start = 1; start <= HOST_MAX; start += PROBE_BATCH) {
-    const batch = []
-    for (let n = start; n < start + PROBE_BATCH && n <= HOST_MAX; n++) {
-      if (!skip.has(n)) batch.push(n)
-    }
-    const found = (await Promise.all(
-      batch.map(async n => ({ n, card: await tryHost(n, vol, part, nm) })),
-    )).find(r => r.card)
-
-    if (found) {
-      hostByVol.set(vol, found.n); lastGoodHost = found.n
-      return { card: found.card, host: found.n }
-    }
-  }
-  return null
 }
 
 /** Простой пул: не больше CONCURRENCY запросов одновременно. */
@@ -173,7 +86,7 @@ const results = await mapPool(products, CONCURRENCY, async p => {
   const loc = parseImageUrl(p.image)
   if (!loc) return { id: p.id, title: p.title, problem: 'не удалось разобрать URL картинки' }
 
-  const found = await resolveCard(loc)
+  const found = await resolver.resolve(loc)
   process.stdout.write(`\r  обработано ${++done}/${products.length}`)
   if (!found) {
     return { id: p.id, title: p.title, problem: `карточка не найдена ни на одном из ${HOST_MAX} хостов` }
@@ -197,6 +110,7 @@ const rows = [...ok, ...partial]
     if (d.packWidthCm  !== null) f.push(`packWidthCm: ${d.packWidthCm}`)
     if (d.packHeightCm !== null) f.push(`packHeightCm: ${d.packHeightCm}`)
     if (d.weightGrams  !== null) f.push(`weightGrams: ${d.weightGrams}`)
+    if (d.photoCount   !== null) f.push(`photoCount: ${d.photoCount}`)
     if (d.slug)                  f.push(`wbSlug: ${JSON.stringify(d.slug)}`)
     return `  ${r.id}: { ${f.join(', ')} },`
   })
@@ -216,6 +130,8 @@ export type WbPackaging = {
   packWidthCm?:  number
   packHeightCm?: number
   weightGrams?:  number
+  /** Сколько фото у карточки на WB — сколько можно выгрузить в галерею. */
+  photoCount?:   number
   wbSlug?:       string
 }
 

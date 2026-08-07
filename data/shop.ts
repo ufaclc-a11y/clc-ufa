@@ -1,4 +1,5 @@
 import { wbPackaging, type WbPackaging } from './wb-dimensions.generated'
+import { shopGallery } from './shop-gallery.generated'
 
 export type ShopCategory = {
   id: string
@@ -22,7 +23,10 @@ export type ShopItem = {
   category: string
   categoryName: string
   price: number
+  /** Главное фото — оно же первое в `images`. */
   image: string
+  /** Все фото товара. Первое совпадает с `image`. */
+  images: string[]
   wbUrl: string
   /** Короткий текст для карточки в списке. Полный — в shop-descriptions.generated. */
   desc: string
@@ -45,7 +49,10 @@ export const shopCategories: ShopCategory[] = [
   { id: 'orgsteklo',    name: 'Оргстекло',             emoji: '💎' },
 ]
 
-const catalog: ShopItem[] = [
+/** Записи каталога как они лежат в файле: галерея и габариты подмешиваются ниже. */
+type CatalogEntry = Omit<ShopItem, 'images' | 'packaging'>
+
+const catalog: CatalogEntry[] = [
   {
     "id": 355794658,
     "slug": "dekorativnyj-serf-dlya-interera-summer-summer-summer",
@@ -926,5 +933,11 @@ const catalog: ShopItem[] = [
  */
 export const shopItems: ShopItem[] = catalog.map(item => ({
   ...item,
+  images:    shopGallery[item.id] ?? [item.image],
   packaging: wbPackaging[item.id],
 }))
+
+/** Товар по slug — для страницы /shop/<slug>. */
+export function shopItemBySlug(slug: string): ShopItem | undefined {
+  return shopItems.find(i => i.slug === slug)
+}

@@ -63,6 +63,20 @@ test('у каждого товара есть полное описание', ()
   }
 })
 
+test('у каждого товара есть фото, первое совпадает с главным', () => {
+  for (const item of shopItems) {
+    assert.ok(item.images.length > 0, `нет фото у товара ${item.id} «${item.title}»`)
+    assert.equal(
+      item.images[0], item.image,
+      `первое фото галереи не совпадает с главным у товара ${item.id}`,
+    )
+    for (const src of item.images) {
+      assert.match(src, /^\/shop-images\/[\w.-]+\.webp$/, `странный путь к фото: ${src}`)
+    }
+    assert.equal(new Set(item.images).size, item.images.length, `повторы фото у ${item.id}`)
+  }
+})
+
 test('категория товара существует в справочнике', () => {
   const known = new Set(shopCategories.map(c => c.id))
   for (const item of shopItems) {

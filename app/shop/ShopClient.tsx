@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState, useMemo } from 'react'
 import { shopItems, shopCategories } from '@/data/shop'
 
@@ -192,10 +193,8 @@ function ProductCard({ item }: { item: ShopItem }) {
   const [imgError, setImgError] = useState(false)
 
   return (
-    <a
-      href={item.wbUrl}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Link
+      href={`/shop/${item.slug}`}
       className="group relative flex flex-col bg-[#222] rounded-2xl overflow-hidden
         border border-white/6 hover:border-[#FF6B00]/30
         transition-[transform,border-color,box-shadow] duration-200
@@ -239,10 +238,10 @@ function ProductCard({ item }: { item: ShopItem }) {
             {item.price.toLocaleString('ru-RU')} ₽
           </span>
           <span className="text-[10px] text-white/25 group-hover:text-[#FF6B00]/60 transition-colors">
-            купить →
+            подробнее →
           </span>
         </div>
       </div>
-    </a>
+    </Link>
   )
 }

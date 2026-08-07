@@ -3,6 +3,7 @@ import { services }           from '@/data/services'
 import { seoPages }           from '@/data/seo-pages'
 import { blogPosts }          from '@/data/blog'
 import { products }           from '@/data/products'
+import { shopItems }          from '@/data/shop'
 import { portfolioCategories } from '@/data/portfolio'
 
 // lastModified указываем только там, где знаем реальную дату (посты блога).
@@ -63,5 +64,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority:        0.75,
     }))
 
-  return [...statics, ...servicePages, ...seoLandings, ...blogPages, ...productPages, ...portfolioCatPages]
+  const shopPages: MetadataRoute.Sitemap = shopItems.map(i => ({
+    url:             `${base}/shop/${i.slug}`,
+    changeFrequency: 'weekly' as const,
+    priority:        0.7,
+  }))
+
+  return [...statics, ...servicePages, ...seoLandings, ...blogPages, ...productPages, ...portfolioCatPages, ...shopPages]
 }
