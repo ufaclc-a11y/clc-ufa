@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { business } from '@/data/contacts'
 import { SiteSearch } from '@/components/SiteSearch'
+import { CartButton } from '@/components/CartButton'
 
 const nav = [
   { href: '/services',  label: 'Услуги'      },
@@ -69,6 +70,8 @@ export function Header() {
         <div className="hidden md:flex items-center gap-2 shrink-0">
           {/* Поиск */}
           <SiteSearch />
+          {/* Корзина */}
+          <CartButton />
           {/* Разделитель */}
           <span className="w-px h-5 bg-white/15 shrink-0" aria-hidden="true" />
           {/* Телефон */}

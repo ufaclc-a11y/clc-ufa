@@ -1,5 +1,6 @@
 import { portfolioCategories, portfolioItems } from '@/data/portfolio'
 import { products } from '@/data/products'
+import { shopItems } from '@/data/shop'
 import { SITE } from '@/lib/seo'
 
 export const dynamic = 'force-static'
@@ -31,6 +32,16 @@ export function GET() {
     urls.push(
       `  <url>\n    <loc>${SITE}/products/${p.id}</loc>\n    <image:image><image:loc>${esc(SITE + p.image)}</image:loc></image:image>\n  </url>`
     )
+  }
+
+  // Страница каждого товара магазина → вся его галерея.
+  for (const item of shopItems) {
+    if (!item.images.length) continue
+    const images = item.images
+      .slice(0, MAX_IMAGES_PER_PAGE)
+      .map(src => `    <image:image><image:loc>${esc(SITE + src)}</image:loc></image:image>`)
+      .join('\n')
+    urls.push(`  <url>\n    <loc>${SITE}/shop/${item.slug}</loc>\n${images}\n  </url>`)
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

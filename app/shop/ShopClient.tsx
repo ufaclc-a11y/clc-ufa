@@ -50,31 +50,28 @@ export function ShopClient() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
           <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Магазин</span>
           <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl text-white tracking-wider mt-2 mb-5 leading-[1]">
-            Товары на<br />
-            <span className="text-[#FF6B00]">Wildberries</span>
+            Готовые изделия<br />
+            <span className="text-[#FF6B00]">своего производства</span>
           </h1>
           <p className="text-lg text-white/55 max-w-2xl leading-relaxed mb-8">
-            Изделия из дерева ручной работы — декор, руны, кормушки, органайзеры и многое другое.
-            Быстрая доставка по России через Wildberries.
+            Декор, руны, кормушки, органайзеры и другие изделия из дерева и акрила —
+            делаем сами в Уфе. Заказывайте прямо здесь, доставим по России.
           </p>
           <div className="flex items-center gap-3 flex-wrap">
-            <a
-              href="https://www.wildberries.ru/seller/1553621"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#CB11AB] text-white font-semibold rounded-xl
-                hover:bg-[#b80e99] transition-colors duration-200
-                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CB11AB] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111]"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              Перейти в магазин WB
-            </a>
             <div className="flex items-center gap-2 text-white/40 text-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B00] animate-pulse" />
               {shopItems.length} товаров в наличии
             </div>
+            {/* Wildberries — вторичный канал, поэтому неброская ссылка, а не кнопка. */}
+            <a
+              href="https://www.wildberries.ru/seller/1553621"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-white/40 hover:text-[#CB11AB] transition-colors underline underline-offset-4
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CB11AB] rounded"
+            >
+              Мы также на Wildberries →
+            </a>
           </div>
         </div>
       </div>

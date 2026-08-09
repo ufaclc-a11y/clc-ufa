@@ -11,6 +11,7 @@ import { RichText }     from '@/components/RichText'
 import { business }     from '@/data/contacts'
 import { SITE, localBusinessRef } from '@/lib/seo'
 import { IconCheck, IconBolt, IconTarget } from '@/components/Icons'
+import { AddToCart }  from '@/components/AddToCart'
 
 type Props = { params: { slug: string } }
 
@@ -193,7 +194,11 @@ export default function ShopProductPage({ params }: Props) {
                 {leadParagraph(fullDesc, item.desc)}
               </p>
 
-              {/* Заказ. Корзина появится на следующем этапе — пока пишем напрямую. */}
+              <div className="mb-6">
+                <AddToCart id={item.id} inStock={item.inStock} />
+              </div>
+
+              {/* Мессенджеры — запасной путь для тех, кому проще написать. */}
               <div className="flex flex-wrap gap-3 mb-8">
                 <a
                   href={`${business.whatsapp.split('?')[0]}?text=${waText}`}

@@ -10,7 +10,8 @@ const contentSecurityPolicy = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://mc.yandex.ru https://placehold.co",
   "font-src 'self' data:",
-  "connect-src 'self' https://mc.yandex.ru https://mc.yandex.com",
+  // wss нужен вебвизору Метрики: без него браузер блокирует mc.yandex.ru/solid.ws
+  "connect-src 'self' https://mc.yandex.ru https://mc.yandex.com wss://mc.yandex.ru",
   "frame-src https://yandex.ru https://*.yandex.ru",
   "object-src 'none'",
   "base-uri 'self'",
