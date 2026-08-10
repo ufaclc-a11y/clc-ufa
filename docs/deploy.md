@@ -20,16 +20,45 @@
 
 1. Создать сервер (Ubuntu 24.04), **сразу с SSH-ключом**, без пароля root.
 2. Защита (см. ниже) — до того, как сервер станет публично доступен.
-3. Установить Node.js 20, nginx, certbot, pm2.
-4. Склонировать репозиторий в `/var/www/clc-ufa`.
-5. Создать `.env.local` по образцу `.env.example` — **без него форма заказа
-   молча не отправляет письма**.
-6. Скопировать `nginx.conf` в `/etc/nginx/sites-available/clc-ufa`, сделать
+3. Установить Node.js 20, nginx, certbot.
+4. Склонировать репозиторий в `/var/www/clc-ufa` (именно `git clone` —
+   деплой делает `git reset --hard origin/main` и без репозитория падает).
+5. Создать `/var/www/clc-ufa/.env.local` по образцу `.env.example` — **без него
+   форма заказа молча не отправляет письма**. Права: `chmod 600`.
+6. Создать службу `/etc/systemd/system/clc-ufa.service` (см. ниже),
+   `systemctl enable --now clc-ufa`.
+7. Скопировать `nginx.conf` в `/etc/nginx/sites-available/clc-ufa`, сделать
    symlink в `sites-enabled`, проверить `nginx -t`.
-7. Перевести A-запись домена на новый IP (TTL заранее снизить).
-8. Выпустить сертификат: `certbot --nginx -d clc-ufa.ru -d www.clc-ufa.ru`.
-9. Обновить секреты GitHub Actions: `SSH_HOST`, `SSH_USER`, `SSH_PRIVATE_KEY`.
-10. Запустить деплой (push в `main`) и дождаться health-check в логе Actions.
+8. Перевести A-запись домена на новый IP (TTL заранее снизить).
+9. Выпустить сертификат: `certbot --nginx -d clc-ufa.ru -d www.clc-ufa.ru`.
+10. Обновить секреты GitHub Actions: `SSH_HOST`, `SSH_USER`, `SSH_PRIVATE_KEY`.
+11. Запустить деплой (push в `main`) и дождаться health-check в логе Actions.
+
+## Служба systemd
+
+```ini
+[Unit]
+Description=CLC-UFA Next.js website
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/www/clc-ufa
+Environment=NODE_ENV=production
+EnvironmentFile=-/var/www/clc-ufa/.env.local
+ExecStart=/usr/bin/npm start -- -p 3000
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Логи: `journalctl -u clc-ufa -n 50`. Перезапуск: `systemctl restart clc-ufa`.
+
+`EnvironmentFile` разбирает файл сам, поэтому значения пишутся без кавычек и
+без `export`.
 
 ## Защита сервера
 
@@ -84,7 +113,8 @@ ss -tulpn
 Порядок сужения проблемы:
 
 1. `curl -sS -o /dev/null -w '%{http_code}' https://clc-ufa.ru/` — что отвечает.
-2. **502** — nginx жив, приложение упало: `pm2 status`, `pm2 logs clc-ufa`.
+2. **502** — nginx жив, приложение упало: `systemctl status clc-ufa`,
+   `journalctl -u clc-ufa -n 50`.
 3. **Connection refused** — не работает nginx: `systemctl status nginx`.
 4. **Connection reset при открытом порте** — фильтрация на стороне провайдера,
    а не проблема сервера. Смотреть панель хостинга и почту.

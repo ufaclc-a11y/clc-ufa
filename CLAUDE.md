@@ -50,7 +50,11 @@ Local-only tooling for visual QA — see the design rules below. `node serve.mjs
 
 ## Deploy
 
-Push to `main` → GitHub Actions `check` job → SSH deploy (`appleboy/ssh-action`) to `/var/www/clc-ufa`, pm2 process `clc-ufa`, nginx reverse proxy. The deploy script is hardened (`set -euo pipefail`, `git reset --hard origin/main`, clean `npm ci`, `rm -rf .next`, rebuild, copy `public`/`.next/static` into `.next/standalone` without nesting, pm2 restart, curl health check). A green Actions run is not proof of a live update — if prod looks stale, check the deploy job log, not just that it's green.
+Push to `main` → GitHub Actions `check` job → SSH deploy (`appleboy/ssh-action`) to `/var/www/clc-ufa`, **systemd unit `clc-ufa.service`** (runs `npm start`, i.e. `next start`), nginx reverse proxy. The deploy script is hardened (`set -euo pipefail`, `git reset --hard origin/main`, clean `npm ci`, `rm -rf .next`, rebuild, `systemctl restart clc-ufa`, health check polling localhost:3000). A green Actions run is not proof of a live update — if prod looks stale, check the deploy job log, not just that it's green.
+
+**Environment variables live in `/var/www/clc-ufa/.env.local`** (not `.env`) — the systemd unit reads them via `EnvironmentFile=`. The file is untracked, so `git reset --hard` leaves it alone. Without it the site still builds and serves, but the order form silently sends nothing.
+
+History: the server was rebuilt from scratch on 2026-08-07 after the previous one was blocked and wiped by the host. The current setup uses systemd instead of pm2 and plain `next start` instead of the standalone output — `output: 'standalone'` in `next.config.js` is still produced but unused.
 
 ---
 

@@ -43,7 +43,9 @@ jobs:
             # puppeteer (devDep для скриншотов) не должен качать Chrome на сервере
             export PUPPETEER_SKIP_DOWNLOAD=true
 
-            # Берём ровно то, что в origin/main (без конфликтов локального состояния)
+            # Берём ровно то, что в origin/main (без конфликтов локального состояния).
+            # Переменные окружения лежат в .env.local — он не отслеживается git,
+            # поэтому reset его не трогает.
             git fetch --all --prune
             git reset --hard origin/main
 
@@ -54,17 +56,20 @@ jobs:
             rm -rf .next
             npm run build
 
-            # standalone не включает public и static — копируем их БЕЗ вложенности
-            rm -rf .next/standalone/public .next/standalone/.next/static
-            mkdir -p .next/standalone/.next
-            cp -r public            .next/standalone/public
-            cp -r .next/static       .next/standalone/.next/static
-            cp .env                  .next/standalone/.env
+            # Сайт работает как systemd-служба clc-ufa.service: `npm start` из
+            # каталога проекта. Переменные она читает из .env.local через
+            # EnvironmentFile, поэтому копировать их никуда не нужно.
+            systemctl restart clc-ufa
 
-            export $(grep -v '^#' .env | xargs)
-            pm2 restart clc-ufa --update-env
-
-            # Здоровье после рестарта: localhost должен ответить 200
-            sleep 3
-            curl -fsS -o /dev/null http://localhost:3000/ && echo "Deploy OK"
+            # Здоровье после рестарта: localhost должен ответить 200.
+            # Ждём в цикле — служба поднимается не мгновенно.
+            for i in $(seq 1 15); do
+              if curl -fsS -o /dev/null http://localhost:3000/; then
+                echo "Deploy OK"
+                exit 0
+              fi
+              sleep 2
+            done
+            echo "Сайт не ответил после рестарта — смотрите: journalctl -u clc-ufa -n 50"
+            exit 1
           command_timeout: 15m
