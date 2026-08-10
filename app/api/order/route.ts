@@ -92,12 +92,25 @@ export async function POST(req: Request) {
         <td style="padding:8px 12px;border-bottom:1px solid #E8E6E0;text-align:right;white-space:nowrap">${l.sum.toLocaleString('ru-RU')} ₽</td>
       </tr>`).join('')
 
+    /*
+     * Тариф и пункт выдачи покупатель выбирает в браузере, поэтому пометим их
+     * как выбор клиента: сумму доставки перед выставлением счёта менеджер
+     * должен сверить, а не принимать на веру.
+     */
+    const quoteName   = str(b.quoteName)
+    const quotePrice  = typeof b.quotePrice === 'number' && b.quotePrice > 0 ? Math.ceil(b.quotePrice) : null
+    const pointCode   = str(b.pointCode)
+    const pointAddr   = str(b.pointAddress)
+
     const details = [
       name    && `<b>Имя:</b> ${esc(name)}`,
       `<b>Контакт:</b> ${esc(contact)}`,
       `<b>Получение:</b> ${DELIVERY_METHODS[delivery]}`,
       city    && `<b>Город:</b> ${esc(city)}`,
-      address && `<b>Адрес / ПВЗ:</b> ${esc(address)}`,
+      pointAddr && `<b>Пункт выдачи:</b> ${esc(pointAddr)}${pointCode ? ` (${esc(pointCode)})` : ''}`,
+      address && `<b>Адрес:</b> ${esc(address)}`,
+      quoteName && `<b>Тариф (выбор покупателя):</b> ${esc(quoteName)}${
+        quotePrice !== null ? ` — ${quotePrice.toLocaleString('ru-RU')} ₽, сверьте перед счётом` : ''}`,
       weightGrams !== null && `<b>Вес с упаковкой:</b> ${(weightGrams / 1000).toFixed(2)} кг`,
       comment && `<b>Комментарий:</b> ${esc(comment)}`,
     ].filter(Boolean).join('<br/>')

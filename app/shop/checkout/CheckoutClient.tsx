@@ -6,6 +6,7 @@ import { useCart } from '@/lib/cart'
 import { trackGoal } from '@/lib/analytics'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { DELIVERY_METHODS, type DeliveryMethod } from '@/lib/shop-order'
+import type { DeliveryQuote, PickupPoint } from '@/lib/delivery/types'
 
 const rub = (n: number) => `${n.toLocaleString('ru-RU')} ₽`
 
@@ -24,6 +25,51 @@ export function CheckoutClient() {
   const [error, setError]       = useState<string | null>(null)
   const [done, setDone]         = useState<{ number: string; total: number } | null>(null)
 
+  // Расчёт доставки. Пока ключи СДЭК не заданы, сервер отвечает configured:false,
+  // и блок просто не показывается — оформление продолжает работать.
+  const [city, setCity]           = useState('')
+  const [calcState, setCalcState] = useState<'idle' | 'loading' | 'done'>('idle')
+  const [quotes, setQuotes]       = useState<DeliveryQuote[]>([])
+  const [points, setPoints]       = useState<PickupPoint[]>([])
+  const [notice, setNotice]       = useState<string | null>(null)
+  const [quote, setQuote]         = useState<DeliveryQuote | null>(null)
+  const [point, setPoint]         = useState<string>('')
+
+  const needsCity = delivery !== 'pickup'
+
+  function resetCalc() {
+    setCalcState('idle'); setQuotes([]); setPoints([])
+    setNotice(null); setQuote(null); setPoint('')
+  }
+
+  async function calcDelivery() {
+    if (!city.trim()) return
+    setCalcState('loading'); setNotice(null)
+    try {
+      const [calcRes, pointsRes] = await Promise.all([
+        fetch('/api/delivery/calculate', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({ city, lines: entries.map(e => ({ id: e.item.id, qty: e.qty })) }),
+        }).then(r => r.json()),
+        fetch(`/api/delivery/points?city=${encodeURIComponent(city)}`).then(r => r.json()),
+      ])
+
+      if (calcRes.configured === false) {
+        setNotice('Автоматический расчёт пока не подключён — стоимость доставки сообщит менеджер.')
+      } else {
+        setQuotes(calcRes.quotes ?? [])
+        setQuote((calcRes.quotes ?? [])[0] ?? null)
+        if (calcRes.notice) setNotice(calcRes.notice)
+      }
+      setPoints(pointsRes.points ?? [])
+    } catch {
+      setNotice('Не удалось рассчитать доставку — стоимость сообщит менеджер.')
+    } finally {
+      setCalcState('done')
+    }
+  }
+
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setError(null)
@@ -38,12 +84,17 @@ export function CheckoutClient() {
         body: JSON.stringify({
           name:     fd.get('name'),
           contact:  fd.get('contact'),
-          city:     fd.get('city'),
+          city:     needsCity ? city : '',
           address:  fd.get('address'),
           comment:  fd.get('comment'),
           company:  fd.get('company'),   // honeypot
           delivery,
           lines:    entries.map(e => ({ id: e.item.id, qty: e.qty })),
+          // Выбор покупателя: менеджер сверяет его при подтверждении заказа.
+          quoteName:  quote?.name ?? '',
+          quotePrice: quote?.priceRub ?? null,
+          pointCode:  point,
+          pointAddress: points.find(p => p.code === point)?.address ?? '',
         }),
       })
       const data = await res.json()
@@ -142,17 +193,95 @@ export function CheckoutClient() {
                   </div>
                 </fieldset>
 
-                {delivery !== 'pickup' && (
+                {needsCity && (
                   <>
                     <div>
                       <label htmlFor="city" className={label}>Город *</label>
-                      <input id="city" name="city" required className={field} placeholder="Уфа" />
+                      <div className="flex gap-2">
+                        <input
+                          id="city" name="city" required className={field}
+                          placeholder="Уфа"
+                          value={city}
+                          onChange={e => { setCity(e.target.value); resetCalc() }}
+                        />
+                        <button
+                          type="button"
+                          onClick={calcDelivery}
+                          disabled={!city.trim() || calcState === 'loading'}
+                          className="shrink-0 px-5 rounded-xl border-2 border-[#E8E6E0] text-sm font-semibold text-[#1A1A1A]
+                            hover:border-[#FF6B00] hover:text-[#FF6B00] active:bg-[#F5F4F0]
+                            disabled:opacity-40 disabled:hover:border-[#E8E6E0] disabled:hover:text-[#1A1A1A]
+                            transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]"
+                        >
+                          {calcState === 'loading' ? '…' : 'Рассчитать'}
+                        </button>
+                      </div>
                     </div>
-                    <div>
-                      <label htmlFor="address" className={label}>Адрес или пункт выдачи</label>
-                      <input id="address" name="address" className={field}
-                        placeholder="Улица, дом или код ПВЗ" />
-                    </div>
+
+                    {notice && (
+                      <p className="text-sm text-[#6E6A64] bg-[#F5F4F0] border border-[#E8E6E0] rounded-xl px-4 py-3">
+                        {notice}
+                      </p>
+                    )}
+
+                    {quotes.length > 0 && (
+                      <fieldset>
+                        <legend className={label}>Тариф доставки</legend>
+                        <div className="space-y-2">
+                          {quotes.slice(0, 6).map(q => (
+                            <label
+                              key={q.code}
+                              className={`flex items-center justify-between gap-3 px-4 py-3 rounded-xl border-2 cursor-pointer transition-colors ${
+                                quote?.code === q.code
+                                  ? 'border-[#FF6B00] bg-[#FF6B00]/5'
+                                  : 'border-[#E8E6E0] hover:border-[#FF6B00]/40'
+                              }`}
+                            >
+                              <span className="flex items-center gap-3 min-w-0">
+                                <input
+                                  type="radio" name="quote" className="accent-[#FF6B00] shrink-0"
+                                  checked={quote?.code === q.code}
+                                  onChange={() => setQuote(q)}
+                                />
+                                <span className="text-sm text-[#1A1A1A] truncate">
+                                  {q.name}
+                                  {q.daysMin !== null && (
+                                    <span className="text-[#6E6A64]">
+                                      {' '}· {q.daysMin}{q.daysMax && q.daysMax !== q.daysMin ? `–${q.daysMax}` : ''} дн.
+                                    </span>
+                                  )}
+                                </span>
+                              </span>
+                              <span className="text-sm font-semibold text-[#1A1A1A] tabular-nums whitespace-nowrap">
+                                {rub(q.priceRub)}
+                              </span>
+                            </label>
+                          ))}
+                        </div>
+                      </fieldset>
+                    )}
+
+                    {points.length > 0 ? (
+                      <div>
+                        <label htmlFor="point" className={label}>Пункт выдачи</label>
+                        <select
+                          id="point" className={field}
+                          value={point}
+                          onChange={e => setPoint(e.target.value)}
+                        >
+                          <option value="">Выберите пункт выдачи</option>
+                          {points.map(p => (
+                            <option key={p.code} value={p.code}>{p.address}</option>
+                          ))}
+                        </select>
+                      </div>
+                    ) : (
+                      <div>
+                        <label htmlFor="address" className={label}>Адрес или пункт выдачи</label>
+                        <input id="address" name="address" className={field}
+                          placeholder="Улица, дом или код ПВЗ" />
+                      </div>
+                    )}
                   </>
                 )}
 
