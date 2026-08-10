@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { business } from '@/data/contacts'
 
 const serviceLinks = [
@@ -34,6 +37,41 @@ const companyLinks = [
 ]
 
 export function Footer() {
+  const pathname = usePathname()
+
+  if (pathname === '/new-home') {
+    return (
+      <footer className="bg-[#07194B] py-10 text-white">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.2fr_0.8fr_1fr] lg:items-end">
+          <div>
+            <Link href="/" className="inline-flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7FF42]">
+              <span className="font-display text-3xl">CLC</span>
+              <span className="h-7 w-px bg-[#FF6B00]" aria-hidden="true" />
+              <span className="text-xs leading-5 text-white/65">Центр лазерной резки<br />в Уфе</span>
+            </Link>
+            <p className="mt-5 max-w-md text-sm leading-6 text-white/65">Лазерная резка, УФ-печать, гравировка и фрезеровка ЧПУ. От одной детали до регулярной серии.</p>
+          </div>
+
+          <nav aria-label="Ссылки в подвале" className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm font-semibold">
+            <Link href="/services" className="hover:text-[#E7FF42] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7FF42]">Услуги</Link>
+            <Link href="/portfolio" className="hover:text-[#E7FF42] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7FF42]">Работы</Link>
+            <Link href="/b2b" className="hover:text-[#E7FF42] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7FF42]">Для бизнеса</Link>
+            <Link href="/contacts" className="hover:text-[#E7FF42] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7FF42]">Контакты</Link>
+          </nav>
+
+          <address className="not-italic lg:text-right">
+            <a href={`tel:${business.phone}`} className="text-lg font-bold underline decoration-[#E7FF42] decoration-2 underline-offset-4 hover:text-[#E7FF42] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7FF42]">{business.phoneDisplay}</a>
+            <p className="mt-2 text-sm leading-6 text-white/65">{business.address}<br />{business.workingHours}</p>
+          </address>
+        </div>
+        <div className="mx-auto mt-8 flex max-w-7xl flex-col gap-2 border-t border-white/20 px-4 pt-5 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+          <span>© 2025 {business.name}</span>
+          <Link href="/privacy" className="hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7FF42]">Политика конфиденциальности</Link>
+        </div>
+      </footer>
+    )
+  }
+
   return (
     <footer className="bg-[#1A1A1A] text-white/50 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">

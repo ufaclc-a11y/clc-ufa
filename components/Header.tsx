@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { business } from '@/data/contacts'
 import { SiteSearch } from '@/components/SiteSearch'
 
@@ -17,6 +18,8 @@ const nav = [
 ]
 
 export function Header() {
+  const pathname = usePathname()
+  const isNewHome = pathname === '/new-home'
   const [open,     setOpen]     = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -28,7 +31,7 @@ export function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 bg-[#111] transition-shadow duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 bg-[#111] transition-shadow duration-300 ${isNewHome ? 'clc-header-new-home' : ''} ${
         scrolled ? 'shadow-[0_2px_24px_rgba(0,0,0,0.6)]' : ''
       }`}
     >
