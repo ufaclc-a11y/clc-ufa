@@ -31,8 +31,25 @@
    symlink в `sites-enabled`, проверить `nginx -t`.
 8. Перевести A-запись домена на новый IP (TTL заранее снизить).
 9. Выпустить сертификат: `certbot --nginx -d clc-ufa.ru -d www.clc-ufa.ru`.
-10. Обновить секреты GitHub Actions: `SSH_HOST`, `SSH_USER`, `SSH_PRIVATE_KEY`.
-11. Запустить деплой (push в `main`) и дождаться health-check в логе Actions.
+10. **Завести ключ для деплоя** — самый забываемый шаг, из-за него деплой
+    падает на `Deploy via SSH` без единой записи в журнале сервера (раннер не
+    может аутентифицироваться и до подключения не доходит):
+
+    ```bash
+    ssh-keygen -t ed25519 -f /root/.ssh/github-deploy -N '' -C 'github-actions-deploy'
+    cat /root/.ssh/github-deploy.pub >> /root/.ssh/authorized_keys
+    chmod 600 /root/.ssh/authorized_keys
+    ```
+
+    Приватную часть (`cat /root/.ssh/github-deploy`) целиком, вместе со
+    строками BEGIN/END, вставить в секрет `SSH_PRIVATE_KEY`.
+
+11. Обновить остальные секреты GitHub Actions: `SSH_HOST` (адрес сервера),
+    `SSH_USER` (`root`).
+12. Запустить деплой (push в `main`) и дождаться health-check в логе Actions.
+
+**Зелёный прогон не доказывает обновление прода.** Проверяйте на сервере:
+`git log --oneline -1` и `systemctl show clc-ufa -p ActiveEnterTimestamp`.
 
 ## Служба systemd
 
