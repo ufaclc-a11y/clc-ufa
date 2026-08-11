@@ -67,6 +67,12 @@ async function api(path: string, init?: RequestInit): Promise<unknown> {
       Accept:         'application/json',
       ...(init?.headers ?? {}),
     },
+    /*
+     * Next.js подменяет глобальный fetch и по умолчанию кэширует GET в роутах.
+     * Тарифы и пункты выдачи должны быть свежими, а кэш ещё и переживает
+     * рестарт службы (лежит в .next/cache), пряча ошибки конфигурации.
+     */
+    cache:  'no-store',
     signal: AbortSignal.timeout(TIMEOUT_MS),
   })
   if (!res.ok) throw new Error(`СДЭК: ${path} вернул ${res.status}`)
@@ -86,7 +92,14 @@ async function cityCode(city: string): Promise<number | null> {
   const url = `/location/cities?country_codes=RU&size=1&city=${encodeURIComponent(city.trim())}`
   const data = await api(url)
   const code = Array.isArray(data) && typeof data[0]?.code === 'number' ? data[0].code : null
-  cityCache.set(key, code)
+
+  if (code === null) {
+    // Не молчим: без этого «город не найден» неотличим от ошибки конфигурации.
+    console.error('СДЭК: город «%s» не разобран, ответ справочника: %s',
+      city, JSON.stringify(data)?.slice(0, 300))
+  }
+  // null не кэшируем: иначе разовый сбой запомнится до перезапуска службы.
+  if (code !== null) cityCache.set(key, code)
   return code
 }
 
