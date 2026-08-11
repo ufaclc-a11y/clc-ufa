@@ -66,6 +66,9 @@ export function CheckoutClient() {
       ])
 
       if (calcRes.configured === false) {
+        // Чистим прошлый результат: иначе рядом с этим сообщением остались бы
+        // тарифы другой службы, посчитанные до переключения.
+        setQuotes([]); setQuote(null); setPoints([])
         setNotice('Автоматический расчёт пока не подключён — стоимость доставки сообщит менеджер.')
       } else {
         setQuotes(calcRes.quotes ?? [])
@@ -194,7 +197,8 @@ export function CheckoutClient() {
                         <input
                           type="radio" name="delivery" value={key}
                           checked={delivery === key}
-                          onChange={() => setDelivery(key)}
+                          // Смена службы обесценивает прошлый расчёт — сбрасываем.
+                          onChange={() => { setDelivery(key); resetCalc() }}
                           className="accent-[#FF6B00]"
                         />
                         <span className="text-sm text-[#1A1A1A]">{title}</span>
