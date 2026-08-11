@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server'
 import { rateLimit, clientIp } from '@/lib/rate-limit'
-import { cdek } from '@/lib/delivery/cdek'
+import { getProvider } from '@/lib/delivery/providers'
 
-/** Пункты выдачи СДЭК по городу. Свой список вместо стороннего виджета — CSP. */
+/** Пункты выдачи по городу. Свой список вместо стороннего виджета — CSP. */
 
 const RL_LIMIT  = 30
 const RL_WINDOW = 60 * 1000
@@ -17,18 +17,21 @@ export async function GET(req: Request) {
     )
   }
 
-  if (!cdek.isConfigured()) {
-    return NextResponse.json({ configured: false, points: [] })
+  const params   = new URL(req.url).searchParams
+  const provider = getProvider(params.get('provider'))
+
+  if (!provider || !provider.isConfigured()) {
+    return NextResponse.json({ configured: false, provider: provider?.id ?? null, points: [] })
   }
 
-  const city = new URL(req.url).searchParams.get('city')?.trim()
+  const city = params.get('city')?.trim()
   if (!city) {
     return NextResponse.json({ error: 'Укажите город' }, { status: 400 })
   }
 
   try {
-    const points = await cdek.points(city)
-    return NextResponse.json({ configured: true, points: points.slice(0, MAX_POINTS) })
+    const points = await provider.points(city)
+    return NextResponse.json({ configured: true, provider: provider.id, points: points.slice(0, MAX_POINTS) })
   } catch (e: unknown) {
     const message = e instanceof Error ? e.message : 'Не удалось получить список пунктов выдачи'
     console.error('delivery points:', message)

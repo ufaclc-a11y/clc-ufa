@@ -36,6 +36,9 @@ export function CheckoutClient() {
   const [point, setPoint]         = useState<string>('')
 
   const needsCity = delivery !== 'pickup'
+  // Расчёт возможен только у служб с интеграцией. Для Почты России её нет —
+  // кнопки быть не должно, иначе покажем чужие тарифы.
+  const canCalculate = delivery === 'cdek' || delivery === 'ozon'
 
   function resetCalc() {
     setCalcState('idle'); setQuotes([]); setPoints([])
@@ -45,14 +48,21 @@ export function CheckoutClient() {
   async function calcDelivery() {
     if (!city.trim()) return
     setCalcState('loading'); setNotice(null)
+    // Служба доставки совпадает с выбранным способом получения: cdek | ozon.
+    const provider = delivery === 'ozon' ? 'ozon' : 'cdek'
     try {
       const [calcRes, pointsRes] = await Promise.all([
         fetch('/api/delivery/calculate', {
           method:  'POST',
           headers: { 'Content-Type': 'application/json' },
-          body:    JSON.stringify({ city, lines: entries.map(e => ({ id: e.item.id, qty: e.qty })) }),
+          body:    JSON.stringify({
+            city,
+            provider,
+            lines: entries.map(e => ({ id: e.item.id, qty: e.qty })),
+          }),
         }).then(r => r.json()),
-        fetch(`/api/delivery/points?city=${encodeURIComponent(city)}`).then(r => r.json()),
+        fetch(`/api/delivery/points?city=${encodeURIComponent(city)}&provider=${provider}`)
+          .then(r => r.json()),
       ])
 
       if (calcRes.configured === false) {
@@ -204,17 +214,19 @@ export function CheckoutClient() {
                           value={city}
                           onChange={e => { setCity(e.target.value); resetCalc() }}
                         />
-                        <button
-                          type="button"
-                          onClick={calcDelivery}
-                          disabled={!city.trim() || calcState === 'loading'}
-                          className="shrink-0 px-5 rounded-xl border-2 border-[#E8E6E0] text-sm font-semibold text-[#1A1A1A]
-                            hover:border-[#FF6B00] hover:text-[#FF6B00] active:bg-[#F5F4F0]
-                            disabled:opacity-40 disabled:hover:border-[#E8E6E0] disabled:hover:text-[#1A1A1A]
-                            transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]"
-                        >
-                          {calcState === 'loading' ? '…' : 'Рассчитать'}
-                        </button>
+                        {canCalculate && (
+                          <button
+                            type="button"
+                            onClick={calcDelivery}
+                            disabled={!city.trim() || calcState === 'loading'}
+                            className="shrink-0 px-5 rounded-xl border-2 border-[#E8E6E0] text-sm font-semibold text-[#1A1A1A]
+                              hover:border-[#FF6B00] hover:text-[#FF6B00] active:bg-[#F5F4F0]
+                              disabled:opacity-40 disabled:hover:border-[#E8E6E0] disabled:hover:text-[#1A1A1A]
+                              transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]"
+                          >
+                            {calcState === 'loading' ? '…' : 'Рассчитать'}
+                          </button>
+                        )}
                       </div>
                     </div>
 

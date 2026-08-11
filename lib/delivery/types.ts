@@ -30,10 +30,21 @@ export type PickupPoint = {
   workTime:  string | null
 }
 
+export type DeliveryProviderId = 'cdek' | 'ozon'
+
 export type DeliveryProvider = {
-  id: 'cdek' | 'ozon'
-  /** Настроен ли провайдер (есть ключи). Без этого сайт работает без расчёта. */
+  id: DeliveryProviderId
+  /**
+   * Готов ли провайдер считать доставку. False — сайт работает без расчёта:
+   * покупатель видит «стоимость сообщит менеджер», оформление не ломается.
+   */
   isConfigured(): boolean
+  /**
+   * Заполнены ли ключи. Отличается от isConfigured: провайдер может иметь
+   * ключи, но не иметь реализации (см. ozon.ts) — тогда «настроен» он не
+   * становится, иначе это выглядело бы как поломка.
+   */
+  hasCredentials?(): boolean
   quotes(city: string, parcel: Parcel): Promise<DeliveryQuote[]>
   points(city: string): Promise<PickupPoint[]>
 }

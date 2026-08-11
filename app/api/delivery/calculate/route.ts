@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { rateLimit, clientIp } from '@/lib/rate-limit'
 import { buildParcel } from '@/lib/delivery/packaging'
-import { cdek } from '@/lib/delivery/cdek'
+import { getProvider } from '@/lib/delivery/providers'
 
 /*
  * Расчёт доставки. Браузер ходит только сюда: CSP запрещает обращения к
@@ -23,16 +23,18 @@ export async function POST(req: Request) {
     )
   }
 
-  if (!cdek.isConfigured()) {
-    return NextResponse.json({ configured: false, quotes: [] })
-  }
-
   const body = await req.json().catch(() => null)
   if (!body || typeof body !== 'object') {
     return NextResponse.json({ error: 'Некорректный запрос' }, { status: 400 })
   }
 
-  const { city, lines } = body as { city?: unknown; lines?: unknown }
+  const { city, lines, provider: providerId } = body as
+    { city?: unknown; lines?: unknown; provider?: unknown }
+
+  const provider = getProvider(providerId)
+  if (!provider || !provider.isConfigured()) {
+    return NextResponse.json({ configured: false, provider: provider?.id ?? null, quotes: [] })
+  }
   if (typeof city !== 'string' || !city.trim()) {
     return NextResponse.json({ error: 'Укажите город' }, { status: 400 })
   }
@@ -57,8 +59,8 @@ export async function POST(req: Request) {
   }
 
   try {
-    const quotes = await cdek.quotes(city, parcel.parcel)
-    return NextResponse.json({ configured: true, quotes, parcel: parcel.parcel })
+    const quotes = await provider.quotes(city, parcel.parcel)
+    return NextResponse.json({ configured: true, provider: provider.id, quotes, parcel: parcel.parcel })
   } catch (e: unknown) {
     const message = e instanceof Error ? e.message : 'Не удалось рассчитать доставку'
     console.error('delivery calculate:', message)
