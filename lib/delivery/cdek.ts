@@ -1,4 +1,6 @@
-import type { DeliveryProvider, DeliveryQuote, Parcel, PickupPoint } from './types'
+import type {
+  DeliveryDestination, DeliveryProvider, DeliveryQuote, Parcel, PickupPoint,
+} from './types'
 
 /**
  * Клиент СДЭК API v2 (серверный).
@@ -108,12 +110,33 @@ async function cityCode(city: string): Promise<number | null> {
 const num = (v: unknown): number | null =>
   typeof v === 'number' && Number.isFinite(v) ? v : null
 
-function toQuote(raw: unknown): DeliveryQuote | null {
+/*
+ * delivery_mode кодирует направление «откуда-куда». Значения сверены с живым
+ * ответом API, а не взяты из памяти:
+ *   1 дверь-дверь      2 дверь-склад     3 склад-дверь     4 склад-склад
+ *   6 дверь-постамат   7 склад-постамат  8 постамат-дверь  9 постамат-склад
+ *   10 постамат-постамат
+ *
+ * Отбираем по тому, КУДА приезжает заказ. Режимы с отправкой из постамата
+ * (8–10) не берём: мы отправляем из мастерской, а не закладываем в постамат.
+ */
+export const pickupModes = new Set([2, 4, 6, 7])   // в ПВЗ или постамат
+export const doorModes   = new Set([1, 3])         // курьером до двери
+
+/** Подходит ли тариф под выбранное покупателем направление. */
+export function matchesDestination(mode: number | null, destination?: DeliveryDestination): boolean {
+  if (!destination) return true
+  if (mode === null) return false
+  return destination === 'pickup' ? pickupModes.has(mode) : doorModes.has(mode)
+}
+
+function toQuote(raw: unknown, destination?: DeliveryDestination): DeliveryQuote | null {
   if (typeof raw !== 'object' || raw === null) return null
   const t = raw as Record<string, unknown>
   const code  = num(t.tariff_code)
   const price = num(t.delivery_sum)
   if (code === null || price === null) return null
+  if (!matchesDestination(num(t.delivery_mode), destination)) return null
   return {
     code,
     name:     typeof t.tariff_name === 'string' ? t.tariff_name : `Тариф ${code}`,
@@ -148,7 +171,7 @@ export const cdek: DeliveryProvider = {
     return Boolean(account() && secret())
   },
 
-  async quotes(city: string, parcel: Parcel): Promise<DeliveryQuote[]> {
+  async quotes(city: string, parcel: Parcel, destination?: DeliveryDestination): Promise<DeliveryQuote[]> {
     const [from, to] = await Promise.all([cityCode(fromCity()), cityCode(city)])
     if (from === null) throw new Error(`СДЭК: не найден город отправления «${fromCity()}»`)
     if (to === null)   throw new Error('Город не найден в справочнике СДЭК')
@@ -171,7 +194,7 @@ export const cdek: DeliveryProvider = {
 
     const list = (data as { tariff_codes?: unknown[] })?.tariff_codes ?? []
     return list
-      .map(toQuote)
+      .map(t => toQuote(t, destination))
       .filter((q): q is DeliveryQuote => q !== null)
       .sort((a, b) => a.priceRub - b.priceRub)
   },

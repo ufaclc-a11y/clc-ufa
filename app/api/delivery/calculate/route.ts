@@ -59,7 +59,12 @@ export async function POST(req: Request) {
   }
 
   try {
-    const quotes = await provider.quotes(city, parcel.parcel)
+    /*
+     * В оформлении обе службы предлагаются только «до пункта выдачи», поэтому
+     * тарифы до двери отсекаем: покупателю, выбравшему ПВЗ, они не нужны и
+     * лишь путают более высокой ценой.
+     */
+    const quotes = await provider.quotes(city, parcel.parcel, 'pickup')
     return NextResponse.json({ configured: true, provider: provider.id, quotes, parcel: parcel.parcel })
   } catch (e: unknown) {
     const message = e instanceof Error ? e.message : 'Не удалось рассчитать доставку'

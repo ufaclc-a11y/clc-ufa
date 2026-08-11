@@ -32,6 +32,9 @@ export type PickupPoint = {
 
 export type DeliveryProviderId = 'cdek' | 'ozon'
 
+/** Куда приезжает заказ: в пункт выдачи (или постамат) либо курьером до двери. */
+export type DeliveryDestination = 'pickup' | 'door'
+
 export type DeliveryProvider = {
   id: DeliveryProviderId
   /**
@@ -45,6 +48,10 @@ export type DeliveryProvider = {
    * становится, иначе это выглядело бы как поломка.
    */
   hasCredentials?(): boolean
-  quotes(city: string, parcel: Parcel): Promise<DeliveryQuote[]>
+  /**
+   * Тарифы. `destination` отсекает неподходящие направления: покупателю,
+   * выбравшему пункт выдачи, не нужны тарифы «до двери» и наоборот.
+   */
+  quotes(city: string, parcel: Parcel, destination?: DeliveryDestination): Promise<DeliveryQuote[]>
   points(city: string): Promise<PickupPoint[]>
 }

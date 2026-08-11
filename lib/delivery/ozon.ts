@@ -1,4 +1,6 @@
-import type { DeliveryProvider, DeliveryQuote, Parcel, PickupPoint } from './types'
+import type {
+  DeliveryDestination, DeliveryProvider, DeliveryQuote, Parcel, PickupPoint,
+} from './types'
 
 /**
  * Доставка Ozon — ЗАГЛУШКА, интеграция не написана.
@@ -45,7 +47,7 @@ export const ozon: DeliveryProvider = {
     return Boolean(clientId() && apiKey())
   },
 
-  async quotes(_city: string, _parcel: Parcel): Promise<DeliveryQuote[]> {
+  async quotes(_city: string, _parcel: Parcel, _destination?: DeliveryDestination): Promise<DeliveryQuote[]> {
     throw new Error(NOT_IMPLEMENTED)
   },
 
