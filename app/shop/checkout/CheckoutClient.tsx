@@ -334,16 +334,29 @@ export function CheckoutClient() {
                   ))}
                 </ul>
 
-                <div className="flex justify-between items-baseline pt-3 border-t border-[#E8E6E0]">
-                  <span className="text-[#1A1A1A] font-semibold">Итого</span>
-                  <span className="font-display text-2xl text-[#1A1A1A] tracking-wider tabular-nums">
-                    {rub(total)}
-                  </span>
+                <div className="pt-3 border-t border-[#E8E6E0] space-y-1">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-[#6E6A64]">Товары</span>
+                    <span className="text-[#1A1A1A] tabular-nums">{rub(total)}</span>
+                  </div>
+                  {quote && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-[#6E6A64]">Доставка</span>
+                      <span className="text-[#1A1A1A] tabular-nums">{rub(quote.priceRub)}</span>
+                    </div>
+                  )}
+                  <div className="flex justify-between items-baseline pt-2">
+                    <span className="text-[#1A1A1A] font-semibold">Итого</span>
+                    <span className="font-display text-2xl text-[#1A1A1A] tracking-wider tabular-nums">
+                      {rub(total + (quote?.priceRub ?? 0))}
+                    </span>
+                  </div>
                 </div>
 
                 <p className="text-xs text-[#6E6A64] mt-3 leading-relaxed">
-                  Доставка рассчитывается отдельно. Оплата — по ссылке, которую пришлёт менеджер
-                  после подтверждения.
+                  {quote
+                    ? 'Стоимость доставки предварительная — менеджер подтвердит её вместе с заказом. Оплата по ссылке, которую он пришлёт.'
+                    : 'Доставку рассчитаем после выбора города, либо стоимость сообщит менеджер. Оплата — по ссылке от менеджера.'}
                 </p>
 
                 {error && (
