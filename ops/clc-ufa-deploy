@@ -17,8 +17,9 @@ cd "$APP_DIR"
 run_as_app git fetch --all --prune
 run_as_app git reset --hard origin/main
 run_as_app git clean -fd
-run_as_app npm ci
+run_as_app npm ci --include=dev
 run_as_app npm run build
+run_as_app npm prune --omit=dev
 
 mkdir -p "$APP_DIR/.next/cache"
 chown -R "$APP_USER:$APP_GROUP" "$APP_DIR"
