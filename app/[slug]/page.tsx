@@ -22,14 +22,15 @@ const faqSelection: { limit: number; categories: FAQItem['category'][] } = {
   categories: ['order', 'files', 'materials'],
 }
 
-type Props = { params: { slug: string } }
+type Props = { params: Promise<{ slug: string }> }
 
 export function generateStaticParams() {
   return seoPages.map(p => ({ slug: p.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const page = seoPages.find(p => p.slug === params.slug)
+  const { slug } = await params
+  const page = seoPages.find(p => p.slug === slug)
   if (!page) return {}
   const relatedService = services.find(s => s.slug === page.service)
   return {
@@ -52,8 +53,9 @@ const PROCESS_STEPS = [
   { icon: '◎', text: 'Забирайте готовое изделие в срок' },
 ]
 
-export default function SeoLandingPage({ params }: Props) {
-  const page = seoPages.find(p => p.slug === params.slug)
+export default async function SeoLandingPage({ params }: Props) {
+  const { slug } = await params
+  const page = seoPages.find(p => p.slug === slug)
   if (!page) notFound()
 
   // Related products: match by material keyword in tags
