@@ -13,7 +13,7 @@ import { SITE, localBusinessRef } from '@/lib/seo'
 import { IconCheck, IconBolt, IconTarget } from '@/components/Icons'
 import { AddToCart }  from '@/components/AddToCart'
 
-type Props = { params: { slug: string } }
+type Props = { params: Promise<{ slug: string }> }
 
 /*
  * ShopItem.desc — жёсткий срез ~250 символов из выгрузки WB, он рвётся на
@@ -50,7 +50,8 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const item = shopItemBySlug(params.slug)
+  const { slug } = await params
+  const item = shopItemBySlug(slug)
   if (!item) notFound()
 
   const title = `${item.title} — купить в Уфе | Центр лазерной резки`
@@ -74,8 +75,9 @@ function packSize(item: ReturnType<typeof shopItemBySlug>) {
   return `${p.packLengthCm} × ${p.packWidthCm} × ${p.packHeightCm} см`
 }
 
-export default function ShopProductPage({ params }: Props) {
-  const item = shopItemBySlug(params.slug)
+export default async function ShopProductPage({ params }: Props) {
+  const { slug } = await params
+  const item = shopItemBySlug(slug)
   if (!item) notFound()
 
   const fullDesc = shopDescriptions[item.id] ?? item.desc

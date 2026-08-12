@@ -6,14 +6,15 @@ import { blogPosts } from '@/data/blog'
 import { CTASection } from '@/components/CTASection'
 import { SITE, organizationRef } from '@/lib/seo'
 
-type Props = { params: { slug: string } }
+type Props = { params: Promise<{ slug: string }> }
 
 export async function generateStaticParams() {
   return blogPosts.map(p => ({ slug: p.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = blogPosts.find(p => p.slug === params.slug)
+  const { slug } = await params
+  const post = blogPosts.find(p => p.slug === slug)
   if (!post) return {}
   return {
     title:       post.title,
@@ -145,8 +146,9 @@ function boldify(text: string): string {
     .replace(/Макс/g, '<a href="https://max.ru/u/f9LHodD0cOJovKYdnmZPaYaDMUKsaiKLd4XDfHDJQDiV-nyK1Csp7gqlTFk" target="_blank" rel="noopener noreferrer" class="font-semibold underline underline-offset-2">Макс</a>')
 }
 
-export default function BlogPostPage({ params }: Props) {
-  const post = blogPosts.find(p => p.slug === params.slug)
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params
+  const post = blogPosts.find(p => p.slug === slug)
   if (!post) notFound()
 
   const related = blogPosts.filter(p => p.slug !== post.slug).slice(0, 3)

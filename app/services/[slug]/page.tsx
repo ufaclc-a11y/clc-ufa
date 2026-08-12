@@ -22,14 +22,15 @@ const faqSelection: { limit: number; categories: FAQItem['category'][] } = {
   categories: ['order', 'prices', 'files'],
 }
 
-type Props = { params: { slug: string } }
+type Props = { params: Promise<{ slug: string }> }
 
 export function generateStaticParams() {
   return services.map(s => ({ slug: s.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const s = services.find(s => s.slug === params.slug)
+  const { slug } = await params
+  const s = services.find(s => s.slug === slug)
   if (!s) return {}
   return {
     title:       s.seoTitle,
@@ -60,8 +61,9 @@ function getPortfolioPhotos(service: {
   return samplePhotos(service.portfolioPrefix, 9)
 }
 
-export default function ServicePage({ params }: Props) {
-  const service = services.find(s => s.slug === params.slug)
+export default async function ServicePage({ params }: Props) {
+  const { slug } = await params
+  const service = services.find(s => s.slug === slug)
   if (!service) notFound()
 
   const others = services.filter(s => s.slug !== service.slug)

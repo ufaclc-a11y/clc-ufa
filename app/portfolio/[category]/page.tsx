@@ -7,7 +7,7 @@ import { Breadcrumbs }   from '@/components/Breadcrumbs'
 import { CTASection }    from '@/components/CTASection'
 import { business }      from '@/data/contacts'
 
-type Props = { params: { category: string } }
+type Props = { params: Promise<{ category: string }> }
 
 /* ── Лучшее фото для hero каждой категории (landscape ≥ 800px ширина) ── */
 const categoryHeroImage: Record<string, string> = {
@@ -77,7 +77,8 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const cat = portfolioCategories.find(c => c.id === params.category)
+  const { category } = await params
+  const cat = portfolioCategories.find(c => c.id === category)
   if (!cat || cat.id === 'all') notFound()
   const meta = categoryMeta[cat.id]
   return {
@@ -94,8 +95,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 const PAGE = 48
 
-export default function PortfolioCategoryPage({ params }: Props) {
-  const cat = portfolioCategories.find(c => c.id === params.category)
+export default async function PortfolioCategoryPage({ params }: Props) {
+  const { category } = await params
+  const cat = portfolioCategories.find(c => c.id === category)
   if (!cat || cat.id === 'all') notFound()
 
   const meta     = categoryMeta[cat.id]

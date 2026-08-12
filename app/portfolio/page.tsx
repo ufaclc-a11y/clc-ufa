@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   alternates:  { canonical: 'https://clc-ufa.ru/portfolio' },
 }
 
-type Props = { searchParams: { cat?: string } }
+type Props = { searchParams: Promise<{ cat?: string }> }
 
 /* Коллаж из нескольких разных работ для hero-фона */
 const HERO_IMAGES = [
@@ -31,8 +31,9 @@ const HERO_IMAGES = [
   '/images/portfolio/nagradnye-statuetki-005.jpg',
 ]
 
-export default function PortfolioPage({ searchParams }: Props) {
-  const defaultCategory = searchParams.cat ?? 'all'
+export default async function PortfolioPage({ searchParams }: Props) {
+  const { cat } = await searchParams
+  const defaultCategory = cat ?? 'all'
 
   return (
     <>
