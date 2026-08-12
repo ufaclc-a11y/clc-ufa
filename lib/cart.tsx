@@ -57,8 +57,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [lines, setLines] = useState<CartLine[]>([])
   const [ready, setReady] = useState(false)
 
-  // localStorage доступен только в браузере — читаем после монтирования.
+  /*
+   * localStorage доступен только в браузере, поэтому читаем после монтирования.
+   * Правило react-hooks предупреждает о setState внутри эффекта, но здесь это
+   * оправдано: на сервере корзина неизвестна, а инициализация состояния из
+   * localStorage напрямую дала бы расхождение разметки при гидратации.
+   */
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLines(readStorage())
     setReady(true)
   }, [])

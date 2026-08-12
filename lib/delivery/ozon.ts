@@ -1,6 +1,4 @@
-import type {
-  DeliveryDestination, DeliveryProvider, DeliveryQuote, Parcel, PickupPoint,
-} from './types'
+import type { DeliveryProvider, DeliveryQuote, PickupPoint } from './types'
 
 /**
  * Доставка Ozon — ЗАГЛУШКА, интеграция не написана.
@@ -47,11 +45,13 @@ export const ozon: DeliveryProvider = {
     return Boolean(clientId() && apiKey())
   },
 
-  async quotes(_city: string, _parcel: Parcel, _destination?: DeliveryDestination): Promise<DeliveryQuote[]> {
+  // Аргументы не принимаем: методы сразу бросают, а неиспользуемые параметры
+  // только шумят в линте. Сигнатуре интерфейса это не противоречит.
+  async quotes(): Promise<DeliveryQuote[]> {
     throw new Error(NOT_IMPLEMENTED)
   },
 
-  async points(_city: string): Promise<PickupPoint[]> {
+  async points(): Promise<PickupPoint[]> {
     throw new Error(NOT_IMPLEMENTED)
   },
 }
