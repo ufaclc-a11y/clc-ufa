@@ -5,74 +5,45 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
+concurrency:
+  group: production
+  cancel-in-progress: false
+
 jobs:
   check:
     runs-on: ubuntu-latest
     env:
       PUPPETEER_SKIP_DOWNLOAD: 'true'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
       - run: npm ci
-      - name: Type check
-        run: npx tsc --noEmit
       - name: Lint
-        run: npx next lint
+        run: npm run lint
       - name: Test
         run: npm test
       - name: Build
         run: npm run build
+      - name: Type check
+        run: npx tsc --noEmit
 
   deploy:
     needs: check
     runs-on: ubuntu-latest
     steps:
       - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@0ff4204d59e8e51228ff73bce53f80d53301dee2 # v1.2.5
         with:
           host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
+          username: deploy
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             set -euo pipefail
-            cd /var/www/clc-ufa
-
-            # puppeteer (devDep для скриншотов) не должен качать Chrome на сервере
-            export PUPPETEER_SKIP_DOWNLOAD=true
-
-            # Берём ровно то, что в origin/main (без конфликтов локального состояния).
-            # Переменные окружения лежат в .env.local — он не отслеживается git,
-            # поэтому reset его не трогает.
-            git fetch --all --prune
-            git reset --hard origin/main
-
-            # Чистая установка зависимостей строго по lock-файлу
-            npm ci
-
-            # Чистый билд — сбрасываем кэш, чтобы не тащить устаревшие маршруты/ISR.
-            # .next-dev тоже удаляем: это артефакт `next dev`, на проде его быть
-            # не должно, а устаревшие типы внутри ломают сборку ссылками на
-            # удалённые маршруты.
-            rm -rf .next .next-dev
-            npm run build
-
-            # Сайт работает как systemd-служба clc-ufa.service: `npm start` из
-            # каталога проекта. Переменные она читает из .env.local через
-            # EnvironmentFile, поэтому копировать их никуда не нужно.
-            systemctl restart clc-ufa
-
-            # Здоровье после рестарта: localhost должен ответить 200.
-            # Ждём в цикле — служба поднимается не мгновенно.
-            for i in $(seq 1 15); do
-              if curl -fsS -o /dev/null http://localhost:3000/; then
-                echo "Deploy OK"
-                exit 0
-              fi
-              sleep 2
-            done
-            echo "Сайт не ответил после рестарта — смотрите: journalctl -u clc-ufa -n 50"
-            exit 1
+            sudo /usr/local/sbin/clc-ufa-deploy
           command_timeout: 15m
