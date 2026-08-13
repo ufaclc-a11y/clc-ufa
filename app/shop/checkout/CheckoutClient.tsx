@@ -315,9 +315,16 @@ export function CheckoutClient() {
                 />
 
                 <p className="text-xs text-[#6E6A64] leading-relaxed">
-                  Нажимая «Оформить заказ», вы соглашаетесь с{' '}
+                  Нажимая «Оформить заказ», вы принимаете условия{' '}
+                  <Link href="/oferta" className="text-[#FF6B00] hover:underline underline-offset-4">
+                    публичной оферты
+                  </Link>{' '}
+                  и соглашаетесь с{' '}
                   <Link href="/privacy" className="text-[#FF6B00] hover:underline underline-offset-4">
                     политикой обработки персональных данных
+                  </Link>. Порядок возврата — на странице{' '}
+                  <Link href="/vozvrat" className="text-[#FF6B00] hover:underline underline-offset-4">
+                    «Возврат и обмен»
                   </Link>.
                 </p>
               </div>

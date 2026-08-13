@@ -135,7 +135,12 @@ export function Footer() {
 
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-white/25">
           <span>© 2025 {business.name}</span>
-          <Link href="/privacy" className="hover:text-white/60 transition-colors">Политика конфиденциальности</Link>
+          <nav className="flex flex-wrap justify-center gap-x-4 gap-y-1">
+            <Link href="/oferta" className="hover:text-white/60 transition-colors">Оферта</Link>
+            <Link href="/dostavka-i-oplata" className="hover:text-white/60 transition-colors">Доставка и оплата</Link>
+            <Link href="/vozvrat" className="hover:text-white/60 transition-colors">Возврат</Link>
+            <Link href="/privacy" className="hover:text-white/60 transition-colors">Политика конфиденциальности</Link>
+          </nav>
           <span>{business.address}</span>
         </div>
       </div>
