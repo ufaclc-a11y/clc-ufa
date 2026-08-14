@@ -46,6 +46,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "chasy-008.jpg"
   ],
   "frezernaya-rezka": [
+    "p-e8a5fb1b445a.jpg",
     "p-ea6a1d93f86d.jpg",
     "p-9ffe5df5aaca.jpg",
     "p-40575f24858b.jpg",
@@ -105,6 +106,14 @@ export const portfolioFiles: Record<string, string[]> = {
     "frezernaya-rezka-050.jpg"
   ],
   "gravirovka": [
+    "p-e9cb9ad94144.jpg",
+    "p-a84f7c616157.jpg",
+    "p-f3f04372cedc.jpg",
+    "p-7d858df6ea0d.jpg",
+    "p-03c3bcf852f4.jpg",
+    "p-f23ef3fd15a5.jpg",
+    "p-9df99f83b45c.jpg",
+    "p-7a2ce9c7aaf8.jpg",
     "p-f57f50285071.jpg",
     "p-3d6a63d4e312.jpg",
     "p-0b995555a72d.jpg",
@@ -189,6 +198,12 @@ export const portfolioFiles: Record<string, string[]> = {
     "gravirovka-chasy-002.jpg"
   ],
   "kheshtegi": [
+    "p-19a13e6a3f44.jpg",
+    "p-4f4c4b03588d.jpg",
+    "p-dc832397f488.jpg",
+    "p-76d57caef98d.jpg",
+    "p-c5dceaabb9d7.jpg",
+    "p-fc847e4ea44e.jpg",
     "kheshtegi-001.jpg",
     "kheshtegi-002.jpg",
     "kheshtegi-003.jpg",
@@ -217,6 +232,8 @@ export const portfolioFiles: Record<string, string[]> = {
     "kormushki-005.jpg"
   ],
   "koroba-fanera": [
+    "p-d7c565e9b4a3.jpg",
+    "p-a45e3e2cf3cf.jpg",
     "frezernaya-rezka-018.jpg",
     "koroba-fanera-002.jpg",
     "koroba-fanera-003.jpg",
@@ -297,6 +314,32 @@ export const portfolioFiles: Record<string, string[]> = {
     "gravirovka-073.jpg"
   ],
   "lazernaya-rezka": [
+    "p-19a13e6a3f44.jpg",
+    "p-4f4c4b03588d.jpg",
+    "p-e9cb9ad94144.jpg",
+    "p-d7c565e9b4a3.jpg",
+    "p-a84f7c616157.jpg",
+    "p-989eea950a90.jpg",
+    "p-ee0f9739e82a.jpg",
+    "p-5d6c18c36c3a.jpg",
+    "p-c5b1b209d493.jpg",
+    "p-4937ea1b6fb5.jpg",
+    "p-e411bff7b1f2.jpg",
+    "p-7d858df6ea0d.jpg",
+    "p-dc832397f488.jpg",
+    "p-76d57caef98d.jpg",
+    "p-c5dceaabb9d7.jpg",
+    "p-1374da47c152.jpg",
+    "p-03c3bcf852f4.jpg",
+    "p-f23ef3fd15a5.jpg",
+    "p-2150e538e087.jpg",
+    "p-9df99f83b45c.jpg",
+    "p-98db18fd6fb7.jpg",
+    "p-6fb7ec52fd2c.jpg",
+    "p-8dba95cf375c.jpg",
+    "p-7cbd7cd7b84c.jpg",
+    "p-fc847e4ea44e.jpg",
+    "p-891fa9e0a132.jpg",
     "p-e3111eb07a6b.jpg",
     "p-2f31b2a1f7f7.jpg",
     "p-06aa210221d5.jpg",
@@ -698,6 +741,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "lazernaya-rezka-384.jpg"
   ],
   "medali": [
+    "p-e411bff7b1f2.jpg",
     "p-19b4e276b631.jpg",
     "p-138a7b77f8d6.jpg",
     "p-46a27a109ec9.jpg",
@@ -736,6 +780,9 @@ export const portfolioFiles: Record<string, string[]> = {
     "lazernaya-rezka-350.jpg"
   ],
   "nagradnye-statuetki": [
+    "p-98db18fd6fb7.jpg",
+    "p-6fb7ec52fd2c.jpg",
+    "p-8dba95cf375c.jpg",
     "p-e3111eb07a6b.jpg",
     "p-2f31b2a1f7f7.jpg",
     "p-06c2f66b49dc.jpg",
@@ -774,6 +821,10 @@ export const portfolioFiles: Record<string, string[]> = {
     "lazernaya-rezka-078.jpg"
   ],
   "organajzery": [
+    "p-03c3bcf852f4.jpg",
+    "p-f23ef3fd15a5.jpg",
+    "p-2150e538e087.jpg",
+    "p-9df99f83b45c.jpg",
     "organajzery-001.jpg",
     "lazernaya-rezka-126.jpg",
     "lazernaya-rezka-133.jpg",
@@ -839,6 +890,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "shildiki-abs-002.jpg"
   ],
   "shkatulki-fanera": [
+    "p-a45e3e2cf3cf.jpg",
     "koroba-fanera-012.jpg",
     "shkatulki-fanera-002.jpg",
     "shkatulki-fanera-003.jpg",
@@ -905,6 +957,18 @@ export const portfolioFiles: Record<string, string[]> = {
     "p-5a67e3e4cc28.jpg"
   ],
   "uf-pechat": [
+    "p-989eea950a90.jpg",
+    "p-5d6c18c36c3a.jpg",
+    "p-c5b1b209d493.jpg",
+    "p-4937ea1b6fb5.jpg",
+    "p-acedb5bef068.jpg",
+    "p-a45e3e2cf3cf.jpg",
+    "p-e411bff7b1f2.jpg",
+    "p-dc832397f488.jpg",
+    "p-98db18fd6fb7.jpg",
+    "p-6fb7ec52fd2c.jpg",
+    "p-8dba95cf375c.jpg",
+    "p-fc847e4ea44e.jpg",
     "p-06aa210221d5.jpg",
     "p-19b4e276b631.jpg",
     "p-ea6a1d93f86d.jpg",
@@ -950,6 +1014,8 @@ export const portfolioFiles: Record<string, string[]> = {
     "uf-pechat-025.jpg"
   ],
   "vyveski": [
+    "p-19a13e6a3f44.jpg",
+    "p-e9cb9ad94144.jpg",
     "p-ea6a1d93f86d.jpg",
     "p-e3d35e67bb2a.jpg",
     "vyveski-001.jpg",
@@ -973,6 +1039,8 @@ export const portfolioFiles: Record<string, string[]> = {
     "zagotovki-003.jpg"
   ],
   "zazhigalki": [
+    "p-cd5ed6f0fd28.jpg",
+    "p-c753c8c3cbd6.jpg",
     "gravirovka-042.jpg",
     "gravirovka-070.jpg",
     "gravirovka-071.jpg",
