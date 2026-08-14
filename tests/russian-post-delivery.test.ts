@@ -77,7 +77,7 @@ test('запросы используют официальные заголов�
     const url = String(input)
     calls.push({ url, init })
     if (url.includes('settlement.offices.codes')) {
-      return Response.json(['450000', '450002'])
+      return Response.json(['456803', '450000', '450002'])
     }
     if (url.endsWith('/1.0/tariff')) {
       return Response.json({
@@ -88,6 +88,7 @@ test('запросы используют официальные заголов�
     const code = url.match(/\/(\d{6})\?/)?.[1]
     return Response.json({
       'postal-code': code,
+      settlement: code === '456803' ? 'Пригородный' : 'Уфа',
       'address-source': `г Уфа, отделение ${code}`,
       'type-code': 'ГОПС',
     })
