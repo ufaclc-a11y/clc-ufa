@@ -1,0 +1,6 @@
+{
+  "variant": "C — Витрина мастерской",
+  "base": "shop-catalog-c-maker-showcase.png",
+  "promptFile": "shop-catalog-c-maker-showcase-v2.prompt.txt",
+  "approved": false
+}

@@ -5,7 +5,6 @@ import { notFound }    from 'next/navigation'
 import { shopItems, shopItemBySlug } from '@/data/shop'
 import { shopDescriptions } from '@/data/shop-descriptions.generated'
 import { Breadcrumbs }  from '@/components/Breadcrumbs'
-import { CTASection }   from '@/components/CTASection'
 import { GalleryGrid }  from '@/components/GalleryGrid'
 import { RichText }     from '@/components/RichText'
 import { business }     from '@/data/contacts'
@@ -130,17 +129,17 @@ export default async function ShopProductPage({ params }: Props) {
       <script type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd) }} />
 
-      <div className="pt-24 bg-[#F5F4F0]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+      <div className="bg-[#F5F6F9]">
+        <div className="mx-auto max-w-[1480px] px-4 py-7 sm:px-6 sm:py-9">
           <Breadcrumbs items={[
             { label: 'Магазин', href: '/shop' },
             { label: item.title },
           ]} />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 items-start gap-7 lg:grid-cols-[minmax(0,1.08fr)_minmax(420px,.92fr)] lg:gap-9">
             {/* ── Фото ── */}
-            <div className="lg:sticky lg:top-24">
-              <div className="relative aspect-square rounded-2xl overflow-hidden bg-white border border-[#E8E6E0]">
+            <div className="lg:sticky lg:top-[174px]">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-white shadow-[0_12px_32px_rgba(39,32,56,0.08)]">
                 <Image
                   src={item.image}
                   alt={item.title}
@@ -158,8 +157,8 @@ export default async function ShopProductPage({ params }: Props) {
                       src,
                       alt: `${item.title} — фото ${i + 2}`,
                     }))}
-                    gridClass="grid grid-cols-4 sm:grid-cols-5 gap-3"
-                    aspectClass="aspect-square"
+                    gridClass="grid grid-cols-5 sm:grid-cols-6 gap-3"
+                    aspectClass="aspect-[3/4]"
                     imageSizes="120px"
                   />
                 </div>
@@ -167,17 +166,13 @@ export default async function ShopProductPage({ params }: Props) {
             </div>
 
             {/* ── Описание и цена ── */}
-            <div>
-              <p className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase mb-2">
-                {item.categoryName}
-              </p>
-
-              <h1 className="font-display text-4xl sm:text-5xl text-[#1A1A1A] tracking-wider mb-4 leading-[1.1]">
+            <div className="rounded-2xl bg-white p-5 shadow-[0_12px_32px_rgba(39,32,56,0.08)] sm:p-8">
+              <h1 className="mb-5 text-[30px] font-extrabold leading-[1.16] tracking-[-0.035em] text-[#17181B] sm:text-[40px]">
                 {item.title}
               </h1>
 
               <div className="flex flex-wrap items-center gap-4 mb-6">
-                <span className="font-display text-4xl text-[#1A1A1A] tracking-wider tabular-nums">
+                <span className="text-4xl font-extrabold tracking-[-0.03em] tabular-nums text-[#17181B]">
                   {item.price.toLocaleString('ru-RU')} ₽
                 </span>
                 <span className={`inline-flex items-center gap-2 text-sm font-semibold px-3 py-1.5 rounded-full ${
@@ -192,7 +187,7 @@ export default async function ShopProductPage({ params }: Props) {
                 </span>
               </div>
 
-              <p className="text-lg text-[#2D2D2D] leading-[1.75] mb-8">
+              <p className="mb-7 text-base leading-7 text-[#4F515A] sm:text-lg">
                 {leadParagraph(fullDesc, item.desc)}
               </p>
 
@@ -224,10 +219,10 @@ export default async function ShopProductPage({ params }: Props) {
               </div>
 
               {/* Характеристики */}
-              <dl className="border-t border-[#E8E6E0] divide-y divide-[#E8E6E0] mb-8">
+              <dl className="mb-8 divide-y divide-[#E6E7EC] border-t border-[#E6E7EC]">
                 <div className="flex justify-between gap-4 py-3">
                   <dt className="text-sm text-[#6E6A64]">Артикул</dt>
-                  <dd className="text-sm text-[#1A1A1A] font-mono">{item.sku}</dd>
+                  <dd className="text-sm font-semibold text-[#1A1A1A]">{item.sku}</dd>
                 </div>
                 {size && (
                   <div className="flex justify-between gap-4 py-3">
@@ -249,17 +244,17 @@ export default async function ShopProductPage({ params }: Props) {
                 </div>
               </dl>
 
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 gap-1 border-y border-[#E6E7EC] py-2 sm:grid-cols-3 sm:divide-x sm:divide-[#E6E7EC]">
                 {[
                   { Icon: IconCheck,  text: 'Своё производство' },
                   { Icon: IconBolt,   text: 'Отправка 1–3 дня'  },
                   { Icon: IconTarget, text: 'Возможен свой макет' },
                 ].map(s => (
-                  <div key={s.text} className="bg-white rounded-xl p-3 text-center border border-[#E8E6E0]">
+                  <div key={s.text} className="flex items-center gap-2 px-3 py-2 sm:flex-col sm:text-center">
                     <div className="flex justify-center mb-1">
-                      <s.Icon size={18} className="text-[#FF6B00]" />
+                      <s.Icon size={18} className="text-[#FF5A00]" />
                     </div>
-                    <div className="text-xs text-[#6E6A64] leading-tight">{s.text}</div>
+                    <div className="text-xs font-semibold leading-tight text-[#62646D]">{s.text}</div>
                   </div>
                 ))}
               </div>
@@ -281,9 +276,9 @@ export default async function ShopProductPage({ params }: Props) {
 
       {/* ── Полное описание ── */}
       {fullDesc && (
-        <section className="py-16 bg-white">
+        <section className="bg-white py-14 sm:py-16">
           <div className="max-w-3xl mx-auto px-4 sm:px-6">
-            <h2 className="font-display text-2xl text-[#1A1A1A] tracking-wide mb-6">Описание</h2>
+            <h2 className="mb-6 text-2xl font-extrabold tracking-[-0.025em] text-[#17181B]">Описание</h2>
             <RichText text={fullDesc} paragraphs className="text-[#2D2D2D] leading-[1.75]" />
           </div>
         </section>
@@ -291,10 +286,10 @@ export default async function ShopProductPage({ params }: Props) {
 
       {/* ── Похожие товары ── */}
       {related.length > 0 && (
-        <section className="py-14 bg-[#F5F4F0]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <section className="bg-[#F5F6F9] py-14">
+          <div className="mx-auto max-w-[1480px] px-4 sm:px-6">
             <div className="flex items-end justify-between gap-4 mb-6">
-              <h2 className="font-display text-2xl text-[#1A1A1A] tracking-wide">
+              <h2 className="text-2xl font-extrabold tracking-[-0.025em] text-[#17181B]">
                 Похожие товары
               </h2>
               <Link href="/shop" className="text-sm font-semibold text-[#FF6B00] hover:underline underline-offset-4">
@@ -306,11 +301,11 @@ export default async function ShopProductPage({ params }: Props) {
                 <Link
                   key={r.id}
                   href={`/shop/${r.slug}`}
-                  className="group bg-white rounded-xl overflow-hidden border border-[#E8E6E0]
-                    hover:border-[#FF6B00]/40 transition-colors
+                  className="group overflow-hidden rounded-2xl bg-white shadow-[0_8px_22px_rgba(45,37,58,0.07)]
+                    transition-[transform,box-shadow] hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(45,37,58,0.12)]
                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]"
                 >
-                  <div className="relative aspect-square bg-white">
+                  <div className="relative aspect-[3/4] bg-white">
                     <Image
                       src={r.image}
                       alt={r.title}
@@ -321,7 +316,7 @@ export default async function ShopProductPage({ params }: Props) {
                   </div>
                   <div className="p-3">
                     <p className="text-xs text-[#2D2D2D] leading-snug line-clamp-2 mb-1">{r.title}</p>
-                    <p className="font-display text-base text-[#1A1A1A] tracking-wide tabular-nums">
+                    <p className="text-lg font-extrabold tracking-[-0.02em] tabular-nums text-[#17181B]">
                       {r.price.toLocaleString('ru-RU')} ₽
                     </p>
                   </div>
@@ -332,7 +327,15 @@ export default async function ShopProductPage({ params }: Props) {
         </section>
       )}
 
-      <CTASection dark />
+      <section className="border-t border-[#E5E6EB] bg-white">
+        <div className="mx-auto flex max-w-[1180px] flex-col items-start justify-between gap-6 px-4 py-12 sm:px-6 md:flex-row md:items-center">
+          <div>
+            <h2 className="text-2xl font-extrabold tracking-[-0.03em] sm:text-3xl">Нужно изделие по вашему макету?</h2>
+            <p className="mt-2 text-[#62646D]">Расскажите о задаче — подберём материал и рассчитаем изготовление.</p>
+          </div>
+          <Link href="/contacts" className="inline-flex min-h-12 items-center justify-center rounded-xl bg-[#FF5A00] px-6 text-sm font-bold text-white transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-[#E95000] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A00] focus-visible:ring-offset-2">Оставить заявку</Link>
+        </div>
+      </section>
     </>
   )
 }

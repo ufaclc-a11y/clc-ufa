@@ -18,7 +18,7 @@ export function AddToCart({ id, inStock }: Props) {
 
   if (!inStock) {
     return (
-      <p className="text-sm text-[#6E6A64] bg-[#F5F4F0] border border-[#E8E6E0] rounded-xl px-4 py-3">
+      <p className="rounded-xl bg-[#F4F2F7] px-4 py-3 text-sm text-[#62646D]">
         Товара сейчас нет в наличии — напишите нам, изготовим под заказ.
       </p>
     )
@@ -27,7 +27,7 @@ export function AddToCart({ id, inStock }: Props) {
   return (
     <div className="flex flex-wrap items-center gap-3">
       {/* Количество */}
-      <div className="flex items-center border border-[#E8E6E0] rounded-full bg-white overflow-hidden">
+      <div className="flex items-center overflow-hidden rounded-xl border border-[#DCDDE5] bg-white">
         <button
           type="button"
           onClick={() => setQty(q => Math.max(1, q - 1))}
@@ -58,9 +58,9 @@ export function AddToCart({ id, inStock }: Props) {
       <button
         type="button"
         onClick={() => add(id, qty)}
-        className="inline-flex items-center gap-2 bg-[#FF6B00] text-white font-semibold px-7 h-11 rounded-full
-          hover:bg-[#e65f00] active:bg-[#cc5500] transition-colors
-          shadow-[0_2px_12px_rgba(255,107,0,0.3)]
+        className="inline-flex h-11 items-center gap-2 rounded-xl bg-[#FF5A00] px-7 font-semibold text-white
+          shadow-[0_7px_18px_rgba(255,90,0,0.24)] transition-[background-color,transform,box-shadow]
+          hover:-translate-y-0.5 hover:bg-[#E95000] hover:shadow-[0_10px_22px_rgba(255,90,0,0.28)] active:translate-y-0 active:bg-[#D84B00]
           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2"
       >
         В корзину

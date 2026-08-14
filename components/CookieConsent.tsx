@@ -62,18 +62,18 @@ export function CookieConsent() {
       aria-label="Уведомление об использовании cookie"
       className="fixed inset-x-0 bottom-0 z-[9998] p-3 sm:p-4 animate-fade-up"
     >
-      <div className="max-w-3xl mx-auto bg-[#1A1A1A] text-white rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.35)] border border-white/10 p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-4">
-        <p className="text-sm text-white/70 leading-relaxed flex-1">
+      <div className="mx-auto flex max-w-[920px] flex-col gap-4 rounded-2xl border border-[#E2E3E9] bg-white p-4 text-[#25262B] shadow-[0_14px_42px_rgba(39,32,56,0.16)] sm:flex-row sm:items-center sm:px-5">
+        <p className="flex-1 text-sm leading-relaxed text-[#62646D]">
           Мы используем cookie и Яндекс.Метрику, чтобы сайт работал лучше и удобнее.
           Оставаясь на сайте, вы соглашаетесь с{' '}
-          <Link href="/privacy" className="text-[#FF6B00] hover:underline underline-offset-2">
+          <Link href="/privacy" className="rounded text-[#C64700] underline decoration-[#FFC29E] underline-offset-2 hover:text-[#9D3900] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]">
             политикой конфиденциальности
           </Link>.
         </p>
         <div className="flex gap-2.5 shrink-0">
           <button
             onClick={acknowledge}
-            className="px-5 py-2.5 rounded-full text-sm font-semibold bg-[#FF6B00] text-white hover:bg-[#e85f00] transition-colors shadow-[0_2px_12px_rgba(255,107,0,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A1A1A]"
+            className="min-h-11 rounded-xl bg-[#FF5A00] px-5 text-sm font-semibold text-white shadow-[0_6px_16px_rgba(255,90,0,0.22)] transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-[#E95000] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2"
           >
             Понятно
           </button>

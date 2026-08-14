@@ -1,0 +1,8 @@
+Use case: ui-mockup
+Asset type: high-fidelity desktop ecommerce catalog page comp, direct front-facing webpage screenshot at 1536x1024, no browser chrome and no device frame.
+Primary request: Create an alternative light marketplace redesign for the Russian CLC / «Центр лазерной резки» shop. It should feel as efficient as a mature Ozon/Wildberries catalog while remaining unmistakably an independent CLC store.
+Input images: four reference product photos: decorative surf board, acrylic bird feeder, acrylic kitten construction set, plywood tool organizer.
+Structure: compact white header with orange CLC mark, broad search «Найти товар», cart; light navigation strip; no conventional hero. Left category rail titled «Категории» with real categories and counts. Right area has announcement «Своё производство в Уфе · Доставка по России», «Все товары», result count, sorting, and dense four-column grid. One narrow orange tile says «Сделаем по вашему макету» with «Оставить заявку» without overpowering products.
+Product cards: almost borderless white cards, tall images, category, two-line name, bold price, orange circular cart button. Use real prices: surf — 1 790 ₽; feeder — 2 450 ₽; kitten — 2 700 ₽; organizer — 2 250 ₽.
+Style: production-ready catalog-first ecommerce UX; white, cool mist, ink, CLC orange, small muted-violet accents; sturdy sans; tiny cool borders, soft tinted elevations, 14–18px radii.
+Constraints: Russian only; no ratings, fake reviews, discounts, loyalty, sale labels, Ozon/Wildberries logos, exact competitor colors, dark blocks, glass, decorative gradients, or watermark.

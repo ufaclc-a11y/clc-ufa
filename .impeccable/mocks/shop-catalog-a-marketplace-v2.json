@@ -1,0 +1,8 @@
+{
+  "variant": "A — Маркетплейс",
+  "base": "shop-catalog-a-marketplace.png",
+  "promptFile": "shop-catalog-a-marketplace-v2.prompt.txt",
+  "approved": true,
+  "approvedAt": "2026-08-14",
+  "approval": "Основа A; боковой каталог и карточки из B; изображения товаров строго 3:4"
+}
