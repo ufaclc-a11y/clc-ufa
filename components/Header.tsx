@@ -3,9 +3,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { business } from '@/data/contacts'
 import { SiteSearch } from '@/components/SiteSearch'
 import { CartButton } from '@/components/CartButton'
+import { ShopHeader } from '@/components/ShopHeader'
 
 const nav = [
   { href: '/services',  label: 'Услуги'      },
@@ -18,6 +20,7 @@ const nav = [
 ]
 
 export function Header() {
+  const pathname = usePathname()
   const [open,     setOpen]     = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -26,6 +29,8 @@ export function Header() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  if (pathname.startsWith('/shop')) return <ShopHeader />
 
   return (
     <header

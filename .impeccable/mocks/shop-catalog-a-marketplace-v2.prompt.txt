@@ -1,0 +1,5 @@
+Use case: precise-object-edit
+Asset type: corrected high-fidelity ecommerce UI comp.
+Primary request: Preserve the entire webpage layout, dimensions, product imagery, typography, colors, banner, category chips and product grid exactly. Remove the user/account/login icon and «Войти» completely; keep «Корзина». In the top utility row keep «Уфа», «Доставка по России» and «Производство на заказ», remove «Оплата при получении» without replacement. Add no new feature or claim.
+Text invariants: keep «Готовые изделия своего производства», «Из дерева и акрила. Доставим по России», all four real product names and prices unchanged.
+Constraints: no account, login, payment claim, ratings, discounts, fake reviews, new badges, or watermark.

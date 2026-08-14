@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import { useCart } from '@/lib/cart'
 import { trackGoal } from '@/lib/analytics'
@@ -11,11 +12,11 @@ import type { DeliveryQuote, PickupPoint } from '@/lib/delivery/types'
 const rub = (n: number) => `${n.toLocaleString('ru-RU')} ₽`
 
 const field =
-  'w-full px-4 py-3 rounded-xl border-2 border-[#E8E6E0] bg-white text-[#1A1A1A] ' +
-  'placeholder:text-[#A8A39B] focus:outline-none focus-visible:border-[#FF6B00] ' +
-  'focus-visible:ring-2 focus-visible:ring-[#FF6B00]/30 transition-[border-color,box-shadow]'
+  'w-full px-4 py-3 rounded-xl border border-[#DCDDE5] bg-white text-[#1A1A1A] ' +
+  'placeholder:text-[#92949E] focus:outline-none focus-visible:border-[#FF5A00] ' +
+  'focus-visible:ring-4 focus-visible:ring-[#FF5A00]/10 transition-[border-color,box-shadow]'
 
-const label = 'block font-mono text-xs tracking-widest uppercase text-[#6E6A64] mb-2'
+const label = 'mb-2 block text-sm font-bold text-[#42444C]'
 
 export function CheckoutClient() {
   const { entries, total, count, ready, clear } = useCart()
@@ -126,8 +127,8 @@ export function CheckoutClient() {
   }
 
   return (
-    <div className="pt-24 bg-[#F5F4F0] min-h-screen">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+    <div className="min-h-screen bg-[#F5F6F9]">
+      <div className="mx-auto max-w-[1180px] px-4 py-7 sm:px-6 sm:py-10">
         <Breadcrumbs items={[
           { label: 'Магазин', href: '/shop' },
           { label: 'Корзина', href: '/shop/cart' },
@@ -135,8 +136,8 @@ export function CheckoutClient() {
         ]} />
 
         {done ? (
-          <div className="bg-white rounded-2xl border border-[#E8E6E0] p-10 text-center max-w-xl mx-auto">
-            <h1 className="font-display text-3xl text-[#1A1A1A] tracking-wider mb-3">Заказ принят</h1>
+          <div className="mx-auto max-w-xl rounded-2xl bg-white p-10 text-center shadow-[0_10px_28px_rgba(37,31,49,0.07)]">
+            <h1 className="mb-3 text-3xl font-extrabold tracking-[-0.03em] text-[#17181B]">Заказ принят</h1>
             <p className="text-[#2D2D2D] mb-2">
               Номер заказа <span className="font-mono font-semibold">{done.number}</span>,
               сумма {rub(done.total)}.
@@ -147,17 +148,17 @@ export function CheckoutClient() {
             </p>
             <Link
               href="/shop"
-              className="inline-flex items-center justify-center bg-[#FF6B00] text-white font-semibold px-7 py-3 rounded-full
-                hover:bg-[#e65f00] active:bg-[#cc5500] transition-colors
+              className="inline-flex items-center justify-center rounded-xl bg-[#FF5A00] px-7 py-3 font-semibold text-white
+                transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-[#E95000] active:translate-y-0 active:bg-[#D84B00]
                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2"
             >
               Вернуться в магазин
             </Link>
           </div>
         ) : !ready ? (
-          <div className="h-64 rounded-2xl bg-white border border-[#E8E6E0] animate-pulse" />
+          <div className="h-64 animate-pulse rounded-2xl bg-white shadow-[0_10px_28px_rgba(37,31,49,0.07)]" />
         ) : entries.length === 0 ? (
-          <div className="bg-white rounded-2xl border border-[#E8E6E0] p-10 text-center">
+          <div className="rounded-2xl bg-white p-10 text-center shadow-[0_10px_28px_rgba(37,31,49,0.07)]">
             <p className="text-[#6E6A64] mb-6">Корзина пуста — оформлять нечего.</p>
             <Link href="/shop" className="text-[#FF6B00] font-semibold hover:underline underline-offset-4">
               Перейти в магазин →
@@ -165,12 +166,12 @@ export function CheckoutClient() {
           </div>
         ) : (
           <>
-            <h1 className="font-display text-4xl sm:text-5xl text-[#1A1A1A] tracking-wider mb-8">
+            <h1 className="mb-7 text-3xl font-extrabold tracking-[-0.035em] text-[#17181B] sm:text-[40px]">
               Оформление заказа
             </h1>
 
-            <form onSubmit={submit} className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start">
-              <div className="bg-white rounded-2xl border border-[#E8E6E0] p-6 space-y-5">
+            <form onSubmit={submit} className="grid grid-cols-1 items-start gap-7 lg:grid-cols-[1fr_360px]">
+              <div className="space-y-5 rounded-2xl bg-white p-5 shadow-[0_10px_28px_rgba(37,31,49,0.07)] sm:p-7">
                 <div>
                   <label htmlFor="name" className={label}>Ваше имя</label>
                   <input id="name" name="name" className={field} placeholder="Как к вам обращаться" />
@@ -188,10 +189,10 @@ export function CheckoutClient() {
                     {(Object.entries(DELIVERY_METHODS) as [DeliveryMethod, string][]).map(([key, title]) => (
                       <label
                         key={key}
-                        className={`flex items-center gap-3 px-4 py-3 rounded-xl border-2 cursor-pointer transition-colors ${
+                        className={`flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 transition-[background-color,border-color] ${
                           delivery === key
-                            ? 'border-[#FF6B00] bg-[#FF6B00]/5'
-                            : 'border-[#E8E6E0] hover:border-[#FF6B00]/40'
+                            ? 'border-[#FF5A00] bg-[#FFF5EF]'
+                            : 'border-[#DCDDE5] hover:border-[#FF5A00]/50'
                         }`}
                       >
                         <input
@@ -223,10 +224,10 @@ export function CheckoutClient() {
                             type="button"
                             onClick={calcDelivery}
                             disabled={!city.trim() || calcState === 'loading'}
-                            className="shrink-0 px-5 rounded-xl border-2 border-[#E8E6E0] text-sm font-semibold text-[#1A1A1A]
-                              hover:border-[#FF6B00] hover:text-[#FF6B00] active:bg-[#F5F4F0]
-                              disabled:opacity-40 disabled:hover:border-[#E8E6E0] disabled:hover:text-[#1A1A1A]
-                              transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]"
+                            className="shrink-0 rounded-xl border border-[#DCDDE5] px-5 text-sm font-semibold text-[#1A1A1A]
+                              transition-[background-color,border-color,color] hover:border-[#FF5A00] hover:bg-[#FFF5EF] hover:text-[#D94D00] active:bg-[#F5F4F0]
+                              disabled:opacity-40 disabled:hover:border-[#DCDDE5] disabled:hover:bg-transparent disabled:hover:text-[#1A1A1A]
+                              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A00]"
                           >
                             {calcState === 'loading' ? '…' : 'Рассчитать'}
                           </button>
@@ -235,7 +236,7 @@ export function CheckoutClient() {
                     </div>
 
                     {notice && (
-                      <p className="text-sm text-[#6E6A64] bg-[#F5F4F0] border border-[#E8E6E0] rounded-xl px-4 py-3">
+                      <p className="rounded-xl bg-[#F1EBF8] px-4 py-3 text-sm text-[#5B3A86]">
                         {notice}
                       </p>
                     )}
@@ -247,10 +248,10 @@ export function CheckoutClient() {
                           {quotes.slice(0, 6).map(q => (
                             <label
                               key={q.code}
-                              className={`flex items-center justify-between gap-3 px-4 py-3 rounded-xl border-2 cursor-pointer transition-colors ${
+                              className={`flex cursor-pointer items-center justify-between gap-3 rounded-xl border px-4 py-3 transition-[background-color,border-color] ${
                                 quote?.code === q.code
-                                  ? 'border-[#FF6B00] bg-[#FF6B00]/5'
-                                  : 'border-[#E8E6E0] hover:border-[#FF6B00]/40'
+                                  ? 'border-[#FF5A00] bg-[#FFF5EF]'
+                                  : 'border-[#DCDDE5] hover:border-[#FF5A00]/50'
                               }`}
                             >
                               <span className="flex items-center gap-3 min-w-0">
@@ -330,13 +331,16 @@ export function CheckoutClient() {
               </div>
 
               {/* ── Состав заказа ── */}
-              <aside className="bg-white rounded-2xl border border-[#E8E6E0] p-6 lg:sticky lg:top-24">
-                <h2 className="font-display text-lg text-[#1A1A1A] tracking-wide mb-4">Ваш заказ</h2>
-                <ul className="space-y-2 mb-4">
+              <aside className="rounded-2xl bg-white p-6 shadow-[0_10px_28px_rgba(37,31,49,0.07)] lg:sticky lg:top-[174px]">
+                <h2 className="mb-4 text-lg font-extrabold tracking-[-0.02em] text-[#17181B]">Ваш заказ</h2>
+                <ul className="mb-4 space-y-3">
                   {entries.map(({ item, qty, sum }) => (
-                    <li key={item.id} className="flex justify-between gap-3 text-sm">
+                    <li key={item.id} className="flex gap-3 text-sm">
+                      <div className="relative aspect-[3/4] w-11 shrink-0 overflow-hidden rounded-lg bg-[#F7F7FA]">
+                        <Image src={item.image} alt="" fill className="object-contain" sizes="44px" />
+                      </div>
                       {/* Количество вне обрезаемого текста — иначе длинное название его съедает. */}
-                      <span className="text-[#2D2D2D] min-w-0">
+                      <span className="min-w-0 flex-1 text-[#2D2D2D]">
                         <span className="line-clamp-2">{item.title}</span>
                         <span className="text-[#6E6A64] tabular-nums">× {qty}</span>
                       </span>
@@ -358,7 +362,7 @@ export function CheckoutClient() {
                   )}
                   <div className="flex justify-between items-baseline pt-2">
                     <span className="text-[#1A1A1A] font-semibold">Итого</span>
-                    <span className="font-display text-2xl text-[#1A1A1A] tracking-wider tabular-nums">
+                    <span className="text-2xl font-extrabold tracking-[-0.025em] tabular-nums text-[#17181B]">
                       {rub(total + (quote?.priceRub ?? 0))}
                     </span>
                   </div>
@@ -379,9 +383,9 @@ export function CheckoutClient() {
                 <button
                   type="submit"
                   disabled={sending}
-                  className="mt-5 w-full inline-flex items-center justify-center bg-[#FF6B00] text-white font-semibold px-6 py-3 rounded-full
-                    hover:bg-[#e65f00] active:bg-[#cc5500] disabled:opacity-60 disabled:cursor-not-allowed
-                    transition-colors shadow-[0_2px_12px_rgba(255,107,0,0.3)]
+                  className="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-[#FF5A00] px-6 py-3 font-semibold text-white
+                    shadow-[0_7px_18px_rgba(255,90,0,0.24)] transition-[background-color,transform,box-shadow]
+                    hover:-translate-y-0.5 hover:bg-[#E95000] hover:shadow-[0_10px_22px_rgba(255,90,0,0.28)] active:translate-y-0 active:bg-[#D84B00] disabled:cursor-not-allowed disabled:opacity-60
                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2"
                 >
                   {sending ? 'Отправляем…' : 'Оформить заказ'}

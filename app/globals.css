@@ -97,6 +97,23 @@ h1, h2, h3, h4, h5 {
 ::-webkit-scrollbar-track { background: #1A1A1A; }
 ::-webkit-scrollbar-thumb { background: #FF6B00; border-radius: 3px; }
 
+.shop-marketplace ::selection {
+  background: #ffe0cf;
+  color: #17181b;
+}
+
+body:has(.shop-marketplace) {
+  background: #f5f6f9;
+}
+
+body:has(.shop-marketplace)::-webkit-scrollbar-track {
+  background: #f0f1f4;
+}
+
+body:has(.shop-marketplace)::-webkit-scrollbar-thumb {
+  background: #b4a3ca;
+}
+
 /* Минимальный размер touch-target */
 button, a, [role="button"] {
   min-height: 44px;

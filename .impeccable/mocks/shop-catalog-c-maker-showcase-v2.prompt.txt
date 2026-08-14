@@ -1,0 +1,5 @@
+Use case: precise-object-edit
+Asset type: corrected high-fidelity ecommerce UI comp.
+Primary request: Preserve the entire webpage layout, dimensions, product mosaic, product grid, colors, typography and spacing exactly. Remove the user/account/login icon and «Войти» completely; keep «Корзина». In the left hero benefit list use exactly «Из дерева, акрила и фанеры», «Своё производство в Уфе», «Доставка по России». Do not imply ecological certification or invent another claim.
+Text invariants: keep «Готовые изделия из дерева и акрила», «В каталог», «Рекомендуем», all real product names and prices unchanged.
+Constraints: no account, login, ecological claim, ratings, discounts, reviews, sale labels, badges, or watermark.
