@@ -37,7 +37,7 @@ SystemCallArchitectures=native
 CapabilityBoundingSet=
 AmbientCapabilities=
 RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
-ReadWritePaths=/var/www/clc-ufa/.next/cache
+ReadWritePaths=/var/www/clc-ufa/.next/cache /var/lib/clc-ufa
 
 [Install]
 WantedBy=multi-user.target

@@ -24,18 +24,30 @@ test('известные службы находятся', () => {
   assert.equal(isProviderId('russian'), false)
 })
 
-test('Ozon помечен как неготовый, пока интеграция не написана', () => {
-  // Ключи сами по себе не делают провайдера рабочим: Ozon Rocket закрыт,
-  // у «Озон доставки» другой API, реализации ещё нет.
-  assert.equal(providers.ozon.isConfigured(), false)
-})
-
-test('неготовый провайдер не молчит, а сообщает об этом вызовом', async () => {
-  await assert.rejects(
-    () => providers.ozon.quotes('Москва', { weightGrams: 1000, lengthCm: 10, widthCm: 10, heightCm: 10 }),
-    /не подключена/,
-  )
-  await assert.rejects(() => providers.ozon.points('Москва'), /не подключена/)
+test('Ozon без refresh-токена остаётся ненастроенным', async () => {
+  const saved = {
+    OZON_CLIENT_ID: process.env.OZON_CLIENT_ID,
+    OZON_CLIENT_SECRET: process.env.OZON_CLIENT_SECRET,
+    OZON_SELLER_ID: process.env.OZON_SELLER_ID,
+    OZON_TOKEN_FILE: process.env.OZON_TOKEN_FILE,
+  }
+  process.env.OZON_CLIENT_ID = 'test-client'
+  process.env.OZON_CLIENT_SECRET = 'test-secret'
+  process.env.OZON_SELLER_ID = 'test-seller'
+  process.env.OZON_TOKEN_FILE = `${process.cwd()}/definitely-missing-ozon-tokens.json`
+  try {
+    assert.equal(providers.ozon.isConfigured(), false)
+    await assert.rejects(
+      () => providers.ozon.quotes('Москва', { weightGrams: 1000, lengthCm: 10, widthCm: 10, heightCm: 10 }),
+      /не настроена/,
+    )
+    await assert.rejects(() => providers.ozon.points('Москва'), /не настроена/)
+  } finally {
+    for (const [key, value] of Object.entries(saved)) {
+      if (value === undefined) delete process.env[key]
+      else process.env[key] = value
+    }
+  }
 })
 
 test('СДЭК без ключей считается ненастроенным', () => {
