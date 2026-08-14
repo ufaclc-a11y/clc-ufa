@@ -1,5 +1,6 @@
 import { cdek } from './cdek'
 import { ozon } from './ozon'
+import { russianPost } from './russian-post'
 import type { DeliveryProvider, DeliveryProviderId } from './types'
 
 /**
@@ -9,6 +10,7 @@ import type { DeliveryProvider, DeliveryProviderId } from './types'
 export const providers: Record<DeliveryProviderId, DeliveryProvider> = {
   cdek,
   ozon,
+  russian: russianPost,
 }
 
 export function isProviderId(v: unknown): v is DeliveryProviderId {
@@ -18,9 +20,8 @@ export function isProviderId(v: unknown): v is DeliveryProviderId {
 /**
  * Провайдер по идентификатору или null.
  *
- * Именно null, а не «служба по умолчанию»: для способов получения без
- * интеграции (Почта России, самовывоз) подстановка СДЭК показала бы покупателю
- * чужие тарифы под видом верных.
+ * Именно null, а не «служба по умолчанию»: для самовывоза или будущего способа
+ * без интеграции подстановка СДЭК показала бы покупателю чужие тарифы.
  */
 export function getProvider(v: unknown): DeliveryProvider | null {
   return isProviderId(v) ? providers[v] : null

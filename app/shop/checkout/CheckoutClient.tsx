@@ -36,9 +36,9 @@ export function CheckoutClient() {
   const [point, setPoint]         = useState<string>('')
 
   const needsCity = delivery !== 'pickup'
-  // Расчёт возможен только у служб с интеграцией. Для Почты России её нет —
-  // кнопки быть не должно, иначе покажем чужие тарифы.
-  const canCalculate = delivery === 'cdek' || delivery === 'ozon'
+  // Самовывоз не требует внешнего расчёта; остальные способы работают через
+  // собственный провайдер и никогда не подменяются тарифами другой службы.
+  const canCalculate = delivery === 'cdek' || delivery === 'ozon' || delivery === 'russian'
 
   function resetCalc() {
     setCalcState('idle'); setQuotes([]); setPoints([])
@@ -48,8 +48,8 @@ export function CheckoutClient() {
   async function calcDelivery() {
     if (!city.trim()) return
     setCalcState('loading'); setNotice(null)
-    // Служба доставки совпадает с выбранным способом получения: cdek | ozon.
-    const provider = delivery === 'ozon' ? 'ozon' : 'cdek'
+    // Служба доставки совпадает с выбранным способом получения.
+    const provider = delivery === 'russian' ? 'russian' : delivery === 'ozon' ? 'ozon' : 'cdek'
     try {
       const [calcRes, pointsRes] = await Promise.all([
         fetch('/api/delivery/calculate', {
