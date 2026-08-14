@@ -216,6 +216,23 @@ export default async function ShopProductPage({ params }: Props) {
                 >
                   Telegram
                 </a>
+                <a
+                  href={business.max}
+                  target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#7048E8] px-6 py-3 font-semibold text-white
+                    transition-colors hover:bg-[#5E3BC8] active:bg-[#4F31AD]
+                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7048E8] focus-visible:ring-offset-2"
+                >
+                  Написать в MAX
+                </a>
+                <a
+                  href={`mailto:${business.email}?subject=${encodeURIComponent(`Заказ: ${item.title}`)}&body=${waText}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-[#DCDDE5] bg-white px-6 py-3 font-semibold text-[#25262B]
+                    transition-[background-color,border-color,color] hover:border-[#B9BBC5] hover:bg-[#F7F7FA] active:bg-[#EEEEF2]
+                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A00] focus-visible:ring-offset-2"
+                >
+                  Написать на почту
+                </a>
               </div>
 
               {/* Характеристики */}
