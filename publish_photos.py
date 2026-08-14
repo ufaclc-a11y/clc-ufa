@@ -487,10 +487,10 @@ class PublishApp:
         self.log.config(state="normal"); self.log.delete("1.0", "end"); self.log.config(state="disabled")
         threading.Thread(target=self._publish_worker, args=(ready,), daemon=True).start()
 
-    def _run(self, cmd, label):
+    def _run(self, cmd, label, cwd=None):
         self._log(f"$ {cmd if isinstance(cmd, str) else ' '.join(cmd)}")
         try:
-            r = subprocess.run(cmd, cwd=ROOT, shell=isinstance(cmd, str),
+            r = subprocess.run(cmd, cwd=cwd or ROOT, shell=isinstance(cmd, str),
                                capture_output=True, text=True, encoding="utf-8",
                                errors="replace", creationflags=_NO_WINDOW)
         except Exception as e:
@@ -502,6 +502,100 @@ class PublishApp:
         if r.returncode != 0:
             self._log(f"  ✖ {label} — код {r.returncode}")
         return r.returncode == 0, out
+
+    # Пути, которые публикация имеет право менять. Всё остальное берётся из
+    # origin/main как есть — так фото не могут утащить с собой чужие правки.
+    PUBLISH_PATHS = ["public/images/portfolio", "data/portfolio-tags.json",
+                     "data/portfolio.generated.ts"]
+
+    def _publish_to_origin(self, cmsg, published):
+        """
+        Кладёт фото поверх свежего origin/main во временной копии репозитория.
+
+        Раньше здесь был `git pull --rebase --autostash` — он перебазировал всю
+        рабочую ветку и потому зависел от состояния рабочей папки. Если в ней
+        лежали правки тех же файлов, что изменились на GitHub (а при работе над
+        сайтом это обычное дело), автостеш не возвращался, публикация срывалась,
+        и фото оставались лежать локальным коммитом.
+
+        Теперь рабочая папка не участвует: временная копия создаётся из
+        origin/main, в неё переносятся только фото и теги, манифест
+        пересобирается уже там. Состояние вашей папки на публикацию не влияет.
+        """
+        import tempfile
+
+        ok, _ = self._run(["git", "fetch", "origin", "main"], "git fetch")
+        if not ok:
+            self._set_status("Нет связи с GitHub — фото закоммичены локально.", "#e9a000")
+            self.root.after(0, lambda: messagebox.showwarning(
+                "Нет связи с GitHub",
+                "Фото добавлены и закоммичены локально, но связаться с GitHub не вышло.\n"
+                "Проверьте интернет и запустите публикацию ещё раз — ничего не потеряно."))
+            return False
+
+        tmp = tempfile.mkdtemp(prefix="clc-publish-")
+        work = os.path.join(tmp, "repo")
+        try:
+            self._log("Готовлю чистую копию из origin/main…")
+            ok, _ = self._run(["git", "worktree", "add", "--detach", work, "origin/main"],
+                              "git worktree add")
+            if not ok:
+                raise RuntimeError("не удалось создать временную копию репозитория")
+
+            # Переносим только фото и теги. Манифест пересоберётся на месте:
+            # он должен учитывать и наши новые снимки, и те, что появились на
+            # GitHub, пока мы готовили публикацию.
+            self._log("Переношу фотографии и теги…")
+            src_dir = os.path.join(ROOT, "public", "images", "portfolio")
+            dst_dir = os.path.join(work, "public", "images", "portfolio")
+            os.makedirs(dst_dir, exist_ok=True)
+            for name in os.listdir(src_dir):
+                dst = os.path.join(dst_dir, name)
+                if not os.path.exists(dst):
+                    shutil.copy2(os.path.join(src_dir, name), dst)
+            shutil.copy2(os.path.join(ROOT, "data", "portfolio-tags.json"),
+                         os.path.join(work, "data", "portfolio-tags.json"))
+
+            self._log("Пересобираю портфолио в копии…")
+            ok, _ = self._run(["node", "scripts/gen-portfolio.mjs"], "gen-portfolio", cwd=work)
+            if not ok:
+                raise RuntimeError("пересборка портфолио в копии не прошла")
+
+            self._run(["git", "add", "--"] + self.PUBLISH_PATHS, "git add", cwd=work)
+            ok, st = self._run(["git", "status", "--porcelain", "--"] + self.PUBLISH_PATHS,
+                               "git status", cwd=work)
+            if not st.strip():
+                self._log("На GitHub уже всё это есть — отправлять нечего.")
+                self._set_status("Фото уже на сайте.", "#888")
+                return True
+
+            ok, _ = self._run(["git", "commit", "-m", cmsg], "git commit", cwd=work)
+            if not ok:
+                raise RuntimeError("не удалось создать коммит в копии")
+
+            self._log("Отправляю на GitHub…")
+            ok, out = self._run(["git", "push", "origin", "HEAD:main"], "git push", cwd=work)
+            if not ok:
+                # Кто-то запушил, пока мы собирали копию. Повтор решает.
+                self._set_status("Кто-то опередил — нажмите «Опубликовать» ещё раз.", "#e9a000")
+                self.root.after(0, lambda: messagebox.showwarning(
+                    "Нужен повтор",
+                    "Пока готовилась публикация, на GitHub появились новые изменения.\n\n"
+                    "Ничего не потеряно — просто нажмите «Опубликовать» ещё раз."))
+                return False
+            return True
+
+        except Exception as e:
+            self._log(f"  ✖ публикация: {e}")
+            self._set_status("Фото закоммичены локально, отправка не прошла.", "#e9a000")
+            self.root.after(0, lambda: messagebox.showwarning(
+                "Отправка не прошла",
+                f"Фото добавлены и закоммичены локально, но отправить на сайт не вышло:\n{e}\n\n"
+                "Ничего не потеряно. Попробуйте ещё раз или позовите того, кто помогает с сайтом."))
+            return False
+        finally:
+            self._run(["git", "worktree", "remove", "--force", work], "git worktree remove")
+            shutil.rmtree(tmp, ignore_errors=True)
 
     def _publish_worker(self, ready):
         try:
@@ -618,33 +712,8 @@ class PublishApp:
             if not ok:
                 raise RuntimeError("git commit не прошёл — см. лог.")
 
-            # Синхронизация: если origin успел уйти вперёд (другая правка/другой ПК),
-            # обычный push отклонится. Подтягиваем изменения и кладём свой коммит сверху.
-            # Файлы фото и код сайта обычно разные — rebase проходит без конфликтов.
-            self._set_status("Синхронизация с GitHub…", ORANGE)
-            self._log("Подтягиваю свежие изменения (git pull --rebase)…")
-            ok, _ = self._run(["git", "pull", "--rebase", "--autostash", "origin", "main"],
-                              "git pull --rebase")
-            if not ok:
-                self._run(["git", "rebase", "--abort"], "git rebase --abort")
-                self._set_status("Не синхронизировалось — закоммичено локально, нужен ручной git pull.", "#e9a000")
-                self.root.after(0, lambda: messagebox.showwarning(
-                    "Нужна ручная синхронизация",
-                    "Фото добавлены и закоммичены локально, но синхронизироваться с GitHub "
-                    "не вышло — либо конфликт (кто-то менял те же файлы), либо нет связи.\n\n"
-                    "Ничего не потеряно. Нужен ручной git pull --rebase и git push "
-                    "(позови того, кто помогает с сайтом).\n\nПодробности — в логе."))
-                self._finish_ui(published, pushed=False); return
-
             self._set_status("Отправляю на сайт…", ORANGE)
-            self._log("Отправляю на сервер (git push)…")
-            ok, _ = self._run(["git", "push"], "git push")
-            if not ok:
-                self._set_status("Закоммичено локально, но push не прошёл — см. лог.", "#e9a000")
-                self.root.after(0, lambda: messagebox.showwarning(
-                    "Push не прошёл",
-                    "Фото добавлены и закоммичены локально, но отправить на GitHub не вышло.\n"
-                    "Проверь интернет/доступ и сделай push вручную.\n\nПодробности — в логе."))
+            if not self._publish_to_origin(cmsg, published):
                 self._finish_ui(published, pushed=False); return
             self._finish_ui(published, pushed=True)
 
