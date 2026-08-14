@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { business } from '@/data/contacts'
 import Link from 'next/link'
 import { SymbolIcon } from '@/components/Icons'
 

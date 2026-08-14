@@ -1,5 +1,5 @@
 import sharp from 'sharp'
-import { readdirSync, statSync, readFileSync, writeFileSync } from 'fs'
+import { readdirSync, readFileSync, writeFileSync } from 'fs'
 import path from 'path'
 
 const ROOT = 'public'

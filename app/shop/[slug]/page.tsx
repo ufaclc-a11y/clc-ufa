@@ -7,10 +7,11 @@ import { shopDescriptions } from '@/data/shop-descriptions.generated'
 import { Breadcrumbs }  from '@/components/Breadcrumbs'
 import { GalleryGrid }  from '@/components/GalleryGrid'
 import { RichText }     from '@/components/RichText'
-import { business }     from '@/data/contacts'
 import { SITE, localBusinessRef } from '@/lib/seo'
 import { IconCheck, IconBolt, IconTarget } from '@/components/Icons'
 import { AddToCart }  from '@/components/AddToCart'
+import { ProductContactActions } from '@/components/ProductContactActions'
+import { ProductDeliveryPreview } from '@/components/ProductDeliveryPreview'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -82,11 +83,6 @@ export default async function ShopProductPage({ params }: Props) {
   const fullDesc = shopDescriptions[item.id] ?? item.desc
   const size     = packSize(item)
   const weight   = item.packaging?.weightGrams
-  const gallery  = item.images.slice(1)
-
-  const waText = encodeURIComponent(
-    `Здравствуйте! Хочу заказать: ${item.title} (артикул ${item.sku}) — ${item.price.toLocaleString('ru-RU')} ₽.`,
-  )
 
   /*
    * aggregateRating сознательно не добавляем: отзывы на сайте относятся к
@@ -136,42 +132,54 @@ export default async function ShopProductPage({ params }: Props) {
             { label: item.title },
           ]} />
 
+          <section className="mb-5 rounded-2xl bg-white p-5 shadow-[0_10px_28px_rgba(37,31,49,0.07)] lg:hidden" aria-label="Краткая информация о товаре">
+            <h1 className="text-[30px] font-extrabold leading-[1.12] tracking-[-0.035em] text-[#17181B]">
+              {item.title}
+            </h1>
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <span className="text-3xl font-extrabold tracking-[-0.03em] tabular-nums text-[#17181B]">
+                {item.price.toLocaleString('ru-RU')} ₽
+              </span>
+              <span className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-semibold ${
+                item.inStock ? 'bg-[#1F9D55]/10 text-[#1F9D55]' : 'bg-[#6E6A64]/10 text-[#6E6A64]'
+              }`}>
+                <span className={`h-1.5 w-1.5 rounded-full ${item.inStock ? 'bg-[#1F9D55]' : 'bg-[#6E6A64]'}`} aria-hidden="true" />
+                {item.inStock ? 'В наличии' : 'Под заказ'}
+              </span>
+            </div>
+            <div className="mt-5">
+              <AddToCart id={item.id} inStock={item.inStock} />
+            </div>
+          </section>
+
           <div className="grid grid-cols-1 items-start gap-7 lg:grid-cols-[minmax(0,1.08fr)_minmax(420px,.92fr)] lg:gap-9">
             {/* ── Фото ── */}
             <div className="lg:sticky lg:top-[174px]">
-              <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-white shadow-[0_12px_32px_rgba(39,32,56,0.08)]">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  priority
-                  className="object-contain"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-
-              {gallery.length > 0 && (
-                <div className="mt-4">
-                  <GalleryGrid
-                    items={gallery.map((src, i) => ({
-                      src,
-                      alt: `${item.title} — фото ${i + 2}`,
-                    }))}
-                    gridClass="grid grid-cols-5 sm:grid-cols-6 gap-3"
-                    aspectClass="aspect-[3/4]"
-                    imageSizes="120px"
-                  />
-                </div>
-              )}
+              <GalleryGrid
+                items={item.images.map((src, i) => ({
+                  src,
+                  alt: i === 0 ? item.title : `${item.title} — фото ${i + 1}`,
+                }))}
+                gridClass="grid grid-cols-5 gap-3"
+                itemClasses={item.images.map((_, i) => i === 0
+                  ? 'col-span-5 aspect-[3/4] shadow-[0_12px_32px_rgba(39,32,56,0.08)]'
+                  : 'aspect-[3/4]')}
+                aspectClass="aspect-[3/4]"
+                roundedClass="rounded-2xl"
+                imageSizes="(max-width: 1024px) 100vw, 50vw"
+                imageClassName="object-contain"
+                surfaceClassName="bg-white"
+                priorityFirst
+              />
             </div>
 
             {/* ── Описание и цена ── */}
             <div className="rounded-2xl bg-white p-5 shadow-[0_12px_32px_rgba(39,32,56,0.08)] sm:p-8">
-              <h1 className="mb-5 text-[30px] font-extrabold leading-[1.16] tracking-[-0.035em] text-[#17181B] sm:text-[40px]">
+              <h1 className="mb-5 hidden text-[30px] font-extrabold leading-[1.16] tracking-[-0.035em] text-[#17181B] sm:text-[40px] lg:block">
                 {item.title}
               </h1>
 
-              <div className="flex flex-wrap items-center gap-4 mb-6">
+              <div className="mb-6 hidden flex-wrap items-center gap-4 lg:flex">
                 <span className="text-4xl font-extrabold tracking-[-0.03em] tabular-nums text-[#17181B]">
                   {item.price.toLocaleString('ru-RU')} ₽
                 </span>
@@ -187,53 +195,36 @@ export default async function ShopProductPage({ params }: Props) {
                 </span>
               </div>
 
+              {(size || weight) && (
+                <dl className="mb-6 grid grid-cols-2 gap-2">
+                  {size && (
+                    <div className="rounded-xl bg-[#F7F7FA] px-4 py-3">
+                      <dt className="text-xs font-semibold text-[#777984]">Размер упаковки</dt>
+                      <dd className="mt-1 text-sm font-bold tabular-nums text-[#2A2B30]">{size}</dd>
+                    </div>
+                  )}
+                  {weight && (
+                    <div className="rounded-xl bg-[#F7F7FA] px-4 py-3">
+                      <dt className="text-xs font-semibold text-[#777984]">Вес с упаковкой</dt>
+                      <dd className="mt-1 text-sm font-bold tabular-nums text-[#2A2B30]">
+                        {weight >= 1000 ? `${(weight / 1000).toFixed(1)} кг` : `${weight} г`}
+                      </dd>
+                    </div>
+                  )}
+                </dl>
+              )}
+
               <p className="mb-7 text-base leading-7 text-[#4F515A] sm:text-lg">
                 {leadParagraph(fullDesc, item.desc)}
               </p>
 
-              <div className="mb-6">
+              <div className="mb-6 hidden lg:block">
                 <AddToCart id={item.id} inStock={item.inStock} />
               </div>
 
-              {/* Мессенджеры — запасной путь для тех, кому проще написать. */}
-              <div className="flex flex-wrap gap-3 mb-8">
-                <a
-                  href={`${business.whatsapp.split('?')[0]}?text=${waText}`}
-                  target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#25D366] text-white font-semibold px-6 py-3 rounded-full
-                    hover:bg-[#1fb855] active:bg-[#1aa34a] transition-colors
-                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2
-                    shadow-[0_2px_12px_rgba(37,211,102,0.3)]"
-                >
-                  Заказать в WhatsApp
-                </a>
-                <a
-                  href={`${business.telegram}?text=${waText}`}
-                  target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#2AABEE] text-white font-semibold px-6 py-3 rounded-full
-                    hover:bg-[#1a9adc] active:bg-[#1589c7] transition-colors
-                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2AABEE] focus-visible:ring-offset-2"
-                >
-                  Telegram
-                </a>
-                <a
-                  href={business.max}
-                  target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#7048E8] px-6 py-3 font-semibold text-white
-                    transition-colors hover:bg-[#5E3BC8] active:bg-[#4F31AD]
-                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7048E8] focus-visible:ring-offset-2"
-                >
-                  Написать в MAX
-                </a>
-                <a
-                  href={`mailto:${business.email}?subject=${encodeURIComponent(`Заказ: ${item.title}`)}&body=${waText}`}
-                  className="inline-flex items-center gap-2 rounded-full border border-[#DCDDE5] bg-white px-6 py-3 font-semibold text-[#25262B]
-                    transition-[background-color,border-color,color] hover:border-[#B9BBC5] hover:bg-[#F7F7FA] active:bg-[#EEEEF2]
-                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A00] focus-visible:ring-offset-2"
-                >
-                  Написать на почту
-                </a>
-              </div>
+              <ProductDeliveryPreview itemId={item.id} />
+
+              <ProductContactActions id={item.id} title={item.title} sku={item.sku} price={item.price} />
 
               {/* Характеристики */}
               <dl className="mb-8 divide-y divide-[#E6E7EC] border-t border-[#E6E7EC]">
@@ -241,20 +232,6 @@ export default async function ShopProductPage({ params }: Props) {
                   <dt className="text-sm text-[#6E6A64]">Артикул</dt>
                   <dd className="text-sm font-semibold text-[#1A1A1A]">{item.sku}</dd>
                 </div>
-                {size && (
-                  <div className="flex justify-between gap-4 py-3">
-                    <dt className="text-sm text-[#6E6A64]">Размер упаковки</dt>
-                    <dd className="text-sm text-[#1A1A1A] tabular-nums">{size}</dd>
-                  </div>
-                )}
-                {weight && (
-                  <div className="flex justify-between gap-4 py-3">
-                    <dt className="text-sm text-[#6E6A64]">Вес с упаковкой</dt>
-                    <dd className="text-sm text-[#1A1A1A] tabular-nums">
-                      {weight >= 1000 ? `${(weight / 1000).toFixed(1)} кг` : `${weight} г`}
-                    </dd>
-                  </div>
-                )}
                 <div className="flex justify-between gap-4 py-3">
                   <dt className="text-sm text-[#6E6A64]">Категория</dt>
                   <dd className="text-sm text-[#1A1A1A]">{item.categoryName}</dd>

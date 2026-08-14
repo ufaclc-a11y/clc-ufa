@@ -1,8 +1,6 @@
 import type { Metadata }  from 'next'
 import Image              from 'next/image'
-import Link               from 'next/link'
 import { Breadcrumbs }    from '@/components/Breadcrumbs'
-import { CTASection }     from '@/components/CTASection'
 import { business }       from '@/data/contacts'
 import { SymbolIcon }     from '@/components/Icons'
 
@@ -209,7 +207,7 @@ export default function PartnersPage() {
           </div>
 
           <div className="space-y-4">
-            {steps.map((s, i) => (
+            {steps.map(s => (
               <div
                 key={s.num}
                 className="flex gap-6 bg-white rounded-2xl p-6 border border-[#E8E6E0]"

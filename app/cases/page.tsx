@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 import { cases }        from '@/data/cases'
 import { business }     from '@/data/contacts'
 import { Breadcrumbs }  from '@/components/Breadcrumbs'

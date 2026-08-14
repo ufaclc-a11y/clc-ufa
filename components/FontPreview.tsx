@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { previewFonts, fontCategories, type FontCategory } from '@/lib/fonts-preview'
 
@@ -11,13 +11,8 @@ const hasCyrillic = (s: string) => /[Ѐ-ӿ]/.test(s)
 
 export function FontPreview() {
   const searchParams = useSearchParams()
-  const [text, setText] = useState('')
-
-  // Стартовый текст из ?s= (паритет со старым ?s=Candle+She)
-  useEffect(() => {
-    const s = searchParams.get('s')
-    if (s) setText(s)
-  }, [searchParams])
+  // Стартовый текст из ?s= (паритет со старым ?s=Candle+She).
+  const [text, setText] = useState(() => searchParams.get('s') ?? '')
 
   const sample = text.trim() || PLACEHOLDER
   const cyrillicInput = hasCyrillic(sample)

@@ -5,8 +5,7 @@ import Image from 'next/image'
 import Link  from 'next/link'
 import { products, productCategories, type ProductCategory } from '@/data/products'
 
-const ALL = 'all'
-type Filter = ProductCategory | typeof ALL
+type Filter = ProductCategory | 'all'
 
 const FILTER_COUNTS: Record<Filter, number> = {
   all:           products.length,

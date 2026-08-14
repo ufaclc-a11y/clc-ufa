@@ -349,7 +349,7 @@ export default function B2BPage() {
                 Как проходит работа
               </h2>
               <div className="space-y-6">
-                {process.map((p, i) => (
+                {process.map(p => (
                   <div key={p.n} className="flex items-start gap-5">
                     <div className="shrink-0 w-12 h-12 rounded-xl bg-white border border-[#E8E6E0] flex items-center justify-center shadow-sm">
                       <span className="font-mono text-xs text-[#FF6B00] font-semibold">{p.n}</span>

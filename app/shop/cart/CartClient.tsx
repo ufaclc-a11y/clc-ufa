@@ -2,21 +2,38 @@
 
 import Image from 'next/image'
 import Link  from 'next/link'
+import { useEffect, useRef } from 'react'
 import { useCart } from '@/lib/cart'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { trackGoal } from '@/lib/analytics'
 
 const rub = (n: number) => `${n.toLocaleString('ru-RU')} ₽`
 
 export function CartClient() {
   const { entries, total, count, ready, setQty, remove } = useCart()
+  const tracked = useRef(false)
+
+  useEffect(() => {
+    if (!ready || tracked.current) return
+    tracked.current = true
+    trackGoal('view_cart', { count, total })
+  }, [count, ready, total])
 
   return (
     <div className="min-h-screen bg-[#F5F6F9]">
-      <div className="mx-auto max-w-[1180px] px-4 py-7 sm:px-6 sm:py-10">
+      <div className="mx-auto max-w-[1180px] px-4 py-7 pb-24 sm:px-6 sm:py-10 lg:pb-10">
         <Breadcrumbs items={[
           { label: 'Магазин', href: '/shop' },
           { label: 'Корзина' },
         ]} />
+
+        <ol className="mb-5 flex items-center gap-2 overflow-x-auto text-sm font-semibold text-[#777984]" aria-label="Этапы оформления заказа">
+          <li aria-current="step" className="inline-flex min-h-10 items-center rounded-lg bg-white px-3 text-[#17181B] shadow-[0_5px_16px_rgba(37,31,49,0.06)]">Корзина</li>
+          <li aria-hidden="true" className="text-[#B6B8C0]">→</li>
+          <li className="inline-flex min-h-10 items-center whitespace-nowrap px-2">Доставка</li>
+          <li aria-hidden="true" className="text-[#B6B8C0]">→</li>
+          <li className="inline-flex min-h-10 items-center px-2">Подтверждение</li>
+        </ol>
 
         <h1 className="mb-7 text-3xl font-extrabold tracking-[-0.035em] text-[#17181B] sm:text-[40px]">
           Корзина
@@ -87,7 +104,10 @@ export function CartClient() {
 
                       <button
                         type="button"
-                        onClick={() => remove(item.id)}
+                        onClick={() => {
+                          remove(item.id)
+                          trackGoal('remove_from_cart', { product: item.id, qty })
+                        }}
                         className="text-xs text-[#6E6A64] hover:text-[#C4341C] transition-colors underline underline-offset-4
                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C4341C] rounded"
                       >
@@ -122,10 +142,10 @@ export function CartClient() {
 
               <Link
                 href="/shop/checkout"
-                className="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-[#FF5A00] px-6 py-3 font-semibold text-white
+                className="mt-5 hidden w-full items-center justify-center rounded-xl bg-[#FF5A00] px-6 py-3 font-semibold text-white
                   shadow-[0_7px_18px_rgba(255,90,0,0.24)] transition-[background-color,transform,box-shadow]
                   hover:-translate-y-0.5 hover:bg-[#E95000] hover:shadow-[0_10px_22px_rgba(255,90,0,0.28)] active:translate-y-0 active:bg-[#D84B00]
-                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2"
+                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2 lg:inline-flex"
               >
                 Оформить заказ
               </Link>
@@ -139,6 +159,22 @@ export function CartClient() {
                 Продолжить покупки
               </Link>
             </aside>
+
+            <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#E1E2E8] bg-white/95 px-4 py-3 shadow-[0_-10px_28px_rgba(37,31,49,0.1)] backdrop-blur-md lg:hidden">
+              <div className="mx-auto flex max-w-[560px] items-center gap-4">
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs text-[#777984]">{count} шт. в корзине</p>
+                  <p className="text-xl font-extrabold tabular-nums text-[#17181B]">{rub(total)}</p>
+                </div>
+                <Link
+                  href="/shop/checkout"
+                  onClick={() => trackGoal('cart_checkout_click', { count, total })}
+                  className="inline-flex min-h-12 items-center justify-center rounded-xl bg-[#FF5A00] px-5 text-sm font-bold text-white shadow-[0_7px_18px_rgba(255,90,0,0.24)] transition-[background-color,transform] hover:bg-[#E95000] active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2"
+                >
+                  Оформить
+                </Link>
+              </div>
+            </div>
           </div>
         )}
       </div>

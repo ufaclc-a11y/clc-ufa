@@ -19,7 +19,7 @@ await page.goto('http://localhost:3000', { waitUntil: 'networkidle2', timeout: 3
 await new Promise(r => setTimeout(r, 1000))
 
 // Прокручиваем медленно через всю секцию чтобы триггернуть lazy load
-const h2 = await page.evaluate(() => {
+await page.evaluate(() => {
   const el = Array.from(document.querySelectorAll('h2')).find(e => e.textContent?.includes('Что можем'))
   if (el) { el.scrollIntoView({ behavior: 'instant', block: 'start' }); return true }
   return false

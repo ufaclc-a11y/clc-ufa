@@ -9,8 +9,6 @@ type IconProps = {
   'aria-hidden'?: boolean | 'true' | 'false'
 }
 
-const defaults: IconProps = { size: 20, 'aria-hidden': true }
-
 export function IconBolt({ className, size = 20, ...rest }: IconProps) {
   return (
     <svg

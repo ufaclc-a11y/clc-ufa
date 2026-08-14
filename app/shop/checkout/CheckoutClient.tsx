@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useCart } from '@/lib/cart'
 import { trackGoal } from '@/lib/analytics'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
@@ -35,11 +35,18 @@ export function CheckoutClient() {
   const [notice, setNotice]       = useState<string | null>(null)
   const [quote, setQuote]         = useState<DeliveryQuote | null>(null)
   const [point, setPoint]         = useState<string>('')
+  const startedTracked = useRef(false)
 
   const needsCity = delivery !== 'pickup'
   // Самовывоз не требует внешнего расчёта; остальные способы работают через
   // собственный провайдер и никогда не подменяются тарифами другой службы.
   const canCalculate = delivery === 'cdek' || delivery === 'ozon' || delivery === 'russian'
+
+  useEffect(() => {
+    if (!ready || entries.length === 0 || startedTracked.current) return
+    startedTracked.current = true
+    trackGoal('begin_checkout', { count, total })
+  }, [count, entries.length, ready, total])
 
   function resetCalc() {
     setCalcState('idle'); setQuotes([]); setPoints([])
@@ -71,14 +78,23 @@ export function CheckoutClient() {
         // тарифы другой службы, посчитанные до переключения.
         setQuotes([]); setQuote(null); setPoints([])
         setNotice('Автоматический расчёт пока не подключён — стоимость доставки сообщит менеджер.')
+        trackGoal('delivery_calculate', { provider, result: 'not_configured' })
       } else {
         setQuotes(calcRes.quotes ?? [])
         setQuote((calcRes.quotes ?? [])[0] ?? null)
-        if (calcRes.notice) setNotice(calcRes.notice)
+        setNotice(calcRes.notice ?? ((calcRes.quotes ?? []).length === 0
+          ? 'Подходящий тариф не найден — стоимость доставки сообщит менеджер.'
+          : null))
+        trackGoal('delivery_calculate', {
+          provider,
+          result: (calcRes.quotes ?? []).length > 0 ? 'quotes' : 'no_quotes',
+          count: (calcRes.quotes ?? []).length,
+        })
       }
       setPoints(pointsRes.points ?? [])
     } catch {
       setNotice('Не удалось рассчитать доставку — стоимость сообщит менеджер.')
+      trackGoal('delivery_calculate', { provider, result: 'error' })
     } finally {
       setCalcState('done')
     }
@@ -88,7 +104,7 @@ export function CheckoutClient() {
     e.preventDefault()
     setError(null)
     setSending(true)
-    trackGoal('begin_checkout', { count, total })
+    trackGoal('checkout_submit_attempt', { count, total, delivery })
 
     const fd = new FormData(e.currentTarget)
     try {
@@ -166,20 +182,27 @@ export function CheckoutClient() {
           </div>
         ) : (
           <>
+            <ol className="mb-5 flex items-center gap-2 overflow-x-auto text-sm font-semibold text-[#777984]" aria-label="Этапы оформления заказа">
+              <li><Link href="/shop/cart" className="inline-flex min-h-10 items-center rounded-lg px-2 text-[#5B3A86] transition-colors hover:bg-[#F1EBF8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A00]">Корзина</Link></li>
+              <li aria-hidden="true" className="text-[#B6B8C0]">→</li>
+              <li aria-current="step" className="inline-flex min-h-10 items-center whitespace-nowrap rounded-lg bg-white px-3 text-[#17181B] shadow-[0_5px_16px_rgba(37,31,49,0.06)]">Доставка</li>
+              <li aria-hidden="true" className="text-[#B6B8C0]">→</li>
+              <li className="inline-flex min-h-10 items-center px-2">Подтверждение</li>
+            </ol>
             <h1 className="mb-7 text-3xl font-extrabold tracking-[-0.035em] text-[#17181B] sm:text-[40px]">
               Оформление заказа
             </h1>
 
-            <form onSubmit={submit} className="grid grid-cols-1 items-start gap-7 lg:grid-cols-[1fr_360px]">
+            <form onSubmit={submit} className="grid grid-cols-1 items-start gap-7 pb-24 lg:grid-cols-[1fr_360px] lg:pb-0">
               <div className="space-y-5 rounded-2xl bg-white p-5 shadow-[0_10px_28px_rgba(37,31,49,0.07)] sm:p-7">
                 <div>
                   <label htmlFor="name" className={label}>Ваше имя</label>
-                  <input id="name" name="name" className={field} placeholder="Как к вам обращаться" />
+                  <input id="name" name="name" autoComplete="name" className={field} placeholder="Как к вам обращаться" />
                 </div>
 
                 <div>
                   <label htmlFor="contact" className={label}>Телефон, e-mail или ник *</label>
-                  <input id="contact" name="contact" required className={field}
+                  <input id="contact" name="contact" required autoComplete="tel" inputMode="tel" className={field}
                     placeholder="+7 999 123-45-67 или @nickname" />
                 </div>
 
@@ -199,7 +222,11 @@ export function CheckoutClient() {
                           type="radio" name="delivery" value={key}
                           checked={delivery === key}
                           // Смена службы обесценивает прошлый расчёт — сбрасываем.
-                          onChange={() => { setDelivery(key); resetCalc() }}
+                          onChange={() => {
+                            setDelivery(key)
+                            resetCalc()
+                            trackGoal('checkout_delivery_method', { delivery: key })
+                          }}
                           className="accent-[#FF6B00]"
                         />
                         <span className="text-sm text-[#1A1A1A]">{title}</span>
@@ -216,6 +243,7 @@ export function CheckoutClient() {
                         <input
                           id="city" name="city" required className={field}
                           placeholder="Уфа"
+                          autoComplete="address-level2"
                           value={city}
                           onChange={e => { setCity(e.target.value); resetCalc() }}
                         />
@@ -236,7 +264,7 @@ export function CheckoutClient() {
                     </div>
 
                     {notice && (
-                      <p className="rounded-xl bg-[#F1EBF8] px-4 py-3 text-sm text-[#5B3A86]">
+                      <p role="status" className="rounded-xl bg-[#F1EBF8] px-4 py-3 text-sm text-[#5B3A86]">
                         {notice}
                       </p>
                     )}
@@ -258,7 +286,10 @@ export function CheckoutClient() {
                                 <input
                                   type="radio" name="quote" className="accent-[#FF6B00] shrink-0"
                                   checked={quote?.code === q.code}
-                                  onChange={() => setQuote(q)}
+                                  onChange={() => {
+                                    setQuote(q)
+                                    trackGoal('checkout_delivery_quote', { delivery, code: q.code, price: q.priceRub })
+                                  }}
                                 />
                                 <span className="text-sm text-[#1A1A1A] truncate">
                                   {q.name}
@@ -283,8 +314,12 @@ export function CheckoutClient() {
                         <label htmlFor="point" className={label}>Пункт выдачи</label>
                         <select
                           id="point" className={field}
+                          required
                           value={point}
-                          onChange={e => setPoint(e.target.value)}
+                          onChange={e => {
+                            setPoint(e.target.value)
+                            if (e.target.value) trackGoal('checkout_pickup_point', { delivery })
+                          }}
                         >
                           <option value="">Выберите пункт выдачи</option>
                           {points.map(p => (
@@ -295,7 +330,7 @@ export function CheckoutClient() {
                     ) : (
                       <div>
                         <label htmlFor="address" className={label}>Адрес или пункт выдачи</label>
-                        <input id="address" name="address" className={field}
+                        <input id="address" name="address" autoComplete="street-address" className={field}
                           placeholder="Улица, дом или код ПВЗ" />
                       </div>
                     )}
@@ -383,10 +418,10 @@ export function CheckoutClient() {
                 <button
                   type="submit"
                   disabled={sending}
-                  className="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-[#FF5A00] px-6 py-3 font-semibold text-white
+                  className="mt-5 hidden w-full cursor-pointer items-center justify-center rounded-xl bg-[#FF5A00] px-6 py-3 font-semibold text-white
                     shadow-[0_7px_18px_rgba(255,90,0,0.24)] transition-[background-color,transform,box-shadow]
                     hover:-translate-y-0.5 hover:bg-[#E95000] hover:shadow-[0_10px_22px_rgba(255,90,0,0.28)] active:translate-y-0 active:bg-[#D84B00] disabled:cursor-not-allowed disabled:opacity-60
-                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2"
+                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2 lg:inline-flex"
                 >
                   {sending ? 'Отправляем…' : 'Оформить заказ'}
                 </button>
@@ -399,6 +434,28 @@ export function CheckoutClient() {
                   Вернуться в корзину
                 </Link>
               </aside>
+
+              {error && (
+                <p id="checkout-mobile-error" role="alert" className="fixed bottom-[82px] left-4 right-4 z-50 rounded-xl border border-[#C4341C]/20 bg-white px-4 py-3 text-sm text-[#C4341C] shadow-[0_10px_28px_rgba(90,28,20,0.16)] lg:hidden">
+                  {error}
+                </p>
+              )}
+
+              <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#E1E2E8] bg-white/95 px-4 py-3 shadow-[0_-10px_28px_rgba(37,31,49,0.1)] backdrop-blur-md lg:hidden">
+                <div className="mx-auto flex max-w-[560px] items-center gap-4">
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs text-[#777984]">К оплате после подтверждения</p>
+                    <p className="text-xl font-extrabold tabular-nums text-[#17181B]">{rub(total + (quote?.priceRub ?? 0))}</p>
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={sending}
+                    className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-xl bg-[#FF5A00] px-5 text-sm font-bold text-white shadow-[0_7px_18px_rgba(255,90,0,0.24)] transition-[background-color,transform] hover:bg-[#E95000] active:translate-y-px disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2"
+                  >
+                    {sending ? 'Отправляем…' : 'Оформить'}
+                  </button>
+                </div>
+              </div>
             </form>
           </>
         )}

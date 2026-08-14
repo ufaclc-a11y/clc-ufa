@@ -75,11 +75,6 @@ const inputCls =
   'placeholder:text-[#6E6A64] focus:outline-none focus:border-[#FF6B00] ' +
   'transition-[border-color] bg-white'
 
-const inputErrCls =
-  'w-full border border-red-400 rounded-xl px-4 py-3 text-sm text-[#1A1A1A] ' +
-  'placeholder:text-[#6E6A64] focus:outline-none focus:border-red-500 ' +
-  'transition-[border-color] bg-white'
-
 export function OrderForm() {
   const [form,       setForm]       = useState<FormState>(EMPTY)
   const [agreedErr,  setAgreedErr]  = useState(false)
@@ -97,7 +92,8 @@ export function OrderForm() {
       const saved = localStorage.getItem(LS_KEY)
       if (saved) {
         const parsed = JSON.parse(saved)
-        setForm(f => ({ ...f, ...parsed, agreed: false }))
+        const timer = window.setTimeout(() => setForm(f => ({ ...f, ...parsed, agreed: false })), 0)
+        return () => window.clearTimeout(timer)
       }
     } catch {}
   }, [])
@@ -105,7 +101,16 @@ export function OrderForm() {
   // Save to localStorage on change
   useEffect(() => {
     try {
-      const { agreed, ...toSave } = form
+      const toSave = {
+        name: form.name,
+        contact: form.contact,
+        urgency: form.urgency,
+        product: form.product,
+        size: form.size,
+        qty: form.qty,
+        material: form.material,
+        comment: form.comment,
+      }
       localStorage.setItem(LS_KEY, JSON.stringify(toSave))
     } catch {}
   }, [form])
