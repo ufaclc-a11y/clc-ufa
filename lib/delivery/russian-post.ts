@@ -25,6 +25,7 @@ type CacheEntry<T> = { expiresAt: number; value: T }
 const indexCache = new Map<string, CacheEntry<string[]>>()
 const indexRequests = new Map<string, Promise<string[]>>()
 const pointCache = new Map<string, CacheEntry<PickupPoint[]>>()
+const pointRequests = new Map<string, Promise<PickupPoint[]>>()
 
 function configured(): boolean {
   return Boolean(accessToken() && userAuth())
@@ -57,6 +58,24 @@ function cityParams(city: string): URLSearchParams {
   const params = new URLSearchParams({ settlement: parts[0] ?? '' })
   if (parts[1]) params.set('region', parts[1])
   return params
+}
+
+function normalizedSettlement(value: string): string {
+  return value
+    .trim()
+    .toLocaleLowerCase('ru-RU')
+    .replace(/\u0451/g, '\u0435')
+    .replace(/^\u0433(?:\u043e\u0440\u043e\u0434)?\.?\s+/, '')
+    .replace(/[^\p{L}\p{N}]+/gu, ' ')
+    .trim()
+}
+
+function belongsToCity(raw: unknown, city: string): boolean {
+  if (!raw || typeof raw !== 'object') return false
+  const settlement = (raw as Record<string, unknown>).settlement
+  if (typeof settlement !== 'string') return false
+  const requested = city.split(',')[0] ?? ''
+  return normalizedSettlement(settlement) === normalizedSettlement(requested)
 }
 
 async function loadIndices(city: string): Promise<string[]> {
@@ -167,28 +186,45 @@ async function loadPoints(city: string): Promise<PickupPoint[]> {
   const cached = pointCache.get(key)
   if (cached && cached.expiresAt > Date.now()) return cached.value
 
-  const indices = (await loadIndices(city)).slice(0, MAX_POINT_DETAILS)
-  const rawPoints = await mapLimit(indices, POINT_CONCURRENCY, async index => {
-    try {
-      return await api(`/postoffice/1.0/${encodeURIComponent(index)}?filter-by-office-type=true`)
-    } catch {
-      // Одно временно недоступное ОПС не должно скрывать все остальные отделения города.
-      return null
-    }
-  })
+  const active = pointRequests.get(key)
+  if (active) return active
 
-  const points = rawPoints
-    .map(toRussianPostPoint)
-    .filter((point): point is PickupPoint => point !== null)
-    .sort((a, b) => a.address.localeCompare(b.address, 'ru'))
+  const request = (async () => {
+    const indices = (await loadIndices(city)).slice(0, MAX_POINT_DETAILS)
+    const rawPoints = await mapLimit(indices, POINT_CONCURRENCY, async index => {
+      try {
+        return await api(`/postoffice/1.0/${encodeURIComponent(index)}?filter-by-office-type=true`)
+      } catch {
+        // Одно временно недоступное ОПС не должно скрывать все остальные отделения города.
+        return null
+      }
+    })
 
-  if (!points.length) throw new Error(`Почта России: не удалось получить отделения города «${city.trim()}»`)
-  pointCache.set(key, { value: points, expiresAt: Date.now() + CACHE_TTL_MS })
-  return points
+    // API ищет населённый пункт нечётко: на «Уфа» он может вернуть, например,
+    // отделение посёлка Пригородный под Верхним Уфалеем. Доверяем фактическому settlement карточки ОПС.
+    const points = rawPoints
+      .filter(raw => belongsToCity(raw, city))
+      .map(toRussianPostPoint)
+      .filter((point): point is PickupPoint => point !== null)
+      .sort((a, b) => a.address.localeCompare(b.address, 'ru'))
+
+    if (!points.length) throw new Error(`Почта России: не удалось получить отделения города «${city.trim()}»`)
+    pointCache.set(key, { value: points, expiresAt: Date.now() + CACHE_TTL_MS })
+    return points
+  })()
+
+  pointRequests.set(key, request)
+  try {
+    return await request
+  } finally {
+    pointRequests.delete(key)
+  }
 }
 
 async function tariff(city: string, parcel: Parcel): Promise<DeliveryQuote> {
-  const [indexTo] = await loadIndices(city)
+  // Индекс берём из уже проверенной карточки ОПС, чтобы тариф не считался до похожего города.
+  const [point] = await loadPoints(city)
+  const indexTo = point.code
   const body: Record<string, unknown> = {
     'index-to': indexTo,
     'delivery-point-index': indexTo,
@@ -228,4 +264,5 @@ export function resetRussianPostCachesForTests(): void {
   indexCache.clear()
   indexRequests.clear()
   pointCache.clear()
+  pointRequests.clear()
 }
