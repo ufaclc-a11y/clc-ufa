@@ -102,6 +102,16 @@ h1, h2, h3, h4, h5 {
   color: #17181b;
 }
 
+.shop-marketplace h1,
+.shop-marketplace h2,
+.shop-marketplace h3,
+.shop-marketplace h4,
+.shop-marketplace h5 {
+  font-family: var(--font-body);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
 body:has(.shop-marketplace) {
   background: #f5f6f9;
 }

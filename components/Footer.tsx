@@ -1,5 +1,9 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { business } from '@/data/contacts'
+import { ShopFooter } from '@/components/ShopFooter'
 
 const serviceLinks = [
   { href: '/services/lazernaya-rezka',         label: 'Лазерная резка'        },
@@ -34,6 +38,11 @@ const companyLinks = [
 ]
 
 export function Footer() {
+  const pathname = usePathname()
+  return pathname.startsWith('/shop') ? <ShopFooter /> : <LegacyFooter />
+}
+
+function LegacyFooter() {
   return (
     <footer className="bg-[#1A1A1A] text-white/50 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
