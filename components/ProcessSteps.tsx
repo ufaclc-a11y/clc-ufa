@@ -41,7 +41,7 @@ export function ProcessSteps() {
           {/* Соединительная линия */}
           <div className="hidden sm:block absolute top-7 left-[10%] right-[10%] h-px bg-white/8" />
 
-          {steps.map((s, i) => (
+          {steps.map(s => (
             <div key={s.n} className="relative flex flex-col">
               <div className="font-mono text-[56px] font-bold leading-none text-[#FF6B00]/15 mb-3 select-none">
                 {s.n}

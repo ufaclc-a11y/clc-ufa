@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { shopCategories } from '@/data/shop'
 import { CartButton } from '@/components/CartButton'
+import { trackGoal } from '@/lib/analytics'
 
 export function ShopHeader() {
   return (
@@ -21,7 +22,7 @@ export function ShopHeader() {
         </div>
       </div>
 
-      <div className="mx-auto flex h-[74px] max-w-[1480px] items-center gap-4 px-4 sm:px-6">
+      <div className="mx-auto flex h-[66px] max-w-[1480px] items-center gap-3 px-4 sm:h-[74px] sm:gap-4 sm:px-6">
         <Link
           href="/shop"
           aria-label="CLC — магазин готовых изделий"
@@ -33,7 +34,15 @@ export function ShopHeader() {
           </span>
         </Link>
 
-        <form action="/shop" className="relative min-w-0 flex-1" role="search">
+        <form
+          action="/shop"
+          className="relative min-w-0 flex-1"
+          role="search"
+          onSubmit={event => {
+            const data = new FormData(event.currentTarget)
+            trackGoal('shop_search_submit', { query: String(data.get('q') ?? '').trim() })
+          }}
+        >
           <label htmlFor="shop-header-search" className="sr-only">Поиск по товарам</label>
           <svg aria-hidden="true" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#777984]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
             <circle cx="11" cy="11" r="7" /><path d="m20 20-3.7-3.7" strokeLinecap="round" />
@@ -43,19 +52,19 @@ export function ShopHeader() {
             name="q"
             type="search"
             placeholder="Поиск по товарам"
-            className="h-12 w-full rounded-2xl border border-[#DCDDE5] bg-[#F8F8FB] pl-12 pr-4 text-sm text-[#17181B] outline-none placeholder:text-[#8A8C96] transition-[background-color,border-color,box-shadow] focus:border-[#FF6B00] focus:bg-white focus:ring-4 focus:ring-[#FF6B00]/10"
+            className="h-11 w-full rounded-2xl border border-[#DCDDE5] bg-[#F8F8FB] pl-11 pr-3 text-sm text-[#17181B] outline-none placeholder:text-[#73757F] transition-[background-color,border-color,box-shadow] focus:border-[#FF6B00] focus:bg-white focus:ring-4 focus:ring-[#FF6B00]/10 sm:h-12 sm:pl-12 sm:pr-4"
           />
         </form>
 
         <CartButton variant="light" showLabel />
       </div>
 
-      <nav className="mx-auto flex max-w-[1480px] gap-2 overflow-x-auto px-4 pb-3 sm:px-6" aria-label="Категории магазина">
+      <nav className="mx-auto flex max-w-[1480px] gap-2 overflow-x-auto px-4 pb-2 sm:px-6 sm:pb-3" aria-label="Категории магазина">
         {shopCategories.slice(0, 10).map(category => (
           <Link
             key={category.id}
             href={category.id === 'all' ? '/shop#catalog' : `/shop?category=${category.id}#catalog`}
-            className="inline-flex min-h-10 shrink-0 items-center rounded-xl border border-[#E1E2E8] bg-white px-4 text-sm font-semibold text-[#393A41] transition-[background-color,border-color,color,transform] hover:-translate-y-px hover:border-[#CFC8DE] hover:bg-[#F7F4FB] hover:text-[#5B3A86] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]"
+            className="inline-flex min-h-9 shrink-0 items-center rounded-xl border border-[#E1E2E8] bg-white px-3 text-sm font-semibold text-[#393A41] transition-[background-color,border-color,color,transform] hover:-translate-y-px hover:border-[#CFC8DE] hover:bg-[#F7F4FB] hover:text-[#5B3A86] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] sm:min-h-10 sm:px-4"
           >
             {category.name}
           </Link>

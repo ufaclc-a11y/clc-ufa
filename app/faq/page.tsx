@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { FAQAccordion } from '@/components/FAQAccordion'
 import { CTASection } from '@/components/CTASection'
 import { faqItems } from '@/data/faq'

@@ -8,7 +8,8 @@ export function FounderPhone() {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
-    setShow(true)
+    const timer = window.setTimeout(() => setShow(true), 0)
+    return () => window.clearTimeout(timer)
   }, [])
 
   if (!show) {

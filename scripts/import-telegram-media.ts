@@ -57,7 +57,8 @@ function walkDir(dir: string, acc: string[] = []): string[] {
   if (!fs.existsSync(dir)) return acc
   for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
     const full = path.join(dir, ent.name)
-    ent.isDirectory() ? walkDir(full, acc) : acc.push(full)
+    if (ent.isDirectory()) walkDir(full, acc)
+    else acc.push(full)
   }
   return acc
 }

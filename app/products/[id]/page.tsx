@@ -67,10 +67,6 @@ export default async function ProductPage({ params }: Props) {
   // Portfolio gallery
   const portfolioPhotos = samplePhotos(product.portfolioPrefix, 8)
 
-  const waMessage = encodeURIComponent(
-    `Здравствуйте! Хочу заказать: ${product.title}. Подскажите стоимость.`
-  )
-
   /* Цены из таблиц — чтобы lowPrice/highPrice в разметке совпадали с видимыми на странице. */
   const tablePrices = (product.priceTables ?? [])
     .flatMap(t => t.rows)

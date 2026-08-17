@@ -46,7 +46,8 @@ export function CookieConsent() {
     let v: string | null = null
     try { v = localStorage.getItem(KEY) } catch { /* приватный режим */ }
     if (v === 'accepted' || v === 'declined') return
-    setShow(true)
+    const timer = window.setTimeout(() => setShow(true), 0)
+    return () => window.clearTimeout(timer)
   }, [])
 
   const acknowledge = () => {
@@ -60,20 +61,20 @@ export function CookieConsent() {
     <div
       role="status"
       aria-label="Уведомление об использовании cookie"
-      className="fixed inset-x-0 bottom-0 z-[9998] p-3 sm:p-4 animate-fade-up"
+      className="fixed inset-x-0 bottom-0 z-[9998] animate-fade-up p-2 sm:p-4"
     >
-      <div className="mx-auto flex max-w-[920px] flex-col gap-4 rounded-2xl border border-[#E2E3E9] bg-white p-4 text-[#25262B] shadow-[0_14px_42px_rgba(39,32,56,0.16)] sm:flex-row sm:items-center sm:px-5">
-        <p className="flex-1 text-sm leading-relaxed text-[#62646D]">
+      <div className="mx-auto flex max-w-[920px] items-end gap-3 rounded-2xl border border-[#E2E3E9] bg-white p-3 text-[#25262B] shadow-[0_14px_42px_rgba(39,32,56,0.16)] sm:items-center sm:px-5">
+        <p className="min-w-0 flex-1 text-xs leading-5 text-[#62646D] sm:text-sm sm:leading-relaxed">
           Мы используем cookie и Яндекс.Метрику, чтобы сайт работал лучше и удобнее.
           Оставаясь на сайте, вы соглашаетесь с{' '}
           <Link href="/privacy" className="rounded text-[#C64700] underline decoration-[#FFC29E] underline-offset-2 hover:text-[#9D3900] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]">
             политикой конфиденциальности
           </Link>.
         </p>
-        <div className="flex gap-2.5 shrink-0">
+        <div className="flex shrink-0 gap-2.5">
           <button
             onClick={acknowledge}
-            className="min-h-11 rounded-xl bg-[#FF5A00] px-5 text-sm font-semibold text-white shadow-[0_6px_16px_rgba(255,90,0,0.22)] transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-[#E95000] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2"
+            className="min-h-11 cursor-pointer rounded-xl bg-[#FF5A00] px-4 text-xs font-semibold text-white shadow-[0_6px_16px_rgba(255,90,0,0.22)] transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-[#E95000] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2 sm:px-5 sm:text-sm"
           >
             Понятно
           </button>

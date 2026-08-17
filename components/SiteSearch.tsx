@@ -94,7 +94,12 @@ export function SiteSearch() {
   }, [])
 
   useEffect(() => {
-    if (open) { setQuery(''); inputRef.current?.focus() }
+    if (!open) return
+    const timer = window.setTimeout(() => {
+      setQuery('')
+      inputRef.current?.focus()
+    }, 0)
+    return () => window.clearTimeout(timer)
   }, [open])
 
   // Click outside to close
@@ -190,7 +195,7 @@ export function SiteSearch() {
                   Введите запрос — найдём услугу, изделие или статью
                 </div>
               )}
-              {results.map((r, i) => (
+              {results.map(r => (
                 <Link
                   key={r.href}
                   href={r.href}
