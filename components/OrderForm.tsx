@@ -85,6 +85,7 @@ export function OrderForm() {
   const [emailErr,   setEmailErr]   = useState('')
   const fileInputRef = useRef<HTMLInputElement>(null)
   const honeypotRef  = useRef<HTMLInputElement>(null)
+  const agreementRef = useRef<HTMLInputElement>(null)
 
   // Restore from localStorage
   useEffect(() => {
@@ -148,6 +149,7 @@ export function OrderForm() {
   const handleSend = useCallback(async (channel: Channel) => {
     if (!form.agreed) {
       setAgreedErr(true)
+      agreementRef.current?.focus()
       return
     }
     setAgreedErr(false)
@@ -209,39 +211,40 @@ export function OrderForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
 
         {/* Name */}
-        <Field label="Ваше имя">
-          <input name="name" value={form.name} onChange={set}
+        <Field id="order-name" label="Ваше имя">
+          <input id="order-name" name="name" autoComplete="name" value={form.name} onChange={set}
             placeholder="Иван" className={inputCls} />
         </Field>
 
         {/* Contact */}
-        <Field label="Номер или никнейм">
-          <input name="contact" value={form.contact} onChange={set}
+        <Field id="order-contact" label="Телефон или ник в мессенджере">
+          <input id="order-contact" name="contact" autoComplete="tel" value={form.contact} onChange={set}
             placeholder="+7 900 000-00-00 или @username" className={inputCls} />
         </Field>
 
         {/* Urgency */}
         <div className="sm:col-span-2">
-          <label className="block text-xs font-semibold text-[#6E6A64] uppercase tracking-wider mb-2">
+          <span id="order-urgency-label" className="block text-xs font-semibold text-[#5C5852] uppercase tracking-wider mb-2">
             Срочность
-          </label>
-          <div className="grid grid-cols-3 gap-2">
+          </span>
+          <div className="grid grid-cols-3 gap-2" role="group" aria-labelledby="order-urgency-label">
             {URGENCY_OPTIONS.map(u => {
               const active = form.urgency === u.key
               return (
                 <button
                   key={u.key}
                   type="button"
+                  aria-pressed={active}
                   onClick={() => setField('urgency', active ? '' : u.key)}
                   className={[
                     'flex flex-col items-center py-3 px-2 rounded-xl border text-sm font-semibold transition-[background-color,border-color,color] duration-150',
                     active
-                      ? 'bg-[#FF6B00] border-[#FF6B00] text-white'
+                      ? 'bg-[#C94700] border-[#C94700] text-white'
                       : 'bg-white border-[#E8E6E0] text-[#6E6A64] hover:border-[#FF6B00]/50 hover:text-[#FF6B00]',
                   ].join(' ')}
                 >
                   <span>{u.label}</span>
-                  <span className={`text-[10px] font-normal mt-0.5 ${active ? 'text-white/70' : 'text-[#6E6A64]/70'}`}>
+                  <span className={`text-xs font-normal mt-0.5 ${active ? 'text-white/85' : 'text-[#5C5852]'}`}>
                     {u.hint}
                   </span>
                 </button>
@@ -251,57 +254,65 @@ export function OrderForm() {
         </div>
 
         {/* Product */}
-        <Field label="Что нужно изготовить?" span>
-          <input name="product" value={form.product} onChange={set}
+        <Field id="order-product" label="Что нужно изготовить?" span>
+          <input id="order-product" name="product" value={form.product} onChange={set}
             placeholder="Медали, таблички, детали из фанеры..." className={inputCls} />
         </Field>
 
         {/* Size + Qty */}
-        <Field label="Размер">
-          <input name="size" value={form.size} onChange={set}
+        <Field id="order-size" label="Размер">
+          <input id="order-size" name="size" inputMode="text" value={form.size} onChange={set}
             placeholder="Например: 100 × 100 мм" className={inputCls} />
         </Field>
 
-        <Field label="Количество">
-          <input name="qty" value={form.qty} onChange={set}
+        <Field id="order-qty" label="Количество">
+          <input id="order-qty" name="qty" inputMode="numeric" value={form.qty} onChange={set}
             placeholder="1 шт, 50 шт..." className={inputCls} />
         </Field>
 
         {/* Material */}
-        <Field label="Материал (если знаете)" span>
-          <input name="material" value={form.material} onChange={set}
+        <Field id="order-material" label="Материал (если знаете)" span>
+          <input id="order-material" name="material" value={form.material} onChange={set}
             placeholder="Акрил, фанера, ПВХ... или не знаю — подберём" className={inputCls} />
         </Field>
 
         {/* Comment */}
-        <Field label="Комментарий" span>
-          <textarea name="comment" value={form.comment} onChange={set} rows={3}
+        <Field id="order-comment" label="Комментарий" span>
+          <textarea id="order-comment" name="comment" value={form.comment} onChange={set} rows={3}
             placeholder="Любые детали, пожелания, ссылки на примеры..."
             className={inputCls + ' resize-none'} />
         </Field>
 
         {/* File upload */}
         <div className="sm:col-span-2">
-          <label className="block text-xs font-semibold text-[#6E6A64] uppercase tracking-wider mb-1.5">
+          <label htmlFor="order-files" className="block text-xs font-semibold text-[#5C5852] uppercase tracking-wider mb-1.5">
             Приложить макет или фото
           </label>
           <div
-            className={`relative border-2 border-dashed rounded-xl p-5 text-center transition-[border-color] cursor-pointer ${
+            className={`relative border-2 border-dashed rounded-xl p-5 text-center transition-[border-color] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2 ${
               files.length > 0 ? 'border-[#FF6B00]/40 bg-[#FF6B00]/[0.03]' : 'border-[#E8E6E0] hover:border-[#FF6B00]/40'
             }`}
             onClick={() => fileInputRef.current?.click()}
             onDragOver={e => e.preventDefault()}
             onDrop={e => { e.preventDefault(); handleFiles(e.dataTransfer.files) }}
             role="button" tabIndex={0}
-            onKeyDown={e => e.key === 'Enter' && fileInputRef.current?.click()}
+            onKeyDown={e => {
+              if (e.key !== 'Enter' && e.key !== ' ') return
+              e.preventDefault()
+              fileInputRef.current?.click()
+            }}
             aria-label="Прикрепить файлы"
+            aria-describedby="order-files-help order-files-error"
           >
             <input
+              id="order-files"
               ref={fileInputRef}
               type="file" multiple
               accept=".jpg,.jpeg,.png,.webp,.gif,.pdf,.ai,.eps,.svg,.dxf,.cdr,.zip"
               className="hidden"
               onChange={e => handleFiles(e.target.files)}
+              aria-invalid={Boolean(fileErr)}
+              aria-describedby="order-files-help order-files-error"
             />
             {files.length === 0 ? (
               <>
@@ -313,7 +324,7 @@ export function OrderForm() {
                 <p className="text-sm text-[#6E6A64]">
                   Перетащите файлы или <span className="text-[#FF6B00] font-semibold">нажмите для выбора</span>
                 </p>
-                <p className="text-xs text-[#6E6A64]/60 mt-1">JPG, PNG, PDF, AI, SVG, DXF, CDR · до {MAX_SIZE_MB} МБ · до 5 файлов</p>
+                <p id="order-files-help" className="text-xs text-[#5C5852] mt-1">JPG, PNG, PDF, AI, SVG, DXF, CDR · до {MAX_SIZE_MB} МБ · до 5 файлов</p>
               </>
             ) : (
               <div className="space-y-2 text-left" onClick={e => e.stopPropagation()}>
@@ -326,7 +337,8 @@ export function OrderForm() {
                     <span className="text-xs text-[#1A1A1A] truncate flex-1">{f.name}</span>
                     <span className="text-xs text-[#6E6A64] shrink-0">{(f.size / 1024).toFixed(0)} KB</span>
                     <button type="button" onClick={() => removeFile(f.name)}
-                      className="text-[#6E6A64] hover:text-red-500 transition-colors shrink-0">
+                      aria-label={`Удалить файл ${f.name}`}
+                      className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-lg text-[#5C5852] transition-colors hover:bg-red-50 hover:text-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
                       </svg>
@@ -342,9 +354,9 @@ export function OrderForm() {
               </div>
             )}
           </div>
-          {fileErr && <p className="mt-2 text-xs text-red-500">{fileErr}</p>}
+          <p id="order-files-error" role="alert" className="mt-2 text-xs text-red-600">{fileErr}</p>
           {files.length > 0 && (
-            <p className="mt-2 text-xs text-[#6E6A64]">
+            <p id="order-files-help" className="mt-2 text-xs text-[#5C5852]">
               Названия файлов попадут в текст сообщения. После открытия мессенджера — отправьте файлы следующим сообщением.
             </p>
           )}
@@ -355,13 +367,17 @@ export function OrderForm() {
           <label className={`flex items-start gap-3 cursor-pointer group ${agreedErr ? 'text-red-500' : ''}`}>
             <div className="relative mt-0.5 shrink-0">
               <input
+                id="order-agreement"
+                ref={agreementRef}
                 type="checkbox"
                 checked={form.agreed}
                 onChange={e => { setField('agreed', e.target.checked); setAgreedErr(false) }}
                 className="sr-only"
+                aria-invalid={agreedErr}
+                aria-describedby={agreedErr ? 'order-agreement-error' : undefined}
               />
               <div className={[
-                'w-5 h-5 rounded-md border-2 flex items-center justify-center transition-[background-color,border-color] duration-150',
+                'w-5 h-5 rounded-md border-2 flex items-center justify-center transition-[background-color,border-color] duration-150 group-focus-within:ring-2 group-focus-within:ring-[#FF6B00] group-focus-within:ring-offset-2',
                 form.agreed
                   ? 'bg-[#FF6B00] border-[#FF6B00]'
                   : agreedErr
@@ -381,7 +397,7 @@ export function OrderForm() {
             </span>
           </label>
           {agreedErr && (
-            <p className="mt-1 text-xs text-red-500 pl-8">Необходимо согласие для отправки</p>
+            <p id="order-agreement-error" role="alert" className="mt-1 text-xs text-red-600 pl-8">Необходимо согласие для отправки</p>
           )}
         </div>
       </div>
@@ -472,7 +488,7 @@ export function OrderForm() {
 
         {/* Confirmation hints */}
         {emailState === 'error' && (
-          <div className="mt-4 flex items-center gap-2 text-sm text-red-600 bg-red-50 rounded-xl px-4 py-3">
+          <div role="alert" className="mt-4 flex items-center gap-2 text-sm text-red-700 bg-red-50 rounded-xl px-4 py-3">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="shrink-0">
               <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
             </svg>
@@ -480,7 +496,7 @@ export function OrderForm() {
           </div>
         )}
         {opened && opened !== 'email' && (
-          <div className="mt-4 flex items-center gap-2 text-sm text-[#059669]">
+          <div role="status" aria-live="polite" className="mt-4 flex items-center gap-2 text-sm text-[#047857]">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="shrink-0">
               <polyline points="20 6 9 17 4 12"/>
             </svg>
@@ -497,17 +513,17 @@ export function OrderForm() {
 }
 
 function Field({
-  label, required, span, error, children,
+  id, label, required, span, error, children,
 }: {
-  label: string; required?: boolean; span?: boolean; error?: string; children: React.ReactNode
+  id: string; label: string; required?: boolean; span?: boolean; error?: string; children: React.ReactNode
 }) {
   return (
     <div className={span ? 'sm:col-span-2' : ''}>
-      <label className="block text-xs font-semibold text-[#6E6A64] uppercase tracking-wider mb-1.5">
+      <label htmlFor={id} className="block text-xs font-semibold text-[#5C5852] uppercase tracking-wider mb-1.5">
         {label}{required && <span className="text-[#FF6B00] ml-0.5">*</span>}
       </label>
       {children}
-      {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
+      {error && <p role="alert" className="mt-1 text-xs text-red-600">{error}</p>}
     </div>
   )
 }

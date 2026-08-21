@@ -12,6 +12,8 @@ import { IconCheck, IconBolt, IconTarget } from '@/components/Icons'
 import { AddToCart }  from '@/components/AddToCart'
 import { ProductContactActions } from '@/components/ProductContactActions'
 import { ProductDeliveryPreview } from '@/components/ProductDeliveryPreview'
+import { ProductStickyCart } from '@/components/ProductStickyCart'
+import { descriptionAfterLead, getProductFacts } from '@/lib/shop-product-facts'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -54,7 +56,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = shopItemBySlug(slug)
   if (!item) notFound()
 
-  const title = `${item.title} — купить в Уфе | Центр лазерной резки`
+  const title = `${item.title} — купить в Уфе`
   const description = metaDescription(shopDescriptions[item.id] ?? '', item.desc)
   return {
     title,
@@ -83,6 +85,13 @@ export default async function ShopProductPage({ params }: Props) {
   const fullDesc = shopDescriptions[item.id] ?? item.desc
   const size     = packSize(item)
   const weight   = item.packaging?.weightGrams
+  const productFacts = getProductFacts({
+    title: item.title,
+    description: fullDesc,
+    category: item.categoryName,
+    sku: item.sku,
+  })
+  const detailedDescription = descriptionAfterLead(fullDesc)
 
   /*
    * aggregateRating сознательно не добавляем: отзывы на сайте относятся к
@@ -125,15 +134,17 @@ export default async function ShopProductPage({ params }: Props) {
       <script type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd) }} />
 
+      <div className="shop-marketplace">
       <div className="bg-[#F5F6F9]">
         <div className="mx-auto max-w-[1480px] px-4 py-7 sm:px-6 sm:py-9">
           <Breadcrumbs items={[
             { label: 'Магазин', href: '/shop' },
+            { label: item.categoryName, href: `/shop?category=${item.category}#catalog` },
             { label: item.title },
-          ]} />
+          ]} visual />
 
-          <section className="mb-5 rounded-2xl bg-white p-5 shadow-[0_10px_28px_rgba(37,31,49,0.07)] lg:hidden" aria-label="Краткая информация о товаре">
-            <h1 className="text-[30px] font-extrabold leading-[1.12] tracking-[-0.035em] text-[#17181B]">
+          <section id="product-primary-buy" className="mb-5 rounded-2xl bg-white p-5 shadow-[0_10px_28px_rgba(37,31,49,0.07)] lg:hidden" aria-label="Краткая информация о товаре">
+            <h1 className="text-3xl font-extrabold leading-tight tracking-[-0.035em] text-[#17181B] sm:text-4xl">
               {item.title}
             </h1>
             <div className="mt-4 flex flex-wrap items-center gap-3">
@@ -175,7 +186,7 @@ export default async function ShopProductPage({ params }: Props) {
 
             {/* ── Описание и цена ── */}
             <div className="rounded-2xl bg-white p-5 shadow-[0_12px_32px_rgba(39,32,56,0.08)] sm:p-8">
-              <h1 className="mb-5 hidden text-[30px] font-extrabold leading-[1.16] tracking-[-0.035em] text-[#17181B] sm:text-[40px] lg:block">
+              <h1 className="mb-5 hidden text-4xl font-extrabold leading-tight tracking-[-0.035em] text-[#17181B] lg:block xl:text-5xl">
                 {item.title}
               </h1>
 
@@ -195,48 +206,51 @@ export default async function ShopProductPage({ params }: Props) {
                 </span>
               </div>
 
-              {(size || weight) && (
-                <dl className="mb-6 grid grid-cols-2 gap-2">
-                  {size && (
-                    <div className="rounded-xl bg-[#F7F7FA] px-4 py-3">
-                      <dt className="text-xs font-semibold text-[#777984]">Размер упаковки</dt>
-                      <dd className="mt-1 text-sm font-bold tabular-nums text-[#2A2B30]">{size}</dd>
-                    </div>
-                  )}
-                  {weight && (
-                    <div className="rounded-xl bg-[#F7F7FA] px-4 py-3">
-                      <dt className="text-xs font-semibold text-[#777984]">Вес с упаковкой</dt>
-                      <dd className="mt-1 text-sm font-bold tabular-nums text-[#2A2B30]">
-                        {weight >= 1000 ? `${(weight / 1000).toFixed(1)} кг` : `${weight} г`}
-                      </dd>
-                    </div>
-                  )}
-                </dl>
-              )}
-
               <p className="mb-7 text-base leading-7 text-[#4F515A] sm:text-lg">
                 {leadParagraph(fullDesc, item.desc)}
               </p>
 
-              <div className="mb-6 hidden lg:block">
+              <div id="product-primary-buy-desktop" className="mb-7 hidden lg:block">
                 <AddToCart id={item.id} inStock={item.inStock} />
               </div>
+
+              {/* Характеристики */}
+              <h2 className="text-lg font-extrabold text-[#25262B]">Характеристики товара</h2>
+              <dl className="mb-7 mt-2 divide-y divide-[#E6E7EC] border-y border-[#E6E7EC]">
+                {productFacts.map(fact => (
+                  <div key={fact.label} className="flex justify-between gap-4 py-3">
+                    <dt className="text-sm text-[#62646D]">{fact.label}</dt>
+                    <dd className="max-w-[62%] text-right text-sm font-semibold text-[#1A1A1A]">{fact.value}</dd>
+                  </div>
+                ))}
+              </dl>
+
+              {(size || weight) && (
+                <section className="mb-7" aria-labelledby="packaging-title">
+                  <h2 id="packaging-title" className="text-base font-extrabold text-[#25262B]">Упаковка для доставки</h2>
+                  <p className="mt-1 text-xs leading-5 text-[#62646D]">Эти габариты относятся к посылке, а не к самому изделию.</p>
+                  <dl className="mt-3 grid grid-cols-2 gap-2">
+                    {size && (
+                      <div className="rounded-xl bg-[#F7F7FA] px-4 py-3">
+                        <dt className="text-xs font-semibold text-[#62646D]">Габариты посылки</dt>
+                        <dd className="mt-1 text-sm font-bold tabular-nums text-[#2A2B30]">{size}</dd>
+                      </div>
+                    )}
+                    {weight && (
+                      <div className="rounded-xl bg-[#F7F7FA] px-4 py-3">
+                        <dt className="text-xs font-semibold text-[#62646D]">Вес посылки</dt>
+                        <dd className="mt-1 text-sm font-bold tabular-nums text-[#2A2B30]">
+                          {weight >= 1000 ? `${(weight / 1000).toFixed(1)} кг` : `${weight} г`}
+                        </dd>
+                      </div>
+                    )}
+                  </dl>
+                </section>
+              )}
 
               <ProductDeliveryPreview itemId={item.id} />
 
               <ProductContactActions id={item.id} title={item.title} sku={item.sku} price={item.price} />
-
-              {/* Характеристики */}
-              <dl className="mb-8 divide-y divide-[#E6E7EC] border-t border-[#E6E7EC]">
-                <div className="flex justify-between gap-4 py-3">
-                  <dt className="text-sm text-[#6E6A64]">Артикул</dt>
-                  <dd className="text-sm font-semibold text-[#1A1A1A]">{item.sku}</dd>
-                </div>
-                <div className="flex justify-between gap-4 py-3">
-                  <dt className="text-sm text-[#6E6A64]">Категория</dt>
-                  <dd className="text-sm text-[#1A1A1A]">{item.categoryName}</dd>
-                </div>
-              </dl>
 
               <div className="grid grid-cols-1 gap-1 border-y border-[#E6E7EC] py-2 sm:grid-cols-3 sm:divide-x sm:divide-[#E6E7EC]">
                 {[
@@ -257,9 +271,7 @@ export default async function ShopProductPage({ params }: Props) {
               <a
                 href={item.wbUrl}
                 target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-6 text-sm text-[#6E6A64]
-                  hover:text-[#CB11AB] transition-colors underline underline-offset-4
-                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CB11AB] rounded"
+                className="mt-4 inline-flex min-h-11 items-center gap-2 rounded text-sm text-[#62646D] underline decoration-[#C9CBD3] underline-offset-4 transition-colors hover:text-[#34353B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]"
               >
                 Этот товар также есть на Wildberries →
               </a>
@@ -269,11 +281,11 @@ export default async function ShopProductPage({ params }: Props) {
       </div>
 
       {/* ── Полное описание ── */}
-      {fullDesc && (
+      {detailedDescription && (
         <section className="bg-white py-14 sm:py-16">
           <div className="max-w-3xl mx-auto px-4 sm:px-6">
             <h2 className="mb-6 text-2xl font-extrabold tracking-[-0.025em] text-[#17181B]">Описание</h2>
-            <RichText text={fullDesc} paragraphs className="text-[#2D2D2D] leading-[1.75]" />
+            <RichText text={detailedDescription} paragraphs className="text-[#2D2D2D] leading-[1.75]" />
           </div>
         </section>
       )}
@@ -286,7 +298,7 @@ export default async function ShopProductPage({ params }: Props) {
               <h2 className="text-2xl font-extrabold tracking-[-0.025em] text-[#17181B]">
                 Похожие товары
               </h2>
-              <Link href="/shop" className="text-sm font-semibold text-[#FF6B00] hover:underline underline-offset-4">
+              <Link href="/shop" className="inline-flex min-h-11 items-center rounded text-sm font-semibold text-[#9D3900] underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]">
                 Весь магазин →
               </Link>
             </div>
@@ -296,7 +308,7 @@ export default async function ShopProductPage({ params }: Props) {
                   key={r.id}
                   href={`/shop/${r.slug}`}
                   className="group overflow-hidden rounded-2xl bg-white shadow-[0_8px_22px_rgba(45,37,58,0.07)]
-                    transition-[transform,box-shadow] hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(45,37,58,0.12)]
+                    transition-[box-shadow] hover:shadow-[0_14px_30px_rgba(45,37,58,0.12)]
                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]"
                 >
                   <div className="relative aspect-[3/4] bg-white">
@@ -304,7 +316,7 @@ export default async function ShopProductPage({ params }: Props) {
                       src={r.image}
                       alt={r.title}
                       fill
-                      className="object-contain transition-transform duration-300 group-hover:scale-105"
+                      className="object-contain"
                       sizes="(max-width: 640px) 50vw, 20vw"
                     />
                   </div>
@@ -327,9 +339,11 @@ export default async function ShopProductPage({ params }: Props) {
             <h2 className="text-2xl font-extrabold tracking-[-0.03em] sm:text-3xl">Нужно изделие по вашему макету?</h2>
             <p className="mt-2 text-[#62646D]">Расскажите о задаче — подберём материал и рассчитаем изготовление.</p>
           </div>
-          <Link href="/contacts" className="inline-flex min-h-12 items-center justify-center rounded-xl bg-[#FF5A00] px-6 text-sm font-bold text-white transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-[#E95000] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A00] focus-visible:ring-offset-2">Оставить заявку</Link>
+          <Link href="/contacts" className="inline-flex min-h-12 items-center justify-center rounded-xl bg-[#C94700] px-6 text-sm font-bold text-white transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-[#B13E00] active:translate-y-0 active:bg-[#9D3700] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2">Оставить заявку</Link>
         </div>
       </section>
+      <ProductStickyCart id={item.id} price={item.price} inStock={item.inStock} />
+      </div>
     </>
   )
 }

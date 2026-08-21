@@ -126,3 +126,23 @@ export type DeliveryMethod = keyof typeof DELIVERY_METHODS
 export function isDeliveryMethod(v: unknown): v is DeliveryMethod {
   return typeof v === 'string' && Object.prototype.hasOwnProperty.call(DELIVERY_METHODS, v)
 }
+
+export function deliveryDestinationError({
+  delivery,
+  city,
+  address,
+  pointAddress,
+}: {
+  delivery: DeliveryMethod
+  city: string
+  address: string
+  pointAddress: string
+}): string | null {
+  if (delivery === 'pickup') return null
+  if (!city.trim()) return 'Укажите город доставки'
+  if (delivery === 'russian' && !address.trim()) return 'Укажите адрес доставки'
+  if ((delivery === 'cdek' || delivery === 'ozon') && !pointAddress.trim() && !address.trim()) {
+    return 'Выберите пункт выдачи или укажите его адрес'
+  }
+  return null
+}

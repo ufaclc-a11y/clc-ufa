@@ -120,6 +120,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <a href="#main-content" className="skip-link">Перейти к содержимому</a>
+        <CookieConsent />
         {/* Корзина нужна и шапке (счётчик), и страницам — провайдер оборачивает обе. */}
         <CartProvider>
           <Header />
@@ -127,7 +128,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </CartProvider>
         <Footer />
 
-        <CookieConsent />
         <Suspense fallback={null}>
           <MetrikaRouteTracker />
         </Suspense>

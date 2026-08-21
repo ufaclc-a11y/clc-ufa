@@ -284,7 +284,7 @@ export default async function SeoLandingPage({ params }: Props) {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-2.5">
-                    <p className="text-[11px] font-semibold text-white group-hover:text-[#FF6B00] transition-colors leading-snug">
+                    <p className="text-xs font-semibold text-white group-hover:text-[#FF8A33] transition-colors leading-snug">
                       {p.title}
                     </p>
                   </div>

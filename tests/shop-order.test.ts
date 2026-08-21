@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { buildOrder, orderNumber, isDeliveryMethod, MAX_LINE_QTY } from '../lib/shop-order'
+import { buildOrder, deliveryDestinationError, orderNumber, isDeliveryMethod, MAX_LINE_QTY } from '../lib/shop-order'
 import { shopItems } from '../data/shop'
 
 const inStock = shopItems.filter(i => i.inStock)
@@ -85,4 +85,13 @@ test('способ получения проверяется по списку',
   assert.equal(isDeliveryMethod('телепорт'), false)
   assert.equal(isDeliveryMethod(null), false)
   assert.equal(isDeliveryMethod('constructor'), false)
+})
+
+test('доставка требует город и реальный адрес назначения', () => {
+  assert.equal(deliveryDestinationError({ delivery: 'pickup', city: '', address: '', pointAddress: '' }), null)
+  assert.equal(deliveryDestinationError({ delivery: 'cdek', city: '', address: '', pointAddress: '' }), 'Укажите город доставки')
+  assert.equal(deliveryDestinationError({ delivery: 'ozon', city: 'Уфа', address: '', pointAddress: '' }), 'Выберите пункт выдачи или укажите его адрес')
+  assert.equal(deliveryDestinationError({ delivery: 'ozon', city: 'Уфа', address: '', pointAddress: 'ПВЗ' }), null)
+  assert.equal(deliveryDestinationError({ delivery: 'russian', city: 'Уфа', address: '', pointAddress: 'ОПС' }), 'Укажите адрес доставки')
+  assert.equal(deliveryDestinationError({ delivery: 'russian', city: 'Уфа', address: 'Ленина, 1', pointAddress: '' }), null)
 })

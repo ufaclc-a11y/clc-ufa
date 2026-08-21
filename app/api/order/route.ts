@@ -2,9 +2,9 @@ import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import { business } from '@/data/contacts'
 import { rateLimit, clientIp } from '@/lib/rate-limit'
-import { escapeHtml, MAX_FIELD_LEN } from '@/lib/order-validation'
+import { escapeHtml, isPlausibleContact, MAX_FIELD_LEN } from '@/lib/order-validation'
 import {
-  buildOrder, orderNumber, DELIVERY_METHODS, isDeliveryMethod,
+  buildOrder, orderNumber, DELIVERY_METHODS, deliveryDestinationError, isDeliveryMethod,
 } from '@/lib/shop-order'
 
 /*
@@ -65,14 +65,16 @@ export async function POST(req: Request) {
     const address  = str(b.address)
     const delivery = isDeliveryMethod(b.delivery) ? b.delivery : null
 
-    if (!contact) {
+    if (!isPlausibleContact(contact)) {
       return NextResponse.json({ error: 'Укажите телефон, e-mail или ник в мессенджере' }, { status: 400 })
     }
     if (!delivery) {
       return NextResponse.json({ error: 'Выберите способ получения' }, { status: 400 })
     }
-    if (delivery !== 'pickup' && !city) {
-      return NextResponse.json({ error: 'Укажите город доставки' }, { status: 400 })
+    const pointAddr = str(b.pointAddress)
+    const destinationError = deliveryDestinationError({ delivery, city, address, pointAddress: pointAddr })
+    if (destinationError) {
+      return NextResponse.json({ error: destinationError }, { status: 400 })
     }
 
     const built = buildOrder(b.lines)
@@ -100,8 +102,6 @@ export async function POST(req: Request) {
     const quoteName   = str(b.quoteName)
     const quotePrice  = typeof b.quotePrice === 'number' && b.quotePrice > 0 ? Math.ceil(b.quotePrice) : null
     const pointCode   = str(b.pointCode)
-    const pointAddr   = str(b.pointAddress)
-
     const details = [
       name    && `<b>Имя:</b> ${esc(name)}`,
       `<b>Контакт:</b> ${esc(contact)}`,

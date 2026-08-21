@@ -23,7 +23,7 @@ const casesLd = {
 }
 
 export const metadata: Metadata = {
-  title:       'Кейсы и примеры работ с ценами | Центр лазерной резки Уфа',
+  title:       'Кейсы и примеры работ с ценами в Уфе',
   description: 'Реальные кейсы: медали для турниров, таблички для офисов, корпоративные награды, детали для производств. Цены, сроки, материалы.',
   keywords:    ['кейсы лазерная резка уфа', 'примеры работ гравировка уфа', 'медали на заказ уфа', 'таблички для офиса уфа'],
   alternates:  { canonical: 'https://clc-ufa.ru/cases' },
@@ -64,7 +64,7 @@ function CaseCard({ c }: { c: (typeof cases)[number] }) {
       {/* Bottom: all info */}
       <div className="absolute inset-x-0 bottom-0 p-5">
         {/* Client */}
-        <p className="text-[10px] text-white/45 mb-1 font-mono uppercase tracking-wider">{c.client}</p>
+        <p className="text-xs text-white/65 mb-1 font-mono uppercase tracking-wider">{c.client}</p>
 
         {/* Title */}
         <h2 className="font-display text-lg text-white tracking-wide leading-snug mb-3">
@@ -79,7 +79,7 @@ function CaseCard({ c }: { c: (typeof cases)[number] }) {
             { label: 'Цена',   value: c.price     },
           ].map(s => (
             <div key={s.label} className="flex-1 bg-white/10 backdrop-blur-sm rounded-lg p-2 text-center border border-white/10">
-              <div className="text-[9px] text-white/45 uppercase tracking-wider mb-0.5">{s.label}</div>
+              <div className="text-xs text-white/65 uppercase tracking-wider mb-0.5">{s.label}</div>
               <div className="text-xs font-semibold text-white leading-tight">{s.value}</div>
             </div>
           ))}
@@ -91,7 +91,7 @@ function CaseCard({ c }: { c: (typeof cases)[number] }) {
         {/* Tags */}
         <div className="flex flex-wrap gap-1.5">
           {c.tags.slice(0, 3).map(t => (
-            <span key={t} className="text-[10px] bg-white/10 text-white/70 px-2 py-0.5 rounded-full border border-white/10">
+            <span key={t} className="text-xs bg-white/10 text-white/80 px-2 py-0.5 rounded-full border border-white/10">
               {t}
             </span>
           ))}

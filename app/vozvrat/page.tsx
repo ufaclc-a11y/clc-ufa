@@ -4,7 +4,7 @@ import { business } from '@/data/contacts'
 import { LegalPage, Section } from '@/components/LegalPage'
 
 export const metadata: Metadata = {
-  title:       'Возврат и обмен товара — Центр лазерной резки Уфа',
+  title:       'Возврат и обмен товара',
   description: 'Условия возврата и обмена товаров, купленных в магазине clc-ufa.ru: сроки, порядок, возврат денег.',
   alternates:  { canonical: 'https://clc-ufa.ru/vozvrat' },
 }

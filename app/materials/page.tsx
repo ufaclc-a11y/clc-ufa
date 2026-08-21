@@ -6,7 +6,7 @@ import { CTASection }  from '@/components/CTASection'
 import { business }    from '@/data/contacts'
 
 export const metadata: Metadata = {
-  title:       'Материалы для лазерной резки в Уфе — фанера, акрил, ПВХ, МДФ | ЦЛР',
+  title:       'Материалы для лазерной резки в Уфе — фанера, акрил, ПВХ, МДФ',
   description: 'Фанера, акрил, ПВХ, МДФ, кожа, металл и другие материалы для лазерной резки, гравировки, УФ-печати и фрезеровки в Уфе. Помогаем выбрать нужный под задачу.',
   keywords:    ['материалы для лазерной резки уфа', 'фанера для резки уфа', 'акрил для резки уфа', 'мдф резка уфа', 'кожа лазерная резка уфа'],
   alternates:  { canonical: 'https://clc-ufa.ru/materials' },
@@ -156,7 +156,7 @@ export default function MaterialsPage() {
                     <th
                       key={h}
                       scope="col"
-                      className="font-mono text-[11px] text-white/70 uppercase tracking-wider font-semibold px-5 py-4 whitespace-nowrap"
+                      className="font-mono text-xs text-white/80 uppercase tracking-wider font-semibold px-5 py-4 whitespace-nowrap"
                     >
                       {h}
                     </th>

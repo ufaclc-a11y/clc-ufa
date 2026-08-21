@@ -82,7 +82,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!cat || cat.id === 'all') notFound()
   const meta = categoryMeta[cat.id]
   return {
-    title:       `${meta?.title ?? cat.label} | Центр лазерной резки Уфа`,
+    title:       meta?.title ?? cat.label,
     description: meta?.description ?? `Примеры работ: ${cat.label}. Центр лазерной резки Уфа.`,
     alternates:  { canonical: `https://clc-ufa.ru/portfolio/${cat.id}` },
     openGraph: {
@@ -211,7 +211,7 @@ export default async function PortfolioCategoryPage({ params }: Props) {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   <div className="absolute bottom-0 inset-x-0 p-3">
                     <p className="text-white text-xs font-semibold leading-tight">{c.label}</p>
-                    <p className="text-white/50 text-[10px] font-mono">{c.count} фото</p>
+                    <p className="text-white/70 text-xs font-mono">{c.count} фото</p>
                   </div>
                 </div>
               </Link>

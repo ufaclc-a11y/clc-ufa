@@ -41,7 +41,7 @@ export function B2BSection() {
             </p>
             <Link
               href="/b2b"
-              className="inline-flex items-center gap-2 bg-[#FF6B00] text-white font-semibold px-6 py-3 rounded-full hover:bg-[#e55e00] transition-colors"
+              className="inline-flex items-center gap-2 bg-[#C94700] text-white font-semibold px-6 py-3 rounded-full hover:bg-[#B13E00] transition-colors"
             >
               Подробнее о B2B-производстве
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -52,7 +52,7 @@ export function B2BSection() {
 
           <div className="grid grid-cols-2 gap-6">
             <div>
-              <h3 className="font-mono text-[10px] text-[#FF6B00] tracking-widest uppercase mb-4">Для кого</h3>
+              <h3 className="font-mono text-xs text-[#FF8A33] tracking-widest uppercase mb-4">Для кого</h3>
               <ul className="space-y-2.5">
                 {clients.map(c => (
                   <li key={c} className="flex items-start gap-2 text-sm text-white/60">
@@ -63,7 +63,7 @@ export function B2BSection() {
               </ul>
             </div>
             <div>
-              <h3 className="font-mono text-[10px] text-[#FF6B00] tracking-widest uppercase mb-4">Что делаем</h3>
+              <h3 className="font-mono text-xs text-[#FF8A33] tracking-widest uppercase mb-4">Что делаем</h3>
               <ul className="space-y-2.5">
                 {outputs.map(o => (
                   <li key={o} className="flex items-start gap-2 text-sm text-white/60">

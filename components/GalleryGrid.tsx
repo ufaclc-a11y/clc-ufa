@@ -87,7 +87,7 @@ export function GalleryGrid({
       <div className={gridClass}>
         {items.map((item, i) => (
           <button
-            key={item.src}
+            key={`${item.src}-${i}`}
             type="button"
             onClick={event => {
               lastTriggerRef.current = event.currentTarget

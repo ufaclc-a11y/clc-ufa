@@ -58,7 +58,7 @@ export function FontPreview() {
               onClick={() => setActiveCat(c.id as FontCategory | 'all')}
               className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] ${
                 activeCat === c.id
-                  ? 'bg-[#FF6B00] text-white'
+                  ? 'bg-[#C94700] text-white'
                   : 'bg-[#F5F4F0] text-[#6E6A64] hover:bg-[#FF6B00]/10 hover:text-[#1A1A1A]'
               }`}
             >
@@ -81,7 +81,7 @@ export function FontPreview() {
               <div className="flex items-center justify-between px-5 pt-4">
                 <span className="font-mono text-xs text-[#6E6A64] tracking-wide">{font.name}</span>
                 <span
-                  className={`font-mono text-[10px] tracking-[0.15em] px-2 py-0.5 rounded-full ${
+                  className={`font-mono text-xs tracking-[0.15em] px-2 py-0.5 rounded-full ${
                     font.cyrillic
                       ? 'bg-[#FF6B00]/10 text-[#FF6B00]'
                       : 'bg-[#E8E6E0] text-[#6E6A64]'

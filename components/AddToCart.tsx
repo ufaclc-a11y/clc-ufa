@@ -11,10 +11,10 @@ type Props = {
 
 /** Счётчик количества + «В корзину». После добавления предлагает оформить заказ. */
 export function AddToCart({ id, inStock }: Props) {
-  const { add, entries } = useCart()
+  const { add, lines } = useCart()
   const [qty, setQty] = useState(1)
 
-  const inCart = entries.find(e => e.item.id === id)?.qty ?? 0
+  const inCart = lines.find(line => line.id === id)?.qty ?? 0
 
   if (!inStock) {
     return (
@@ -33,7 +33,7 @@ export function AddToCart({ id, inStock }: Props) {
           onClick={() => setQty(q => Math.max(1, q - 1))}
           disabled={qty <= 1}
           aria-label="Уменьшить количество"
-          className="w-10 h-11 text-xl text-[#6E6A64] hover:text-[#1A1A1A] hover:bg-[#F5F4F0]
+          className="h-11 w-11 cursor-pointer text-xl text-[#62646D] hover:bg-[#F5F4F0] hover:text-[#1A1A1A]
             active:bg-[#E8E6E0] disabled:opacity-30 disabled:hover:bg-transparent
             transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-inset"
         >
@@ -47,7 +47,7 @@ export function AddToCart({ id, inStock }: Props) {
           onClick={() => setQty(q => Math.min(99, q + 1))}
           disabled={qty >= 99}
           aria-label="Увеличить количество"
-          className="w-10 h-11 text-xl text-[#6E6A64] hover:text-[#1A1A1A] hover:bg-[#F5F4F0]
+          className="h-11 w-11 cursor-pointer text-xl text-[#62646D] hover:bg-[#F5F4F0] hover:text-[#1A1A1A]
             active:bg-[#E8E6E0] disabled:opacity-30 disabled:hover:bg-transparent
             transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-inset"
         >
@@ -58,9 +58,9 @@ export function AddToCart({ id, inStock }: Props) {
       <button
         type="button"
         onClick={() => add(id, qty)}
-        className="inline-flex h-11 items-center gap-2 rounded-xl bg-[#FF5A00] px-7 font-semibold text-white
-          shadow-[0_7px_18px_rgba(255,90,0,0.24)] transition-[background-color,transform,box-shadow]
-          hover:-translate-y-0.5 hover:bg-[#E95000] hover:shadow-[0_10px_22px_rgba(255,90,0,0.28)] active:translate-y-0 active:bg-[#D84B00]
+        className="inline-flex h-11 cursor-pointer items-center gap-2 rounded-xl bg-[#C94700] px-7 font-semibold text-white
+          shadow-[0_7px_18px_rgba(141,50,0,0.20)] transition-[background-color,transform,box-shadow]
+          hover:-translate-y-0.5 hover:bg-[#B13E00] hover:shadow-[0_10px_22px_rgba(141,50,0,0.24)] active:translate-y-0 active:bg-[#9D3700]
           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2"
       >
         В корзину
@@ -69,7 +69,7 @@ export function AddToCart({ id, inStock }: Props) {
       {inCart > 0 && (
         <Link
           href="/shop/cart"
-          className="text-sm font-semibold text-[#FF6B00] hover:underline underline-offset-4
+          className="inline-flex min-h-11 items-center rounded text-sm font-semibold text-[#9D3900] underline-offset-4 hover:underline
             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] rounded"
         >
           В корзине {inCart} шт. — оформить →

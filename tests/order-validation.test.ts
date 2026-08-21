@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import {
-  isSpam, hasContact, checkAttachment, escapeHtml,
+  isSpam, hasContact, isPlausibleContact, checkAttachment, escapeHtml,
   MAX_FILE_BYTES, MAX_TOTAL_BYTES,
 } from '../lib/order-validation'
 
@@ -21,6 +21,14 @@ test('contact обязателен и не может быть пробелам�
   assert.equal(hasContact({}), false)
   assert.equal(hasContact({ contact: '' }), false)
   assert.equal(hasContact({ contact: '   ' }), false)
+})
+
+test('контакт должен быть осмысленным', () => {
+  assert.equal(isPlausibleContact('+7 937 483-80-03'), true)
+  assert.equal(isPlausibleContact('mail@example.ru'), true)
+  assert.equal(isPlausibleContact('@ivan'), true)
+  assert.equal(isPlausibleContact('--'), false)
+  assert.equal(isPlausibleContact('a'), false)
 })
 
 test('файлы: допустимые расширения проходят независимо от регистра', () => {

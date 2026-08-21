@@ -32,7 +32,7 @@ export default function Error({
       <div className="flex flex-wrap gap-3 justify-center">
         <button
           onClick={reset}
-          className="bg-[#FF6B00] text-white font-semibold px-7 py-3 rounded-full hover:bg-[#e55e00] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2"
+          className="bg-[#C94700] text-white font-semibold px-7 py-3 rounded-full hover:bg-[#B13E00] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2"
         >
           Попробовать снова
         </button>

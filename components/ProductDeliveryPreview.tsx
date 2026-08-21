@@ -67,12 +67,15 @@ export function ProductDeliveryPreview({ itemId }: Props) {
   }
 
   return (
-    <section className="mb-6 rounded-2xl border border-[#E1E2E8] bg-white p-4" aria-labelledby="delivery-preview-title">
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h2 id="delivery-preview-title" className="text-base font-extrabold tracking-[-0.015em] text-[#25262B]">Рассчитать доставку</h2>
-        <span className="text-xs text-[#777984]">Предварительная стоимость</span>
-      </div>
-      <form onSubmit={calculate} className="mt-3 grid gap-2 sm:grid-cols-[130px_minmax(0,1fr)_auto]">
+    <details className="group mb-2 border-y border-[#E1E2E8] bg-white" aria-labelledby="delivery-preview-title">
+      <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-lg px-1 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] [&::-webkit-details-marker]:hidden">
+        <span>
+          <span id="delivery-preview-title" className="block text-base font-extrabold tracking-[-0.015em] text-[#25262B]">Доставка по России</span>
+          <span className="mt-0.5 block text-xs text-[#62646D]">Рассчитать предварительную стоимость</span>
+        </span>
+        <svg aria-hidden="true" className="h-5 w-5 shrink-0 text-[#62646D] transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+      </summary>
+      <form onSubmit={calculate} className="grid gap-2 pb-4 pt-2 sm:grid-cols-[130px_minmax(0,1fr)_auto]">
         <label className="sr-only" htmlFor="product-delivery-provider">Служба доставки</label>
         <select
           id="product-delivery-provider"
@@ -89,7 +92,7 @@ export function ProductDeliveryPreview({ itemId }: Props) {
           onChange={event => { setCity(event.target.value); resetResult() }}
           placeholder="Введите город"
           autoComplete="address-level2"
-          className="min-h-11 rounded-xl border border-[#DCDDE5] bg-[#F8F8FB] px-3 text-sm text-[#25262B] outline-none placeholder:text-[#777984] focus:border-[#FF5A00] focus:bg-white focus:ring-2 focus:ring-[#FF5A00]/15"
+          className="min-h-11 rounded-xl border border-[#DCDDE5] bg-[#F8F8FB] px-3 text-sm text-[#25262B] outline-none placeholder:text-[#62646D] focus:border-[#FF5A00] focus:bg-white focus:ring-2 focus:ring-[#FF5A00]/15"
         />
         <button
           type="submit"
@@ -99,7 +102,7 @@ export function ProductDeliveryPreview({ itemId }: Props) {
           {loading ? 'Считаем…' : 'Рассчитать'}
         </button>
       </form>
-      <div className="mt-3 min-h-5 text-sm" aria-live="polite" aria-busy={loading}>
+      <div className="min-h-5 pb-4 text-sm" aria-live="polite" aria-busy={loading}>
         {quote && (
           <p className="font-semibold text-[#25262B]">
             От {rub(quote.priceRub)}
@@ -110,6 +113,6 @@ export function ProductDeliveryPreview({ itemId }: Props) {
         )}
         {notice && <p className="leading-5 text-[#5B3A86]">{notice}</p>}
       </div>
-    </section>
+    </details>
   )
 }

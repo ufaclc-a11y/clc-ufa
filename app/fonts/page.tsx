@@ -5,7 +5,7 @@ import { FontPreview } from '@/components/FontPreview'
 import { previewFontVars, previewFonts } from '@/lib/fonts-preview'
 
 export const metadata: Metadata = {
-  title: 'Выбор шрифта для гравировки — подбор онлайн | Центр лазерной резки в Уфе',
+  title: 'Выбор шрифта для гравировки — подбор онлайн в Уфе',
   description:
     'Введите свой текст и посмотрите, как он выглядит в разных шрифтах для гравировки. ' +
     'Более 15 шрифтов с поддержкой кириллицы для гравировки на дереве, металле, коже и акриле.',
@@ -52,7 +52,7 @@ export default function FontsPage() {
         {/* Лицензия на шрифты */}
         <div className="mt-12 bg-white/60 border border-[#E8E6E0] rounded-2xl p-5 sm:p-6">
           <div className="flex items-center gap-2 mb-2">
-            <span className="font-mono text-[10px] tracking-[0.15em] px-2 py-0.5 rounded-full bg-[#FF6B00]/10 text-[#FF6B00]">
+            <span className="font-mono text-xs tracking-[0.15em] px-2 py-0.5 rounded-full bg-[#FF6B00]/10 text-[#9D3900]">
               FREE
             </span>
             <h2 className="font-display text-lg text-[#1A1A1A] tracking-wide">Лицензия на шрифты</h2>

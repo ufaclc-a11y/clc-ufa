@@ -8,7 +8,7 @@ import { JsonLd }          from '@/components/JsonLd'
 import { SITE, localBusinessRef, contactPointLd } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title:       'Контакты — Центр лазерной резки, Уфа, ул. Менделеева 177',
+  title:       'Контакты — Уфа, ул. Менделеева 177',
   description: 'Адрес, телефон и мессенджеры Центр лазерной резки: г. Уфа, ул. Менделеева, 177, 5 этаж, цех 509. Работаем ежедневно с 10:00 до 19:00.',
   keywords:    ['центр лазерной резки уфа адрес', 'лазерная резка менделеева уфа', 'контакты лазерная резка уфа', 'лазерная резка телефон уфа'],
   alternates:  { canonical: 'https://clc-ufa.ru/contacts' },
@@ -209,7 +209,7 @@ export default function ContactsPage() {
               href={business.yandexMaps}
               target="_blank"
               rel="noopener noreferrer"
-              className="absolute bottom-4 right-4 inline-flex items-center justify-center gap-1.5 bg-[#FF6B00] text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-[#e55e00] transition-colors shadow-lg leading-none"
+              className="absolute bottom-4 right-4 inline-flex items-center justify-center gap-1.5 bg-[#C94700] text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-[#B13E00] transition-colors shadow-lg leading-none"
             >
               <span>Открыть</span>
               <span aria-hidden="true">→</span>

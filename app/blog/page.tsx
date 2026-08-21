@@ -6,7 +6,7 @@ import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { CTASection }  from '@/components/CTASection'
 
 export const metadata: Metadata = {
-  title:       'Блог — советы по лазерной резке и гравировке | ЦЛР',
+  title:       'Блог — советы по лазерной резке и гравировке',
   description: 'Статьи и советы: как подготовить макет, какой материал выбрать, в чём разница между УФ-печатью и гравировкой. Центр лазерной резки — Уфа.',
   keywords:    ['блог лазерная резка', 'советы по лазерной резке', 'статьи гравировка уфа', 'материалы для резки статья'],
   alternates:  { canonical: 'https://clc-ufa.ru/blog' },
@@ -36,12 +36,12 @@ function PostCard({ post }: { post: (typeof blogPosts)[number] }) {
         <span className="text-xs font-semibold bg-[#FF6B00] text-white px-3 py-1 rounded-full">
           {post.category}
         </span>
-        <span className="text-[10px] text-white/60 font-mono">{post.readTime} мин</span>
+        <span className="text-xs text-white/75 font-mono">{post.readTime} мин</span>
       </div>
 
       {/* Bottom: text */}
       <div className="absolute inset-x-0 bottom-0 p-5">
-        <p className="text-[10px] text-white/45 mb-2 font-mono">{date}</p>
+        <p className="text-xs text-white/65 mb-2 font-mono">{date}</p>
         <h2 className="font-display text-lg text-white tracking-wide leading-snug mb-1 group-hover:text-[#FF6B00] transition-colors duration-200">
           {post.title}
         </h2>
