@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { shopCategories } from '@/data/shop'
+import { shopCategories } from '@/data/shop-categories'
 import { CartButton } from '@/components/CartButton'
 import { trackGoal } from '@/lib/analytics'
 
@@ -13,7 +13,7 @@ export function ShopHeader() {
           <div className="flex items-center gap-5">
             <span>Уфа</span>
             <span>Доставка по России</span>
-            <span>Производство на заказ</span>
+            <Link className="inline-flex min-h-11 items-center rounded font-semibold text-[#555760] hover:text-[#9D3900] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]" href="/products">Изготовление на заказ</Link>
           </div>
           <div className="flex items-center gap-5">
             <Link className="inline-flex min-h-11 items-center rounded hover:text-[#17181B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]" href="/about">О компании</Link>
@@ -60,7 +60,7 @@ export function ShopHeader() {
       </div>
 
       <div className="relative mx-auto max-w-[1480px]">
-        <nav className="flex gap-2 overflow-x-auto px-4 pb-2 pr-12 sm:px-6 sm:pb-3 sm:pr-14" aria-label="Категории магазина">
+        <nav className="scrollbar-none flex gap-2 overflow-x-auto px-4 pb-2 pr-12 sm:px-6 sm:pb-3 sm:pr-14" aria-label="Категории магазина">
           {shopCategories.slice(0, 10).map(category => (
             <Link
               key={category.id}

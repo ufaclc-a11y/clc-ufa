@@ -4,7 +4,7 @@ import { business } from '@/data/contacts'
 import { LegalPage, Section } from '@/components/LegalPage'
 
 export const metadata: Metadata = {
-  title:       'Доставка и оплата — Центр лазерной резки Уфа',
+  title:       'Доставка и оплата',
   description: 'Способы доставки и оплаты заказов в магазине clc-ufa.ru: самовывоз в Уфе, СДЭК, Ozon, Почта России.',
   alternates:  { canonical: 'https://clc-ufa.ru/dostavka-i-oplata' },
 }

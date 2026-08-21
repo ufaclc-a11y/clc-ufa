@@ -4,7 +4,7 @@ import { business } from '@/data/contacts'
 import { LegalPage, Section } from '@/components/LegalPage'
 
 export const metadata: Metadata = {
-  title:       'Публичная оферта — Центр лазерной резки Уфа',
+  title:       'Публичная оферта',
   description: 'Договор розничной купли-продажи товаров дистанционным способом на сайте clc-ufa.ru.',
   alternates:  { canonical: 'https://clc-ufa.ru/oferta' },
 }

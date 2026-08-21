@@ -14,7 +14,7 @@ import { ContactButtons }  from '@/components/ContactButtons'
 import { samplePhotos, firstPhoto } from '@/data/portfolio'
 
 export const metadata: Metadata = {
-  title:       'Изготовление изделий из фанеры и акрила в Уфе | ЦЛР',
+  title:       'Изготовление изделий из фанеры и акрила в Уфе',
   description: 'Каталог изделий Центр лазерной резки: часы, ключницы, медальницы, таблички, вывески, бейджи, хештеги, шкатулки, сувениры. Изготовление в Уфе по вашему макету.',
   keywords:    ['изготовление изделий из фанеры уфа', 'изделия из акрила уфа', 'сувениры на заказ уфа', 'таблички на заказ уфа', 'вывески уфа', 'шкатулки фанера уфа', 'медальницы уфа', 'часы из фанеры уфа'],
   alternates:  { canonical: 'https://clc-ufa.ru/products' },
@@ -111,7 +111,7 @@ export default function ProductsPage() {
               const href = service.materialLinks?.[m] ?? '/products'
               return (
                 <Link key={m} href={href}
-                  className="group flex items-center gap-2.5 bg-white border border-[#E8E6E0] hover:border-[#FF6B00] hover:bg-[#FF6B00] text-[#1A1A1A] hover:text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200"
+                  className="group flex items-center gap-2.5 bg-white border border-[#E8E6E0] hover:border-[#C94700] hover:bg-[#C94700] text-[#1A1A1A] hover:text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-[background-color,border-color,color] duration-200"
                   style={{ boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}
                 >
                   <span className="w-2 h-2 rounded-full bg-[#FF6B00] group-hover:bg-white shrink-0 transition-colors duration-200" />

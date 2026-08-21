@@ -46,7 +46,7 @@ export function CartButton({
         <span
           className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1
             flex items-center justify-center rounded-full bg-[#FF6B00]
-            text-white text-[10px] font-bold tabular-nums leading-none"
+            text-white text-xs font-bold tabular-nums leading-none"
         >
           {count > 99 ? '99+' : count}
         </span>

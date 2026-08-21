@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { business } from '@/data/contacts'
 
 export const metadata: Metadata = {
-  title:       'Политика конфиденциальности — Центр лазерной резки',
+  title:       'Политика конфиденциальности',
   description: 'Политика обработки персональных данных сайта clc-ufa.ru',
   alternates:  { canonical: 'https://clc-ufa.ru/privacy' },
   robots:      { index: false },

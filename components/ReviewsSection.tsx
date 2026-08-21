@@ -51,12 +51,12 @@ function ReviewCard({ review }: { review: Review }) {
         </div>
         <div className="flex items-center gap-2 mt-2">
           <span
-            className="text-[10px] font-semibold text-white px-2 py-0.5 rounded-full"
+            className="text-xs font-semibold text-white px-2 py-0.5 rounded-full"
             style={{ backgroundColor: srcColor }}
           >
             {sourceLabels[review.source]}
           </span>
-          <span className="text-[11px] text-[#6E6A64]">
+          <span className="text-xs text-[#5C5852]">
             {new Date(review.date).toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' })}
           </span>
         </div>

@@ -527,7 +527,7 @@ export const services: Service[] = [
       'Шкатулки из фанеры':          '/products/shkatulki',
       'Копилки':                     '/products/kopilki',
       'Кормушки':                    '/products/kormushki',
-      'Хештеги и фотозоны':          '/products/heshteги',
+      'Хештеги и фотозоны':          '/products/kheshtegi',
       'Брелоки':                     '/products/breloki',
       'Наградные статуэтки':         '/nagrady-na-zakaz-ufa',
       'Номерки для гардеробов':      '/products/nomera',

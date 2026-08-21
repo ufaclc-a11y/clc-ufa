@@ -231,7 +231,7 @@ export default function CalculatorPage() {
               <button
                 onClick={() => next('material')}
                 disabled={!service}
-                className="mt-6 w-full bg-[#FF6B00] text-white font-semibold py-3.5 rounded-full hover:bg-[#e55e00] active:bg-[#cc5400] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                className="mt-6 w-full bg-[#C94700] text-white font-semibold py-3.5 rounded-full hover:bg-[#B13E00] active:bg-[#9D3700] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Далее →
               </button>
@@ -256,7 +256,7 @@ export default function CalculatorPage() {
               <button
                 onClick={() => next('size')}
                 disabled={!material}
-                className="mt-6 w-full bg-[#FF6B00] text-white font-semibold py-3.5 rounded-full hover:bg-[#e55e00] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                className="mt-6 w-full bg-[#C94700] text-white font-semibold py-3.5 rounded-full hover:bg-[#B13E00] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Далее →
               </button>
@@ -282,7 +282,7 @@ export default function CalculatorPage() {
               <button
                 onClick={() => next('qty')}
                 disabled={!sizeKey}
-                className="mt-6 w-full bg-[#FF6B00] text-white font-semibold py-3.5 rounded-full hover:bg-[#e55e00] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                className="mt-6 w-full bg-[#C94700] text-white font-semibold py-3.5 rounded-full hover:bg-[#B13E00] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Далее →
               </button>
@@ -307,7 +307,7 @@ export default function CalculatorPage() {
               <button
                 onClick={() => next('result')}
                 disabled={!qtyKey}
-                className="mt-6 w-full bg-[#FF6B00] text-white font-semibold py-3.5 rounded-full hover:bg-[#e55e00] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                className="mt-6 w-full bg-[#C94700] text-white font-semibold py-3.5 rounded-full hover:bg-[#B13E00] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Узнать ориентир →
               </button>

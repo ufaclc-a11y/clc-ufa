@@ -61,6 +61,7 @@ const nextConfig = {
       { source: '/contact',                      destination: '/contacts',                  permanent: true },
       { source: '/services/izgotovlenie-izdelij', destination: '/products',                   permanent: true },
       { source: '/products/detali-b2b',           destination: '/b2b',                        permanent: true },
+      { source: '/products/heshteги',              destination: '/products/kheshtegi',         permanent: true },
 
       // ── Старый сайт: каталог и изготовление изделий ──
       { source: '/store',                          destination: '/products',                   permanent: true },
@@ -85,7 +86,7 @@ const nextConfig = {
       { source: '/lazer-rez-beidjiki',   destination: '/products/bejdzhi',         permanent: true },
       { source: '/lazer-rez-shkatulki',  destination: '/products/shkatulki',       permanent: true },
       { source: '/lazer-rez-statuetki',  destination: '/products/nagrady',         permanent: true },
-      { source: '/lazer-rez-heshtegi',   destination: '/products',                 permanent: true },
+      { source: '/lazer-rez-heshtegi',   destination: '/products/kheshtegi',       permanent: true },
 
       // ── Старый сайт: УФ-печать ──
       { source: '/uv-print',          destination: '/services/uf-pechat', permanent: true },

@@ -25,6 +25,7 @@ const seoLinks = [
 ]
 
 const companyLinks = [
+  { href: '/shop',        label: 'Готовые товары'    },
   { href: '/portfolio',   label: 'Наши работы'       },
   { href: '/products',    label: 'Каталог изделий'   },
   { href: '/cases',       label: 'Кейсы с ценами'    },
@@ -44,7 +45,7 @@ export function Footer() {
 
 function LegacyFooter() {
   return (
-    <footer className="bg-[#1A1A1A] text-white/50 pt-16 pb-8">
+    <footer className="bg-[#1A1A1A] text-white/65 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-10 mb-14">
 
@@ -53,7 +54,7 @@ function LegacyFooter() {
             <Link href="/" className="inline-flex items-center gap-3 mb-5">
               <span className="font-display text-3xl text-white tracking-[0.1em]">CLC</span>
               <span className="w-px h-6 bg-[#FF6B00]" />
-              <span className="font-body text-[10px] text-[#6E6A64] uppercase tracking-widest leading-tight">
+              <span className="font-body text-xs text-white/65 uppercase tracking-widest leading-tight">
                 Воплощаем<br />идеи
               </span>
             </Link>
@@ -72,7 +73,7 @@ function LegacyFooter() {
                   target="_blank"
                   rel="noopener noreferrer"
                   title={s.title}
-                  className={`w-9 h-9 bg-white/5 rounded-full flex items-center justify-center text-xs font-mono hover:text-white transition-colors ${s.cls}`}
+                  className={`w-11 h-11 bg-white/5 rounded-full flex items-center justify-center text-xs font-mono hover:text-white transition-colors ${s.cls}`}
                 >
                   {s.label}
                 </a>
@@ -142,8 +143,8 @@ function LegacyFooter() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-white/25">
-          <span>© 2025 {business.name}</span>
+        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-white/55">
+          <span>© {new Date().getFullYear()} {business.name}</span>
           <nav className="flex flex-wrap justify-center gap-x-4 gap-y-1">
             <Link href="/oferta" className="hover:text-white/60 transition-colors">Оферта</Link>
             <Link href="/dostavka-i-oplata" className="hover:text-white/60 transition-colors">Доставка и оплата</Link>

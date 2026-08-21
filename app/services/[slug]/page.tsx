@@ -264,7 +264,7 @@ export default async function ServicePage({ params }: Props) {
                   <Link
                     key={m}
                     href={href}
-                    className="group flex items-center gap-2.5 bg-white border border-[#E8E6E0] hover:border-[#FF6B00] hover:bg-[#FF6B00] text-[#1A1A1A] hover:text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200"
+                    className="group flex items-center gap-2.5 bg-white border border-[#E8E6E0] hover:border-[#C94700] hover:bg-[#C94700] text-[#1A1A1A] hover:text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-[background-color,border-color,color] duration-200"
                     style={{ boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}
                   >
                     <span className="w-2 h-2 rounded-full bg-[#FF6B00] group-hover:bg-white shrink-0 transition-colors duration-200" />
@@ -289,7 +289,7 @@ export default async function ServicePage({ params }: Props) {
                     <Link
                       key={u}
                       href={href}
-                      className="group flex items-center justify-between gap-3 bg-white border border-[#E8E6E0] hover:border-[#FF6B00] px-5 py-4 rounded-xl text-sm font-semibold text-[#2D2D2D] hover:text-[#FF6B00] transition-all duration-200"
+                      className="group flex items-center justify-between gap-3 bg-white border border-[#E8E6E0] hover:border-[#C94700] px-5 py-4 rounded-xl text-sm font-semibold text-[#2D2D2D] hover:text-[#9D3900] transition-[border-color,color] duration-200"
                       style={{ boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}
                     >
                       <span className="flex items-center gap-3">

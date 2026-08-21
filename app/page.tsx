@@ -36,7 +36,7 @@ const howToLd = {
 }
 
 export const metadata: Metadata = {
-  title:       'Центр лазерной резки — Лазерная резка, УФ-печать и фрезеровка ЧПУ в Уфе',
+  title:       { absolute: 'Центр лазерной резки — лазерная резка, УФ-печать и фрезеровка ЧПУ в Уфе' },
   description: 'Изготавливаем изделия и детали по вашему макету: лазерная резка, УФ-печать, гравировка и фрезеровка ЧПУ в Уфе. От одной штуки до партии.',
   keywords:    ['лазерная резка уфа', 'центр лазерной резки уфа', 'уф печать уфа', 'гравировка уфа', 'фрезеровка чпу уфа', 'изготовление изделий уфа', 'лазерная резка на заказ уфа', 'резка акрила уфа', 'резка фанеры уфа'],
   alternates:  { canonical: 'https://clc-ufa.ru' },
@@ -101,12 +101,12 @@ export default function HomePage() {
             {/* Заголовок */}
             <h1 className="font-display text-[clamp(48px,8vw,96px)] text-white tracking-wider leading-[0.95] mb-8 animate-fade-up">
               Лазерная резка,{' '}
-              <span className="text-gradient">УФ-печать</span>
+              <span className="text-[#FF8A33]">УФ-печать</span>
               <br />и фрезеровка ЧПУ
               <br />в Уфе
             </h1>
 
-            <p className="text-[clamp(16px,2vw,20px)] text-white/55 max-w-2xl leading-relaxed mb-10 animate-fade-up delay-100">
+            <p className="text-[clamp(16px,2vw,20px)] text-white/70 max-w-2xl leading-relaxed mb-10 animate-fade-up delay-100">
               Изготавливаем изделия, детали и заготовки по вашему макету — от одной штуки до партии. Фанера, акрил, ПВХ, МДФ, дерево, металл, кожа, стекло и другие материалы.
             </p>
 
@@ -243,7 +243,7 @@ export default function HomePage() {
                   {post.category}
                 </span>
                 <div className="absolute inset-x-0 bottom-0 p-4">
-                  <div className="text-[10px] text-white/45 font-mono mb-1.5">{post.readTime} мин чтения</div>
+                  <div className="text-xs text-white/65 font-mono mb-1.5">{post.readTime} мин чтения</div>
                   <h3 className="font-display text-base text-white tracking-wide leading-snug group-hover:text-[#FF6B00] transition-colors duration-200">
                     {post.title}
                   </h3>

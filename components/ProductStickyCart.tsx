@@ -11,9 +11,9 @@ type Props = {
 }
 
 export function ProductStickyCart({ id, price, inStock }: Props) {
-  const { add, entries } = useCart()
+  const { add, lines } = useCart()
   const [show, setShow] = useState(false)
-  const inCart = entries.some(entry => entry.item.id === id)
+  const inCart = lines.some(line => line.id === id)
 
   useEffect(() => {
     const target = document.getElementById('product-primary-buy')

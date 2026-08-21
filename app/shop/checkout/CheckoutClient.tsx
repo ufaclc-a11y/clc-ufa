@@ -2,12 +2,14 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
-import { useCart } from '@/lib/cart'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { hydrateCart, useCart } from '@/lib/cart'
+import { shopItems } from '@/data/shop'
 import { trackGoal } from '@/lib/analytics'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { DELIVERY_METHODS, type DeliveryMethod } from '@/lib/shop-order'
 import type { DeliveryQuote, PickupPoint } from '@/lib/delivery/types'
+import { isPlausibleContact } from '@/lib/order-validation'
 
 const rub = (n: number) => `${n.toLocaleString('ru-RU')} ₽`
 
@@ -19,7 +21,10 @@ const field =
 const label = 'mb-2 block text-sm font-bold text-[#42444C]'
 
 export function CheckoutClient() {
-  const { entries, total, count, ready, clear } = useCart()
+  const { lines, ready, clear } = useCart()
+  const entries = useMemo(() => hydrateCart(lines, shopItems), [lines])
+  const count = entries.reduce((sum, entry) => sum + entry.qty, 0)
+  const total = entries.reduce((sum, entry) => sum + entry.sum, 0)
 
   const [delivery, setDelivery] = useState<DeliveryMethod>('pickup')
   const [sending, setSending]   = useState(false)
@@ -36,6 +41,7 @@ export function CheckoutClient() {
   const [quote, setQuote]         = useState<DeliveryQuote | null>(null)
   const [point, setPoint]         = useState<string>('')
   const startedTracked = useRef(false)
+  const errorRef = useRef<HTMLParagraphElement>(null)
 
   const needsCity = delivery !== 'pickup'
   // Самовывоз не требует внешнего расчёта; остальные способы работают через
@@ -103,10 +109,29 @@ export function CheckoutClient() {
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setError(null)
+    const fd = new FormData(e.currentTarget)
+    const contact = String(fd.get('contact') ?? '')
+    const address = String(fd.get('address') ?? '')
+
+    if (!isPlausibleContact(contact)) {
+      setError('Укажите телефон, e-mail или ник в мессенджере — не менее трёх символов.')
+      window.setTimeout(() => errorRef.current?.focus(), 0)
+      return
+    }
+    if (needsCity && city.trim().length < 2) {
+      setError('Укажите город доставки.')
+      window.setTimeout(() => document.getElementById('city')?.focus(), 0)
+      return
+    }
+    if (needsCity && !point && !address.trim()) {
+      setError(delivery === 'russian' ? 'Укажите адрес доставки.' : 'Выберите пункт выдачи или укажите его адрес.')
+      window.setTimeout(() => document.getElementById(points.length > 0 ? 'point' : 'address')?.focus(), 0)
+      return
+    }
+
     setSending(true)
     trackGoal('checkout_submit_attempt', { count, total, delivery })
 
-    const fd = new FormData(e.currentTarget)
     try {
       const res = await fetch('/api/order', {
         method:  'POST',
@@ -115,7 +140,7 @@ export function CheckoutClient() {
           name:     fd.get('name'),
           contact:  fd.get('contact'),
           city:     needsCity ? city : '',
-          address:  fd.get('address'),
+          address,
           comment:  fd.get('comment'),
           company:  fd.get('company'),   // honeypot
           delivery,
@@ -164,8 +189,8 @@ export function CheckoutClient() {
             </p>
             <Link
               href="/shop"
-              className="inline-flex items-center justify-center rounded-xl bg-[#FF5A00] px-7 py-3 font-semibold text-white
-                transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-[#E95000] active:translate-y-0 active:bg-[#D84B00]
+              className="inline-flex items-center justify-center rounded-xl bg-[#C94700] px-7 py-3 font-semibold text-white
+                transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-[#B13E00] active:translate-y-0 active:bg-[#9D3700]
                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2"
             >
               Вернуться в магазин
@@ -182,7 +207,7 @@ export function CheckoutClient() {
           </div>
         ) : (
           <>
-            <ol className="mb-5 flex items-center gap-2 overflow-x-auto text-sm font-semibold text-[#777984]" aria-label="Этапы оформления заказа">
+            <ol className="scrollbar-none mb-5 flex items-center gap-2 overflow-x-auto text-sm font-semibold text-[#62646D]" aria-label="Этапы оформления заказа">
               <li><Link href="/shop/cart" className="inline-flex min-h-10 items-center rounded-lg px-2 text-[#5B3A86] transition-colors hover:bg-[#F1EBF8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A00]">Корзина</Link></li>
               <li aria-hidden="true" className="text-[#B6B8C0]">→</li>
               <li aria-current="step" className="inline-flex min-h-10 items-center whitespace-nowrap rounded-lg bg-white px-3 text-[#17181B] shadow-[0_5px_16px_rgba(37,31,49,0.06)]">Доставка</li>
@@ -202,7 +227,7 @@ export function CheckoutClient() {
 
                 <div>
                   <label htmlFor="contact" className={label}>Телефон, e-mail или ник *</label>
-                  <input id="contact" name="contact" required autoComplete="tel" inputMode="tel" className={field}
+                  <input id="contact" name="contact" required minLength={3} autoComplete="tel" className={field}
                     placeholder="+7 999 123-45-67 или @nickname" />
                 </div>
 
@@ -329,9 +354,11 @@ export function CheckoutClient() {
                       </div>
                     ) : (
                       <div>
-                        <label htmlFor="address" className={label}>Адрес или пункт выдачи</label>
-                        <input id="address" name="address" autoComplete="street-address" className={field}
-                          placeholder="Улица, дом или код ПВЗ" />
+                        <label htmlFor="address" className={label}>
+                          {delivery === 'russian' ? 'Адрес доставки *' : 'Адрес или пункт выдачи *'}
+                        </label>
+                        <input id="address" name="address" required autoComplete="street-address" className={field}
+                          placeholder={delivery === 'russian' ? 'Улица, дом, квартира, индекс' : 'Улица, дом или код ПВЗ'} />
                       </div>
                     )}
                   </>
@@ -410,7 +437,7 @@ export function CheckoutClient() {
                 </p>
 
                 {error && (
-                  <p role="alert" className="mt-4 text-sm text-[#C4341C] bg-[#C4341C]/5 border border-[#C4341C]/20 rounded-xl px-4 py-3">
+                  <p ref={errorRef} tabIndex={-1} role="alert" className="mt-4 text-sm text-[#A82918] bg-[#C4341C]/5 border border-[#C4341C]/20 rounded-xl px-4 py-3 focus:outline-none">
                     {error}
                   </p>
                 )}
@@ -418,9 +445,9 @@ export function CheckoutClient() {
                 <button
                   type="submit"
                   disabled={sending}
-                  className="mt-5 hidden w-full cursor-pointer items-center justify-center rounded-xl bg-[#FF5A00] px-6 py-3 font-semibold text-white
+                  className="mt-5 hidden w-full cursor-pointer items-center justify-center rounded-xl bg-[#C94700] px-6 py-3 font-semibold text-white
                     shadow-[0_7px_18px_rgba(255,90,0,0.24)] transition-[background-color,transform,box-shadow]
-                    hover:-translate-y-0.5 hover:bg-[#E95000] hover:shadow-[0_10px_22px_rgba(255,90,0,0.28)] active:translate-y-0 active:bg-[#D84B00] disabled:cursor-not-allowed disabled:opacity-60
+                    hover:-translate-y-0.5 hover:bg-[#B13E00] hover:shadow-[0_10px_22px_rgba(141,50,0,0.24)] active:translate-y-0 active:bg-[#9D3700] disabled:cursor-not-allowed disabled:opacity-60
                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2 lg:inline-flex"
                 >
                   {sending ? 'Отправляем…' : 'Оформить заказ'}
@@ -436,7 +463,7 @@ export function CheckoutClient() {
               </aside>
 
               {error && (
-                <p id="checkout-mobile-error" role="alert" className="fixed bottom-[82px] left-4 right-4 z-50 rounded-xl border border-[#C4341C]/20 bg-white px-4 py-3 text-sm text-[#C4341C] shadow-[0_10px_28px_rgba(90,28,20,0.16)] lg:hidden">
+                <p id="checkout-mobile-error" aria-hidden="true" className="fixed bottom-[82px] left-4 right-4 z-50 rounded-xl border border-[#C4341C]/20 bg-white px-4 py-3 text-sm text-[#A82918] shadow-[0_10px_28px_rgba(90,28,20,0.16)] lg:hidden">
                   {error}
                 </p>
               )}
@@ -450,7 +477,7 @@ export function CheckoutClient() {
                   <button
                     type="submit"
                     disabled={sending}
-                    className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-xl bg-[#FF5A00] px-5 text-sm font-bold text-white shadow-[0_7px_18px_rgba(255,90,0,0.24)] transition-[background-color,transform] hover:bg-[#E95000] active:translate-y-px disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2"
+                    className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-xl bg-[#C94700] px-5 text-sm font-bold text-white shadow-[0_7px_18px_rgba(141,50,0,0.2)] transition-[background-color,transform] hover:bg-[#B13E00] active:translate-y-px disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2"
                   >
                     {sending ? 'Отправляем…' : 'Оформить'}
                   </button>

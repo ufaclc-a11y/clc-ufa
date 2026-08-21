@@ -36,12 +36,12 @@ export function ServiceCard({ service }: { service: Service }) {
         </p>
         <div className="flex flex-wrap gap-1.5 [text-shadow:none]">
           {service.materials.slice(0, 4).map(m => (
-            <span key={m} className="text-[10px] bg-black/35 backdrop-blur-sm text-white/90 px-2 py-0.5 rounded-full border border-white/15">
+            <span key={m} className="text-xs bg-black/35 backdrop-blur-sm text-white/90 px-2 py-0.5 rounded-full border border-white/15">
               {m}
             </span>
           ))}
           {service.materials.length > 4 && (
-            <span className="text-[10px] text-[#FF6B00] px-1 py-0.5">
+            <span className="text-xs text-[#9D3900] px-1 py-0.5">
               +{service.materials.length - 4}
             </span>
           )}

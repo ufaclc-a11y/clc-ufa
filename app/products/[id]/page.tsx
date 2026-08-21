@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = products.find(p => p.id === id)
   if (!product) return {}
   return {
-    title:       `${product.title} на заказ в Уфе | Центр лазерной резки`,
+    title:       `${product.title} на заказ в Уфе`,
     description: product.description,
     alternates:  { canonical: `https://clc-ufa.ru/products/${product.id}` },
     openGraph: {

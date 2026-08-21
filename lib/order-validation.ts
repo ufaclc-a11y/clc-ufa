@@ -20,6 +20,12 @@ export function hasContact(body: Record<string, string>): boolean {
   return Boolean(body.contact && body.contact.trim() !== '')
 }
 
+/** Отсекает случайные символы, но принимает телефон, e-mail и ник в мессенджере. */
+export function isPlausibleContact(value: string): boolean {
+  const normalized = value.trim()
+  return normalized.length >= 3 && /[\p{L}\p{N}]/u.test(normalized)
+}
+
 export type AttachmentCheck =
   | { ok: true }
   | { ok: false; error: string; status: 400 | 413 }

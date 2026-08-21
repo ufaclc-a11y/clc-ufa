@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link  from 'next/link'
 import { portfolioItems, portfolioCategories, type PortfolioItem } from '@/data/portfolio'
 
-const PAGE = 48
+const PAGE = 24
 
 type Props = { limit?: number; showFilter?: boolean; defaultCategory?: string }
 
@@ -27,7 +27,23 @@ export function PortfolioGrid({ limit, showFilter = true, defaultCategory = 'all
   function changeCategory(id: string) {
     setActive(id)
     setVisible(PAGE)
+    const next = new URL(window.location.href)
+    if (id === 'all') next.searchParams.delete('cat')
+    else next.searchParams.set('cat', id)
+    window.history.pushState({}, '', `${next.pathname}${next.search}${next.hash}`)
   }
+
+  useEffect(() => {
+    const restoreFromHistory = () => {
+      const category = new URL(window.location.href).searchParams.get('cat') ?? 'all'
+      if (portfolioCategories.some(item => item.id === category)) {
+        setActive(category)
+        setVisible(PAGE)
+      }
+    }
+    window.addEventListener('popstate', restoreFromHistory)
+    return () => window.removeEventListener('popstate', restoreFromHistory)
+  }, [])
 
   /* ── Lightbox helpers ── */
   const lightboxItems = limit ? items : filtered   // навигация по всем отфильтрованным
@@ -60,15 +76,15 @@ export function PortfolioGrid({ limit, showFilter = true, defaultCategory = 'all
     <>
       {/* ── Filter buttons ── */}
       {showFilter && (
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div className="scrollbar-none -mx-4 mb-8 flex gap-2 overflow-x-auto px-4 pb-2 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0" aria-label="Категории портфолио">
           {portfolioCategories.map(cat => {
             const isActive = active === cat.id
-            const cls = `inline-flex items-center text-sm px-4 py-2 rounded-full font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2 active:scale-95 ${
+            const cls = `inline-flex min-h-11 shrink-0 items-center whitespace-nowrap text-sm px-4 py-2 rounded-full font-semibold transition-[background-color,color,transform] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2 active:scale-95 ${
               isActive
-                ? 'bg-[#FF6B00] text-white shadow-[0_2px_12px_rgba(255,107,0,0.35)]'
-                : 'bg-[#E8E6E0] text-[#6E6A64] hover:bg-[#1A1A1A] hover:text-white'
+                ? 'bg-[#C94700] text-white shadow-[0_2px_12px_rgba(141,50,0,0.24)]'
+                : 'bg-[#E8E6E0] text-[#514E49] hover:bg-[#1A1A1A] hover:text-white'
             }`
-            const badge = <span className={`ml-1.5 text-[11px] leading-none ${isActive ? 'text-white/70' : 'text-[#6E6A64]/60'}`}>{cat.count}</span>
+            const badge = <span className={`ml-1.5 text-xs leading-none ${isActive ? 'text-white/80' : 'text-[#5C5852]'}`}>{cat.count}</span>
 
             if (cat.id === 'all') {
               return (
@@ -161,7 +177,7 @@ function PortfolioCard({ item, priority, onClick }: { item: PortfolioItem; prior
           <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0zm-6-3v6m-3-3h6" />
         </svg>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-1 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+      <div className="absolute bottom-0 left-0 right-0 p-3 opacity-100 transition-[opacity,transform] duration-300 sm:translate-y-1 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">
         <p className="text-white text-sm font-semibold leading-tight">{item.title}</p>
       </div>
     </button>

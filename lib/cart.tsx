@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, useContext, useEffect, useMemo, useState, useCallback } from 'react'
-import { shopItems, type ShopItem } from '@/data/shop'
+import type { ShopItem } from '@/data/shop'
 import { trackGoal } from '@/lib/analytics'
 
 /**
@@ -19,9 +19,7 @@ export type CartEntry = { item: ShopItem; qty: number; sum: number }
 
 type CartContextValue = {
   lines:      CartLine[]
-  entries:    CartEntry[]
   count:      number
-  total:      number
   /** Гидратация завершена — до неё счётчик не показываем, чтобы не мигал. */
   ready:      boolean
   add:        (id: number, qty?: number) => void
@@ -45,7 +43,6 @@ function readStorage(): CartLine[] {
         typeof (l as CartLine).id === 'number' &&
         typeof (l as CartLine).qty === 'number')
       .map(l => ({ id: l.id, qty: clampQty(l.qty) }))
-      .filter(l => shopItems.some(i => i.id === l.id))
   } catch {
     return []
   }
@@ -101,22 +98,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const clear = useCallback(() => setLines([]), [])
 
-  const entries = useMemo<CartEntry[]>(() => {
-    return lines.flatMap(l => {
-      const item = shopItems.find(i => i.id === l.id)
-      // Товар мог исчезнуть из каталога между визитами — пропускаем.
-      return item ? [{ item, qty: l.qty, sum: item.price * l.qty }] : []
-    })
-  }, [lines])
-
   const value = useMemo<CartContextValue>(() => ({
     lines,
-    entries,
-    count: entries.reduce((a, e) => a + e.qty, 0),
-    total: entries.reduce((a, e) => a + e.sum, 0),
+    count: lines.reduce((total, line) => total + line.qty, 0),
     ready,
     add, setQty, remove, clear,
-  }), [lines, entries, ready, add, setQty, remove, clear])
+  }), [lines, ready, add, setQty, remove, clear])
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 }
@@ -125,4 +112,12 @@ export function useCart(): CartContextValue {
   const ctx = useContext(CartContext)
   if (!ctx) throw new Error('useCart вызван вне <CartProvider>')
   return ctx
+}
+
+/** Дополняет лёгкие строки корзины каталогом только на экранах магазина. */
+export function hydrateCart(lines: CartLine[], catalog: readonly ShopItem[]): CartEntry[] {
+  return lines.flatMap(line => {
+    const item = catalog.find(candidate => candidate.id === line.id)
+    return item ? [{ item, qty: line.qty, sum: item.price * line.qty }] : []
+  })
 }

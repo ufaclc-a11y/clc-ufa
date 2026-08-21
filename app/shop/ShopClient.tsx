@@ -13,7 +13,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { shopItems, shopCategories, type ShopItem } from '@/data/shop'
+import { shopItems, type ShopItem } from '@/data/shop'
+import { shopCategories } from '@/data/shop-categories'
 import { useCart } from '@/lib/cart'
 import { trackGoal } from '@/lib/analytics'
 import { filterAndSortShopItems, isShopSort, SHOP_SORTS, type ShopSort } from '@/lib/shop-catalog'
@@ -65,7 +66,7 @@ export function ShopClient() {
       if (!value) next.searchParams.delete(key)
       else next.searchParams.set(key, value)
     })
-    window.history.replaceState({}, '', `${next.pathname}${next.search}${next.hash}`)
+    window.history.pushState({}, '', `${next.pathname}${next.search}${next.hash}`)
   }
 
   function chooseCategory(id: string) {
@@ -91,7 +92,7 @@ export function ShopClient() {
     setSearch('')
     setSort('recommended')
     setInStockOnly(false)
-    window.history.replaceState({}, '', '/shop#catalog')
+    window.history.pushState({}, '', '/shop#catalog')
   }
 
   return (
@@ -112,7 +113,7 @@ export function ShopClient() {
             </p>
             <a
               href="#catalog"
-              className="mt-5 inline-flex min-h-11 cursor-pointer items-center justify-center rounded-xl bg-[#FF5A00] px-4 text-xs font-bold text-white shadow-[0_8px_20px_rgba(255,90,0,0.24)] transition-[background-color,transform,box-shadow] hover:-translate-y-0.5 hover:bg-[#E95000] hover:shadow-[0_11px_25px_rgba(255,90,0,0.28)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A00] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F0EBFA] sm:mt-7 sm:min-h-12 sm:px-6 sm:text-sm"
+              className="mt-5 inline-flex min-h-11 cursor-pointer items-center justify-center rounded-xl bg-[#C94700] px-4 text-xs font-bold text-white shadow-[0_8px_20px_rgba(141,50,0,0.2)] transition-[background-color,transform,box-shadow] hover:-translate-y-0.5 hover:bg-[#B13E00] hover:shadow-[0_11px_25px_rgba(141,50,0,0.24)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A00] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F0EBFA] sm:mt-7 sm:min-h-12 sm:px-6 sm:text-sm"
             >
               Смотреть каталог
             </a>
@@ -134,7 +135,7 @@ export function ShopClient() {
       </section>
 
       <section id="catalog" className="mx-auto max-w-[1480px] scroll-mt-44 px-4 pb-16 sm:px-6">
-        <div className="mb-4 flex gap-2 overflow-x-auto pb-2 lg:hidden" aria-label="Фильтр по категориям">
+        <div className="scrollbar-none mb-4 flex gap-2 overflow-x-auto pb-2 lg:hidden" aria-label="Фильтр по категориям">
           {shopCategories.map(category => (
             <CategoryButton key={category.id} category={category} count={counts[category.id] || 0} active={activeCategory === category.id} onClick={chooseCategory} compact />
           ))}
@@ -239,7 +240,7 @@ export function ShopClient() {
             <h2 className="text-2xl font-extrabold tracking-[-0.03em] sm:text-3xl">Нужно изделие по вашему макету?</h2>
             <p className="mt-2 max-w-2xl text-[#62646D]">Изготовим деталь, декор или партию изделий по вашим размерам и дизайну.</p>
           </div>
-          <Link href="/contacts" className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl bg-[#FF5A00] px-6 text-sm font-bold text-white transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-[#E95000] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A00] focus-visible:ring-offset-2">Оставить заявку</Link>
+          <Link href="/contacts" className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl bg-[#C94700] px-6 text-sm font-bold text-white transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-[#B13E00] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A00] focus-visible:ring-offset-2">Оставить заявку</Link>
         </div>
       </section>
     </div>
@@ -272,9 +273,9 @@ function CategoryButton({
 }
 
 function ProductCard({ item, priority = false }: { item: ShopItem; priority?: boolean }) {
-  const { add, entries } = useCart()
+  const { add, lines } = useCart()
   const [imgError, setImgError] = useState(false)
-  const inCart = entries.find(entry => entry.item.id === item.id)?.qty ?? 0
+  const inCart = lines.find(line => line.id === item.id)?.qty ?? 0
 
   return (
     <article className="group min-w-0">
@@ -283,7 +284,7 @@ function ProductCard({ item, priority = false }: { item: ShopItem; priority?: bo
         onClick={() => trackGoal('select_item', { product: item.id, category: item.category })}
         className="relative block aspect-[3/4] overflow-hidden rounded-2xl bg-white shadow-[0_8px_22px_rgba(45,37,58,0.07)] transition-[transform,box-shadow] hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(45,37,58,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A00]"
       >
-        <span className={`absolute left-2.5 top-2.5 z-10 rounded-full px-2.5 py-1 text-[10px] font-extrabold shadow-[0_4px_12px_rgba(20,20,24,0.1)] ${item.inStock ? 'bg-white text-[#16854A]' : 'bg-[#F1EBF8] text-[#5B3A86]'}`}>
+        <span className={`absolute left-2.5 top-2.5 z-10 rounded-full px-2.5 py-1 text-xs font-extrabold shadow-[0_4px_12px_rgba(20,20,24,0.1)] ${item.inStock ? 'bg-white text-[#117A37]' : 'bg-[#F1EBF8] text-[#5B3A86]'}`}>
           {item.inStock ? 'В наличии' : 'Под заказ'}
         </span>
         {!imgError ? (
@@ -316,10 +317,10 @@ function ProductCard({ item, priority = false }: { item: ShopItem; priority?: bo
             onClick={() => add(item.id, 1)}
             disabled={!item.inStock}
             aria-label={item.inStock ? `Добавить в корзину: ${item.title}` : `${item.title}: нет в наличии`}
-            className="relative flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-xl bg-[#FF5A00] text-white shadow-[0_6px_16px_rgba(255,90,0,0.22)] transition-[background-color,transform,box-shadow] hover:-translate-y-0.5 hover:bg-[#E95000] hover:shadow-[0_9px_20px_rgba(255,90,0,0.28)] active:translate-y-0 disabled:cursor-not-allowed disabled:bg-[#C9CAD0] disabled:shadow-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A00] focus-visible:ring-offset-2"
+            className="relative flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-xl bg-[#C94700] text-white shadow-[0_6px_16px_rgba(141,50,0,0.2)] transition-[background-color,transform,box-shadow] hover:-translate-y-0.5 hover:bg-[#B13E00] hover:shadow-[0_9px_20px_rgba(141,50,0,0.24)] active:translate-y-0 disabled:cursor-not-allowed disabled:bg-[#C9CAD0] disabled:shadow-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A00] focus-visible:ring-offset-2"
           >
             <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M3 4h2l2.2 10.4a1 1 0 0 0 1 .8h8.7a1 1 0 0 0 1-.8L19.3 8H6" strokeLinecap="round" strokeLinejoin="round"/><circle cx="9.5" cy="19" r="1.2" fill="currentColor" stroke="none"/><circle cx="16.5" cy="19" r="1.2" fill="currentColor" stroke="none"/></svg>
-            {inCart > 0 && <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#5B3A86] px-1 text-[10px] font-extrabold tabular-nums">{inCart}</span>}
+            {inCart > 0 && <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#5B3A86] px-1 text-xs font-extrabold tabular-nums">{inCart}</span>}
           </button>
         </div>
       </div>

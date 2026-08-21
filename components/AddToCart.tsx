@@ -11,10 +11,10 @@ type Props = {
 
 /** Счётчик количества + «В корзину». После добавления предлагает оформить заказ. */
 export function AddToCart({ id, inStock }: Props) {
-  const { add, entries } = useCart()
+  const { add, lines } = useCart()
   const [qty, setQty] = useState(1)
 
-  const inCart = entries.find(e => e.item.id === id)?.qty ?? 0
+  const inCart = lines.find(line => line.id === id)?.qty ?? 0
 
   if (!inStock) {
     return (

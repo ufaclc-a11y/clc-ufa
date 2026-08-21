@@ -45,11 +45,11 @@ h1, h2, h3, h4, h5 {
   .font-body    { font-family: var(--font-body); }
   .font-mono    { font-family: var(--font-mono); }
 
-  .text-gradient {
-    background: linear-gradient(120deg, #FF6B00 20%, #FFA500 80%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
   }
 
   /* Слоистые тени с цветным тинтом */

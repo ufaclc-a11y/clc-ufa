@@ -5,6 +5,7 @@ import { IconMax, IconTG, IconWA } from '@/components/ContactButtons'
 const shopLinks = [
   { href: '/shop', label: 'Каталог' },
   { href: '/shop/cart', label: 'Корзина' },
+  { href: '/products', label: 'Изготовление на заказ' },
   { href: '/dostavka-i-oplata', label: 'Доставка и оплата' },
   { href: '/vozvrat', label: 'Возврат' },
 ]
@@ -46,7 +47,7 @@ export function ShopFooter() {
         </div>
 
         <div className="mt-9 flex flex-col gap-2 border-t border-[#DCDDE5] pt-5 text-xs text-[#62646D] sm:flex-row sm:items-center sm:justify-between">
-          <span>© 2025 {business.name}</span>
+          <span>© {new Date().getFullYear()} {business.name}</span>
           <span>{business.address}</span>
         </div>
       </div>

@@ -2,15 +2,19 @@
 
 import Image from 'next/image'
 import Link  from 'next/link'
-import { useEffect, useRef } from 'react'
-import { useCart } from '@/lib/cart'
+import { useEffect, useMemo, useRef } from 'react'
+import { hydrateCart, useCart } from '@/lib/cart'
+import { shopItems } from '@/data/shop'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { trackGoal } from '@/lib/analytics'
 
 const rub = (n: number) => `${n.toLocaleString('ru-RU')} ₽`
 
 export function CartClient() {
-  const { entries, total, count, ready, setQty, remove } = useCart()
+  const { lines, ready, setQty, remove } = useCart()
+  const entries = useMemo(() => hydrateCart(lines, shopItems), [lines])
+  const count = entries.reduce((sum, entry) => sum + entry.qty, 0)
+  const total = entries.reduce((sum, entry) => sum + entry.sum, 0)
   const tracked = useRef(false)
 
   useEffect(() => {
@@ -27,7 +31,7 @@ export function CartClient() {
           { label: 'Корзина' },
         ]} />
 
-        <ol className="mb-5 flex items-center gap-2 overflow-x-auto text-sm font-semibold text-[#777984]" aria-label="Этапы оформления заказа">
+        <ol className="scrollbar-none mb-5 flex items-center gap-2 overflow-x-auto text-sm font-semibold text-[#62646D]" aria-label="Этапы оформления заказа">
           <li aria-current="step" className="inline-flex min-h-10 items-center rounded-lg bg-white px-3 text-[#17181B] shadow-[0_5px_16px_rgba(37,31,49,0.06)]">Корзина</li>
           <li aria-hidden="true" className="text-[#B6B8C0]">→</li>
           <li className="inline-flex min-h-10 items-center whitespace-nowrap px-2">Доставка</li>
@@ -47,8 +51,8 @@ export function CartClient() {
             <p className="text-[#6E6A64] mb-6">В корзине пока пусто.</p>
             <Link
               href="/shop"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#FF5A00] px-7 py-3 font-semibold text-white
-                transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-[#E95000] active:translate-y-0 active:bg-[#D84B00]
+              className="inline-flex items-center gap-2 rounded-xl bg-[#C94700] px-7 py-3 font-semibold text-white
+                transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-[#B13E00] active:translate-y-0 active:bg-[#9D3700]
                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2"
             >
               Перейти в магазин
@@ -142,9 +146,9 @@ export function CartClient() {
 
               <Link
                 href="/shop/checkout"
-                className="mt-5 hidden w-full items-center justify-center rounded-xl bg-[#FF5A00] px-6 py-3 font-semibold text-white
+                className="mt-5 hidden w-full items-center justify-center rounded-xl bg-[#C94700] px-6 py-3 font-semibold text-white
                   shadow-[0_7px_18px_rgba(255,90,0,0.24)] transition-[background-color,transform,box-shadow]
-                  hover:-translate-y-0.5 hover:bg-[#E95000] hover:shadow-[0_10px_22px_rgba(255,90,0,0.28)] active:translate-y-0 active:bg-[#D84B00]
+                  hover:-translate-y-0.5 hover:bg-[#B13E00] hover:shadow-[0_10px_22px_rgba(141,50,0,0.24)] active:translate-y-0 active:bg-[#9D3700]
                   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2 lg:inline-flex"
               >
                 Оформить заказ
@@ -169,7 +173,7 @@ export function CartClient() {
                 <Link
                   href="/shop/checkout"
                   onClick={() => trackGoal('cart_checkout_click', { count, total })}
-                  className="inline-flex min-h-12 items-center justify-center rounded-xl bg-[#FF5A00] px-5 text-sm font-bold text-white shadow-[0_7px_18px_rgba(255,90,0,0.24)] transition-[background-color,transform] hover:bg-[#E95000] active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2"
+                  className="inline-flex min-h-12 items-center justify-center rounded-xl bg-[#C94700] px-5 text-sm font-bold text-white shadow-[0_7px_18px_rgba(141,50,0,0.2)] transition-[background-color,transform] hover:bg-[#B13E00] active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2"
                 >
                   Оформить
                 </Link>

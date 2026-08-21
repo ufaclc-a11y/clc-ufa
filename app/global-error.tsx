@@ -35,7 +35,7 @@ export default function GlobalError({
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
           <button onClick={reset}
-            className="bg-[#FF6B00] text-white font-semibold px-7 py-3 rounded-full hover:bg-[#e55e00] transition-colors">
+            className="bg-[#C94700] text-white font-semibold px-7 py-3 rounded-full hover:bg-[#B13E00] transition-colors">
             Попробовать снова
           </button>
           <Link href="/"
