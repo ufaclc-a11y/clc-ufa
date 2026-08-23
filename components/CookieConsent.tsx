@@ -72,9 +72,9 @@ export function CookieConsent() {
       role="dialog"
       aria-modal="false"
       aria-label="Уведомление об использовании cookie"
-      className="border-b border-[#E2E3E9] bg-[#FFF9F5]"
+      className="fixed inset-x-0 bottom-0 z-[9998] p-3 sm:p-4"
     >
-      <div className="mx-auto max-w-[1480px] px-4 py-2.5 text-[#25262B] sm:px-6">
+      <div className="mx-auto max-w-5xl rounded-2xl border border-[#E2E3E9] bg-[#FFF9F5] px-4 py-3 text-[#25262B] shadow-[0_14px_38px_rgba(53,35,24,0.18),0_3px_10px_rgba(53,35,24,0.08)] sm:px-5">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
           <div className="min-w-0 flex-1">
             <p className="text-sm font-bold">Настройка cookie</p>
@@ -90,7 +90,7 @@ export function CookieConsent() {
               </p>
             )}
           </div>
-          <div className="flex flex-wrap gap-2.5">
+          <div className="flex flex-wrap items-center gap-2.5">
             <button
               type="button"
               onClick={() => setDetails(value => !value)}
@@ -106,13 +106,13 @@ export function CookieConsent() {
             >
               Только необходимые
             </button>
-          <button
+            <button
               type="button"
               onClick={accept}
               className="min-h-11 cursor-pointer rounded-xl bg-[#C94700] px-5 text-sm font-bold text-white shadow-[0_6px_16px_rgba(141,50,0,0.18)] transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-[#B13E00] active:translate-y-0 active:bg-[#9D3700] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2"
-          >
+            >
               Принять
-          </button>
+            </button>
           </div>
         </div>
       </div>

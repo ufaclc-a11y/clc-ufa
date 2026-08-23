@@ -1,0 +1,109 @@
+.new-home-surface {
+  font-family: var(--font-clc-body), sans-serif;
+  letter-spacing: 0;
+}
+
+.new-home-surface * {
+  letter-spacing: 0;
+}
+
+.new-home-surface .new-home-display {
+  font-family: var(--font-clc-display), sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.new-home-surface a,
+.new-home-surface button,
+.new-home-surface summary {
+  transition-duration: 180ms;
+  transition-property: color, background-color, border-color, opacity, transform;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.new-home-surface ::selection {
+  background: #e7ff42;
+  color: #0d2a80;
+}
+
+.new-home-surface input,
+.new-home-surface textarea {
+  caret-color: #ff541f;
+}
+
+.new-home-hero-image {
+  animation: new-home-hero-arrival 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes new-home-hero-arrival {
+  from { opacity: 0.86; transform: scale(1.025); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.new-home-surface #calc {
+  border: 0;
+  background: #fff;
+  color: #101318;
+}
+
+.new-home-surface #calc input,
+.new-home-surface #calc textarea {
+  border-color: #c9cfd6;
+}
+
+.new-home-surface #calc input:focus,
+.new-home-surface #calc textarea:focus {
+  border-color: #1647d8;
+}
+
+.new-home-mobile-bar {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+.clc-header-new-home {
+  border-bottom: 1px solid rgb(255 255 255 / 0.18);
+  background: #0d2a80 !important;
+}
+
+.clc-header-new-home > div:first-child {
+  height: 2px;
+  background: #ff541f;
+}
+
+.clc-header-new-home a[aria-label='WhatsApp'],
+.clc-header-new-home a[aria-label='Telegram'],
+.clc-header-new-home a[aria-label='MAX'] {
+  border: 1px solid rgb(255 255 255 / 0.28);
+  border-radius: 4px;
+  background: transparent !important;
+}
+
+.clc-header-new-home > div:last-child {
+  background: #0d2a80;
+}
+
+.clc-header-new-home nav a {
+  color: rgb(255 255 255 / 0.76);
+}
+
+.clc-header-new-home nav a:hover {
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .new-home-surface *,
+  .new-home-surface *::before,
+  .new-home-surface *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .new-home-surface {
+    padding-bottom: 72px;
+  }
+}
