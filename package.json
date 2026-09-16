@@ -14,7 +14,8 @@
     "start": "next start",
     "lint": "eslint .",
     "test": "node --import tsx --test tests/*.test.ts",
-    "import-media": "npx tsx scripts/import-telegram-media.ts"
+    "import-media": "npx tsx scripts/import-telegram-media.ts",
+    "import:content-factory": "node scripts/import-content-factory-case.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

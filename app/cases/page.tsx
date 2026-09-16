@@ -1,10 +1,15 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { cases }        from '@/data/cases'
+import { cases as demonstrationCases } from '@/data/cases'
+import { contentFactoryCases } from '@/lib/content-factory-cases'
 import { business }     from '@/data/contacts'
 import { Breadcrumbs }  from '@/components/Breadcrumbs'
 import { CTASection }   from '@/components/CTASection'
 import { JsonLd }       from '@/components/JsonLd'
+
+// Demonstration cases remain a fallback until the first approved real export is imported.
+// They are never consumed by Content Factory as historical evidence.
+const cases = contentFactoryCases.length ? contentFactoryCases : demonstrationCases
 
 const casesLd = {
   '@context': 'https://schema.org',
