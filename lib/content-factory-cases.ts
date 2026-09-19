@@ -4,6 +4,7 @@ import generated from '@/content/content-factory-cases.json'
 export type ContentFactoryCase = Case & {
   contentFactory: {
     schemaVersion: 'content-factory.website-case.v1'
+    projectId?: string
     packId: string
     packVersion: number
     approvalHash: string
