@@ -5,6 +5,7 @@ import { blogPosts }          from '@/data/blog'
 import { products }           from '@/data/products'
 import { shopItems }          from '@/data/shop'
 import { portfolioCategories } from '@/data/portfolio'
+import { publicCases }         from '@/lib/public-cases'
 
 // lastModified указываем только там, где знаем реальную дату (посты блога).
 // «Дата билда» у всех URL сразу обесценивает lastmod для поисковиков.
@@ -74,5 +75,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority:        0.7,
   }))
 
-  return [...statics, ...servicePages, ...seoLandings, ...blogPages, ...productPages, ...portfolioCatPages, ...shopPages]
+  const casePages: MetadataRoute.Sitemap = publicCases.map(item => ({
+    url:             `${base}/cases/${item.id}`,
+    changeFrequency: 'monthly' as const,
+    priority:        0.7,
+  }))
+
+  return [...statics, ...servicePages, ...seoLandings, ...blogPages, ...productPages, ...portfolioCatPages, ...shopPages, ...casePages]
 }

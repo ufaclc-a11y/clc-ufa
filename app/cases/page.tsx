@@ -1,15 +1,11 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { cases as demonstrationCases } from '@/data/cases'
-import { contentFactoryCases } from '@/lib/content-factory-cases'
+import Link from 'next/link'
 import { business }     from '@/data/contacts'
 import { Breadcrumbs }  from '@/components/Breadcrumbs'
 import { CTASection }   from '@/components/CTASection'
 import { JsonLd }       from '@/components/JsonLd'
-
-// Demonstration cases remain a fallback until the first approved real export is imported.
-// They are never consumed by Content Factory as historical evidence.
-const cases = contentFactoryCases.length ? contentFactoryCases : demonstrationCases
+import { publicCases as cases } from '@/lib/public-cases'
 
 const casesLd = {
   '@context': 'https://schema.org',
@@ -21,6 +17,7 @@ const casesLd = {
     item: {
       '@type':     'CreativeWork',
       name:        c.title,
+      url:         `https://clc-ufa.ru/cases/${c.id}`,
       image:       `https://clc-ufa.ru${c.image}`,
       description: c.task,
     },
@@ -46,63 +43,55 @@ const categoryColors: Record<string, string> = {
 function CaseCard({ c }: { c: (typeof cases)[number] }) {
   const catCls = categoryColors[c.category] ?? 'bg-[#FF6B00]'
   return (
-    <div className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#2D2D2D]">
-      {/* Photo */}
-      <Image
-        src={c.image}
-        alt={c.imageAlt}
-        fill
-        className="object-cover group-hover:scale-105 transition-transform duration-500"
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-      />
-
-      {/* Strong gradient from bottom */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
-
-      {/* Top: category badge */}
-      <div className="absolute top-3 left-3">
-        <span className={`text-xs font-bold text-white px-3 py-1 rounded-full ${catCls}`}>
+    <Link
+      href={`/cases/${c.id}`}
+      aria-label={`Открыть кейс: ${c.title}`}
+      className="group block min-w-0 cursor-pointer overflow-hidden rounded-2xl bg-white shadow-[0_8px_28px_rgba(31,28,24,0.08)] transition-[box-shadow,transform] duration-200 hover:-translate-y-1 hover:shadow-[0_18px_42px_rgba(31,28,24,0.14)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-4"
+    >
+      <div className="relative aspect-[4/3] overflow-hidden bg-[#D4D5D5]">
+        <Image
+          src={c.image}
+          alt={c.imageAlt}
+          fill
+          className="object-cover transition-transform duration-300 group-hover:scale-[1.025]"
+          sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) 50vw, 400px"
+        />
+        <span className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.16)] ${catCls}`}>
           {c.category}
         </span>
       </div>
 
-      {/* Bottom: all info */}
-      <div className="absolute inset-x-0 bottom-0 p-5">
-        {/* Client */}
-        <p className="text-xs text-white/65 mb-1 font-mono uppercase tracking-wider">{c.client}</p>
-
-        {/* Title */}
-        <h2 className="font-display text-lg text-white tracking-wide leading-snug mb-3">
+      <div className="p-5 sm:p-6">
+        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#6E6A64]">
+          {c.client}
+        </p>
+        <h2 className="font-display text-2xl leading-tight text-[#1A1A1A] transition-colors duration-200 group-hover:text-[#C94700]">
           {c.title}
         </h2>
 
-        {/* Stats row */}
-        <div className="flex gap-3 mb-3">
+        <dl className="mt-5 grid grid-cols-3 divide-x divide-[#E8E6E0] border-y border-[#E8E6E0] py-3">
           {[
-            { label: 'Кол-во', value: c.qty      },
-            { label: 'Срок',   value: c.deadline  },
-            { label: 'Цена',   value: c.price     },
-          ].map(s => (
-            <div key={s.label} className="flex-1 bg-white/10 backdrop-blur-sm rounded-lg p-2 text-center border border-white/10">
-              <div className="text-xs text-white/65 uppercase tracking-wider mb-0.5">{s.label}</div>
-              <div className="text-xs font-semibold text-white leading-tight">{s.value}</div>
+            { label: 'Количество', value: c.qty },
+            { label: 'Срок', value: c.deadline },
+            { label: 'Цена', value: c.price },
+          ].map(item => (
+            <div key={item.label} className="min-w-0 px-2 first:pl-0 last:pr-0">
+              <dt className="text-xs font-semibold uppercase tracking-[0.08em] text-[#77736C]">{item.label}</dt>
+              <dd className="mt-1 break-words text-sm font-semibold leading-snug text-[#2D2D2D]">{item.value}</dd>
             </div>
           ))}
-        </div>
+        </dl>
 
-        {/* Task */}
-        <p className="text-xs text-white/55 leading-relaxed line-clamp-2 mb-2">{c.task}</p>
+        <p className="mt-4 line-clamp-3 text-base leading-relaxed text-[#5F5B55]">{c.task}</p>
 
-        {/* Tags */}
-        <div className="flex flex-wrap gap-1.5">
-          {c.tags.slice(0, 3).map(t => (
-            <span key={t} className="text-xs bg-white/10 text-white/80 px-2 py-0.5 rounded-full border border-white/10">
-              {t}
-            </span>
-          ))}
-        </div>
+        <span className="mt-5 inline-flex min-h-11 items-center gap-2 font-semibold text-[#9D3900] underline decoration-[#D8A684] underline-offset-4 transition-colors duration-200 group-hover:text-[#7D2E00] group-hover:decoration-[#7D2E00]">
+          Смотреть кейс
+          <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </span>
       </div>
-    </div>
+    </Link>
   )
 }
 
