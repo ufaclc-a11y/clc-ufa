@@ -17,18 +17,22 @@ function text(value, fallback) {
   return typeof value === 'string' && value.trim() ? value.trim() : fallback
 }
 
-export function contentFactoryCaseFromExport(payload, imagePath, importedAt = new Date().toISOString()) {
+export function contentFactoryCaseFromExport(payload, imagePathsInput, importedAt = new Date().toISOString()) {
   verifyContentFactoryExport(payload)
   const website = payload.websiteCase
   const slug = text(website.slug, '')
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw new Error('websiteCase.slug is invalid')
+  const imagePaths = Array.isArray(imagePathsInput) ? imagePathsInput : [imagePathsInput]
+  if (!imagePaths.length || imagePaths.some(imagePath => typeof imagePath !== 'string' || !imagePath.startsWith('/'))) throw new Error('At least one public image path is required')
+  const imageAlt = text(website.title, 'Выполненная работа')
   return {
     id: slug,
     title: text(website.title, 'Реальный проект'),
     client: 'Клиент Центра лазерной резки',
     category: 'Реальный проект',
-    image: imagePath,
-    imageAlt: text(website.title, 'Выполненная работа'),
+    image: imagePaths[0],
+    imageAlt,
+    images: imagePaths.map((src, index) => ({ src, alt: index ? `${imageAlt}, фото ${index + 1}` : imageAlt })),
     task: text(website.problem, website.summary ?? 'Задача клиента'),
     solution: text(website.solution, 'Решение Центра лазерной резки'),
     result: text(website.result, 'Проект выполнен'),

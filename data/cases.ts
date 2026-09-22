@@ -1,3 +1,8 @@
+export type CaseImage = {
+  src: string
+  alt: string
+}
+
 export type Case = {
   id:       string
   title:    string
@@ -5,6 +10,7 @@ export type Case = {
   category: string
   image:    string
   imageAlt: string
+  images?: CaseImage[]
   task:     string
   solution: string
   result:   string

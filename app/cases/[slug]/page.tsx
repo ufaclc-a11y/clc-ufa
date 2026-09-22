@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { CTASection } from '@/components/CTASection'
+import { CaseGallery } from '@/components/CaseGallery'
 import { JsonLd } from '@/components/JsonLd'
 import { getPublicCase, publicCases } from '@/lib/public-cases'
 
@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!item) return {}
 
   const description = item.task.length > 155 ? `${item.task.slice(0, 152).trimEnd()}…` : item.task
+  const images = item.images?.length ? item.images : [{ src: item.image, alt: item.imageAlt }]
 
   return {
     title: item.title,
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: item.title,
       description,
-      images: [{ url: item.image, alt: item.imageAlt }],
+      images: images.map(image => ({ url: image.src, alt: image.alt })),
       type: 'article',
     },
   }
@@ -37,6 +38,7 @@ export default async function CasePage({ params }: Props) {
   const { slug } = await params
   const item = getPublicCase(slug)
   if (!item) notFound()
+  const images = item.images?.length ? item.images : [{ src: item.image, alt: item.imageAlt }]
 
   const caseLd = {
     '@context': 'https://schema.org',
@@ -45,7 +47,7 @@ export default async function CasePage({ params }: Props) {
     url: `https://clc-ufa.ru/cases/${item.id}`,
     name: item.title,
     description: item.task,
-    image: `https://clc-ufa.ru${item.image}`,
+    image: images.map(image => `https://clc-ufa.ru${image.src}`),
     inLanguage: 'ru-RU',
     creator: {
       '@type': 'Organization',
@@ -91,16 +93,7 @@ export default async function CasePage({ params }: Props) {
               </Link>
             </div>
 
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#D4D5D5] shadow-[0_24px_70px_rgba(0,0,0,0.28)]">
-              <Image
-                src={item.image}
-                alt={item.imageAlt}
-                fill
-                priority
-                className="object-contain"
-                sizes="(max-width: 1024px) calc(100vw - 2rem), 640px"
-              />
-            </div>
+            <CaseGallery images={images} />
           </div>
         </section>
 

@@ -2,6 +2,7 @@ import { portfolioCategories, portfolioItems } from '@/data/portfolio'
 import { products } from '@/data/products'
 import { shopItems } from '@/data/shop'
 import { SITE } from '@/lib/seo'
+import { publicCases } from '@/lib/public-cases'
 
 export const dynamic = 'force-static'
 
@@ -42,6 +43,16 @@ export function GET() {
       .map(src => `    <image:image><image:loc>${esc(SITE + src)}</image:loc></image:image>`)
       .join('\n')
     urls.push(`  <url>\n    <loc>${SITE}/shop/${item.slug}</loc>\n${images}\n  </url>`)
+  }
+
+  // Страница каждого кейса → обложка или вся опубликованная галерея.
+  for (const item of publicCases) {
+    const gallery = item.images?.length ? item.images.map(image => image.src) : [item.image]
+    const images = gallery
+      .slice(0, MAX_IMAGES_PER_PAGE)
+      .map(src => `    <image:image><image:loc>${esc(SITE + src)}</image:loc></image:image>`)
+      .join('\n')
+    urls.push(`  <url>\n    <loc>${SITE}/cases/${item.id}</loc>\n${images}\n  </url>`)
   }
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
