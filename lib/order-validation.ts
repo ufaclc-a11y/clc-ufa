@@ -7,7 +7,7 @@ export const MAX_TOTAL_BYTES = 40 * 1024 * 1024   // 40 МБ суммарно
 export const MAX_FIELD_LEN   = 2000               // максимум символов в текстовом поле
 
 export const ALLOWED_EXT = new Set([
-  'jpg', 'jpeg', 'png', 'webp', 'gif', 'pdf', 'ai', 'eps', 'svg', 'dxf', 'cdr', 'zip',
+  'jpg', 'jpeg', 'png', 'webp', 'gif', 'pdf', 'ai', 'eps', 'svg', 'dxf', 'cdr', 'step', 'stp', 'zip',
 ])
 
 /** Honeypot: поле company скрыто от людей, заполняют только боты. */

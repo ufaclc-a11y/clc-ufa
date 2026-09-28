@@ -308,7 +308,7 @@ export function OrderForm() {
               id="order-files"
               ref={fileInputRef}
               type="file" multiple
-              accept=".jpg,.jpeg,.png,.webp,.gif,.pdf,.ai,.eps,.svg,.dxf,.cdr,.zip"
+              accept=".jpg,.jpeg,.png,.webp,.gif,.pdf,.ai,.eps,.svg,.dxf,.cdr,.step,.stp,.zip"
               className="hidden"
               onChange={e => handleFiles(e.target.files)}
               aria-invalid={Boolean(fileErr)}
@@ -324,7 +324,7 @@ export function OrderForm() {
                 <p className="text-sm text-[#6E6A64]">
                   Перетащите файлы или <span className="text-[#FF6B00] font-semibold">нажмите для выбора</span>
                 </p>
-                <p id="order-files-help" className="text-xs text-[#5C5852] mt-1">JPG, PNG, PDF, AI, SVG, DXF, CDR · до {MAX_SIZE_MB} МБ · до 5 файлов</p>
+                <p id="order-files-help" className="text-xs text-[#5C5852] mt-1">JPG, PNG, PDF, AI, SVG, DXF, CDR, STEP, STP · до {MAX_SIZE_MB} МБ · до 5 файлов</p>
               </>
             ) : (
               <div className="space-y-2 text-left" onClick={e => e.stopPropagation()}>

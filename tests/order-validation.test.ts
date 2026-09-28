@@ -35,6 +35,8 @@ test('файлы: допустимые расширения проходят н�
   assert.deepEqual(checkAttachment('maket.dxf', 1024, 0), { ok: true })
   assert.deepEqual(checkAttachment('LOGO.SVG', 1024, 0), { ok: true })
   assert.deepEqual(checkAttachment('фото.JPG', 1024, 0), { ok: true })
+  assert.deepEqual(checkAttachment('detail.STEP', 1024, 0), { ok: true })
+  assert.deepEqual(checkAttachment('detail.stp', 1024, 0), { ok: true })
 })
 
 test('файлы: недопустимое или отсутствующее расширение — 400', () => {
