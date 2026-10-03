@@ -1,3 +1,5 @@
+import { CuttingPrices } from '@/components/CuttingPrices'
+import { getLandingCuttingPrices } from '@/data/cutting-prices'
 import type { Metadata } from 'next'
 import Image             from 'next/image'
 import Link              from 'next/link'
@@ -58,6 +60,8 @@ export default async function SeoLandingPage({ params }: Props) {
   const page = seoPages.find(p => p.slug === slug)
   if (!page) notFound()
 
+  const cuttingPrices = getLandingCuttingPrices(page.slug)
+
   // Related products: match by material keyword in tags
   const relatedProducts = products
     .filter(p =>
@@ -108,7 +112,7 @@ export default async function SeoLandingPage({ params }: Props) {
     offers: {
       '@type': 'AggregateOffer',
       priceCurrency: 'RUB',
-      lowPrice: '400',
+      lowPrice: '450',
       availability: 'https://schema.org/InStock',
       url: `${SITE}/${page.slug}`,
     },
@@ -166,6 +170,14 @@ export default async function SeoLandingPage({ params }: Props) {
           <div className="bg-white rounded-2xl p-8 border border-[#E8E6E0]">
             <p className="text-[#1A1A1A] leading-[1.85] text-base">{page.bodyText}</p>
           </div>
+
+          {cuttingPrices && <CuttingPrices {...cuttingPrices} />}
+          {page.slug === 'frezernaya-rezka-akrila-ufa' && (
+            <section aria-labelledby="acrylic-price-title" className="bg-white rounded-2xl p-6 sm:p-8 border border-[#E8E6E0]">
+              <h2 id="acrylic-price-title" className="font-display text-3xl text-[#1A1A1A] tracking-wide">Стоимость фрезеровки акрила</h2>
+              <p className="text-[#6E6A64] mt-3 leading-relaxed">Цена по запросу: пришлите толщину материала и макет для расчёта. Минимальный заказ — 450 ₽.</p>
+            </section>
+          )}
 
           {/* Trust signals row */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">

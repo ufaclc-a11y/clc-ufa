@@ -102,7 +102,7 @@ function estimate(service: ServiceKey, sizeMult: number, qtyMult: number, qty: n
   const unitPrice = Math.round(base * sizeMult * qtyMult / 50) * 50
   const min = Math.max(100, Math.round(unitPrice * 0.8 / 50) * 50)
   const max = Math.round(unitPrice * 1.3 / 50) * 50
-  return [min * qty, max * qty]
+  return [Math.max(450, Math.floor(min * qty * 110 / 100)), Math.max(450, Math.floor(max * qty * 110 / 100))]
 }
 
 // ── Stepper UI ────────────────────────────────────────────────────────────────

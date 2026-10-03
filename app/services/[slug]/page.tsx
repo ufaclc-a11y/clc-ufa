@@ -90,7 +90,7 @@ export default async function ServicePage({ params }: Props) {
     // Рейтинг бизнеса живёт на LocalBusiness в layout.
     category:    service.materials,
     additionalProperty: [
-      { '@type': 'PropertyValue', name: 'minimumOrder', value: '400 RUB' },
+      { '@type': 'PropertyValue', name: 'minimumOrder', value: '450 RUB' },
       { '@type': 'PropertyValue', name: 'productionTime', value: '1-3 days' },
       { '@type': 'PropertyValue', name: 'rushProduction', value: 'from 1 hour' },
       { '@type': 'PropertyValue', name: 'acceptedFiles', value: 'DXF, SVG, CDR, AI, PDF' },
@@ -100,7 +100,7 @@ export default async function ServicePage({ params }: Props) {
           offers: {
             '@type': 'AggregateOffer',
             priceCurrency: 'RUB',
-            lowPrice: '400',
+            lowPrice: '450',
             availability: 'https://schema.org/InStock',
             url: `${SITE}/services/${service.slug}`,
           },
@@ -357,7 +357,7 @@ export default async function ServicePage({ params }: Props) {
                     {table.rows.map(row => (
                       <div key={row.label} className="flex items-center justify-between px-6 py-3">
                         <span className="text-sm text-[#2D2D2D]">{row.label}</span>
-                        <span className="font-semibold text-[#FF6B00] font-mono text-sm tabular-nums">
+                        <span className="ml-4 shrink-0 whitespace-nowrap font-semibold text-[#FF6B00] font-mono text-sm tabular-nums">
                           {row.price} ₽
                         </span>
                       </div>

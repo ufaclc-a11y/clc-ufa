@@ -1,3 +1,4 @@
+import { CuttingPrices } from '@/components/CuttingPrices'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -75,7 +76,7 @@ const materials = [
     image:      '/images/portfolio/gravirovka-001.jpg',
     desc:       'Гравировка маркиратором на металлических изделиях: термосы, кружки, ножи, жетоны, медали, адресники. Глубокая, стойкая гравировка — не стирается и не выцветает.',
     properties: ['Стойкая гравировка', 'Глубокий рез', 'Долговечность', 'Профессиональный вид'],
-    tech:       ['Гравировка (маркиратор)', 'УФ-печать'],
+    tech:       ['Гравировка (маркиратор)', 'UV DTF'],
     examples:   'Термосы, кружки, ножи, жетоны, адресники, флаги, корпоративные подарки',
     href:       '/services/gravirovka-na-metalle',
   },
@@ -202,10 +203,16 @@ export default function MaterialsPage() {
           </div>
 
           <p className="text-xs text-[#6E6A64]/70 mt-3">
-            Минимальный заказ — от 400 ₽. Стандартный срок — 1–3 дня, срочно — от 1 часа.
+            Минимальный заказ — от 450 ₽. Стандартный срок — 1–3 дня, срочно — от 1 часа.
           </p>
         </div>
       </section>
+
+      <div className="bg-[#F5F4F0] py-14 sm:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <CuttingPrices />
+        </div>
+      </div>
 
       {/* ── СЕТКА МАТЕРИАЛОВ ── */}
       <section className="py-16 bg-[#F5F4F0]">

@@ -89,17 +89,17 @@ export default async function ProductPage({ params }: Props) {
     },
     manufacturer: localBusinessRef,
     additionalProperty: [
-      { '@type': 'PropertyValue', name: 'minimumOrder', value: '400 RUB' },
+      { '@type': 'PropertyValue', name: 'minimumOrder', value: '450 RUB' },
       { '@type': 'PropertyValue', name: 'productionTime', value: '1-3 days' },
       { '@type': 'PropertyValue', name: 'city', value: business.city },
       ...(product.popularFor ? [{ '@type': 'PropertyValue', name: 'popularFor', value: product.popularFor }] : []),
     ],
     offers: {
-      // Цена индивидуальная (по макету), заказ от 400 ₽ — выражаем через AggregateOffer/lowPrice.
+      // Цена индивидуальная (по макету), заказ от 450 ₽ — выражаем через AggregateOffer/lowPrice.
       // offerCount: одна позиция под заказ у одного продавца.
       '@type':        'AggregateOffer',
       priceCurrency:  'RUB',
-      lowPrice:       tablePrices.length ? String(Math.min(...tablePrices)) : '400',
+      lowPrice:       tablePrices.length ? String(Math.min(...tablePrices)) : '450',
       ...(tablePrices.length ? { highPrice: String(Math.max(...tablePrices)) } : {}),
       offerCount:     tablePrices.length || 1,
       availability:   'https://schema.org/InStock',
