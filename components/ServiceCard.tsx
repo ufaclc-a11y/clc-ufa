@@ -31,7 +31,7 @@ export function ServiceCard({ service }: { service: Service }) {
         <h3 className="font-display text-[1.7rem] text-white tracking-wider mb-2 leading-tight group-hover:text-[#FF6B00] transition-colors duration-200">
           {service.shortTitle}
         </h3>
-        <p className="text-xs text-white/85 leading-relaxed line-clamp-2 mb-3">
+        <p className="text-sm text-white/90 leading-relaxed line-clamp-2 mb-3">
           {service.shortDescription}
         </p>
         <div className="flex flex-wrap gap-1.5 [text-shadow:none]">

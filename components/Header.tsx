@@ -27,6 +27,7 @@ export function Header() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
+    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -65,7 +66,7 @@ export function Header() {
           <div className="relative w-9 h-9 shrink-0">
             <Image src="/logo.svg" alt="Центр лазерной резки" fill className="object-contain" priority />
           </div>
-          <span className="hidden xl:block font-display text-[13px] tracking-[0.12em] leading-none text-white/70 group-hover:text-white transition-colors whitespace-nowrap">
+          <span className="hidden 2xl:block font-display text-[13px] tracking-[0.12em] leading-none text-white/70 group-hover:text-white transition-colors whitespace-nowrap">
             ЦЕНТР ЛАЗЕРНОЙ РЕЗКИ
           </span>
         </Link>
@@ -76,7 +77,8 @@ export function Header() {
             <Link
               key={l.href}
               href={l.href}
-              className="flex items-center text-sm text-white/70 hover:text-white transition-colors duration-200 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] rounded"
+              aria-current={pathname === l.href || pathname.startsWith(`${l.href}/`) ? 'page' : undefined}
+              className="flex items-center text-sm text-white/80 hover:text-white active:opacity-70 aria-[current=page]:text-[#FF6B00] whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] rounded"
             >
               {l.label}
             </Link>
@@ -94,7 +96,7 @@ export function Header() {
           {/* Телефон */}
           <a
             href={`tel:${business.phone}`}
-            className="flex items-center px-3 text-sm font-mono text-white/75 hover:text-white transition-colors whitespace-nowrap rounded-lg hover:bg-white/5 self-stretch"
+            className="flex items-center px-3 text-sm font-mono text-white/80 hover:text-white active:opacity-70 whitespace-nowrap rounded-lg hover:bg-white/5 self-stretch focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]"
           >
             {business.phoneDisplay}
           </a>
@@ -134,15 +136,16 @@ export function Header() {
       </div>
 
       {/* ── Мобильное меню ── */}
-      {open && <div id="mobile-navigation" className="border-t border-white/10 bg-[#111] xl:hidden">
+      {open && <div id="mobile-navigation" className="border-t border-white/10 bg-[#111] xl:hidden max-h-[calc(100dvh-67px)] overflow-y-auto">
         <div className="px-4 py-6 flex flex-col gap-5">
           <nav className="flex flex-col gap-4" aria-label="Мобильная навигация">
             {nav.map(l => (
               <Link
                 key={l.href}
                 href={l.href}
+                aria-current={pathname === l.href || pathname.startsWith(`${l.href}/`) ? 'page' : undefined}
                 onClick={() => setOpen(false)}
-                className="flex min-h-11 items-center font-display text-2xl text-white tracking-wider hover:text-[#FF8A33] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] rounded"
+                className="flex min-h-11 items-center font-display text-2xl text-white tracking-wider hover:text-[#FF8A33] active:opacity-70 aria-[current=page]:text-[#FF6B00] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] rounded"
               >
                 {l.label}
               </Link>

@@ -159,7 +159,7 @@ function PortfolioCard({ item, priority, onClick }: { item: PortfolioItem; prior
     <button
       type="button"
       onClick={onClick}
-      className="group relative aspect-square bg-[#1A1A1A] rounded-xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.18)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.32)] transition-shadow duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2 w-full"
+      className="group relative aspect-square bg-[#1A1A1A] rounded-xl overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.18)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.32)] active:scale-[0.98] transition-transform duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] focus-visible:ring-offset-2 w-full cursor-pointer"
     >
       <Image
         src={item.image}
@@ -170,15 +170,15 @@ function PortfolioCard({ item, priority, onClick }: { item: PortfolioItem; prior
         priority={priority}
         loading={priority ? 'eager' : 'lazy'}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent pointer-events-none" />
       {/* Zoom icon on hover */}
-      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-end justify-start p-3">
+      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300 flex flex-col items-end justify-start p-3">
         <svg className="w-6 h-6 text-white/80" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0zm-6-3v6m-3-3h6" />
         </svg>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 p-3 opacity-100 transition-[opacity,transform] duration-300 sm:translate-y-1 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">
-        <p className="text-white text-sm font-semibold leading-tight">{item.title}</p>
+      <div className="absolute bottom-0 left-0 right-0 p-3 text-left">
+        <p className="text-white text-sm font-semibold leading-snug">{item.title}</p>
       </div>
     </button>
   )

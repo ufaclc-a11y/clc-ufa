@@ -57,7 +57,7 @@ export default function HomePage() {
       <JsonLd data={howToLd} />
       <JsonLd data={faqLd} />
       {/* ─── HERO ─── */}
-      <section className="relative min-h-screen bg-black flex flex-col justify-end pb-20 pt-32 overflow-hidden">
+      <section className="relative min-h-[min(900px,100svh)] bg-black flex flex-col justify-end pb-12 sm:pb-16 pt-28 sm:pt-32 overflow-hidden">
         {/* Фоновое фото: лазерная голова за работой */}
         <Image
           src="/images/hero-laser.jpg"
@@ -99,14 +99,14 @@ export default function HomePage() {
             </div>
 
             {/* Заголовок */}
-            <h1 className="font-display text-[clamp(48px,8vw,96px)] text-white tracking-wider leading-[0.95] mb-8 animate-fade-up">
+            <h1 className="font-display text-[34px] sm:text-[56px] lg:text-[72px] text-white tracking-normal leading-[1.08] mb-6 animate-fade-up">
               Лазерная резка,{' '}
               <span className="text-[#FF8A33] whitespace-nowrap">УФ-печать</span>
               <br />и фрезеровка ЧПУ
               <br />в Уфе
             </h1>
 
-            <p className="text-[clamp(16px,2vw,20px)] text-white/70 max-w-2xl leading-relaxed mb-10 animate-fade-up delay-100">
+            <p className="text-base sm:text-lg text-white/80 max-w-2xl leading-[1.7] mb-8 animate-fade-up delay-100">
               Изготавливаем изделия, детали и заготовки по вашему макету — от одной штуки до партии. Фанера, акрил, ПВХ, МДФ, дерево, металл, кожа, стекло и другие материалы.
             </p>
 
@@ -115,7 +115,7 @@ export default function HomePage() {
             </div>
 
             {/* Цифры */}
-            <div className="mt-16 pt-8 border-t border-white/10 grid grid-cols-3 gap-6 sm:gap-16 animate-fade-up delay-300">
+            <div className="mt-10 pt-6 border-t border-white/20 grid grid-cols-3 gap-4 sm:gap-16 animate-fade-up delay-300">
               {[
                 { n: '4',    sub: 'технологии в одном месте' },
                 { n: '1–3',  sub: 'дня — стандартный срок'   },
@@ -137,7 +137,7 @@ export default function HomePage() {
       <section className="py-20 bg-[#F5F4F0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-10">
-            <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Технологии</span>
+            <span className="font-mono text-xs text-[#A84300] tracking-widest uppercase">Технологии</span>
             <h2 className="font-display text-4xl sm:text-5xl text-[#1A1A1A] tracking-wider mt-2">
               Наши услуги
             </h2>
@@ -153,12 +153,12 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <div>
-              <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Изделия</span>
+              <span className="font-mono text-xs text-[#A84300] tracking-widest uppercase">Изделия</span>
               <h2 className="font-display text-4xl sm:text-5xl text-[#1A1A1A] tracking-wider mt-2">
                 Что можем изготовить
               </h2>
             </div>
-            <Link href="/products" className="text-sm font-semibold text-[#FF6B00] hover:underline underline-offset-4 shrink-0">
+            <Link href="/products" className="inline-flex items-center text-sm font-semibold text-[#A84300] hover:underline underline-offset-4 active:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FF6B00] shrink-0">
               Полный каталог →
             </Link>
           </div>
@@ -179,7 +179,7 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-3">
-                  <p className="text-xs font-semibold text-white group-hover:text-[#FF6B00] transition-colors leading-snug">
+                  <p className="text-sm font-semibold text-white group-hover:text-[#FF6B00] leading-snug">
                     {p.title}
                   </p>
                 </div>
@@ -196,14 +196,14 @@ export default function HomePage() {
       <section className="py-20 bg-[#F5F4F0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-10">
-            <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Портфолио</span>
+            <span className="font-mono text-xs text-[#A84300] tracking-widest uppercase">Портфолио</span>
             <h2 className="font-display text-4xl sm:text-5xl text-[#1A1A1A] tracking-wider mt-2">
               Наши работы
             </h2>
           </div>
           <PortfolioGrid limit={8} showFilter={false} />
           <div className="mt-8 text-center">
-            <Link href="/portfolio" className="text-sm font-semibold text-[#FF6B00] hover:underline underline-offset-4">
+            <Link href="/portfolio" className="inline-flex items-center text-sm font-semibold text-[#A84300] hover:underline underline-offset-4 active:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FF6B00]">
               Смотреть все работы →
             </Link>
           </div>
@@ -215,12 +215,12 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <div>
-              <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Блог</span>
+              <span className="font-mono text-xs text-[#A84300] tracking-widest uppercase">Блог</span>
               <h2 className="font-display text-4xl sm:text-5xl text-[#1A1A1A] tracking-wider mt-2">
                 Советы и статьи
               </h2>
             </div>
-            <Link href="/blog" className="text-sm font-semibold text-[#FF6B00] hover:underline underline-offset-4 shrink-0">
+            <Link href="/blog" className="inline-flex items-center text-sm font-semibold text-[#A84300] hover:underline underline-offset-4 active:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FF6B00] shrink-0">
               Все статьи →
             </Link>
           </div>
@@ -243,7 +243,7 @@ export default function HomePage() {
                   {post.category}
                 </span>
                 <div className="absolute inset-x-0 bottom-0 p-4">
-                  <div className="text-xs text-white/65 font-mono mb-1.5">{post.readTime} мин чтения</div>
+                  <div className="text-xs text-white/80 font-mono mb-1.5">{post.readTime} мин чтения</div>
                   <h3 className="font-display text-base text-white tracking-wide leading-snug group-hover:text-[#FF6B00] transition-colors duration-200">
                     {post.title}
                   </h3>
@@ -261,7 +261,7 @@ export default function HomePage() {
       <section className="py-20 bg-[#F5F4F0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-10">
-            <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Преимущества</span>
+            <span className="font-mono text-xs text-[#A84300] tracking-widest uppercase">Преимущества</span>
             <h2 className="font-display text-4xl sm:text-5xl text-[#1A1A1A] tracking-wider mt-2">
               Почему удобно с нами
             </h2>
@@ -292,12 +292,12 @@ export default function HomePage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <div>
-              <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Вопросы</span>
+              <span className="font-mono text-xs text-[#A84300] tracking-widest uppercase">Вопросы</span>
               <h2 className="font-display text-4xl sm:text-5xl text-[#1A1A1A] tracking-wider mt-2">
                 Часто спрашивают
               </h2>
             </div>
-            <Link href="/faq" className="text-sm font-semibold text-[#FF6B00] hover:underline underline-offset-4 shrink-0">
+            <Link href="/faq" className="inline-flex items-center text-sm font-semibold text-[#A84300] hover:underline underline-offset-4 active:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FF6B00] shrink-0">
               Все вопросы →
             </Link>
           </div>
