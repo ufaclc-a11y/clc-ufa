@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { trackGoal } from '@/lib/analytics'
+import { fontBody } from '@/lib/fonts'
 
 export default function GlobalError({
   error,
@@ -23,11 +24,10 @@ export default function GlobalError({
 
   return (
     <html lang="ru">
-      <body className="min-h-screen bg-[#1A1A1A] flex flex-col items-center justify-center px-4 text-center"
-            style={{ fontFamily: 'Manrope, sans-serif' }}>
+      <body className={`${fontBody.className} min-h-screen bg-[#1A1A1A] flex flex-col items-center justify-center px-4 text-center`}>
         <div className="text-7xl mb-6 opacity-20 select-none">:(</div>
         <h1 className="text-4xl font-bold text-white mb-3"
-            style={{ fontFamily: 'Bebas Neue, sans-serif', letterSpacing: '0.03em' }}>
+            style={{ fontFamily: 'inherit', letterSpacing: '0.03em' }}>
           Что-то пошло не так
         </h1>
         <p className="text-[#6E6A64] text-lg max-w-sm mx-auto mb-8 leading-relaxed">

@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --font-display: var(--f-display), 'Bebas Neue', sans-serif;
+  --font-display: var(--font-body);
   --font-body:    var(--f-body), system-ui, sans-serif;
-  --font-mono:    var(--f-mono), 'JetBrains Mono', monospace;
+  --font-mono:    var(--font-body);
   --clr-orange:   #FF6B00;
   --clr-dark:     #1A1A1A;
   --clr-warm:     #F5F4F0;

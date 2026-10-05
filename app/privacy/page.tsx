@@ -24,7 +24,7 @@ export default function PrivacyPage() {
         </nav>
 
         {/* Заголовок */}
-        <h1 className="font-display text-4xl sm:text-5xl text-[#1A1A1A] tracking-wider mb-3">
+        <h1 className="font-display text-3xl sm:text-5xl text-[#1A1A1A] tracking-wider mb-3">
           Политика конфиденциальности
         </h1>
         <p className="text-sm text-[#6E6A64] mb-12">Последнее обновление: {UPDATED}</p>

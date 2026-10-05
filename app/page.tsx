@@ -101,7 +101,7 @@ export default function HomePage() {
             {/* Заголовок */}
             <h1 className="font-display text-[clamp(48px,8vw,96px)] text-white tracking-wider leading-[0.95] mb-8 animate-fade-up">
               Лазерная резка,{' '}
-              <span className="text-[#FF8A33]">УФ-печать</span>
+              <span className="text-[#FF8A33] whitespace-nowrap">УФ-печать</span>
               <br />и фрезеровка ЧПУ
               <br />в Уфе
             </h1>
