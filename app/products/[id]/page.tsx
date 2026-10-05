@@ -94,21 +94,25 @@ export default async function ProductPage({ params }: Props) {
       { '@type': 'PropertyValue', name: 'city', value: business.city },
       ...(product.popularFor ? [{ '@type': 'PropertyValue', name: 'popularFor', value: product.popularFor }] : []),
     ],
-    offers: {
-      // Цена индивидуальная (по макету), заказ от 450 ₽ — выражаем через AggregateOffer/lowPrice.
-      // offerCount: одна позиция под заказ у одного продавца.
-      '@type':        'AggregateOffer',
-      priceCurrency:  'RUB',
-      lowPrice:       tablePrices.length ? String(Math.min(...tablePrices)) : '450',
-      ...(tablePrices.length ? { highPrice: String(Math.max(...tablePrices)) } : {}),
-      offerCount:     tablePrices.length || 1,
-      availability:   'https://schema.org/InStock',
-      url:            `${SITE}/products/${product.id}`,
-      seller: {
-        '@type': 'Organization',
-        name:    'Центр лазерной резки',
-      },
-    },
+    // Минимальная сумма заказа не является ценой изделия.
+    // Ценовой диапазон публикуем только при наличии видимого прайса.
+    ...(tablePrices.length
+      ? {
+          offers: {
+            '@type': 'AggregateOffer',
+            priceCurrency: 'RUB',
+            lowPrice: String(Math.min(...tablePrices)),
+            highPrice: String(Math.max(...tablePrices)),
+            offerCount: tablePrices.length,
+            availability: 'https://schema.org/InStock',
+            url: `${SITE}/products/${product.id}`,
+            seller: {
+              '@type': 'Organization',
+              name: 'Центр лазерной резки',
+            },
+          },
+        }
+      : {}),
     aggregateRating,
     review: reviewLd,
   }
