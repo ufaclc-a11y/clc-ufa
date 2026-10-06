@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: post.description,
     alternates:  { canonical: `https://clc-ufa.ru/blog/${post.slug}` },
     openGraph: {
+      url: `${SITE}/blog/${post.slug}`,
       title:       post.title,
       description: post.description,
       images:      [{ url: post.image, alt: post.imageAlt }],
@@ -230,6 +231,9 @@ export default async function BlogPostPage({ params }: Props) {
             <h3 className="font-display text-2xl text-[#1A1A1A] tracking-wide mb-2">Готовы сделать заказ?</h3>
             <p className="text-sm text-[#6E6A64] mb-5">Напишите нам — рассчитаем стоимость за несколько минут.</p>
             <div className="flex flex-wrap gap-3">
+              {post.slug === 'adresnik-dlya-sobaki-chto-vybrat' && (
+                <Link href="/products/adresniki" className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#1A1A1A] px-6 py-3 text-sm font-semibold text-white hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A84300] active:scale-[0.98] transition-[transform,opacity]">Адресники: варианты и заказ гравировки</Link>
+              )}
               <a
                 href="https://wa.me/79374838003?text=Здравствуйте!%20Хочу%20рассчитать%20заказ."
                 target="_blank" rel="noopener noreferrer"

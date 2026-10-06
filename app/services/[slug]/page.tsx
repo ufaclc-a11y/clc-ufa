@@ -6,6 +6,7 @@ import { services }       from '@/data/services'
 import { business }       from '@/data/contacts'
 import { Breadcrumbs }    from '@/components/Breadcrumbs'
 import { OrderForm }      from '@/components/OrderForm'
+import { OrderRequirements } from '@/components/OrderRequirements'
 import { CTASection }     from '@/components/CTASection'
 import { FAQAccordion }   from '@/components/FAQAccordion'
 import { SymbolIcon }     from '@/components/Icons'
@@ -32,11 +33,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const s = services.find(s => s.slug === slug)
   if (!s) return {}
   return {
-    title:       s.seoTitle,
+    title:       { absolute: s.seoTitle },
     description: s.seoDescription,
     keywords:    s.keywords,
     alternates:  { canonical: `https://clc-ufa.ru/services/${s.slug}` },
     openGraph: {
+      url: `${SITE}/services/${s.slug}`,
       title:  s.seoTitle,
       description: s.seoDescription,
       images: s.heroImage ? [{ url: s.heroImage }] : [],
@@ -154,6 +156,7 @@ export default async function ServicePage({ params }: Props) {
             {service.description}
           </p>
           <div className="flex flex-wrap gap-3">
+            <a href="#calc" className="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-6 py-3.5 font-semibold text-[#1A1A1A] hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] active:scale-[0.98] transition-[transform,opacity]">Отправить макет</a>
             <a
               href={`https://wa.me/79374838003?text=${waText}`}
               target="_blank" rel="noopener noreferrer"
@@ -212,6 +215,9 @@ export default async function ServicePage({ params }: Props) {
           </div>
         </section>
       )}
+
+      {service.slug === 'lazernaya-rezka' && <OrderRequirements kind="laser" />}
+      {service.slug === 'gravirovka-na-nemetalah' && <OrderRequirements kind="engraving" />}
 
       {/* ── АССОРТИМЕНТ (только если есть featuredProducts) ── */}
       {service.featuredProducts && service.featuredProducts.length > 0 && (

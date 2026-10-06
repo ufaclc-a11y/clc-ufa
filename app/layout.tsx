@@ -5,6 +5,7 @@ import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { CookieConsent } from '@/components/CookieConsent'
 import { MetrikaRouteTracker } from '@/components/MetrikaRouteTracker'
+import { ContactLinkTracker } from '@/components/ContactLinkTracker'
 import { CartProvider } from '@/lib/cart'
 import { business } from '@/data/contacts'
 import {
@@ -121,6 +122,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <a href="#main-content" className="skip-link">Перейти к содержимому</a>
         <CookieConsent />
+        <ContactLinkTracker />
         {/* Корзина нужна и шапке (счётчик), и страницам — провайдер оборачивает обе. */}
         <CartProvider>
           <Header />

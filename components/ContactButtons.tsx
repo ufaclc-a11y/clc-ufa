@@ -39,7 +39,6 @@ export function ContactButtons({
 
       <a
         href={business.whatsapp}
-        onClick={() => trackGoal('contact_whatsapp')}
         target="_blank" rel="noopener noreferrer"
         className={cn(base, sz, 'bg-[#117A37] text-white hover:bg-[#0E682F]')}
       >
@@ -48,7 +47,6 @@ export function ContactButtons({
 
       <a
         href={business.telegram}
-        onClick={() => trackGoal('contact_telegram')}
         target="_blank" rel="noopener noreferrer"
         className={cn(base, sz, 'bg-[#1676A7] text-white hover:bg-[#11648E]')}
       >
@@ -57,7 +55,6 @@ export function ContactButtons({
 
       <a
         href={business.max}
-        onClick={() => trackGoal('contact_max')}
         target="_blank" rel="noopener noreferrer"
         className={cn(
           base, sz,
@@ -69,7 +66,6 @@ export function ContactButtons({
 
       <a
         href={`tel:${business.phone}`}
-        onClick={() => trackGoal('contact_phone')}
         className={cn(
           base, sz,
           variant === 'dark'

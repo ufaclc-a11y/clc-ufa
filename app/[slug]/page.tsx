@@ -12,6 +12,7 @@ import { Breadcrumbs }   from '@/components/Breadcrumbs'
 import { ContactButtons } from '@/components/ContactButtons'
 import { RichText }       from '@/components/RichText'
 import { OrderForm }     from '@/components/OrderForm'
+import { OrderRequirements } from '@/components/OrderRequirements'
 import { CTASection }    from '@/components/CTASection'
 import { FAQAccordion }  from '@/components/FAQAccordion'
 import { IconCheck, IconBolt, IconTarget, IconArrowUpRight, SymbolIcon } from '@/components/Icons'
@@ -36,11 +37,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!page) return {}
   const relatedService = services.find(s => s.slug === page.service)
   return {
-    title:       page.title,
+    title:       { absolute: page.title },
     description: page.description,
     keywords:    page.keywords,
     alternates:  { canonical: `https://clc-ufa.ru/${page.slug}` },
     openGraph: {
+      url: `${SITE}/${page.slug}`,
       title:       page.title,
       description: page.description,
       images:      relatedService?.heroImage ? [{ url: relatedService.heroImage }] : [],
@@ -159,6 +161,9 @@ export default async function SeoLandingPage({ params }: Props) {
             {page.description}
           </p>
           <ContactButtons size="lg" variant="dark" />
+          {(page.slug === 'lazernaya-rezka-fanery-ufa' || page.slug === 'lazernaya-rezka-mdf-ufa') && (
+            <a href="#calc" className="mt-4 inline-flex min-h-11 items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#1A1A1A] hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] active:scale-[0.98] transition-[transform,opacity]">Отправить макет для расчёта</a>
+          )}
         </div>
       </div>
 
@@ -308,6 +313,7 @@ export default async function SeoLandingPage({ params }: Props) {
       )}
 
       {/* ── ORDER FORM ── */}
+      {(page.slug === 'lazernaya-rezka-fanery-ufa' || page.slug === 'lazernaya-rezka-mdf-ufa') && <OrderRequirements kind="laser" />}
       <section className="py-16 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <h2 className="font-display text-3xl text-[#1A1A1A] tracking-wider mb-2">Оформить заказ</h2>

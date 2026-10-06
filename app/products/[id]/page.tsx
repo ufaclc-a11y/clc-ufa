@@ -7,6 +7,7 @@ import { services } from '@/data/services'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { CTASection } from '@/components/CTASection'
 import { OrderForm } from '@/components/OrderForm'
+import { OrderRequirements } from '@/components/OrderRequirements'
 import { FAQAccordion } from '@/components/FAQAccordion'
 import { business } from '@/data/contacts'
 import { IconCheck, IconBolt, IconTarget, SymbolIcon } from '@/components/Icons'
@@ -34,10 +35,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = products.find(p => p.id === id)
   if (!product) return {}
   return {
-    title:       `${product.title} на заказ в Уфе`,
-    description: product.description,
+    title:       { absolute: product.seoTitle ?? `${product.title} на заказ в Уфе | Центр лазерной резки` },
+    description: product.seoDescription ?? product.description,
     alternates:  { canonical: `https://clc-ufa.ru/products/${product.id}` },
     openGraph: {
+      url: `${SITE}/products/${product.id}`,
       title:       `${product.title} — Центр лазерной резки Уфа`,
       description: product.description,
       images:      [{ url: product.image, alt: product.alt }],
@@ -159,10 +161,13 @@ export default async function ProductPage({ params }: Props) {
               )}
 
               <h1 className="font-display text-4xl sm:text-5xl text-[#1A1A1A] tracking-wider mb-4 leading-[1.1]">
-                {product.title}
+                {product.h1 ?? product.title}
               </h1>
 
               <p className="text-lg text-[#2D2D2D] leading-[1.75] mb-6">{product.description}</p>
+              {(product.id === 'trafarety' || product.id === 'uv-dtf') && (
+                <a href="#calc" className="mb-6 inline-flex min-h-11 items-center justify-center rounded-full bg-[#1A1A1A] px-6 py-3 text-sm font-semibold text-white hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A84300] active:scale-[0.98] transition-[transform,opacity]">Отправить макет для расчёта</a>
+              )}
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-8">
@@ -332,6 +337,8 @@ export default async function ProductPage({ params }: Props) {
       )}
 
       {/* Order form */}
+      {product.id === 'trafarety' && <OrderRequirements kind="stencil" />}
+      {product.id === 'uv-dtf' && <OrderRequirements kind="uv-dtf" />}
       <section className="py-16 bg-[#F5F4F0]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <h2 className="font-display text-3xl text-[#1A1A1A] tracking-wider mb-2">Оформить заказ</h2>

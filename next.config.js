@@ -51,6 +51,23 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Единый публичный хост; localhost остаётся доступен для проверки.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.clc-ufa.ru' }],
+        destination: 'https://clc-ufa.ru/:path*',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [
+          { type: 'host', value: 'clc-ufa.ru' },
+          { type: 'header', key: 'x-forwarded-proto', value: 'http' },
+        ],
+        destination: 'https://clc-ufa.ru/:path*',
+        permanent: true,
+      },
+      { source: '/services/gravirovka-nemetalah', destination: '/services/gravirovka-na-nemetalah', permanent: true },
       { source: '/wtf',                 destination: '/fonts',                    permanent: true },
       { source: '/laser-rez',           destination: '/services/lazernaya-rezka', permanent: true },
       { source: '/lazer-rez-fanera',    destination: '/services/lazernaya-rezka', permanent: true },

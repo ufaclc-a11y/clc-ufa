@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { YM_ID } from '@/lib/analytics'
 
 const KEY = 'clc-cookie-consent'
-const YM_ID = 53776969
 
 declare global {
   interface Window {
@@ -34,7 +34,6 @@ function loadMetrika() {
     trackLinks: true,
     accurateTrackBounce: true,
     webvisor: true,
-    defer: true,
   })
 }
 

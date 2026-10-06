@@ -5,10 +5,10 @@ import { FontPreview } from '@/components/FontPreview'
 import { previewFontVars, previewFonts } from '@/lib/fonts-preview'
 
 export const metadata: Metadata = {
-  title: 'Выбор шрифта для гравировки — подбор онлайн в Уфе',
+  title: { absolute: 'Шрифты для гравировки — онлайн-подбор с кириллицей | ЦЛР' },
   description:
     'Введите свой текст и посмотрите, как он выглядит в разных шрифтах для гравировки. ' +
-    'Более 15 шрифтов с поддержкой кириллицы для гравировки на дереве, металле, коже и акриле.',
+    'Подбор шрифтов с кириллицей для гравировки на дереве, металле и коже. Выберите начертание и укажите его при заказе в Уфе.',
   alternates: { canonical: 'https://clc-ufa.ru/fonts' },
   openGraph: {
     title: 'Выбор шрифта для гравировки — подбор онлайн',
