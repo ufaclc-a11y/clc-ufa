@@ -3,6 +3,9 @@
 ## Always Do First
 - **Invoke the `frontend-design` skill and the `ui-ux-pro-max` skill** before writing any frontend code, every session, no exceptions.
 
+## Publication Preference
+- User instruction (2026-10-06): publish requested changes to clc-ufa.ru immediately after appropriate checks, without asking for a separate publication confirmation. Wait for deployment to finish and verify the live site. If the user explicitly requests local-only work or postpones publication, follow that instruction.
+
 ## Token/Usage Economy
 - If the user asks for a small or exploratory task, default to the economical formula:
   "Make minimal changes only in the necessary files. Do not browse the web. Do not run a full build unless explicitly requested. Use no more than 5 shell commands where practical. At the end, briefly state what changed and what the user must do manually."

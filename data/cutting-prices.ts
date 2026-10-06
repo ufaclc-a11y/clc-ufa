@@ -1,5 +1,6 @@
 // Источник: Расчет.xlsx, лист «Материал и резка», столбцы F, H и I.
 // Цены за метр реза; отсутствующий тариф не означает нулевую стоимость.
+// Полистирол обрабатываем только на ЧПУ; лазерную резку не выполняем.
 export type CuttingMethod = 'laser' | 'cnc'
 export type CuttingRate = { label: string; group: string; laser?: number; cnc?: number }
 
@@ -372,7 +373,6 @@ export const cuttingRates: CuttingRate[] = [
   {
     "label": "Полистирол 5 мм черный",
     "group": "polistirol",
-    "laser": 91,
     "cnc": 49
   },
   {
