@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { business } from '@/data/contacts'
 import { trackGoal } from '@/lib/analytics'
+import { MAX_FILES, MAX_FILE_BYTES, MAX_TOTAL_BYTES, checkAttachment, isPlausibleContact } from '@/lib/order-validation'
 
 type Urgency = 'calm' | 'days' | 'today'
 
@@ -38,7 +39,7 @@ const URGENCY_LABELS: Record<Urgency, string> = {
   today: 'Срочно сегодня',
 }
 
-const MAX_SIZE_MB = 20
+const MAX_SIZE_MB = MAX_FILE_BYTES / 1024 / 1024
 
 function buildMessage(form: FormState, files: File[]): string {
   const lines: string[] = ['Заявка с сайта clc-ufa.ru', '']
@@ -71,12 +72,13 @@ function buildUrl(channel: Channel, msg: string): string {
 }
 
 const inputCls =
-  'w-full border border-[#E8E6E0] rounded-xl px-4 py-3 text-sm text-[#1A1A1A] ' +
+  'w-full border border-[#E8E6E0] rounded-xl px-4 py-3 text-base text-[#1A1A1A] ' +
   'placeholder:text-[#6E6A64] focus:outline-none focus:border-[#FF6B00] ' +
   'transition-[border-color] bg-white'
 
 export function OrderForm() {
   const [form,       setForm]       = useState<FormState>(EMPTY)
+  const [contactErr, setContactErr] = useState('')
   const [agreedErr,  setAgreedErr]  = useState(false)
   const [files,      setFiles]      = useState<File[]>([])
   const [fileErr,    setFileErr]    = useState('')
@@ -86,6 +88,9 @@ export function OrderForm() {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const honeypotRef  = useRef<HTMLInputElement>(null)
   const agreementRef = useRef<HTMLInputElement>(null)
+  const contactRef = useRef<HTMLInputElement>(null)
+  const startedRef = useRef(false)
+  const sendingRef = useRef(false)
 
   // Restore from localStorage
   useEffect(() => {
@@ -116,8 +121,10 @@ export function OrderForm() {
     } catch {}
   }, [form])
 
-  const set = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+  const set = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm(p => ({ ...p, [e.target.name]: e.target.value }))
+    if (e.target.name === 'contact') setContactErr('')
+  }
 
   const setField = (key: keyof FormState, value: string | boolean) =>
     setForm(p => ({ ...p, [key]: value }))
@@ -125,16 +132,26 @@ export function OrderForm() {
   const handleFiles = (picked: FileList | null) => {
     setFileErr('')
     if (!picked) return
-    for (const f of Array.from(picked)) {
-      if (f.size > MAX_SIZE_MB * 1024 * 1024) {
-        setFileErr(`Файл «${f.name}» слишком большой (максимум ${MAX_SIZE_MB} МБ)`)
+    const names = new Set(files.map(f => f.name))
+    const additions = Array.from(picked).filter(f => {
+      if (names.has(f.name)) return false
+      names.add(f.name)
+      return true
+    })
+    if (files.length + additions.length > MAX_FILES) {
+      setFileErr(`Можно прикрепить не больше ${MAX_FILES} файлов`)
+      return
+    }
+    let totalBytes = files.reduce((sum, file) => sum + file.size, 0)
+    for (const f of additions) {
+      const check = checkAttachment(f.name, f.size, totalBytes)
+      if (!check.ok) {
+        setFileErr(check.error)
         return
       }
+      totalBytes += f.size
     }
-    setFiles(prev => {
-      const names = new Set(prev.map(f => f.name))
-      return [...prev, ...Array.from(picked).filter(f => !names.has(f.name))].slice(0, 5)
-    })
+    setFiles(prev => [...prev, ...additions])
   }
 
   const removeFile = (name: string) => setFiles(prev => prev.filter(f => f.name !== name))
@@ -147,35 +164,49 @@ export function OrderForm() {
   }
 
   const handleSend = useCallback(async (channel: Channel) => {
+    if (sendingRef.current || (channel === 'email' && emailState === 'ok')) return
+    if (!isPlausibleContact(form.contact)) {
+      setContactErr('Укажите телефон, email или никнейм, чтобы мы могли ответить')
+      contactRef.current?.focus()
+      return
+    }
+    setContactErr('')
     if (!form.agreed) {
       setAgreedErr(true)
       agreementRef.current?.focus()
       return
     }
     setAgreedErr(false)
+    trackGoal('order_submit_attempt', { channel, form_id: 'calc' })
 
     if (channel === 'email') {
       // Отправляем через API — без открытия почтового клиента
       setEmailState('loading')
+      sendingRef.current = true
       setEmailErr('')
       try {
         const fd = new FormData()
         Object.entries(form).forEach(([k, v]) => fd.append(k, String(v)))
         fd.append('company', honeypotRef.current?.value ?? '')
+        fd.append('source_path', window.location.pathname)
         files.forEach(f => fd.append('files', f))
         const res = await fetch('/api/send-email', { method: 'POST', body: fd })
-        if (res.ok) {
+        const data = await res.json().catch(() => ({}))
+        if (res.ok && data.submitted === true) {
           setEmailState('ok')
           setOpened('email')
-          trackGoal('order_email')
+          trackGoal('order_email', { form_id: 'calc', file_count: files.length })
         } else {
-          const data = await res.json().catch(() => ({}))
-          setEmailErr(data.error || 'Не удалось отправить письмо')
+          setEmailErr(data.error || 'Отправка не подтверждена. Напишите нам в мессенджер.')
           setEmailState('error')
+          trackGoal('order_submit_error', { channel, form_id: 'calc', error_type: 'http', status: res.status })
         }
       } catch {
         setEmailErr('Нет соединения. Попробуйте другой способ.')
         setEmailState('error')
+        trackGoal('order_submit_error', { channel, form_id: 'calc', error_type: 'network' })
+      } finally {
+        sendingRef.current = false
       }
       return
     }
@@ -185,11 +216,19 @@ export function OrderForm() {
     const url = buildUrl(channel, msg)
     window.open(url, '_blank', 'noopener,noreferrer')
     setOpened(channel)
-    trackGoal(`order_${channel}`)
-  }, [form, files])
+    trackGoal('order_messenger_open', { channel, form_id: 'calc' })
+  }, [form, files, emailState])
 
   return (
-    <div id="calc" className="bg-[#F5F4F0] rounded-3xl p-8 sm:p-10">
+    <form id="calc" noValidate style={{ scrollMarginTop: '6rem' }}
+      onChange={() => {
+        if (!startedRef.current) {
+          startedRef.current = true
+          trackGoal('order_form_start', { form_id: 'calc' })
+        }
+      }}
+      onSubmit={event => { event.preventDefault(); void handleSend('email') }}
+      className="bg-[#F5F4F0] rounded-3xl p-5 sm:p-10">
       <h2 className="font-display text-3xl sm:text-4xl text-[#1A1A1A] tracking-wider mb-2">
         Рассчитать стоимость
       </h2>
@@ -217,8 +256,8 @@ export function OrderForm() {
         </Field>
 
         {/* Contact */}
-        <Field id="order-contact" label="Телефон или ник в мессенджере">
-          <input id="order-contact" name="contact" autoComplete="tel" value={form.contact} onChange={set}
+        <Field id="order-contact" label="Телефон, email или ник в мессенджере" required error={contactErr}>
+          <input id="order-contact" ref={contactRef} name="contact" required aria-invalid={Boolean(contactErr)} aria-describedby={contactErr ? "order-contact-error" : undefined} autoComplete="tel" value={form.contact} onChange={set}
             placeholder="+7 900 000-00-00 или @username" className={inputCls} />
         </Field>
 
@@ -324,7 +363,7 @@ export function OrderForm() {
                 <p className="text-sm text-[#6E6A64]">
                   Перетащите файлы или <span className="text-[#FF6B00] font-semibold">нажмите для выбора</span>
                 </p>
-                <p id="order-files-help" className="text-xs text-[#5C5852] mt-1">JPG, PNG, PDF, AI, SVG, DXF, CDR, STEP, STP · до {MAX_SIZE_MB} МБ · до 5 файлов</p>
+                <p id="order-files-help" className="text-xs text-[#5C5852] mt-1">JPG, PNG, PDF, AI, SVG, DXF, CDR, STEP, STP · до {MAX_SIZE_MB} МБ на файл · до {MAX_FILES} файлов · всего до {MAX_TOTAL_BYTES / 1024 / 1024} МБ</p>
               </>
             ) : (
               <div className="space-y-2 text-left" onClick={e => e.stopPropagation()}>
@@ -345,7 +384,7 @@ export function OrderForm() {
                     </button>
                   </div>
                 ))}
-                {files.length < 5 && (
+                {files.length < MAX_FILES && (
                   <button type="button" onClick={() => fileInputRef.current?.click()}
                     className="text-xs text-[#FF6B00] hover:underline underline-offset-4">
                     + Добавить ещё
@@ -403,7 +442,7 @@ export function OrderForm() {
       </div>
 
       {/* ── Send block ── */}
-      <div className="mt-8 rounded-2xl border border-[#E8E6E0] bg-white p-6">
+      <div className="mt-8 rounded-2xl border border-[#E8E6E0] bg-white p-4 sm:p-6">
         <p className="text-xs font-semibold text-[#6E6A64] uppercase tracking-wider mb-4">
           Отправить заявку
         </p>
@@ -411,8 +450,7 @@ export function OrderForm() {
 
           {/* Почта */}
           <button
-            type="button"
-            onClick={() => handleSend('email')}
+            type="submit"
             disabled={emailState === 'loading' || emailState === 'ok'}
             className={[
               'group flex flex-col items-center gap-2 py-4 px-3 rounded-xl border transition-[background-color,border-color] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00] disabled:cursor-not-allowed',
@@ -508,7 +546,7 @@ export function OrderForm() {
           «Почта» — письмо отправится прямо с сайта. Мессенджеры — откроется чат с готовым текстом.
         </p>
       </div>
-    </div>
+    </form>
   )
 }
 
@@ -523,7 +561,7 @@ function Field({
         {label}{required && <span className="text-[#FF6B00] ml-0.5">*</span>}
       </label>
       {children}
-      {error && <p role="alert" className="mt-1 text-xs text-red-600">{error}</p>}
+      {error && <p id={`${id}-error`} role="alert" className="mt-1 text-xs text-red-600">{error}</p>}
     </div>
   )
 }

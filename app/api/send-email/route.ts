@@ -82,7 +82,7 @@ export async function POST(req: Request) {
 
     // Honeypot: поле скрыто от людей, заполняют только боты — тихо «успех», ничего не шлём
     if (isSpam(body)) {
-      return NextResponse.json({ ok: true })
+      return NextResponse.json({ ok: true, submitted: false })
     }
 
     // Требуем хотя бы контакт — отсекаем пустые автозапросы
@@ -90,9 +90,12 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Укажите контакт для связи' }, { status: 400 })
     }
 
-    // Dev-режим без SMTP — возвращаем успех, не логируя данные клиента
+    // Не выдаём отсутствие отправки за принятую заявку.
     if (!smtpUser || !smtpPass) {
-      return NextResponse.json({ ok: true })
+      return NextResponse.json(
+        { error: 'Отправка письма временно недоступна. Напишите нам в мессенджер.' },
+        { status: 503 },
+      )
     }
 
     const urgencyLabels: Record<string, string> = {
@@ -105,6 +108,7 @@ export async function POST(req: Request) {
     const esc = (v: string | undefined) => (v ? escapeHtml(v) : v)
     const lines = [
       body.name     && `<b>Имя:</b> ${esc(body.name)}`,
+      body.source_path && `<b>Страница заявки:</b> ${esc(body.source_path)}`,
       body.contact  && `<b>Контакт:</b> ${esc(body.contact)}`,
       body.product  && `<b>Изделие:</b> ${esc(body.product)}`,
       body.size     && `<b>Размер:</b> ${esc(body.size)}`,
@@ -115,7 +119,7 @@ export async function POST(req: Request) {
       attachments.length && `<b>Файлов:</b> ${attachments.length}`,
     ].filter(Boolean)
 
-    await getTransporter().sendMail({
+    const result = await getTransporter().sendMail({
       from:    `"Центр лазерной резки" <${smtpUser}>`,
       to:      toEmail,
       subject: `Заявка с сайта${body.name ? ` от ${body.name}` : ''}`,
@@ -133,7 +137,10 @@ export async function POST(req: Request) {
       attachments,
     })
 
-    return NextResponse.json({ ok: true })
+    if (!result.accepted?.length) {
+      return NextResponse.json({ error: 'Письмо не принято почтовым сервером. Напишите нам в мессенджер.' }, { status: 502 })
+    }
+    return NextResponse.json({ ok: true, submitted: true })
   } catch (e: unknown) {
     console.error('send-email error:', e instanceof Error ? e.message : e)
     return NextResponse.json({ error: 'Не удалось отправить письмо. Попробуйте написать в мессенджер.' }, { status: 500 })
