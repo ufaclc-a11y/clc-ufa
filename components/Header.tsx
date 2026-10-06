@@ -66,13 +66,13 @@ export function Header() {
           <div className="relative w-9 h-9 shrink-0">
             <Image src="/logo.svg" alt="Центр лазерной резки" fill className="object-contain" priority />
           </div>
-          <span className="hidden 2xl:block font-display text-[13px] tracking-[0.12em] leading-none text-white/70 group-hover:text-white transition-colors whitespace-nowrap">
-            ЦЕНТР ЛАЗЕРНОЙ РЕЗКИ
+          <span className="hidden xl:block min-w-[72px] mr-6 font-display text-[11px] font-semibold tracking-[0.04em] leading-[14px] text-white/80 group-hover:text-white">
+            ЦЕНТР<br />ЛАЗЕРНОЙ<br />РЕЗКИ
           </span>
         </Link>
 
         {/* ── 2. Навигация — центрируется вертикально ── */}
-        <nav className="hidden xl:flex items-center gap-5" aria-label="Основная навигация">
+        <nav className="hidden xl:flex items-center gap-4" aria-label="Основная навигация">
           {nav.map(l => (
             <Link
               key={l.href}
