@@ -71,7 +71,7 @@ export function CookieConsent() {
       role="dialog"
       aria-modal="false"
       aria-label="Уведомление об использовании cookie"
-      className="border-b border-[#E2E3E9] bg-[#FFF9F5]"
+      className="fixed inset-x-0 bottom-0 z-[60] max-h-[70dvh] overflow-y-auto border-t border-[#E2E3E9] bg-[#FFF9F5] shadow-[0_-4px_20px_rgba(37,38,43,0.08)]"
     >
       <div className="mx-auto max-w-[1480px] px-4 py-2.5 text-[#25262B] sm:px-6">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center">

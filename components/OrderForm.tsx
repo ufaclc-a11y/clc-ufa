@@ -72,7 +72,7 @@ function buildUrl(channel: Channel, msg: string): string {
 }
 
 const inputCls =
-  'w-full border border-[#E8E6E0] rounded-xl px-4 py-3 text-base text-[#1A1A1A] ' +
+  'ym-disable-keys w-full border border-[#E8E6E0] rounded-xl px-4 py-3 text-base text-[#1A1A1A] ' +
   'placeholder:text-[#6E6A64] focus:outline-none focus:border-[#FF6B00] ' +
   'transition-[border-color] bg-white'
 
@@ -366,7 +366,7 @@ export function OrderForm() {
                 <p id="order-files-help" className="text-xs text-[#5C5852] mt-1">JPG, PNG, PDF, AI, SVG, DXF, CDR, STEP, STP · до {MAX_SIZE_MB} МБ на файл · до {MAX_FILES} файлов · всего до {MAX_TOTAL_BYTES / 1024 / 1024} МБ</p>
               </>
             ) : (
-              <div className="space-y-2 text-left" onClick={e => e.stopPropagation()}>
+              <div className="ym-hide-content space-y-2 text-left" onClick={e => e.stopPropagation()}>
                 {files.map(f => (
                   <div key={f.name} className="flex items-center gap-3 bg-white rounded-lg px-3 py-2 border border-[#E8E6E0]">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" strokeWidth="1.5" className="shrink-0">
@@ -376,7 +376,7 @@ export function OrderForm() {
                     <span className="text-xs text-[#1A1A1A] truncate flex-1">{f.name}</span>
                     <span className="text-xs text-[#6E6A64] shrink-0">{(f.size / 1024).toFixed(0)} KB</span>
                     <button type="button" onClick={() => removeFile(f.name)}
-                      aria-label={`Удалить файл ${f.name}`}
+                      aria-label="Удалить файл"
                       className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-lg text-[#5C5852] transition-colors hover:bg-red-50 hover:text-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
@@ -393,7 +393,7 @@ export function OrderForm() {
               </div>
             )}
           </div>
-          <p id="order-files-error" role="alert" className="mt-2 text-xs text-red-600">{fileErr}</p>
+          <p id="order-files-error" role="alert" className="ym-hide-content mt-2 text-xs text-red-600">{fileErr}</p>
           {files.length > 0 && (
             <p id="order-files-help" className="mt-2 text-xs text-[#5C5852]">
               Названия файлов попадут в текст сообщения. После открытия мессенджера — отправьте файлы следующим сообщением.
