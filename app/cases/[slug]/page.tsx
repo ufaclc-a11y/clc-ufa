@@ -123,6 +123,29 @@ export default async function CasePage({ params }: Props) {
               ))}
             </article>
 
+            {item.video && (
+              <section className="mt-12 border-t border-[#E8E6E0] pt-8" aria-label="Видео проекта">
+                <h2 className="mb-6 font-display text-3xl text-[#1A1A1A]">Видео проекта</h2>
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster={item.video.poster}
+                  aria-label={item.title}
+                  className="mx-auto aspect-[9/16] max-h-[70vh] w-full max-w-[320px] rounded-2xl bg-[#1A1A1A] object-contain"
+                >
+                  <source src={item.video.src} type="video/mp4" />
+                  <a href={item.video.src}>Скачать видео</a>
+                </video>
+                <p className="mt-8 text-base leading-[1.8] sm:text-lg">
+                  <Link href="/contacts" className="inline-block rounded-lg text-[#9D3900] underline underline-offset-4 transition-colors hover:text-[#7D2E00] active:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]">
+                    {item.video.contactText}
+                  </Link>
+                </p>
+                <p className="mt-6 whitespace-pre-line break-words text-sm leading-relaxed text-[#4F4B45]">{item.video.attribution}</p>
+              </section>
+            )}
+
             {item.tags.length > 0 && (
               <div className="mt-12 flex flex-wrap gap-2 border-t border-[#E8E6E0] pt-6" aria-label="Темы кейса">
                 {item.tags.map(tag => (

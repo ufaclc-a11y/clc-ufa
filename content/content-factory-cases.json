@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "id": "company-gift-infinity",
+    "title": "Подарок ко дню рождения компании",
+    "client": "Клиент Центра лазерной резки",
+    "category": "Корпоративные подарки",
+    "image": "/images/cases/company-gift-infinity/finished-product.jpg",
+    "imageAlt": "Готовая светлая статуэтка с основанием и табличкой",
+    "images": [
+      {
+        "src": "/images/cases/company-gift-infinity/finished-product.jpg",
+        "alt": "Готовая светлая статуэтка с основанием и табличкой"
+      }
+    ],
+    "task": "Подарок ко дню рождения компании начался со сгенерированной картинки. Готового макета у заказчика ещё не было.",
+    "solution": "Мы сделали небольшой тёмный пробник. После него заказчик решил поменять оформление: в тёмном варианте подарок смотрелся уныло. Остановились на светлом, доработали макет и подобрали цвет графит на реальной детали.",
+    "result": "В этом заказе пробник помог определиться с оформлением ещё до изготовления готовой статуэтки. На фото и видео — результат работы Центра лазерной резки.",
+    "price": "По запросу",
+    "qty": "Не указано",
+    "deadline": "Не указано",
+    "tags": [],
+    "video": {
+      "src": "/videos/cases/company-gift-infinity/video-v017.mp4",
+      "poster": "/images/cases/company-gift-infinity/cover-1080x1920.png",
+      "attribution": "Музыка: Dream Culture — Kevin MacLeod.\nЛицензия: Creative Commons Attribution 4.0 (CC BY 4.0).\nhttps://creativecommons.org/licenses/by/4.0/\nИсточник: https://incompetech.com/music/royalty-free/index.html?Search=Search&isrc=USUAN1300046\nИзменения: использован фрагмент; плавное появление и затухание; понижен уровень; музыка приглушается под речь.",
+      "contactText": "Нужен подарок компании? Пришлите картинку — обсудим, как воплотить вашу идею."
+    },
+    "contentFactory": {
+      "schemaVersion": "content-factory.website-case.v1",
+      "projectId": "case-001",
+      "packId": "case-001-v017-approved",
+      "packVersion": 17,
+      "approvalHash": "c3d55a88b982a08268bbc600fcea71fceaeb00d733f801d76350ec4748af4232",
+      "payloadHash": "797a1a67a0f91f405715f052fabde08a6dbf8481bbd5f8d906bf257e49dfd0f5",
+      "importedAt": "2026-10-14T18:41:49Z"
+    }
+  }
+]

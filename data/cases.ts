@@ -11,6 +11,12 @@ export type Case = {
   image:    string
   imageAlt: string
   images?: CaseImage[]
+  video?: {
+    src: string
+    poster: string
+    attribution: string
+    contactText: string
+  }
   task:     string
   solution: string
   result:   string
