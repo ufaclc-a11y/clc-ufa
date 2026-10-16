@@ -2,14 +2,22 @@
   {
     "id": "company-gift-infinity",
     "title": "Подарок ко дню рождения компании",
-    "client": "Клиент Центра лазерной резки",
+    "client": "GS medicine",
     "category": "Корпоративные подарки",
-    "image": "/images/cases/company-gift-infinity/finished-product.jpg",
-    "imageAlt": "Готовая светлая статуэтка с основанием и табличкой",
+    "image": "/images/cases/company-gift-infinity/01-front.jpg",
+    "imageAlt": "Статуэтка «Бесконечность» для GS medicine целиком с основанием и табличкой",
     "images": [
       {
-        "src": "/images/cases/company-gift-infinity/finished-product.jpg",
-        "alt": "Готовая светлая статуэтка с основанием и табличкой"
+        "src": "/images/cases/company-gift-infinity/01-front.jpg",
+        "alt": "Готовая статуэтка «Бесконечность» для GS medicine — вид спереди, основание и табличка"
+      },
+      {
+        "src": "/images/cases/company-gift-infinity/02-construction.jpg",
+        "alt": "Объёмная конструкция статуэтки — вид три четверти"
+      },
+      {
+        "src": "/images/cases/company-gift-infinity/03-detail.jpg",
+        "alt": "Крупный план УФ-печати и объёмных элементов статуэтки"
       }
     ],
     "task": "Подарок ко дню рождения компании начался со сгенерированной картинки. Готового макета у заказчика ещё не было.",
@@ -20,19 +28,19 @@
     "deadline": "Не указано",
     "tags": [],
     "video": {
-      "src": "/videos/cases/company-gift-infinity/video-v017.mp4",
-      "poster": "/images/cases/company-gift-infinity/cover-1080x1920.png",
+      "src": "/videos/cases/company-gift-infinity/claude-refinement-v002.mp4",
+      "poster": "/images/cases/company-gift-infinity/claude-v002-poster.jpg",
       "attribution": "Музыка: Dream Culture — Kevin MacLeod.\nЛицензия: Creative Commons Attribution 4.0 (CC BY 4.0).\nhttps://creativecommons.org/licenses/by/4.0/\nИсточник: https://incompetech.com/music/royalty-free/index.html?Search=Search&isrc=USUAN1300046\nИзменения: использован фрагмент; плавное появление и затухание; понижен уровень; музыка приглушается под речь.",
       "contactText": "Нужен подарок компании? Пришлите картинку — обсудим, как воплотить вашу идею."
     },
     "contentFactory": {
       "schemaVersion": "content-factory.website-case.v1",
       "projectId": "case-001",
-      "packId": "case-001-v017-approved",
-      "packVersion": 17,
-      "approvalHash": "c3d55a88b982a08268bbc600fcea71fceaeb00d733f801d76350ec4748af4232",
-      "payloadHash": "797a1a67a0f91f405715f052fabde08a6dbf8481bbd5f8d906bf257e49dfd0f5",
-      "importedAt": "2026-10-14T18:41:49Z"
+      "packId": "case-001-claude-v002-approved",
+      "packVersion": 2,
+      "approvalHash": "3051f42a2ffab17b91e74dc4e1fbaaf8706ccd59cf54acf637e6aab5b77bb237",
+      "payloadHash": "726a36b4d80100730bd7dce31d03c474db0da2ba590ad08fa21fde805dd502a9",
+      "importedAt": "2026-10-16T12:29:00.135908+00:00"
     }
   }
 ]

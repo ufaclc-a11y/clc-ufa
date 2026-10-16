@@ -9,7 +9,7 @@ import { cases } from '../data/cases'
 
 const slug = 'company-gift-infinity'
 
-test('approved v017 case renders all paragraphs, music credit and real media without changing old cases', async () => {
+test('approved Claude v002 and designer series render approved copy and preserve old cases', async () => {
   const item = getPublicCase(slug)!
   assert.ok(item)
   assert.equal(publicCases.filter(c => c.id === slug).length, 1)
@@ -28,10 +28,15 @@ test('approved v017 case renders all paragraphs, music credit and real media wit
   const metadata = await generateMetadata({ params: Promise.resolve({ slug }) })
   assert.equal(metadata.alternates?.canonical, `https://clc-ufa.ru/cases/${slug}`)
   assert.ok(generateStaticParams().some(item => item.slug === slug))
+  assert.equal(item.client, 'GS medicine')
+  assert.equal(item.images?.length, 3)
+  assert.equal(item.video?.src, '/videos/cases/company-gift-infinity/claude-refinement-v002.mp4')
   const assets = [
-    [item.video!.src, 'f98e7d50381638da8413ea9f64a8a337894686ef920d5b337290cd2cee024ba8'],
-    [item.video!.poster, '1306c463e47fee5c0ea22aa19fbac27c6a440275723ee186b631faa9143c3774'],
-    [item.image, '9f9776d4e3adce2019b6bb3da2a7b8320ff9e5691a930ee85a1fa8864aabbcc4'],
+    [item.video!.src, '5d1ebda5dfb9b4bba6172704d7e20d46ee9bce3dbeaf8419072bb91630f2f765'],
+    [item.video!.poster, '75e0d30d29f6c26e6f556ce566653c1e2d029fdbf3e0f9f89eb4657bdf5925ed'],
+    [item.image, '534d3e682d3dbbc29eb45a229a604aff869832d7484a88bb2c48d8bd259a99bb'],
+    [item.images![1].src, '27e198adce395f7a9a175b71de65583b5803ada565cf9076181f80c097ef1ac6'],
+    [item.images![2].src, '0456e1b27b5b0fa4e765a1bb7e055f465467a9b4bcd0940681eb6af45dccb1a9'],
   ]
   for (const [path, hash] of assets) assert.equal(createHash('sha256').update(readFileSync(`public${path}`)).digest('hex'), hash)
   assert.equal(item.qty, 'Не указано')
