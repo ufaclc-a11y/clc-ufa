@@ -79,6 +79,21 @@ const nextConfig = {
       { source: '/services/izgotovlenie-izdelij', destination: '/products',                   permanent: true },
       { source: '/products/detali-b2b',           destination: '/b2b',                        permanent: true },
       { source: '/products/heshteги',              destination: '/products/kheshtegi',         permanent: true },
+      // Кириллица приходит в HTTP pathname в percent-encoded виде.
+      { source: '/products/heshte%D0%B3%D0%B8', destination: '/products/kheshtegi', permanent: true },
+
+      // Точные старые адреса из GSC: только установленные смысловые замены.
+      // Не перенаправляем весь /store/tproduct/*: у части товаров неизвестен вариант.
+      { source: '/store/tproduct/952054505002-gerb-adigeya-nastennaya-dekoratsiya', destination: '/shop/gerb-adygeya-nastennaya-dekoratsiya', permanent: true },
+      { source: '/store/tproduct/gravirovka-na-metalle-kulon', destination: '/products/kulony', permanent: true },
+      { source: '/store/tproduct/841167501082-dekorativnii-serf-chanel-bel-75h235h06-s', destination: '/shop/dekorativnyj-serf-chanel-bel-75kh23-5kh0-6-sm', permanent: true },
+      { source: '/store/tproduct/108051230562-dekorativnii-serf-dlya-interera-chernii', destination: '/shop/dekorativnyj-serf-dlya-interera-chernyj-75kh23-5kh0-6-sm-1-sht', permanent: true },
+      { source: '/store/tproduct/984703768372-panno-znaki-urbanart-disrup-50h50sm-mdf', destination: '/shop/panno-znaki-urbanart-disrup-50kh50sm-mdf', permanent: true },
+      { source: '/store/tproduct/869103267242-gerb-rossii-na-stenu', destination: '/shop/gerb-rossii-na-stenu', permanent: true },
+      { source: '/store/tproduct/324953532812-panno-znaki-urbanart-no-mercy-black-50h5', destination: '/shop/panno-znaki-urbanart-no-mercy-black-50kh50sm-mdf', permanent: true },
+      { source: '/graverovka-na-metalle-medallyah', destination: '/products/medali', permanent: true },
+      { source: '/graverovka-na-metalle-nozh', destination: '/products/nozhi-gravir', permanent: true },
+      { source: '/graverovka-na-metalle-zhetony', destination: '/products/zhetony', permanent: true },
 
       // ── Старый сайт: каталог и изготовление изделий ──
       { source: '/store',                          destination: '/products',                   permanent: true },
