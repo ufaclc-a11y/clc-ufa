@@ -4,7 +4,8 @@
 
 :root {
   --font-display: var(--font-body);
-  --font-body:    var(--f-body), system-ui, sans-serif;
+  /* Keep compatible metrics when next/font's local Arial fallback is absent. */
+  --font-body:    var(--f-body), Arial, sans-serif;
   --font-mono:    var(--font-body);
   --clr-orange:   #FF6B00;
   --clr-dark:     #1A1A1A;
