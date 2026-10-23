@@ -353,7 +353,7 @@ export const services: Service[] = [
     shortDescription: 'Фанера, МДФ, ПВХ, акрил, дерево. Крупные детали и 3D-обработка.',
     materials: [
       'Фанера', 'МДФ', 'ПВХ', 'Алюминиевый композит',
-      'Дерево', 'Акрил', 'Полистирол', 'Поликарбонат',
+      'Дерево', 'Акрил', 'Полистирол',
     ],
     useCases: [
       'Фрезеровка фанеры',
@@ -398,7 +398,6 @@ export const services: Service[] = [
       'Дерево':               '/frezernaya-rezka-dereva-ufa',
       'Акрил':                '/frezernaya-rezka-akrila-ufa',
       'Полистирол':           '/frezernaya-rezka-pvh-ufa',
-      'Поликарбонат':         '/frezernaya-rezka-pvh-ufa',
     },
     priceTables: getCuttingPriceTables('cnc'),
     portfolioPrefix: 'frezernaya-rezka',

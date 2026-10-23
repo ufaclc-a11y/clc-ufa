@@ -8,7 +8,7 @@ export const minimumOrder = 450
 export const cuttingGroups: Record<string, string> = {
   fanera: 'Фанера', akril: 'Акрил / оргстекло', mdf: 'МДФ',
   derevo: 'Массив дерева', pet: 'ПЭТ', pvh: 'ПВХ',
-  polistirol: 'Полистирол', polikarbonat: 'Поликарбонат',
+  polistirol: 'Полистирол',
   kompozit: 'Алюминиевый композит', abs: 'АБС пластик',
   karton: 'Картон', other: 'Шпон, ХДФ и другие материалы',
 }
@@ -35,7 +35,7 @@ export function getLandingCuttingPrices(slug: string): { method: CuttingMethod; 
     'frezernaya-rezka-fanery-ufa': { method: 'cnc', groups: ['fanera'] },
     'frezernaya-rezka-mdf-ufa': { method: 'cnc', groups: ['mdf'] },
     'frezernaya-rezka-dereva-ufa': { method: 'cnc', groups: ['derevo'] },
-    'frezernaya-rezka-pvh-ufa': { method: 'cnc', groups: ['pvh', 'polistirol', 'polikarbonat'] },
+    'frezernaya-rezka-pvh-ufa': { method: 'cnc', groups: ['pvh', 'polistirol'] },
     'frezernaya-rezka-kompozit-ufa': { method: 'cnc', groups: ['kompozit'] },
   }
   return pages[slug]
@@ -384,31 +384,6 @@ export const cuttingRates: CuttingRate[] = [
     "label": "Акрил 6 мм молочный",
     "group": "akril",
     "laser": 132
-  },
-  {
-    "label": "Поликарбонат 10 мм 1.7",
-    "group": "polikarbonat",
-    "cnc": 82
-  },
-  {
-    "label": "Поликарбонат 10 мм 1.5",
-    "group": "polikarbonat",
-    "cnc": 82
-  },
-  {
-    "label": "Поликарбонат 10 мм 1.25",
-    "group": "polikarbonat",
-    "cnc": 82
-  },
-  {
-    "label": "Поликарбонат 10 мм 1.04",
-    "group": "polikarbonat",
-    "cnc": 82
-  },
-  {
-    "label": "Поликарбонат 6 мм",
-    "group": "polikarbonat",
-    "cnc": 49
   },
   {
     "label": "Полистирол 6 мм",
