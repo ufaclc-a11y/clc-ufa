@@ -42,5 +42,39 @@
       "payloadHash": "726a36b4d80100730bd7dce31d03c474db0da2ba590ad08fa21fde805dd502a9",
       "importedAt": "2026-10-16T12:29:00.135908+00:00"
     }
+  },
+  {
+    "id": "murmiau-engraved-tag",
+    "title": "Двусторонний жетон «мурмяу»",
+    "client": "Клиент Центра лазерной резки",
+    "category": "Реальный проект",
+    "image": "/images/cases/content-factory/murmiau-engraved-tag-354b1e206a2b.jpg",
+    "imageAlt": "Двусторонний жетон «мурмяу»",
+    "images": [
+      {
+        "src": "/images/cases/content-factory/murmiau-engraved-tag-354b1e206a2b.jpg",
+        "alt": "Двусторонний жетон «мурмяу»"
+      },
+      {
+        "src": "/images/cases/content-factory/murmiau-engraved-tag-359840c544e8.jpg",
+        "alt": "Двусторонний жетон «мурмяу», фото 2"
+      }
+    ],
+    "task": "Клиентка прислала фотографию глаз и попросила перенести изображение на металлический жетон. Готового макета не было: подготовили изображение для гравировки и показали его перед изготовлением.",
+    "solution": "При согласовании появился оборот: надпись «мурмяу». Клиентка выбрала шрифт из предложенных вариантов. К надписи добавили две лапки и согласовали макет.",
+    "result": "На одной стороне готового жетона — глаза с фотографии, на другой — надпись с лапками. Показываем обе стороны.",
+    "price": "Не указано",
+    "qty": "Не указано",
+    "deadline": "Не указано",
+    "tags": [],
+    "contentFactory": {
+      "schemaVersion": "content-factory.website-case.v1",
+      "projectId": "murmiau-engraved-tag-20261009",
+      "packId": "murmiau-photo-v001-owner-accepted",
+      "packVersion": 1,
+      "approvalHash": "1a181a878dded7cbfebe979365359c88448aba5047ebb38ba950b9240c77e300",
+      "payloadHash": "19493283fd9711d13f6cec9492aa0918c425a381f3d2ec805e6fc3a9f4c6a12a",
+      "importedAt": "2026-10-22T18:04:16.657Z"
+    }
   }
 ]

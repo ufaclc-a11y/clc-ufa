@@ -14,7 +14,7 @@ test('approved Claude v002 and designer series render approved copy and preserve
   assert.ok(item)
   assert.equal(publicCases.filter(c => c.id === slug).length, 1)
   assert.deepEqual(publicCases.slice(0, cases.length), cases)
-  assert.equal(publicCases.length, cases.length + 1)
+  assert.deepEqual(publicCases.slice(cases.length).map(item => item.id), ['company-gift-infinity', 'murmiau-engraved-tag'])
   assert.equal(item.task, 'Подарок ко дню рождения компании начался со сгенерированной картинки. Готового макета у заказчика ещё не было.')
   assert.equal(item.solution, 'Мы сделали небольшой тёмный пробник. После него заказчик решил поменять оформление: в тёмном варианте подарок смотрелся уныло. Остановились на светлом, доработали макет и подобрали цвет графит на реальной детали.')
   assert.equal(item.result, 'В этом заказе пробник помог определиться с оформлением ещё до изготовления готовой статуэтки. На фото и видео — результат работы Центра лазерной резки.')
