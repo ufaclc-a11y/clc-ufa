@@ -1,6 +1,7 @@
 export type CaseImage = {
   src: string
   alt: string
+  stage?: 'before' | 'process' | 'result'
 }
 
 export type Case = {
@@ -18,6 +19,13 @@ export type Case = {
     contactText: string
   }
   task:     string
+  summary?: string
+  sourceMaterials?: string
+  preparation?: string
+  approvedDetails?: string
+  production?: string
+  cta?: string
+  seoDescription?: string
   solution: string
   result:   string
   price:    string    // ориентировочная стоимость

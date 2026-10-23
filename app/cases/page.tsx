@@ -6,6 +6,7 @@ import { Breadcrumbs }  from '@/components/Breadcrumbs'
 import { CTASection }   from '@/components/CTASection'
 import { JsonLd }       from '@/components/JsonLd'
 import { publicCases as cases } from '@/lib/public-cases'
+import { caseFacts, visibleCaseLabel } from '@/lib/case-presentation'
 
 const casesLd = {
   '@context': 'https://schema.org',
@@ -25,8 +26,8 @@ const casesLd = {
 }
 
 export const metadata: Metadata = {
-  title:       'Кейсы и примеры работ с ценами в Уфе',
-  description: 'Реальные кейсы: медали для турниров, таблички для офисов, корпоративные награды, детали для производств. Цены, сроки, материалы.',
+  title:       'Кейсы и примеры работ в Уфе',
+  description: 'Примеры работ Центра лазерной резки: задачи, подготовка макетов и готовые изделия. Гравировка, резка, подарки и награды в Уфе.',
   keywords:    ['кейсы лазерная резка уфа', 'примеры работ гравировка уфа', 'медали на заказ уфа', 'таблички для офиса уфа'],
   alternates:  { canonical: 'https://clc-ufa.ru/cases' },
 }
@@ -62,27 +63,23 @@ function CaseCard({ c }: { c: (typeof cases)[number] }) {
       </div>
 
       <div className="p-5 sm:p-6">
-        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#6E6A64]">
+        {visibleCaseLabel(c.client) && <p className="mb-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#6E6A64]">
           {c.client}
-        </p>
+        </p>}
         <h2 className="font-display text-2xl leading-tight text-[#1A1A1A] transition-colors duration-200 group-hover:text-[#C94700]">
           {c.title}
         </h2>
 
-        <dl className="mt-5 grid grid-cols-3 divide-x divide-[#E8E6E0] border-y border-[#E8E6E0] py-3">
-          {[
-            { label: 'Количество', value: c.qty },
-            { label: 'Срок', value: c.deadline },
-            { label: 'Цена', value: c.price },
-          ].map(item => (
+        {caseFacts(c).length > 0 && <dl className="mt-5 grid grid-cols-3 divide-x divide-[#E8E6E0] border-y border-[#E8E6E0] py-3">
+          {caseFacts(c).map(item => (
             <div key={item.label} className="min-w-0 px-2 first:pl-0 last:pr-0">
               <dt className="text-xs font-semibold uppercase tracking-[0.08em] text-[#77736C]">{item.label}</dt>
               <dd className="mt-1 break-words text-sm font-semibold leading-snug text-[#2D2D2D]">{item.value}</dd>
             </div>
           ))}
-        </dl>
+        </dl>}
 
-        <p className="mt-4 line-clamp-3 text-base leading-relaxed text-[#5F5B55]">{c.task}</p>
+        <p className="mt-4 line-clamp-3 text-base leading-relaxed text-[#5F5B55]">{c.summary || c.task}</p>
 
         <span className="mt-5 inline-flex min-h-11 items-center gap-2 font-semibold text-[#9D3900] underline decoration-[#D8A684] underline-offset-4 transition-colors duration-200 group-hover:text-[#7D2E00] group-hover:decoration-[#7D2E00]">
           Смотреть кейс
@@ -115,10 +112,10 @@ export default function CasesPage() {
           <Breadcrumbs items={[{ label: 'Кейсы' }]} darkMode />
           <span className="font-mono text-xs text-[#FF6B00] tracking-widest uppercase">Кейсы</span>
           <h1 className="font-display text-5xl sm:text-6xl text-white tracking-wider mt-2 mb-4 leading-[1]">
-            Реальные заказы<br />с ценами
+            Кейсы и<br />примеры работ
           </h1>
           <p className="text-white/55 text-lg max-w-xl leading-relaxed">
-            Конкретные задачи, решения, сроки и стоимость. Без воды — только факты.
+            Задачи, макеты и готовые изделия. Стоимость и сроки показываем, когда они указаны в описании проекта.
           </p>
         </div>
       </div>
@@ -135,7 +132,7 @@ export default function CasesPage() {
               Нужен похожий заказ?
             </h2>
             <p className="text-white/50 mb-8 max-w-lg mx-auto">
-              Расскажите задачу — рассчитаем стоимость и назовём точный срок. Обычно отвечаем за несколько минут.
+              Пришлите фото, рисунок или описание задачи — обсудим изготовление и рассчитаем стоимость.
             </p>
             <div className="flex justify-center gap-3 flex-wrap">
               {[

@@ -17,6 +17,8 @@ async function main() {
   const mediaDir = arg('media-dir')
   if (!exportFile || !mediaDir) throw new Error('Usage: npm run import:content-factory -- --export=<json> --media-dir=<downloaded-media-directory>')
   const payload = verifyContentFactoryExport(JSON.parse(await readFile(path.resolve(exportFile), 'utf8')))
+  const slug = payload.websiteCase.slug
+  if (typeof slug !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw new Error('websiteCase.slug is invalid')
   const media = (payload.media ?? []).filter(item => safeFilename(item?.filename) && (!item.mimeType || item.mimeType.startsWith('image/')))
   if (!media.length) throw new Error('Approved export has no transferable product image')
   const destinationDir = path.resolve('public', 'images', 'cases', 'content-factory')
@@ -28,17 +30,21 @@ async function main() {
     const actualSha = createHash('sha256').update(bytes).digest('hex')
     if (item.sha256 && item.sha256 !== actualSha) throw new Error(`Media SHA-256 mismatch for ${item.filename}`)
     const extension = path.extname(item.filename).toLowerCase()
-    const destinationName = `${payload.websiteCase.slug}-${actualSha.slice(0, 12)}${extension}`
-    await copyFile(source, path.join(destinationDir, destinationName))
+    const destinationName = `${slug}-${actualSha.slice(0, 12)}${extension}`
+    const destination = path.resolve(destinationDir, destinationName)
+    if (path.dirname(destination) !== destinationDir) throw new Error('Media destination is outside content-factory')
+    await copyFile(source, destination)
     imagePaths.push(`/images/cases/content-factory/${destinationName}`)
   }
 
   const dataFile = path.resolve('content', 'content-factory-cases.json')
   const current = JSON.parse(await readFile(dataFile, 'utf8'))
   if (!Array.isArray(current)) throw new Error('content/content-factory-cases.json must be an array')
-  const record = contentFactoryCaseFromExport(payload, imagePaths)
-  const next = [...current.filter((item) => item?.contentFactory?.packId !== payload.approval.packId && item?.id !== record.id), record]
-    .sort((left, right) => String(left.id).localeCompare(String(right.id)))
+  const record = contentFactoryCaseFromExport(payload, imagePaths, undefined, media)
+  const existingIndex = current.findIndex(item => item?.id === record.id)
+  const next = [...current]
+  if (existingIndex < 0) next.push(record)
+  else next[existingIndex] = record
   const temporary = `${dataFile}.tmp`
   await writeFile(temporary, `${JSON.stringify(next, null, 2)}\n`, 'utf8')
   await rename(temporary, dataFile)

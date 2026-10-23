@@ -25,10 +25,10 @@ test('website importer accepts only a hash-valid approved v1 package', () => {
 test('website importer maps safe public fields and never invents commercial facts', () => {
   const imported = contentFactoryCaseFromExport(fixture(), ['/images/cases/content-factory/result.jpg', '/images/cases/content-factory/detail.jpg'], '2026-09-16T11:00:00.000Z')
   assert.equal(imported.id, 'tablichki-office')
-  assert.equal(imported.client, 'Клиент Центра лазерной резки')
-  assert.equal(imported.price, 'По запросу')
-  assert.equal(imported.qty, 'По задаче')
-  assert.equal(imported.deadline, 'По расчёту')
+  assert.equal(imported.client, '')
+  assert.equal(imported.price, '')
+  assert.equal(imported.qty, '')
+  assert.equal(imported.deadline, '')
   assert.equal(imported.category, 'Реальный проект')
   assert.equal(imported.image, '/images/cases/content-factory/result.jpg')
   assert.deepEqual(imported.images, [

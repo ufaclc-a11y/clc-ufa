@@ -1,5 +1,19 @@
 import { business } from '../data/contacts'
 
+/** No full referrer, free-form text, customer details or arbitrary query keys. */
+export function contactContext(path: string, search: string, position?: string | null): Record<string, string> {
+  const params: Record<string, string> = {}
+  const match = path.match(/^\/cases\/([a-z0-9-]+)\/?$/)
+  if (match) params.case_id = match[1]
+  if (match && (position === 'hero' || position === 'final')) params.cta_position = position
+  const query = new URLSearchParams(search)
+  for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'source']) {
+    const value = query.get(key)
+    if (value && /^[a-zA-Z0-9_-]{1,64}$/.test(value)) params[key] = value
+  }
+  return params
+}
+
 /** Только контакты мастерской, без ссылок на каналы, карты и чужие номера. */
 export function contactGoal(href: string): string | undefined {
   if (href === `tel:${business.phone}` || href === `tel:${business.founder.phone}`) return 'contact_phone'

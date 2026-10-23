@@ -35,6 +35,7 @@ function loadMetrika() {
     accurateTrackBounce: true,
     webvisor: true,
   })
+  window.dispatchEvent(new Event('clc:analytics-ready'))
 }
 
 export function CookieConsent() {

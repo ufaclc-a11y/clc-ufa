@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { JsonLd } from '@/components/JsonLd'
 
 type Crumb = { label: string; href?: string }
 
@@ -18,10 +19,7 @@ export function Breadcrumbs({ items, visual = false, darkMode = false }: { items
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       {visual && (
         <nav aria-label="Хлебные крошки" className="mb-5 overflow-hidden">
           <ol className={`flex items-center gap-1 overflow-x-auto whitespace-nowrap text-sm ${darkMode ? 'text-white/70' : 'text-[#62646D]'}`}>

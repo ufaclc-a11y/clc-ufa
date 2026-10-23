@@ -3,17 +3,23 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import type { CaseImage } from '@/data/cases'
+import { caseImages } from '@/lib/case-presentation'
 
 type Props = {
   images: CaseImage[]
 }
 
-export function CaseGallery({ images }: Props) {
+export function CaseGallery({ images: originalImages }: Props) {
+  const images = caseImages(originalImages)
   const [activeIndex, setActiveIndex] = useState(0)
   const active = images[activeIndex] ?? images[0]
+  if (!active) return null
 
   return (
     <div aria-label="Фотографии проекта">
+      {images.some(image => image.stage === 'before' || image.stage === 'process') && active.stage && (
+        <p className="mb-3 text-sm text-white/80">{{ before: 'Исходный материал', process: 'В процессе', result: 'Готовое изделие' }[active.stage]}</p>
+      )}
       <p className="sr-only" aria-live="polite">Показано фото {activeIndex + 1} из {images.length}: {active.alt}</p>
       <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#D4D5D5] shadow-[0_24px_70px_rgba(0,0,0,0.28)]">
         <Image

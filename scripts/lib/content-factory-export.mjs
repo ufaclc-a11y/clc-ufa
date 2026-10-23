@@ -17,28 +17,39 @@ function text(value, fallback) {
   return typeof value === 'string' && value.trim() ? value.trim() : fallback
 }
 
-export function contentFactoryCaseFromExport(payload, imagePathsInput, importedAt = new Date().toISOString()) {
+export function contentFactoryCaseFromExport(payload, imagePathsInput, importedAt = new Date().toISOString(), transferredMedia = undefined) {
   verifyContentFactoryExport(payload)
   const website = payload.websiteCase
   const slug = text(website.slug, '')
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw new Error('websiteCase.slug is invalid')
   const imagePaths = Array.isArray(imagePathsInput) ? imagePathsInput : [imagePathsInput]
   if (!imagePaths.length || imagePaths.some(imagePath => typeof imagePath !== 'string' || !imagePath.startsWith('/'))) throw new Error('At least one public image path is required')
-  const imageAlt = text(website.title, 'Выполненная работа')
+  const titleAlt = text(website.title, 'Выполненная работа')
+  // Never align a filtered transfer with the unfiltered export by index.
+  const approvedMedia = transferredMedia ?? (payload.media?.length === imagePaths.length ? payload.media : [])
+  const images = imagePaths.map((src, index) => {
+    const media = approvedMedia[index]
+    const stage = ['before', 'process', 'result'].includes(media?.stage) ? media.stage : undefined
+    return { src, alt: text(media?.alt, index ? `${titleAlt}, фото ${index + 1}` : titleAlt), ...(stage ? { stage } : {}) }
+  })
+  const imageAlt = images[0].alt
   return {
     id: slug,
     title: text(website.title, 'Реальный проект'),
-    client: 'Клиент Центра лазерной резки',
+    client: '',
+    ...Object.fromEntries(['summary', 'sourceMaterials', 'preparation', 'approvedDetails', 'production', 'cta', 'seoDescription']
+      .filter(field => typeof website[field] === 'string' && website[field].trim())
+      .map(field => [field, website[field].trim()])),
     category: 'Реальный проект',
     image: imagePaths[0],
     imageAlt,
-    images: imagePaths.map((src, index) => ({ src, alt: index ? `${imageAlt}, фото ${index + 1}` : imageAlt })),
-    task: text(website.problem, website.summary ?? 'Задача клиента'),
-    solution: text(website.solution, 'Решение Центра лазерной резки'),
-    result: text(website.result, 'Проект выполнен'),
-    price: text(website.price, 'По запросу'),
-    qty: text(website.qty, 'По задаче'),
-    deadline: text(website.deadline, 'По расчёту'),
+    images,
+    task: text(website.problem, text(website.summary, '')),
+    solution: text(website.solution, ''),
+    result: text(website.result, ''),
+    price: text(website.price, ''),
+    qty: text(website.qty, ''),
+    deadline: text(website.deadline, ''),
     tags: [],
     contentFactory: {
       schemaVersion: WEBSITE_EXPORT_SCHEMA,

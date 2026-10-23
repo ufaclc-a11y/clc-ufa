@@ -2,10 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
-import { CTASection } from '@/components/CTASection'
+import { CaseContactActions } from '@/components/CaseContactActions'
 import { CaseGallery } from '@/components/CaseGallery'
 import { JsonLd } from '@/components/JsonLd'
 import { getPublicCase, publicCases } from '@/lib/public-cases'
+import { caseDescription, caseFacts, caseSections, visibleCaseLabel } from '@/lib/case-presentation'
+import { relatedCaseLinks } from '@/lib/case-related'
+import { caseUrl } from '@/lib/case-contact'
+import { CaseTracking } from '@/components/CaseTracking'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -18,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = getPublicCase(slug)
   if (!item) return {}
 
-  const description = item.task.length > 155 ? `${item.task.slice(0, 152).trimEnd()}…` : item.task
+  const description = caseDescription(item)
   const images = item.images?.length ? item.images : [{ src: item.image, alt: item.imageAlt }]
 
   return {
@@ -26,6 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description,
     alternates: { canonical: `https://clc-ufa.ru/cases/${item.id}` },
     openGraph: {
+      url: caseUrl(item),
       title: item.title,
       description,
       images: images.map(image => ({ url: image.src, alt: image.alt })),
@@ -46,7 +51,7 @@ export default async function CasePage({ params }: Props) {
     '@id': `https://clc-ufa.ru/cases/${item.id}#case`,
     url: `https://clc-ufa.ru/cases/${item.id}`,
     name: item.title,
-    description: item.task,
+    description: caseDescription(item),
     image: images.map(image => `https://clc-ufa.ru${image.src}`),
     inLanguage: 'ru-RU',
     creator: {
@@ -56,15 +61,13 @@ export default async function CasePage({ params }: Props) {
     },
   }
 
-  const facts = [
-    { label: 'Количество', value: item.qty },
-    { label: 'Срок', value: item.deadline },
-    { label: 'Цена', value: item.price },
-  ]
+  const facts = caseFacts(item)
+  const related = relatedCaseLinks(item, publicCases)
 
   return (
     <>
       <JsonLd data={caseLd} />
+      <CaseTracking caseId={item.id} />
 
       <main className="bg-[#F5F4F0]">
         <section className="border-b border-[#DDDAD3] bg-[#1A1A1A] pt-24 text-white">
@@ -78,10 +81,13 @@ export default async function CasePage({ params }: Props) {
               <h1 className="max-w-2xl text-balance font-display text-4xl leading-[1.05] text-white sm:text-5xl lg:text-6xl">
                 {item.title}
               </h1>
+              {item.summary && <p className="mt-5 max-w-[60ch] text-lg leading-relaxed text-white/80">{item.summary}</p>}
               <div className="mt-6 flex flex-wrap items-center gap-3 text-sm">
                 <span className="rounded-full bg-[#FF6B00] px-3 py-1 font-bold text-white">{item.category}</span>
-                <span className="text-white/65">{item.client}</span>
+                {visibleCaseLabel(item.client) && <span className="text-white/65">{item.client}</span>}
               </div>
+              <p className="mt-6 text-white/80">Хотите обсудить похожую задачу?</p>
+              <CaseContactActions item={item} position="hero" />
               <Link
                 href="/cases"
                 className="mt-8 inline-flex min-h-11 items-center gap-2 rounded-lg text-sm font-semibold text-white/75 underline decoration-white/30 underline-offset-4 transition-colors duration-200 hover:text-white hover:decoration-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]"
@@ -99,21 +105,17 @@ export default async function CasePage({ params }: Props) {
 
         <section className="bg-white py-14 sm:py-18">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <dl className="grid grid-cols-1 divide-y divide-[#E8E6E0] border-y border-[#E8E6E0] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+            {facts.length > 0 && <dl className="grid grid-cols-1 divide-y divide-[#E8E6E0] border-y border-[#E8E6E0] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
               {facts.map(fact => (
                 <div key={fact.label} className="min-w-0 px-0 py-5 sm:px-6 sm:first:pl-0 sm:last:pr-0">
                   <dt className="text-xs font-semibold uppercase tracking-[0.1em] text-[#77736C]">{fact.label}</dt>
                   <dd className="mt-1 break-words text-lg font-bold leading-snug text-[#1A1A1A]">{fact.value}</dd>
                 </div>
               ))}
-            </dl>
+            </dl>}
 
             <article className="mt-12 space-y-9 lg:grid lg:grid-cols-[210px_minmax(0,1fr)] lg:gap-x-14 lg:gap-y-12 lg:space-y-0">
-              {[
-                { heading: 'Задача', text: item.task },
-                { heading: 'Решение', text: item.solution },
-                { heading: 'Результат', text: item.result },
-              ].map(section => (
+              {caseSections(item).map(section => (
                 <section key={section.heading} className="grid gap-3 lg:contents">
                   <h2 className="font-display text-3xl leading-tight text-[#1A1A1A]">{section.heading}</h2>
                   <p className="max-w-[70ch] break-words text-base leading-[1.8] text-[#4F4B45] sm:text-lg">
@@ -146,6 +148,10 @@ export default async function CasePage({ params }: Props) {
               </section>
             )}
 
+            {related.length > 0 && <nav className="mt-12 border-t border-[#E8E6E0] pt-6" aria-label="Услуги и другие примеры">
+              <h2 className="font-display text-3xl">Услуги и другие примеры</h2>
+              <ul className="mt-4 space-y-3">{related.map(link => <li key={link.href}><Link className="inline-flex min-h-11 items-center rounded text-[#9D3900] underline underline-offset-4 hover:text-[#7D2E00] active:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]" href={link.href}>{link.title}</Link></li>)}</ul>
+            </nav>}
             {item.tags.length > 0 && (
               <div className="mt-12 flex flex-wrap gap-2 border-t border-[#E8E6E0] pt-6" aria-label="Темы кейса">
                 {item.tags.map(tag => (
@@ -159,11 +165,13 @@ export default async function CasePage({ params }: Props) {
         </section>
       </main>
 
-      <CTASection
-        dark
-        title="Нужен похожий результат?"
-        subtitle="Расскажите задачу — уточним детали и подготовим расчёт стоимости и срока."
-      />
+      <section className="bg-[#1A1A1A] px-4 py-14 text-white">
+        <div className="mx-auto max-w-5xl">
+          <h2 className="font-display text-3xl">Обсудим вашу задачу</h2>
+          <p className="mt-4 max-w-3xl text-lg leading-relaxed">{item.cta || 'Пришлите фото, рисунок или описание задачи — проверим возможность изготовления и рассчитаем стоимость.'}</p>
+          <CaseContactActions item={item} position="final" />
+        </div>
+      </section>
     </>
   )
 }
