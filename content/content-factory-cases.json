@@ -1,6 +1,7 @@
 [
   {
     "id": "company-gift-infinity",
+    "autoRelatedCases": false,
     "title": "Статуэтка «Бесконечность» для GS medicine",
     "client": "GS medicine",
     "category": "Корпоративные подарки",

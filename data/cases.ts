@@ -7,6 +7,7 @@ export type CaseImage = {
 }
 
 export type Case = {
+  autoRelatedCases?: boolean
   presentation?: 'product-first'
   classification?: { technology?: string; technologies?: string[]; material?: string; type?: string }
   id:       string

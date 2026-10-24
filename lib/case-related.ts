@@ -35,7 +35,7 @@ export function relatedCaseLinks(item: Case, examples: Case[]) {
   ].map(link => ({ ...link, score: score(link.title) }))
     .filter(link => link.score >= Math.min(2, terms(link.title).size) && link.score > 0)
     .sort((a, b) => b.score - a.score).slice(0, 4)
-  const related = examples.filter(example => example.id !== item.id)
+  const related = (item.autoRelatedCases === false ? [] : examples).filter(example => example.id !== item.id)
     .map(example => ({ href: `/cases/${example.id}`, title: example.title, score: score([example.title, example.task, ...example.tags].join(' ')) }))
     .filter(link => link.score >= 2).sort((a, b) => b.score - a.score).slice(0, 2)
   return [...catalog, ...related].filter((link, index, all) => all.findIndex(other => other.href === link.href) === index)
