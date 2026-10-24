@@ -10,6 +10,7 @@ import { caseDescription, caseFacts, caseSections, visibleCaseLabel } from '@/li
 import { relatedCaseLinks } from '@/lib/case-related'
 import { caseUrl } from '@/lib/case-contact'
 import { CaseTracking } from '@/components/CaseTracking'
+import { ProductFocusedCase } from '@/components/ProductFocusedCase'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -63,6 +64,12 @@ export default async function CasePage({ params }: Props) {
 
   const facts = caseFacts(item)
   const related = relatedCaseLinks(item, publicCases)
+
+  if (item.presentation === 'product-first') return <>
+    <JsonLd data={caseLd} />
+    <CaseTracking caseId={item.id} />
+    <ProductFocusedCase item={item} related={related} />
+  </>
 
   return (
     <>

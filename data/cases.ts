@@ -1,10 +1,14 @@
 export type CaseImage = {
   src: string
   alt: string
+  width?: number
+  height?: number
   stage?: 'before' | 'process' | 'result'
 }
 
 export type Case = {
+  presentation?: 'product-first'
+  classification?: { technology?: string; technologies?: string[]; material?: string; type?: string }
   id:       string
   title:    string
   client:   string

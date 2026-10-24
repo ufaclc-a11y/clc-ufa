@@ -8,6 +8,7 @@ import { business } from '@/data/contacts'
 import { SiteSearch } from '@/components/SiteSearch'
 import { CartButton } from '@/components/CartButton'
 import { ShopHeader } from '@/components/ShopHeader'
+import { publicCases } from '@/lib/public-cases'
 
 const nav = [
   { href: '/services',  label: 'Услуги'      },
@@ -44,6 +45,15 @@ export function Header() {
   }, [open])
 
   if (pathname.startsWith('/shop')) return <ShopHeader />
+
+  if (publicCases.some(item => item.presentation === 'product-first' && pathname === `/cases/${item.id}`)) return <header className="absolute inset-x-0 top-0 z-40 h-12 border-b border-white/15 bg-[#1A1A1A] text-white">
+    <nav aria-label="Навигация кейса" className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6">
+      <Link href="/" className="inline-flex min-h-11 items-center gap-2 rounded text-sm font-semibold hover:text-[#FF6B00] active:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]">
+        <Image src="/logo.svg" width={28} height={28} alt="" /> Центр лазерной резки
+      </Link>
+      <Link href="/cases" className="inline-flex min-h-11 items-center rounded text-sm text-white/80 underline underline-offset-4 hover:text-white active:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]">Все кейсы</Link>
+    </nav>
+  </header>
 
   return (
     <header

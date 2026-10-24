@@ -30,10 +30,20 @@ export function contentFactoryCaseFromExport(payload, imagePathsInput, importedA
   const images = imagePaths.map((src, index) => {
     const media = approvedMedia[index]
     const stage = ['before', 'process', 'result'].includes(media?.stage) ? media.stage : undefined
-    return { src, alt: text(media?.alt, index ? `${titleAlt}, фото ${index + 1}` : titleAlt), ...(stage ? { stage } : {}) }
+    return { src, alt: text(media?.alt, index ? `${titleAlt}, фото ${index + 1}` : titleAlt), ...(stage ? { stage } : {}), ...(Number.isInteger(media?.width) && media.width > 0 && Number.isInteger(media?.height) && media.height > 0 ? { width: media.width, height: media.height } : {}) }
   })
   const imageAlt = images[0].alt
+  const raw = website.classification
+  const knownTechnologies = ['engraving', 'laser-cutting', 'milling', 'uv-printing']
+  const requested = raw?.technologies ?? (raw?.technology ? [raw.technology] : [])
+  const technologies = Array.isArray(requested) ? [...new Set(requested.filter(t => knownTechnologies.includes(t)))] : []
+  // A partly unknown process set must never become a confirmed exact-match taxonomy.
+  const taxonomyComplete = Array.isArray(requested) && requested.every(t => knownTechnologies.includes(t))
+  const material = ['metal', 'acrylic', 'wood', 'plywood', 'plastic', 'glass', 'composite', 'paper', 'leather'].includes(raw?.material) ? raw.material : undefined
+  const type = ['tag', 'sign', 'award', 'construction', 'part', 'souvenir', 'panel', 'stand', 'organizer'].includes(raw?.type) ? raw.type : undefined
   return {
+    presentation: 'product-first',
+    ...(taxonomyComplete && (technologies.length || material || type) ? { classification: { ...(technologies.length ? { technologies } : {}), ...(material ? { material } : {}), ...(type ? { type } : {}) } } : {}),
     id: slug,
     title: text(website.title, 'Реальный проект'),
     client: '',

@@ -29,6 +29,13 @@ async function main() {
     const bytes = await readFile(source)
     const actualSha = createHash('sha256').update(bytes).digest('hex')
     if (item.sha256 && item.sha256 !== actualSha) throw new Error(`Media SHA-256 mismatch for ${item.filename}`)
+    if (item.publicPath) {
+      if (typeof item.publicPath !== 'string' || !/^\/images\/cases\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_.-]+$/.test(item.publicPath)) throw new Error('Invalid existing public image path')
+      const existing = await readFile(path.resolve('public', item.publicPath.slice(1)))
+      if (createHash('sha256').update(existing).digest('hex') !== actualSha) throw new Error('Existing public image SHA mismatch')
+      imagePaths.push(item.publicPath)
+      continue
+    }
     const extension = path.extname(item.filename).toLowerCase()
     const destinationName = `${slug}-${actualSha.slice(0, 12)}${extension}`
     const destination = path.resolve(destinationDir, destinationName)

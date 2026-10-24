@@ -7,6 +7,20 @@ export function visibleCaseLabel(value?: string): string | undefined {
 }
 
 export function caseSections(item: Case) {
+  if (item.presentation === 'product-first') {
+    const seen = new Set([item.summary?.trim()].filter(Boolean))
+    const solution = visibleCaseLabel(item.solution) || [...new Set([item.preparation, item.approvedDetails, item.production].map(v => visibleCaseLabel(v)).filter(Boolean))].join(' ')
+    return [
+      { heading: 'Задача', text: item.task },
+      { heading: 'Как сделали', text: solution },
+      { heading: 'Результат', text: item.result },
+    ].filter((section): section is { heading: string; text: string } => {
+      const value = visibleCaseLabel(section.text)
+      if (!value || seen.has(value)) return false
+      seen.add(value)
+      return true
+    })
+  }
   const structured = [
     { heading: 'Исходные материалы', text: item.sourceMaterials },
     { heading: 'Подготовка', text: item.preparation },
