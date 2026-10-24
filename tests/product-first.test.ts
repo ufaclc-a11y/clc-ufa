@@ -19,7 +19,7 @@ test('opt-in product case has exactly three narrative sections and one working p
   assert.match(html, /murmiau-front-product/)
   assert.doesNotMatch(html, /pt-24/)
   assert.match(html, /data-cta-position="final"/)
-  assert.equal(generated.find(record => record.id === item.id)!.contentFactory.packVersion, 5)
+  assert.equal(generated.find(record => record.id === item.id)!.contentFactory.packVersion, 6)
   assert.equal(publicCases.filter(c => c.presentation === 'product-first').length, 1)
   const legacy = getPublicCase('company-gift-infinity')!
   assert.equal(legacy.presentation, undefined)

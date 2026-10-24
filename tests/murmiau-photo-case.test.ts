@@ -13,7 +13,7 @@ import sharp from 'sharp'
 const slug = 'murmiau-engraved-tag'
 const sha = (bytes: string | Buffer) => createHash('sha256').update(bytes).digest('hex')
 
-test('website revision 5 has authorized concise story and exact crops; accepted originals and previous cases stay intact', async () => {
+test('website revision 6 has owner-approved result copy and exact crops; accepted originals and previous cases stay intact', async () => {
   const item = generated.find(record => record.id === slug)
   assert.ok(item, 'accepted murmiau case must exist')
   // Compile-time check of actual JSON, not the loader’s unchecked type assertion.
@@ -27,9 +27,9 @@ test('website revision 5 has authorized concise story and exact crops; accepted 
   assert.match(String(revised.solution), /две лапки и согласовали/)
   assert.equal(revised.cta, 'Есть фото, рисунок или идея? Пришлите нам, проверим возможность изготовления и рассчитаем стоимость')
   const provenance = generated.find(record => record.id === slug)!.contentFactory
-  assert.equal(provenance.packVersion, 5)
-  assert.equal(provenance.approvalHash, '4b3f6597cfd310b1804442cf126341d4b8681d5d1c571ed643da826f46ceeca3')
-  assert.notEqual(provenance.approvalHash, '1a181a878dded7cbfebe979365359c88448aba5047ebb38ba950b9240c77e300')
+  assert.equal(provenance.packVersion, 6)
+  assert.equal(provenance.approvalHash, '3c40a4b62eaf41d7718e220c308a53eca6b0eded1ce399d16e6364600528529b')
+  assert.notEqual(provenance.approvalHash, '4b3f6597cfd310b1804442cf126341d4b8681d5d1c571ed643da826f46ceeca3')
   assert.equal(item.images?.length, 2)
   for (const image of revised.images as { stage?: string }[]) assert.equal(image.stage, 'result')
   const hashes = ['3955ca7d58ecd4153c5141137333e9d1460723575f214797ae4a27a265dd040d', 'e8882331f13faee87aa0c1c1441f4ad1c1d071f719fefac9f315936f693ef3bd']
