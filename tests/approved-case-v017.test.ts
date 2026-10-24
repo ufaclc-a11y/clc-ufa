@@ -9,15 +9,16 @@ import { cases } from '../data/cases'
 
 const slug = 'company-gift-infinity'
 
-test('approved Claude v002 and designer series render approved copy and preserve old cases', async () => {
+test('approved GS medicine story v003 preserves Claude v002 video, designer series and other cases', async () => {
   const item = getPublicCase(slug)!
   assert.ok(item)
   assert.equal(publicCases.filter(c => c.id === slug).length, 1)
   assert.deepEqual(publicCases.slice(0, cases.length), cases)
   assert.deepEqual(publicCases.slice(cases.length).map(item => item.id), ['company-gift-infinity', 'murmiau-engraved-tag'])
-  assert.equal(item.task, 'Подарок ко дню рождения компании начался со сгенерированной картинки. Готового макета у заказчика ещё не было.')
-  assert.equal(item.solution, 'Мы сделали небольшой тёмный пробник. После него заказчик решил поменять оформление: в тёмном варианте подарок смотрелся уныло. Остановились на светлом, доработали макет и подобрали цвет графит на реальной детали.')
-  assert.equal(item.result, 'В этом заказе пробник помог определиться с оформлением ещё до изготовления готовой статуэтки. На фото и видео — результат работы Центра лазерной резки.')
+  assert.equal(item.title, 'Статуэтка «Бесконечность» для GS medicine')
+  assert.equal(item.task, 'Изготовить подарок ко дню рождения GS medicine — статуэтку в форме знака бесконечности. У заказчика была только сгенерированная картинка, готового макета не было.')
+  assert.equal(item.solution, 'Сначала изготовили тёмный пробник. Он показался заказчику унылым, поэтому для статуэтки выбрали светлое оформление.\n\nМедицинские аппараты сделали отдельными объёмными деталями. Для них выбрали молочный акрил с УФ-печатью, чтобы торцы оставались светлыми. Логотип и знак бесконечности на табличке решили не делать объёмными: таких элементов уже достаточно на самой статуэтке.\n\nВ макете развели пересекавшиеся линии и доработали табличку на основании. После согласования изготовили статуэтку.')
+  assert.equal(item.result, 'Светлая статуэтка с объёмными изображениями медицинского оборудования и табличкой GS medicine на основании.')
   assert.equal(item.video?.contactText, 'Нужен подарок компании? Пришлите картинку — обсудим, как воплотить вашу идею.')
   const html = renderToStaticMarkup(await CasePage({ params: Promise.resolve({ slug }) }))
   for (const paragraph of [item.task, item.solution, item.result, item.video!.contactText]) assert.ok(html.includes(paragraph))
