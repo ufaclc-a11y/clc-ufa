@@ -20,8 +20,8 @@ test('opt-in product case has exactly three narrative sections and one working p
   assert.doesNotMatch(html, /pt-24/)
   assert.match(html, /data-cta-position="final"/)
   assert.equal(generated.find(record => record.id === item.id)!.contentFactory.packVersion, 6)
-  assert.equal(publicCases.filter(c => c.presentation === 'product-first').length, 1)
-  const legacy = getPublicCase('company-gift-infinity')!
+  assert.deepEqual(publicCases.filter(c => c.presentation === 'product-first').map(c => c.id), ['company-gift-infinity', 'murmiau-engraved-tag'])
+  const legacy = getPublicCase('medali-dzudo')!
   assert.equal(legacy.presentation, undefined)
   const old = renderToStaticMarkup(await CasePage({ params: Promise.resolve({ slug: legacy.id }) }))
   assert.match(old, /pt-24/)
@@ -37,7 +37,7 @@ test('strict related taxonomy fails closed for unclassified cases and excludes f
 })
 
 test('large product fixture uses the same component without opting the real case into publication', () => {
-  const legacy = getPublicCase('company-gift-infinity')!
+  const legacy = getPublicCase('medali-dzudo')!
   const html = renderToStaticMarkup(ProductFocusedCase({ item: { ...legacy, presentation: 'product-first' } }))
   assert.match(html, /data-product-first-hero/)
   assert.match(html, /object-contain/)

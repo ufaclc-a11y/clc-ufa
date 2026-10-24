@@ -4,10 +4,13 @@ export type CaseImage = {
   width?: number
   height?: number
   stage?: 'before' | 'process' | 'result'
+  label?: string // Explicit source-backed gallery label; never inferred from position.
 }
 
 export type Case = {
+  storyLevel?: 'A' | 'B' | 'C'
   autoRelatedCases?: boolean
+  serviceLinks?: string[] // Curated existing route allowlist, not arbitrary recommendations.
   presentation?: 'product-first'
   classification?: { technology?: string; technologies?: string[]; material?: string; type?: string }
   id:       string

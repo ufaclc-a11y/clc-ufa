@@ -17,7 +17,7 @@ test('website revision 6 has owner-approved result copy and exact crops; accepte
   const item = generated.find(record => record.id === slug)
   assert.ok(item, 'accepted murmiau case must exist')
   // Compile-time check of actual JSON, not the loader’s unchecked type assertion.
-  const typedRecords: ContentFactoryCase[] = generated.map(record => ({ ...record, presentation: 'presentation' in record && record.presentation === 'product-first' ? 'product-first' as const : undefined, images: record.images.map(image => ({ ...image, stage: 'stage' in image && image.stage === 'result' ? 'result' as const : undefined })), contentFactory: { ...record.contentFactory, schemaVersion: 'content-factory.website-case.v1' as const } }))
+  const typedRecords: ContentFactoryCase[] = generated.map(record => ({ ...record, storyLevel: 'storyLevel' in record && (record.storyLevel === 'A' || record.storyLevel === 'B' || record.storyLevel === 'C') ? record.storyLevel : undefined, presentation: 'presentation' in record && record.presentation === 'product-first' ? 'product-first' as const : undefined, images: record.images.map(image => ({ ...image, stage: 'stage' in image && image.stage === 'result' ? 'result' as const : undefined })), contentFactory: { ...record.contentFactory, schemaVersion: 'content-factory.website-case.v1' as const } }))
   assert.equal(typedRecords.filter(record => record.id === slug).length, 1)
   const revised = generated.find(record => record.id === slug) as unknown as Record<string, unknown>
   assert.equal(revised.title, 'Жетон «мурмяу» с гравировкой по фотографии')

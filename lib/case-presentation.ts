@@ -7,6 +7,35 @@ export function visibleCaseLabel(value?: string): string | undefined {
 }
 
 export function caseSections(item: Case) {
+  if (item.storyLevel === 'A' || item.storyLevel === 'B' || item.storyLevel === 'C') {
+    // Explicit depth changes labels, never manufactures missing source copy.
+    const key = (text: string) => text.replace(/\s+/g, ' ').trim()
+    const join = (values: (string | undefined)[]) => {
+      const seen = new Set<string>()
+      return values.map(value => visibleCaseLabel(value)).filter((text): text is string => {
+        if (!text || seen.has(key(text))) return false
+        seen.add(key(text))
+        return true
+      }).join(' ')
+    }
+    const level = item.storyLevel
+    const solution = visibleCaseLabel(item.solution) || join([item.preparation, item.approvedDetails, ...(level === 'A' ? [item.production] : [])])
+    const sections = [
+      { heading: level === 'B' ? 'Исходная идея' : 'Задача', text: level === 'B' ? join([item.task, item.sourceMaterials]) : item.task },
+      { heading: level === 'B' ? 'Доработка' : level === 'C' ? 'Сложности и решения' : 'Как сделали', text: solution },
+      ...(level === 'C' ? [{ heading: 'Изготовление', text: item.production }] : []),
+      { heading: 'Результат', text: item.result },
+    ]
+    const seen = new Set<string>()
+    return sections.flatMap(section => {
+      const text = visibleCaseLabel(section.text)
+      if (!text || seen.has(key(text))) return []
+      // A production paragraph wholly repeated in the solution adds no evidence.
+      if (section.heading === 'Изготовление' && key(solution).includes(key(text))) return []
+      seen.add(key(text))
+      return [{ heading: section.heading, text }]
+    })
+  }
   if (item.presentation === 'product-first') {
     const seen = new Set([item.summary?.trim()].filter(Boolean))
     const solution = visibleCaseLabel(item.solution) || [...new Set([item.preparation, item.approvedDetails, item.production].map(v => visibleCaseLabel(v)).filter(Boolean))].join(' ')

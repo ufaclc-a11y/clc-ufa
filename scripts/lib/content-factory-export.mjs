@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto'
+import { allowedCaseServicePaths } from '../../lib/case-service-links.mjs'
 
 export const WEBSITE_EXPORT_SCHEMA = 'content-factory.website-case.v1'
 
@@ -30,7 +31,7 @@ export function contentFactoryCaseFromExport(payload, imagePathsInput, importedA
   const images = imagePaths.map((src, index) => {
     const media = approvedMedia[index]
     const stage = ['before', 'process', 'result'].includes(media?.stage) ? media.stage : undefined
-    return { src, alt: text(media?.alt, index ? `${titleAlt}, фото ${index + 1}` : titleAlt), ...(stage ? { stage } : {}), ...(Number.isInteger(media?.width) && media.width > 0 && Number.isInteger(media?.height) && media.height > 0 ? { width: media.width, height: media.height } : {}) }
+    return { src, alt: text(media?.alt, index ? `${titleAlt}, фото ${index + 1}` : titleAlt), ...(text(media?.label, '') ? { label: text(media.label, '') } : {}), ...(stage ? { stage } : {}), ...(Number.isInteger(media?.width) && media.width > 0 && Number.isInteger(media?.height) && media.height > 0 ? { width: media.width, height: media.height } : {}) }
   })
   const imageAlt = images[0].alt
   const raw = website.classification
@@ -43,6 +44,9 @@ export function contentFactoryCaseFromExport(payload, imagePathsInput, importedA
   const type = ['tag', 'sign', 'award', 'construction', 'part', 'souvenir', 'panel', 'stand', 'organizer'].includes(raw?.type) ? raw.type : undefined
   return {
     presentation: 'product-first',
+    ...(['A', 'B', 'C'].includes(website.storyLevel) ? { storyLevel: website.storyLevel } : {}),
+    ...(typeof website.autoRelatedCases === 'boolean' ? { autoRelatedCases: website.autoRelatedCases } : {}),
+    ...(Array.isArray(website.serviceLinks) ? { serviceLinks: allowedCaseServicePaths(website.serviceLinks) } : {}),
     ...(taxonomyComplete && (technologies.length || material || type) ? { classification: { ...(technologies.length ? { technologies } : {}), ...(material ? { material } : {}), ...(type ? { type } : {}) } } : {}),
     id: slug,
     title: text(website.title, 'Реальный проект'),
