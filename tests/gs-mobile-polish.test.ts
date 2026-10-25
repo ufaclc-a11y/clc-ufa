@@ -2,12 +2,15 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import fs from 'node:fs'
 import { createElement } from 'react'
-import { execFileSync } from 'node:child_process'
+import { createHash } from 'node:crypto'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { ProductFocusedCase } from '../components/ProductFocusedCase'
 import { ProductCaseGallery } from '../components/ProductCaseGallery'
 import { getPublicCase } from '../lib/public-cases'
-const previous = JSON.parse(execFileSync('git', ['show', '5c65c9c6c55916c1fb0c1ea309ebc27fd83c78e1:content/content-factory-cases.json'], { encoding: 'utf8' }))
+const baselineBytes = fs.readFileSync(new URL('./fixtures/gs-mobile-before.json', import.meta.url))
+// Frozen published baseline: tests must also run in Actions depth-1 checkouts.
+assert.equal(createHash('sha256').update(baselineBytes).digest('hex'), 'c05e4d2a308688f1baecf2208d7dc21aaeb687a0e804cb0c19a934952251aa97')
+const previous = JSON.parse(baselineBytes.toString('utf8'))
 
 test('GS mobile story trims approximately 30 percent without dropping supported decisions', () => {
   const gs = getPublicCase('company-gift-infinity')!
