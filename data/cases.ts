@@ -9,6 +9,7 @@ export type CaseImage = {
 
 export type Case = {
   storyLevel?: 'A' | 'B' | 'C'
+  gallerySequence?: boolean // Keep source → prototype → result controls; initially show finished item.
   autoRelatedCases?: boolean
   serviceLinks?: string[] // Curated existing route allowlist, not arbitrary recommendations.
   presentation?: 'product-first'
@@ -25,6 +26,7 @@ export type Case = {
     poster: string
     attribution: string
     contactText: string
+    description?: string // Viewer caption, separate from optional music attribution.
   }
   task:     string
   summary?: string

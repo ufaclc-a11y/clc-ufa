@@ -9,7 +9,7 @@ import { cases } from '../data/cases'
 
 const slug = 'company-gift-infinity'
 
-test('approved GS medicine story v004 preserves Claude v002 video, original designer series and other cases', async () => {
+test('approved GS medicine story v005 preserves Claude v002 video, original designer series and other cases', async () => {
   const item = getPublicCase(slug)!
   assert.ok(item)
   assert.equal(publicCases.filter(c => c.id === slug).length, 1)
@@ -17,15 +17,16 @@ test('approved GS medicine story v004 preserves Claude v002 video, original desi
   assert.deepEqual(publicCases.slice(cases.length).map(item => item.id), ['company-gift-infinity', 'murmiau-engraved-tag'])
   assert.equal(item.title, "Корпоративная статуэтка по ИИ-эскизу для GS medicine")
   assert.equal(item.task, "Изготовить корпоративный подарок ко дню рождения GS medicine — статуэтку в форме знака бесконечности. На старте у заказчика была сгенерированная картинка, но не было готового производственного макета.")
-  assert.equal(item.solution, "Сначала сделали тёмный пробник. Заказчику он показался унылым, поэтому перешли к светлому оформлению.\n\nМедицинские аппараты выполнили отдельными объёмными элементами. Для них выбрали молочный акрил с УФ-печатью, чтобы торцы оставались светлыми. Логотип и знак бесконечности на табличке оставили плоскими: объёмных элементов уже достаточно на самой статуэтке.\n\nВ центре макета развели пересекавшиеся линии и доработали табличку на основании. Исправленный вариант согласовали с заказчиком.")
+  assert.equal(item.solution, "Тёмный пробник заказчик счёл унылым — выбрали светлое оформление.\n\nМедицинские аппараты сделали объёмными накладками из молочного акрила с УФ-печатью и светлыми торцами. Логотип и знак бесконечности на табличке оставили плоскими, чтобы не перегрузить изделие.\n\nРазвели пересечения линий в центре, доработали табличку основания и согласовали макет.")
   assert.equal(item.result, "Сгенерированную идею воплотили в светлой статуэтке со знаком бесконечности, объёмными изображениями медицинского оборудования и табличкой GS medicine на основании.")
   assert.equal(item.video?.contactText, 'Нужен подарок компании? Пришлите картинку — обсудим, как воплотить вашу идею.')
   const html = renderToStaticMarkup(await CasePage({ params: Promise.resolve({ slug }) }))
-  for (const paragraph of [item.task, item.solution, item.result, item.video!.contactText]) assert.ok(html.includes(paragraph))
+  for (const paragraph of [item.task, item.solution, item.result, item.video!.description!]) assert.ok(html.includes(paragraph))
   assert.ok(html.includes('Музыка: Dream Culture — Kevin MacLeod.'))
   assert.ok(html.includes('https://creativecommons.org/licenses/by/4.0/'))
   assert.ok(html.includes('https://incompetech.com/music/royalty-free/index.html?Search=Search&amp;isrc=USUAN1300046'))
-  assert.ok(html.includes('Изменения: использован фрагмент; плавное появление и затухание; понижен уровень; музыка приглушается под речь.'))
+  assert.ok(html.includes('Использован фрагмент с монтажом.'))
+  assert.ok(!html.includes('приглушается под речь'))
   const metadata = await generateMetadata({ params: Promise.resolve({ slug }) })
   assert.equal(metadata.alternates?.canonical, `https://clc-ufa.ru/cases/${slug}`)
   assert.ok(generateStaticParams().some(item => item.slug === slug))

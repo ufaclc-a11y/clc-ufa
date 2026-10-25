@@ -15,7 +15,7 @@ export function ProductFocusedCase({ item, related = [] }: { item: Case; related
           <h1 id="product-case-title" className={adaptive ? 'max-w-2xl text-balance font-display text-2xl leading-[1.06] [overflow-wrap:anywhere] sm:text-5xl lg:text-6xl' : 'max-w-2xl text-balance font-display text-[1.8rem] leading-[1.06] sm:text-5xl lg:text-6xl'}>{item.title}</h1>
           {item.summary && <p className={adaptive ? 'mt-3 hidden max-w-[52ch] break-words text-base leading-relaxed text-white/80 lg:block lg:text-lg' : 'mt-3 max-w-[52ch] text-base leading-relaxed text-white/80 sm:text-lg'}>{item.summary}</p>}
         </div>
-        <div className={adaptive ? 'min-w-0 max-[359px]:order-2 lg:col-start-2 lg:row-span-2 lg:row-start-1' : 'min-w-0 lg:col-start-2 lg:row-span-2 lg:row-start-1'}><ProductCaseGallery images={images} compact={adaptive} /></div>
+        <div className={adaptive ? 'min-w-0 max-[359px]:order-2 lg:col-start-2 lg:row-span-2 lg:row-start-1' : 'min-w-0 lg:col-start-2 lg:row-span-2 lg:row-start-1'}><ProductCaseGallery images={images} compact={adaptive} sequence={item.gallerySequence} /></div>
         <div className={adaptive ? 'max-[359px]:order-1 max-[359px]:[&_p]:hidden lg:col-start-1 lg:row-start-2 lg:self-start' : 'lg:col-start-1 lg:row-start-2 lg:self-start'}><ProductCaseContactTrigger position="hero" /></div>
         {adaptive && item.summary && <p className="max-w-[52ch] break-words text-base leading-relaxed text-white/80 max-[359px]:order-3 lg:hidden">{item.summary}</p>}
       </div>
@@ -34,8 +34,18 @@ export function ProductFocusedCase({ item, related = [] }: { item: Case; related
           <source src={item.video.src} type="video/mp4" />
           <a href={item.video.src}>Скачать видео</a>
         </video>
-        <p className="mt-8 text-base leading-[1.8] sm:text-lg"><Link href="/contacts" className="inline-flex min-h-11 items-center rounded text-[#9D3900] underline underline-offset-4 hover:text-[#7D2E00] active:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]">{item.video.contactText}</Link></p>
-        <p className="mt-6 whitespace-pre-line break-words text-sm leading-relaxed text-[#4F4B45]">{item.video.attribution}</p>
+        {item.video.description ? <>
+          <p className="mt-6 text-base leading-[1.8] text-[#4F4B45] sm:text-lg">{item.video.description}</p>
+          <details className="mt-3 text-sm leading-relaxed text-[#4F4B45]">
+            <summary className="min-h-11 cursor-pointer py-3 underline underline-offset-4">Музыка и лицензия</summary>
+            <div className="space-y-2 pb-3">{item.video.attribution.split('\n').filter(Boolean).map((line, index) =>
+              /^https:\/\//.test(line) ? <p key={index}><a href={line} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{line.startsWith('https://creativecommons.org/') ? 'Лицензия CC BY 4.0' : 'Источник музыки'}</a></p> : <p key={index}>{line}</p>
+            )}</div>
+          </details>
+        </> : <>
+          <p className="mt-8 text-base leading-[1.8] sm:text-lg"><Link href="/contacts" className="inline-flex min-h-11 items-center rounded text-[#9D3900] underline underline-offset-4 hover:text-[#7D2E00] active:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B00]">{item.video.contactText}</Link></p>
+          <p className="mt-6 whitespace-pre-line break-words text-sm leading-relaxed text-[#4F4B45]">{item.video.attribution}</p>
+        </>}
       </section>}
       <ProductCaseContactTrigger position="final" />
       {related.length > 0 && <nav aria-label="По технологии и типу изделия" className="mt-6 border-t border-[#DDDAD3] pt-6">
