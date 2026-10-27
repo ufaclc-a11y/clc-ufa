@@ -12,12 +12,13 @@ export function ProductFocusedCase({ item, related = [] }: { item: Case; related
     <section data-product-first-hero className="bg-[#1A1A1A] pt-16 text-white sm:pt-20" aria-labelledby="product-case-title">
       <div className="mx-auto grid max-w-7xl gap-x-14 gap-y-4 px-4 pb-7 sm:px-6 sm:pb-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div className="lg:col-start-1 lg:row-start-1">
-          <h1 id="product-case-title" className={adaptive ? 'max-w-2xl text-balance font-display text-2xl leading-[1.06] [overflow-wrap:anywhere] sm:text-5xl lg:text-6xl' : 'max-w-2xl text-balance font-display text-[1.8rem] leading-[1.06] sm:text-5xl lg:text-6xl'}>{item.title}</h1>
-          {item.summary && <p className={adaptive ? 'mt-3 hidden max-w-[52ch] break-words text-base leading-relaxed text-white/80 lg:block lg:text-lg' : 'mt-3 max-w-[52ch] text-base leading-relaxed text-white/80 sm:text-lg'}>{item.summary}</p>}
+          <h1 id="product-case-title" className={adaptive ? 'max-w-2xl text-balance font-display text-2xl leading-[1.06] [overflow-wrap:anywhere] sm:text-5xl lg:text-6xl' : 'max-w-2xl text-balance font-display text-[1.8rem] leading-[1.06] max-[359px]:text-2xl sm:text-5xl lg:text-6xl'}>{item.title}</h1>
+          {item.summary && <p className={adaptive ? 'mt-3 hidden max-w-[52ch] break-words text-base leading-relaxed text-white/80 lg:block lg:text-lg' : 'mt-3 max-w-[52ch] text-base leading-relaxed text-white/80 max-[359px]:hidden sm:text-lg'}>{item.summary}</p>}
         </div>
-        <div className={adaptive ? 'min-w-0 max-[359px]:order-2 lg:col-start-2 lg:row-span-2 lg:row-start-1' : 'min-w-0 lg:col-start-2 lg:row-span-2 lg:row-start-1'}><ProductCaseGallery images={images} compact={adaptive} sequence={item.gallerySequence} /></div>
-        <div className={adaptive ? 'max-[359px]:order-1 max-[359px]:[&_p]:hidden lg:col-start-1 lg:row-start-2 lg:self-start' : 'lg:col-start-1 lg:row-start-2 lg:self-start'}><ProductCaseContactTrigger position="hero" /></div>
+        <div className="min-w-0 max-[359px]:order-2 lg:col-start-2 lg:row-span-2 lg:row-start-1"><ProductCaseGallery images={images} compact={adaptive} sequence={item.gallerySequence} /></div>
+        <div className="max-[359px]:order-1 max-[359px]:[&_p]:hidden lg:col-start-1 lg:row-start-2 lg:self-start"><ProductCaseContactTrigger position="hero" /></div>
         {adaptive && item.summary && <p className="max-w-[52ch] break-words text-base leading-relaxed text-white/80 max-[359px]:order-3 lg:hidden">{item.summary}</p>}
+        {!adaptive && item.summary && <p className="max-w-[52ch] break-words text-base leading-relaxed text-white/80 max-[359px]:order-3 min-[360px]:hidden">{item.summary}</p>}
       </div>
     </section>
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
