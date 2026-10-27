@@ -5,9 +5,9 @@ import CasePage from '../app/cases/[slug]/page'
 import { getPublicCase } from '../lib/public-cases'
 import { caseSections } from '../lib/case-presentation'
 
-const expected = 'Получился двусторонний жетон: на одной стороне глаза с фотографии, на другой надпись „мурмяу“ с двумя лапками. Индивидуальное изделие изготовили по согласованному макету.'
+const expected = 'Получился двусторонний кулон: на одной стороне глаза с фотографии, на другой надпись „мурмяу“ с двумя лапками. Индивидуальное изделие изготовили по согласованному макету.'
 
-test('murmiau result uses the exact owner-approved finished-product description', async () => {
+test('murmiau result retains the finished-product description with authorized kulon terminology', async () => {
   const item = getPublicCase('murmiau-engraved-tag')!
   assert.ok(item)
   assert.equal(item.result, expected)

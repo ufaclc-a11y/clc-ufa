@@ -6,7 +6,7 @@ export function caseUrl(item: { id: string }) {
 
 export function productCaseMessage(item: { id: string; title: string }) {
   return item.id === 'murmiau-engraved-tag'
-    ? 'Здравствуйте! Хочу рассчитать изделие, похожее на жетон „мурмяу“: https://clc-ufa.ru/cases/murmiau-engraved-tag'
+    ? `Здравствуйте! Хочу кулон с гравировкой по фото. Подскажите, подойдёт ли моё фото для гравировки. Кейс: «${item.title}»: ${caseUrl(item)}`
     : `Здравствуйте! Хочу рассчитать похожее изделие. Кейс: «${item.title}»: ${caseUrl(item)}`
 }
 

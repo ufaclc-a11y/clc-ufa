@@ -13,22 +13,22 @@ import sharp from 'sharp'
 const slug = 'murmiau-engraved-tag'
 const sha = (bytes: string | Buffer) => createHash('sha256').update(bytes).digest('hex')
 
-test('website revision 6 has owner-approved result copy and exact crops; accepted originals and previous cases stay intact', async () => {
+test('website revision 7 has authorized kulon copy and exact crops; accepted originals and previous cases stay intact', async () => {
   const item = generated.find(record => record.id === slug)
   assert.ok(item, 'accepted murmiau case must exist')
   // Compile-time check of actual JSON, not the loader’s unchecked type assertion.
   const typedRecords: ContentFactoryCase[] = generated.map(record => ({ ...record, storyLevel: 'storyLevel' in record && (record.storyLevel === 'A' || record.storyLevel === 'B' || record.storyLevel === 'C') ? record.storyLevel : undefined, presentation: 'presentation' in record && record.presentation === 'product-first' ? 'product-first' as const : undefined, images: record.images.map(image => ({ ...image, stage: 'stage' in image && image.stage === 'result' ? 'result' as const : undefined })), contentFactory: { ...record.contentFactory, schemaVersion: 'content-factory.website-case.v1' as const } }))
   assert.equal(typedRecords.filter(record => record.id === slug).length, 1)
   const revised = generated.find(record => record.id === slug) as unknown as Record<string, unknown>
-  assert.equal(revised.title, 'Жетон «мурмяу» с гравировкой по фотографии')
+  assert.equal(revised.title, 'Кулон «мурмяу» с гравировкой по фотографии')
   for (const field of ['summary', 'task', 'solution', 'result', 'cta', 'seoDescription']) assert.ok(typeof revised[field] === 'string' && revised[field], field)
   assert.match(String(revised.solution), /Подготовили фотографию/)
   assert.match(String(revised.solution), /третий шрифт/)
   assert.match(String(revised.solution), /две лапки и согласовали/)
-  assert.equal(revised.cta, 'Есть фото, рисунок или идея? Пришлите нам, проверим возможность изготовления и рассчитаем стоимость')
+  assert.equal(revised.cta, 'Есть фото, которое хочется перенести на кулон? Пришлите его — посмотрим, подойдёт ли оно для гравировки.')
   const provenance = generated.find(record => record.id === slug)!.contentFactory
-  assert.equal(provenance.packVersion, 6)
-  assert.equal(provenance.approvalHash, '3c40a4b62eaf41d7718e220c308a53eca6b0eded1ce399d16e6364600528529b')
+  assert.equal(provenance.packVersion, 7)
+  assert.equal(provenance.approvalHash, 'c90f9b42a3ebe98fe4124f92d782a854dcdffc5e585253c0149a00e5b558cb06')
   assert.notEqual(provenance.approvalHash, '4b3f6597cfd310b1804442cf126341d4b8681d5d1c571ed643da826f46ceeca3')
   assert.equal(item.images?.length, 2)
   for (const image of revised.images as { stage?: string }[]) assert.equal(image.stage, 'result')
