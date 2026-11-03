@@ -6656,5 +6656,39 @@
     "order": {
       "zagotovki": 3
     }
+  },
+  "p-de4d6b7f4735.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "uf-pechat",
+      "koroba-fanera",
+      "shkatulki-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": -113,
+      "uf-pechat": -68,
+      "koroba-fanera": -15,
+      "shkatulki-fanera": -8
+    }
+  },
+  "p-737cc57d1fa5.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": -112,
+      "medali": -6
+    }
+  },
+  "p-d775d35a0c19.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "medali"
+    ],
+    "order": {
+      "lazernaya-rezka": -111,
+      "medali": -5
+    }
   }
 }

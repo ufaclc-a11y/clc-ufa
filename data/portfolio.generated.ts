@@ -271,6 +271,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "kormushki-005.jpg"
   ],
   "koroba-fanera": [
+    "p-de4d6b7f4735.jpg",
     "p-cdc40685928c.jpg",
     "p-42f645c94e2d.jpg",
     "p-dd7e34dd90c3.jpg",
@@ -366,6 +367,9 @@ export const portfolioFiles: Record<string, string[]> = {
     "gravirovka-073.jpg"
   ],
   "lazernaya-rezka": [
+    "p-de4d6b7f4735.jpg",
+    "p-737cc57d1fa5.jpg",
+    "p-d775d35a0c19.jpg",
     "p-79d60b4dbf47.jpg",
     "p-cdc40685928c.jpg",
     "p-42f645c94e2d.jpg",
@@ -853,6 +857,8 @@ export const portfolioFiles: Record<string, string[]> = {
     "lazernaya-rezka-384.jpg"
   ],
   "medali": [
+    "p-737cc57d1fa5.jpg",
+    "p-d775d35a0c19.jpg",
     "p-e411bff7b1f2.jpg",
     "p-19b4e276b631.jpg",
     "p-138a7b77f8d6.jpg",
@@ -1034,6 +1040,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "shildiki-abs-002.jpg"
   ],
   "shkatulki-fanera": [
+    "p-de4d6b7f4735.jpg",
     "p-42f645c94e2d.jpg",
     "p-bfc7c6c25e55.jpg",
     "p-812deddd7114.jpg",
@@ -1115,6 +1122,7 @@ export const portfolioFiles: Record<string, string[]> = {
     "p-5a67e3e4cc28.jpg"
   ],
   "uf-pechat": [
+    "p-de4d6b7f4735.jpg",
     "p-79d60b4dbf47.jpg",
     "p-11b1b2cc54d4.jpg",
     "p-2d1d4b40e7ea.jpg",
