@@ -485,7 +485,7 @@ export const services: Service[] = [
       { prefix: 'klyuchnitsa',        count: 2  },
       { prefix: 'medalnitsa',         count: 8  },
       { prefix: 'organajzery',        count: 37 },
-      { prefix: 'shkatulki-fanera',   count: 14 },
+      { prefix: 'koroba-fanera',      count: 14 },
       { prefix: 'kheshtegi',          count: 15 },
       { prefix: 'vyveski',            count: 14 },
       { prefix: 'tablitchki',         count: 21 },

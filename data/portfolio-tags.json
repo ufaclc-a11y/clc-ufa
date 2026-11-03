@@ -1534,13 +1534,11 @@
   "koroba-fanera-012.jpg": {
     "categories": [
       "koroba-fanera",
-      "lazernaya-rezka",
-      "shkatulki-fanera"
+      "lazernaya-rezka"
     ],
     "order": {
       "koroba-fanera": 12,
-      "lazernaya-rezka": 124,
-      "shkatulki-fanera": 1
+      "lazernaya-rezka": 124
     }
   },
   "koroba-fanera-013.jpg": {
@@ -1576,13 +1574,11 @@
   "koroba-fanera-017.jpg": {
     "categories": [
       "koroba-fanera",
-      "lazernaya-rezka",
-      "shkatulki-fanera"
+      "lazernaya-rezka"
     ],
     "order": {
       "koroba-fanera": 17,
-      "lazernaya-rezka": 149,
-      "shkatulki-fanera": 4
+      "lazernaya-rezka": 149
     }
   },
   "koroba-fanera-018.jpg": {
@@ -3292,11 +3288,11 @@
   "lazernaya-rezka-245.jpg": {
     "categories": [
       "lazernaya-rezka",
-      "shkatulki-fanera"
+      "koroba-fanera"
     ],
     "order": {
       "lazernaya-rezka": 245,
-      "shkatulki-fanera": 8
+      "koroba-fanera": 81
     }
   },
   "lazernaya-rezka-247.jpg": {
@@ -3336,11 +3332,11 @@
   "lazernaya-rezka-253.jpg": {
     "categories": [
       "lazernaya-rezka",
-      "shkatulki-fanera"
+      "koroba-fanera"
     ],
     "order": {
       "lazernaya-rezka": 253,
-      "shkatulki-fanera": 9
+      "koroba-fanera": 82
     }
   },
   "lazernaya-rezka-256.jpg": {
@@ -3518,11 +3514,11 @@
   "lazernaya-rezka-294.jpg": {
     "categories": [
       "lazernaya-rezka",
-      "shkatulki-fanera"
+      "koroba-fanera"
     ],
     "order": {
       "lazernaya-rezka": 294,
-      "shkatulki-fanera": 11
+      "koroba-fanera": 84
     }
   },
   "lazernaya-rezka-296.jpg": {
@@ -3906,11 +3902,11 @@
   "lazernaya-rezka-366.jpg": {
     "categories": [
       "lazernaya-rezka",
-      "shkatulki-fanera"
+      "koroba-fanera"
     ],
     "order": {
       "lazernaya-rezka": 366,
-      "shkatulki-fanera": 13
+      "koroba-fanera": 86
     }
   },
   "lazernaya-rezka-368.jpg": {
@@ -4806,13 +4802,11 @@
   "p-42f645c94e2d.jpg": {
     "categories": [
       "lazernaya-rezka",
-      "koroba-fanera",
-      "shkatulki-fanera"
+      "koroba-fanera"
     ],
     "order": {
       "lazernaya-rezka": -108,
-      "koroba-fanera": -13,
-      "shkatulki-fanera": -7
+      "koroba-fanera": -13
     }
   },
   "p-45896cac5290.jpg": {
@@ -5218,23 +5212,21 @@
   "p-8087c97187c4.jpg": {
     "categories": [
       "koroba-fanera",
-      "lazernaya-rezka",
-      "shkatulki-fanera"
+      "lazernaya-rezka"
     ],
     "order": {
       "lazernaya-rezka": -52,
-      "koroba-fanera": -2,
-      "shkatulki-fanera": -1
+      "koroba-fanera": -2
     }
   },
   "p-812deddd7114.jpg": {
     "categories": [
       "lazernaya-rezka",
-      "shkatulki-fanera"
+      "koroba-fanera"
     ],
     "order": {
       "lazernaya-rezka": -56,
-      "shkatulki-fanera": -5
+      "koroba-fanera": 75
     }
   },
   "p-850a11749e14.jpg": {
@@ -5257,14 +5249,12 @@
     "categories": [
       "gravirovka",
       "koroba-fanera",
-      "lazernaya-rezka",
-      "shkatulki-fanera"
+      "lazernaya-rezka"
     ],
     "order": {
       "lazernaya-rezka": -53,
       "gravirovka": -19,
-      "koroba-fanera": -3,
-      "shkatulki-fanera": -2
+      "koroba-fanera": -3
     }
   },
   "p-8bee55a93d30.jpg": {
@@ -5466,23 +5456,21 @@
   "p-a2d0a268445b.jpg": {
     "categories": [
       "lazernaya-rezka",
-      "shkatulki-fanera"
+      "koroba-fanera"
     ],
     "order": {
       "lazernaya-rezka": -55,
-      "shkatulki-fanera": -4
+      "koroba-fanera": 76
     }
   },
   "p-a45e3e2cf3cf.jpg": {
     "categories": [
       "koroba-fanera",
-      "shkatulki-fanera",
       "uf-pechat"
     ],
     "order": {
       "uf-pechat": -24,
-      "koroba-fanera": 0,
-      "shkatulki-fanera": 0
+      "koroba-fanera": 0
     }
   },
   "p-a7f291d242f4.jpg": {
@@ -5579,14 +5567,12 @@
     "categories": [
       "lazernaya-rezka",
       "gravirovka",
-      "koroba-fanera",
-      "shkatulki-fanera"
+      "koroba-fanera"
     ],
     "order": {
       "lazernaya-rezka": -97,
       "gravirovka": -33,
-      "koroba-fanera": -10,
-      "shkatulki-fanera": -6
+      "koroba-fanera": -10
     }
   },
   "p-c5b1b209d493.jpg": {
@@ -6062,13 +6048,11 @@
   "p-fa10304e40e2.jpg": {
     "categories": [
       "koroba-fanera",
-      "lazernaya-rezka",
-      "shkatulki-fanera"
+      "lazernaya-rezka"
     ],
     "order": {
       "lazernaya-rezka": -54,
-      "koroba-fanera": -4,
-      "shkatulki-fanera": -3
+      "koroba-fanera": -4
     }
   },
   "p-fc847e4ea44e.jpg": {
@@ -6104,81 +6088,79 @@
   "shkatulki-fanera-002.jpg": {
     "categories": [
       "lazernaya-rezka",
-      "shkatulki-fanera"
+      "koroba-fanera"
     ],
     "order": {
       "lazernaya-rezka": 132,
-      "shkatulki-fanera": 2
+      "koroba-fanera": 77
     }
   },
   "shkatulki-fanera-003.jpg": {
     "categories": [
       "koroba-fanera",
-      "lazernaya-rezka",
-      "shkatulki-fanera"
+      "lazernaya-rezka"
     ],
     "order": {
       "koroba-fanera": 16,
-      "lazernaya-rezka": 148,
-      "shkatulki-fanera": 3
+      "lazernaya-rezka": 148
     }
   },
   "shkatulki-fanera-005.jpg": {
     "categories": [
       "lazernaya-rezka",
-      "shkatulki-fanera"
+      "koroba-fanera"
     ],
     "order": {
       "lazernaya-rezka": 166,
-      "shkatulki-fanera": 5
+      "koroba-fanera": 78
     }
   },
   "shkatulki-fanera-006.jpg": {
     "categories": [
       "lazernaya-rezka",
-      "shkatulki-fanera"
+      "koroba-fanera"
     ],
     "order": {
       "lazernaya-rezka": 215,
-      "shkatulki-fanera": 6
+      "koroba-fanera": 79
     }
   },
   "shkatulki-fanera-007.jpg": {
     "categories": [
       "lazernaya-rezka",
-      "shkatulki-fanera"
+      "koroba-fanera"
     ],
     "order": {
       "lazernaya-rezka": 235,
-      "shkatulki-fanera": 7
+      "koroba-fanera": 80
     }
   },
   "shkatulki-fanera-010.jpg": {
     "categories": [
       "lazernaya-rezka",
-      "shkatulki-fanera"
+      "koroba-fanera"
     ],
     "order": {
       "lazernaya-rezka": 286,
-      "shkatulki-fanera": 10
+      "koroba-fanera": 83
     }
   },
   "shkatulki-fanera-012.jpg": {
     "categories": [
       "lazernaya-rezka",
-      "shkatulki-fanera"
+      "koroba-fanera"
     ],
     "order": {
       "lazernaya-rezka": 364,
-      "shkatulki-fanera": 12
+      "koroba-fanera": 85
     }
   },
   "shkatulki-fanera-014.jpg": {
     "categories": [
-      "shkatulki-fanera"
+      "koroba-fanera"
     ],
     "order": {
-      "shkatulki-fanera": 14
+      "koroba-fanera": 87
     }
   },
   "tablitchki-002.jpg": {
@@ -6661,14 +6643,12 @@
     "categories": [
       "lazernaya-rezka",
       "uf-pechat",
-      "koroba-fanera",
-      "shkatulki-fanera"
+      "koroba-fanera"
     ],
     "order": {
       "lazernaya-rezka": -113,
       "uf-pechat": -68,
-      "koroba-fanera": -15,
-      "shkatulki-fanera": -8
+      "koroba-fanera": -15
     }
   },
   "p-737cc57d1fa5.jpg": {

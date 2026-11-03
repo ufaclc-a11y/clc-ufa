@@ -550,7 +550,7 @@ export const products: Product[] = [
     tags:            ['фанера', 'дерево', 'гравировка', 'лазерная резка'],
     category:        'podarki',
     popularFor:      'Подарки, украшения',
-    portfolioPrefix: 'shkatulki-fanera',
+    portfolioPrefix: 'koroba-fanera',
     portfolioCount:  14,
     body:
       'Шкатулки из фанеры — идеальное решение для хранения украшений, ценных вещей и памятных мелочей. ' +

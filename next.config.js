@@ -67,6 +67,7 @@ const nextConfig = {
         destination: 'https://clc-ufa.ru/:path*',
         permanent: true,
       },
+      { source: '/portfolio/shkatulki-fanera', destination: '/portfolio/koroba-fanera', permanent: true },
       { source: '/services/gravirovka-nemetalah', destination: '/services/gravirovka-na-nemetalah', permanent: true },
       { source: '/wtf',                 destination: '/fonts',                    permanent: true },
       { source: '/laser-rez',           destination: '/services/lazernaya-rezka', permanent: true },

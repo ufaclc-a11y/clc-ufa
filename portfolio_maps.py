@@ -30,7 +30,7 @@ PRODUCT_PREFIX = {
     "Коробки, ящики из фанеры": "koroba-fanera", "Органайзеры": "organajzery",
     "Наградные статуэтки": "nagradnye-statuetki", "Медали": "medali",
     "Таблички и указатели": "tablitchki", "Брелоки": "breloki", "Хештеги": "kheshtegi",
-    "Вывески": "vyveski", "Шкатулки из фанеры": "shkatulki-fanera", "Медальница": "medalnitsa",
+    "Вывески": "vyveski", "Шкатулки из фанеры": "koroba-fanera", "Медальница": "medalnitsa",
     "Рамки для фото": "ramki-foto", "Часы": "chasy", "Бейджики": "bejdzhi",
     "Кормушки": "kormushki", "Номерки для гардеробов": "nomerki-garderob",
     "Ключница": "klyuchnitsa", "Тейбл тенты и менюхолдеры": "tejbl-tenty",

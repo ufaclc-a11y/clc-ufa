@@ -23,7 +23,7 @@ export type PortfolioCategory = { id: string; label: string; count: number; sour
 // ─────────────────────────────────────────────────────────────────────────────
 const CATEGORY_META: { id: string; label: string }[] = [
   { id: 'lazernaya-rezka',     label: 'Лазерная резка'      },
-  { id: 'koroba-fanera',       label: 'Коробки и ящики'     },
+  { id: 'koroba-fanera',       label: 'Коробки, ящики и шкатулки'     },
   { id: 'gravirovka',          label: 'Гравировка'          },
   { id: 'gravirovka-chasy',    label: 'Гравировка на часах' },
   { id: 'zhetony',             label: 'Жетоны'              },
@@ -41,7 +41,6 @@ const CATEGORY_META: { id: string; label: string }[] = [
   { id: 'breloki',             label: 'Брелоки'             },
   { id: 'kheshtegi',           label: 'Хештеги'             },
   { id: 'toppery',             label: 'Топперы'             },
-  { id: 'shkatulki-fanera',    label: 'Шкатулки'            },
   { id: 'vyveski',             label: 'Вывески'             },
   { id: 'ramki-foto',          label: 'Рамки для фото'      },
   { id: 'chasy',               label: 'Часы'                },
