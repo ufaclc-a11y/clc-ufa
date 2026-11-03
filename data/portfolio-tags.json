@@ -4251,6 +4251,16 @@
       "organajzery": 23
     }
   },
+  "p-004db8d5cdb6.jpg": {
+    "categories": [
+      "breloki",
+      "uf-pechat"
+    ],
+    "order": {
+      "breloki": -1,
+      "uf-pechat": -53
+    }
+  },
   "p-005e7f9be041.jpg": {
     "categories": [
       "trafarety"
@@ -4291,6 +4301,14 @@
       "shildiki-abs": -6
     }
   },
+  "p-06b537d324f5.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": -11
+    }
+  },
   "p-06c2f66b49dc.jpg": {
     "categories": [
       "lazernaya-rezka",
@@ -4311,6 +4329,14 @@
       "gravirovka": -21
     }
   },
+  "p-08d55345b99d.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": -78
+    }
+  },
   "p-0b995555a72d.jpg": {
     "categories": [
       "gravirovka",
@@ -4329,6 +4355,28 @@
     "order": {
       "gravirovka": -4,
       "shildiki-abs": -4
+    }
+  },
+  "p-0ed8c8380f43.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "kheshtegi"
+    ],
+    "order": {
+      "lazernaya-rezka": -88,
+      "kheshtegi": -6
+    }
+  },
+  "p-11b1b2cc54d4.jpg": {
+    "categories": [
+      "uf-pechat",
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "uf-pechat": -66,
+      "lazernaya-rezka": -107,
+      "nagradnye-statuetki": -32
     }
   },
   "p-1374da47c152.jpg": {
@@ -4361,6 +4409,28 @@
       "lazernaya-rezka": -2,
       "uf-pechat": -3,
       "nagradnye-statuetki": 0
+    }
+  },
+  "p-171d83edee58.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki",
+      "gravirovka"
+    ],
+    "order": {
+      "lazernaya-rezka": -105,
+      "nagradnye-statuetki": -30,
+      "gravirovka": -37
+    }
+  },
+  "p-195206cebbfc.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "zagotovki"
+    ],
+    "order": {
+      "lazernaya-rezka": -86,
+      "zagotovki": -2
     }
   },
   "p-19a13e6a3f44.jpg": {
@@ -4421,6 +4491,16 @@
       "nagradnye-statuetki": -5
     }
   },
+  "p-207cc0c0c542.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "zagotovki"
+    ],
+    "order": {
+      "lazernaya-rezka": -84,
+      "zagotovki": -1
+    }
+  },
   "p-2150e538e087.jpg": {
     "categories": [
       "lazernaya-rezka",
@@ -4463,6 +4543,46 @@
       "nagradnye-statuetki": -20
     }
   },
+  "p-296cafc8d3fd.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": -46
+    }
+  },
+  "p-2bd4aaae5e5c.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": -38
+    }
+  },
+  "p-2d1d4b40e7ea.jpg": {
+    "categories": [
+      "uf-pechat",
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "uf-pechat": -65,
+      "lazernaya-rezka": -106,
+      "nagradnye-statuetki": -31
+    }
+  },
+  "p-2e004706b31a.jpg": {
+    "categories": [
+      "uf-pechat",
+      "lazernaya-rezka",
+      "ramki-foto"
+    ],
+    "order": {
+      "uf-pechat": -64,
+      "lazernaya-rezka": -104,
+      "ramki-foto": -7
+    }
+  },
   "p-2f31b2a1f7f7.jpg": {
     "categories": [
       "lazernaya-rezka",
@@ -4471,6 +4591,16 @@
     "order": {
       "lazernaya-rezka": -23,
       "nagradnye-statuetki": -7
+    }
+  },
+  "p-2f57b923c5c1.jpg": {
+    "categories": [
+      "uf-pechat",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "uf-pechat": -54,
+      "lazernaya-rezka": -85
     }
   },
   "p-2fe5f52885d0.jpg": {
@@ -4487,6 +4617,38 @@
     ],
     "order": {
       "tablitchki": -1
+    }
+  },
+  "p-30de28e39736.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": -74
+    }
+  },
+  "p-312001464c3e.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "gravirovka",
+      "koroba-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": -90,
+      "gravirovka": -28,
+      "koroba-fanera": -5
+    }
+  },
+  "p-32bc5083fbe9.jpg": {
+    "categories": [
+      "uf-pechat",
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "uf-pechat": -39,
+      "lazernaya-rezka": -69,
+      "nagradnye-statuetki": -22
     }
   },
   "p-351c51d5f4d7.jpg": {
@@ -4507,6 +4669,18 @@
       "nagradnye-statuetki": -18
     }
   },
+  "p-37f3881bf0f6.jpg": {
+    "categories": [
+      "gravirovka",
+      "bejdzhi",
+      "shildiki-abs"
+    ],
+    "order": {
+      "gravirovka": -26,
+      "bejdzhi": -2,
+      "shildiki-abs": -8
+    }
+  },
   "p-3887dee46686.jpg": {
     "categories": [
       "lazernaya-rezka",
@@ -4523,6 +4697,18 @@
     ],
     "order": {
       "lazernaya-rezka": -64
+    }
+  },
+  "p-3b3628f45f27.jpg": {
+    "categories": [
+      "uf-pechat",
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "uf-pechat": -63,
+      "lazernaya-rezka": -103,
+      "nagradnye-statuetki": -29
     }
   },
   "p-3c7f6d110e1b.jpg": {
@@ -4543,6 +4729,40 @@
       "gravirovka": -9
     }
   },
+  "p-3d9abda7fb06.jpg": {
+    "categories": [
+      "uf-pechat",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "uf-pechat": -47,
+      "lazernaya-rezka": -76
+    }
+  },
+  "p-3e05921040f1.jpg": {
+    "categories": [
+      "gravirovka",
+      "bejdzhi",
+      "shildiki-abs"
+    ],
+    "order": {
+      "gravirovka": -27,
+      "bejdzhi": -3,
+      "shildiki-abs": -9
+    }
+  },
+  "p-3e340cd77072.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "gravirovka",
+      "koroba-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": -94,
+      "gravirovka": -30,
+      "koroba-fanera": -8
+    }
+  },
   "p-40305deeb62e.jpg": {
     "categories": [
       "zhetony"
@@ -4557,6 +4777,42 @@
     ],
     "order": {
       "frezernaya-rezka": -5
+    }
+  },
+  "p-40c895752e81.jpg": {
+    "categories": [
+      "uf-pechat",
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "uf-pechat": -40,
+      "lazernaya-rezka": -70,
+      "nagradnye-statuetki": -23
+    }
+  },
+  "p-417ea3d0c1b6.jpg": {
+    "categories": [
+      "uf-pechat",
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "uf-pechat": -41,
+      "lazernaya-rezka": -71,
+      "nagradnye-statuetki": -24
+    }
+  },
+  "p-42f645c94e2d.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "koroba-fanera",
+      "shkatulki-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": -108,
+      "koroba-fanera": -13,
+      "shkatulki-fanera": -7
     }
   },
   "p-45896cac5290.jpg": {
@@ -4593,6 +4849,28 @@
       "uf-pechat": -26
     }
   },
+  "p-4aea33fcaba1.jpg": {
+    "categories": [
+      "frezernaya-rezka",
+      "zagotovki"
+    ],
+    "order": {
+      "frezernaya-rezka": -15,
+      "zagotovki": -4
+    }
+  },
+  "p-4cbfb2066f4a.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "gravirovka",
+      "tablitchki"
+    ],
+    "order": {
+      "lazernaya-rezka": -95,
+      "gravirovka": -31,
+      "tablitchki": -6
+    }
+  },
   "p-4edcc7fd4d06.png": {
     "categories": [
       "gravirovka",
@@ -4605,6 +4883,16 @@
       "nagradnye-statuetki": -3
     }
   },
+  "p-4ede59438425.jpg": {
+    "categories": [
+      "frezernaya-rezka",
+      "zagotovki"
+    ],
+    "order": {
+      "frezernaya-rezka": -16,
+      "zagotovki": -6
+    }
+  },
   "p-4f4c4b03588d.jpg": {
     "categories": [
       "kheshtegi",
@@ -4613,6 +4901,44 @@
     "order": {
       "lazernaya-rezka": -49,
       "kheshtegi": -4
+    }
+  },
+  "p-4f5dcbf799e5.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": -12
+    }
+  },
+  "p-51bacfecf309.jpg": {
+    "categories": [
+      "frezernaya-rezka",
+      "ramki-foto"
+    ],
+    "order": {
+      "frezernaya-rezka": -13,
+      "ramki-foto": -4
+    }
+  },
+  "p-51ecabb25d8b.jpg": {
+    "categories": [
+      "frezernaya-rezka",
+      "gravirovka",
+      "tablitchki"
+    ],
+    "order": {
+      "frezernaya-rezka": -17,
+      "gravirovka": -36,
+      "tablitchki": -7
+    }
+  },
+  "p-5a2d93dfa1d3.jpg": {
+    "categories": [
+      "termosy"
+    ],
+    "order": {
+      "termosy": -1
     }
   },
   "p-5a67e3e4cc28.jpg": {
@@ -4645,6 +4971,24 @@
       "uf-pechat": -31
     }
   },
+  "p-5c2f6299e8b1.jpg": {
+    "categories": [
+      "frezernaya-rezka",
+      "ramki-foto"
+    ],
+    "order": {
+      "frezernaya-rezka": -14,
+      "ramki-foto": -5
+    }
+  },
+  "p-5c3630af824e.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": -23
+    }
+  },
   "p-5d6c18c36c3a.jpg": {
     "categories": [
       "lazernaya-rezka",
@@ -4655,12 +4999,46 @@
       "uf-pechat": -28
     }
   },
+  "p-602c0fdb5342.jpg": {
+    "categories": [
+      "uf-pechat",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "uf-pechat": -48,
+      "lazernaya-rezka": -77
+    }
+  },
+  "p-661fc7ce8ad5.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "gravirovka",
+      "koroba-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": -98,
+      "gravirovka": -34,
+      "koroba-fanera": -11
+    }
+  },
   "p-66c1f6aac9e7.jpg": {
     "categories": [
       "trafarety"
     ],
     "order": {
       "trafarety": -1
+    }
+  },
+  "p-6ca60970676c.jpg": {
+    "categories": [
+      "uf-pechat",
+      "lazernaya-rezka",
+      "zagotovki"
+    ],
+    "order": {
+      "uf-pechat": -57,
+      "lazernaya-rezka": -92,
+      "zagotovki": -5
     }
   },
   "p-6fb7ec52fd2c.jpg": {
@@ -4705,6 +5083,18 @@
       "nagradnye-statuetki": -17
     }
   },
+  "p-7481bd1fd1cf.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "gravirovka",
+      "koroba-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": -91,
+      "gravirovka": -29,
+      "koroba-fanera": -6
+    }
+  },
   "p-758809edd8db.jpg": {
     "categories": [
       "lazernaya-rezka",
@@ -4725,6 +5115,46 @@
     "order": {
       "lazernaya-rezka": -37,
       "kheshtegi": -2
+    }
+  },
+  "p-7704ad5197a7.jpg": {
+    "categories": [
+      "uf-pechat",
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "uf-pechat": -42,
+      "lazernaya-rezka": -72,
+      "nagradnye-statuetki": -25
+    }
+  },
+  "p-78a833e79dfa.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "zagotovki"
+    ],
+    "order": {
+      "lazernaya-rezka": -89,
+      "zagotovki": -3
+    }
+  },
+  "p-79d60b4dbf47.jpg": {
+    "categories": [
+      "uf-pechat",
+      "frezernaya-rezka",
+      "lazernaya-rezka",
+      "ramki-foto",
+      "tablitchki",
+      "vyveski"
+    ],
+    "order": {
+      "uf-pechat": -67,
+      "frezernaya-rezka": -21,
+      "lazernaya-rezka": -110,
+      "ramki-foto": -8,
+      "tablitchki": -10,
+      "vyveski": -6
     }
   },
   "p-7a2ce9c7aaf8.jpg": {
@@ -4807,6 +5237,14 @@
       "shkatulki-fanera": -5
     }
   },
+  "p-850a11749e14.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": -87
+    }
+  },
   "p-891fa9e0a132.jpg": {
     "categories": [
       "lazernaya-rezka"
@@ -4849,6 +5287,18 @@
       "nagradnye-statuetki": -9
     }
   },
+  "p-8eca80ee1b6e.jpg": {
+    "categories": [
+      "uf-pechat",
+      "tablitchki",
+      "vyveski"
+    ],
+    "order": {
+      "uf-pechat": -44,
+      "tablitchki": -5,
+      "vyveski": -4
+    }
+  },
   "p-911ea20d24db.jpg": {
     "categories": [
       "lazernaya-rezka",
@@ -4857,6 +5307,30 @@
     "order": {
       "lazernaya-rezka": -6,
       "toppery": 0
+    }
+  },
+  "p-91d81fc08f7d.jpg": {
+    "categories": [
+      "uf-pechat",
+      "lazernaya-rezka",
+      "ramki-foto"
+    ],
+    "order": {
+      "uf-pechat": -52,
+      "lazernaya-rezka": -82,
+      "ramki-foto": -3
+    }
+  },
+  "p-921f5804711e.jpg": {
+    "categories": [
+      "uf-pechat",
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "uf-pechat": -49,
+      "lazernaya-rezka": -79,
+      "nagradnye-statuetki": -26
     }
   },
   "p-9318b7209037.jpg": {
@@ -4881,6 +5355,16 @@
     ],
     "order": {
       "frezernaya-rezka": -2
+    }
+  },
+  "p-9774d9ea0501.jpg": {
+    "categories": [
+      "gravirovka",
+      "shildiki-abs"
+    ],
+    "order": {
+      "gravirovka": -22,
+      "shildiki-abs": -7
     }
   },
   "p-989eea950a90.jpg": {
@@ -5021,12 +5505,32 @@
       "gravirovka": -17
     }
   },
+  "p-a8f504541de8.jpg": {
+    "categories": [
+      "uf-pechat",
+      "lazernaya-rezka",
+      "ramki-foto"
+    ],
+    "order": {
+      "uf-pechat": -51,
+      "lazernaya-rezka": -81,
+      "ramki-foto": -2
+    }
+  },
   "p-ab3ab4e7408c.jpg": {
     "categories": [
       "zhetony"
     ],
     "order": {
       "zhetony": -2
+    }
+  },
+  "p-ac10a3754494.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": -45
     }
   },
   "p-acedb5bef068.jpg": {
@@ -5071,6 +5575,20 @@
       "shildiki-abs": -1
     }
   },
+  "p-bfc7c6c25e55.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "gravirovka",
+      "koroba-fanera",
+      "shkatulki-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": -97,
+      "gravirovka": -33,
+      "koroba-fanera": -10,
+      "shkatulki-fanera": -6
+    }
+  },
   "p-c5b1b209d493.jpg": {
     "categories": [
       "lazernaya-rezka",
@@ -5109,12 +5627,72 @@
       "zazhigalki": 0
     }
   },
+  "p-c7a69042d9c6.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "koroba-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": -93,
+      "koroba-fanera": -7
+    }
+  },
+  "p-c80838b1bdb8.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "nagradnye-statuetki",
+      "gravirovka"
+    ],
+    "order": {
+      "lazernaya-rezka": -83,
+      "nagradnye-statuetki": -27,
+      "gravirovka": -24
+    }
+  },
   "p-cd5ed6f0fd28.jpg": {
     "categories": [
       "zazhigalki"
     ],
     "order": {
       "zazhigalki": -1
+    }
+  },
+  "p-cdc40685928c.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "koroba-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": -109,
+      "koroba-fanera": -14
+    }
+  },
+  "p-cee436c42dec.jpg": {
+    "categories": [
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "lazernaya-rezka": -75
+    }
+  },
+  "p-d014cfa4b51d.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": -56
+    }
+  },
+  "p-d10edfdeec26.jpg": {
+    "categories": [
+      "uf-pechat",
+      "lazernaya-rezka",
+      "ramki-foto"
+    ],
+    "order": {
+      "uf-pechat": -50,
+      "lazernaya-rezka": -80,
+      "ramki-foto": -1
     }
   },
   "p-d4f061680590.png": {
@@ -5173,6 +5751,70 @@
       "kheshtegi": -3
     }
   },
+  "p-dd521dcd3277.jpg": {
+    "categories": [
+      "uf-pechat",
+      "frezernaya-rezka",
+      "lazernaya-rezka",
+      "nagradnye-statuetki"
+    ],
+    "order": {
+      "uf-pechat": -62,
+      "frezernaya-rezka": -19,
+      "lazernaya-rezka": -102,
+      "nagradnye-statuetki": -28
+    }
+  },
+  "p-dd7e34dd90c3.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "gravirovka",
+      "koroba-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": -99,
+      "gravirovka": -35,
+      "koroba-fanera": -12
+    }
+  },
+  "p-de4ff22732ca.jpg": {
+    "categories": [
+      "gravirovka"
+    ],
+    "order": {
+      "gravirovka": -25
+    }
+  },
+  "p-e02c0de6bea8.jpg": {
+    "categories": [
+      "uf-pechat",
+      "frezernaya-rezka",
+      "lazernaya-rezka",
+      "ramki-foto",
+      "tablitchki",
+      "vyveski"
+    ],
+    "order": {
+      "uf-pechat": -60,
+      "frezernaya-rezka": -18,
+      "lazernaya-rezka": -101,
+      "ramki-foto": -6,
+      "tablitchki": -9,
+      "vyveski": -5
+    }
+  },
+  "p-e0bef8674390.jpg": {
+    "categories": [
+      "lazernaya-rezka",
+      "gravirovka",
+      "koroba-fanera"
+    ],
+    "order": {
+      "lazernaya-rezka": -96,
+      "gravirovka": -32,
+      "koroba-fanera": -9
+    }
+  },
   "p-e3111eb07a6b.jpg": {
     "categories": [
       "lazernaya-rezka",
@@ -5213,6 +5855,26 @@
     ],
     "order": {
       "akril-klishe": 0
+    }
+  },
+  "p-e4f873db5f98.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": -58
+    }
+  },
+  "p-e708d07f7af6.jpg": {
+    "categories": [
+      "uf-pechat",
+      "lazernaya-rezka",
+      "tablitchki"
+    ],
+    "order": {
+      "uf-pechat": -59,
+      "lazernaya-rezka": -100,
+      "tablitchki": -8
     }
   },
   "p-e715a7482e17.jpg": {
@@ -5279,6 +5941,14 @@
       "lazernaya-rezka": -59
     }
   },
+  "p-edf9f3bd33c1.jpg": {
+    "categories": [
+      "frezernaya-rezka"
+    ],
+    "order": {
+      "frezernaya-rezka": -20
+    }
+  },
   "p-ee0f9739e82a.jpg": {
     "categories": [
       "lazernaya-rezka"
@@ -5313,6 +5983,18 @@
     ],
     "order": {
       "gravirovka": -16
+    }
+  },
+  "p-f4798d357d04.jpg": {
+    "categories": [
+      "uf-pechat",
+      "frezernaya-rezka",
+      "lazernaya-rezka"
+    ],
+    "order": {
+      "uf-pechat": -43,
+      "frezernaya-rezka": -10,
+      "lazernaya-rezka": -73
     }
   },
   "p-f57f50285071.jpg": {
@@ -5353,12 +6035,28 @@
       "termosy": 0
     }
   },
+  "p-f7e46b54178e.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": -61
+    }
+  },
   "p-f8197aa3aa98.jpg": {
     "categories": [
       "gravirovka"
     ],
     "order": {
       "gravirovka": -20
+    }
+  },
+  "p-f9ad243d6318.jpg": {
+    "categories": [
+      "uf-pechat"
+    ],
+    "order": {
+      "uf-pechat": -55
     }
   },
   "p-fa10304e40e2.jpg": {
