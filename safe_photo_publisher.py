@@ -11,8 +11,7 @@ import tempfile
 import subprocess
 import sys
 import time
-from html.parser import HTMLParser
-from urllib.parse import urlencode, unquote, urlsplit, parse_qs
+from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 
@@ -142,44 +141,53 @@ def wait_for_deploy(sha, api_base='https://api.github.com', timeout=1200, poll=3
     raise TimeoutError('Exact deploy workflow not successful before deadline; retry same batch')
 
 
-class _Images(HTMLParser):
-    def __init__(self):
-        super().__init__()
-        self.sources = []
-
-    def handle_starttag(self, tag, attrs):
-        # data/portfolio.ts makeItems supplies this alt only to category grid items.
-        # Hero and neighbouring-category thumbnails must not prove membership.
-        if tag == 'img' and re.search(r' — пример [1-9][0-9]*$', dict(attrs).get('alt') or ''):
-            for key, value in attrs:
-                if key not in ('src', 'srcset') or not value:
-                    continue
-                for part in value.split(','):
-                    parsed = urlsplit(part.strip().split()[0])
-                    if parsed.path == '/_next/image':
-                        nested = parse_qs(parsed.query).get('url', [''])[0]
-                        self.sources.append(unquote(urlsplit(nested).path))
-                    else:
-                        self.sources.append(unquote(parsed.path))
+def public_index(base, deadline):
+    try:
+        index = json.loads(http_bytes(base.rstrip('/') + '/portfolio-index.json', deadline, 4 * 1024 * 1024))
+        if set(index) != {'version', 'categories', 'sha256'} or index['version'] != 1:
+            raise ValueError('schema')
+        for name, sha in index['sha256'].items():
+            safe_name(name)
+            if not re.fullmatch(r'[a-f0-9]{64}', sha):
+                raise ValueError('hash')
+        for cat, names in index['categories'].items():
+            if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', cat) or not isinstance(names, list) or len(set(names)) != len(names):
+                raise ValueError('category')
+            for name in names:
+                if safe_name(name) not in index['sha256']:
+                    raise ValueError('missing hash')
+        return index
+    except (ValueError, TypeError, KeyError, AttributeError) as error:
+        raise RuntimeError('Live portfolio index missing/invalid') from error
 
 
 def verify_live(batch, base='https://clc-ufa.ru', timeout=120):
+    """Exhaustive generator-derived membership, then selected image bytes.
+
+    Category HTML is a 48-item preview and is deliberately not evidence here.
+    """
     deadline = time.monotonic() + timeout
-    pages = {}
-    for item in batch['items']:
-        path = '/images/portfolio/' + safe_name(item['dest'])
-        body = http_bytes(base.rstrip('/') + path, deadline)
-        if hashlib.sha256(body).hexdigest() != item['payload_sha256']:
-            raise RuntimeError('Live image differs from selected batch: ' + item['dest'])
+    index = public_index(base, deadline)
+    if batch.get('expected_index') is not None and index != batch['expected_index']:
+        raise RuntimeError('Live portfolio index differs from fresh main; retain receipt')
+    if batch.get('kind') == 'edit':
+        items = [{'dest': name, 'categories': (change['after'] or {}).get('categories', []),
+                  'payload_sha256': change['sha256']} for name, change in batch['changes'].items()]
+        if 'expected_index' not in batch:
+            raise RuntimeError('Operation expected index missing')
+    else:
+        items = batch['items']
+    checked = set()
+    for item in items:
+        name = safe_name(item['dest'])
         for cat in item['categories']:
-            if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', cat):
-                raise ValueError('Unsafe category')
-            if cat not in pages:
-                parser = _Images()
-                parser.feed(http_bytes(base.rstrip('/') + '/portfolio/' + cat, deadline).decode('utf-8'))
-                pages[cat] = parser.sources
-            if path not in pages[cat]:
-                raise RuntimeError('Image not rendered in live category ' + cat + ': ' + item['dest'])
+            if name not in index['categories'].get(cat, []) or index['sha256'].get(name) != item['payload_sha256']:
+                raise RuntimeError('Image missing/different in live portfolio index: ' + name)
+        if name not in checked:
+            body = http_bytes(base.rstrip('/') + '/images/portfolio/' + name, deadline)
+            if hashlib.sha256(body).hexdigest() != item['payload_sha256']:
+                raise RuntimeError('Live image differs from selected batch: ' + name)
+            checked.add(name)
 
 
 
@@ -199,6 +207,27 @@ def git(cwd, *args, check=True):
     if check and result.returncode:
         raise RuntimeError('git ' + args[0] + ' failed: ' + result.stderr.strip())
     return result
+
+
+def sparse_main(work):
+    """Hydrate only the generator/portfolio closure, never screenshots or videos.
+
+    Full ancestry is intentionally retained for durable candidate reconciliation.
+    Local servers may ignore blob filtering, but checkout stays sparse.
+    """
+    git(work, 'config', 'remote.origin.promisor', 'true')
+    git(work, 'config', 'remote.origin.partialclonefilter', 'blob:none')
+    git(work, 'sparse-checkout', 'init', '--no-cone')
+    git(work, 'sparse-checkout', 'set', '--no-cone', '/data/portfolio-tags.json',
+        '/data/portfolio-history.json', '/data/portfolio.ts', '/data/portfolio.generated.ts',
+        '/scripts/gen-portfolio.mjs', '/public/images/portfolio/')
+
+
+def generate_index(work):
+    subprocess.run(['node', 'scripts/gen-portfolio.mjs'], cwd=work,
+                   check=True, capture_output=True, timeout=120,
+                   creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
+    return json.loads((Path(work) / 'public/portfolio-index.json').read_text(encoding='utf-8'))
 
 
 def publish_batch(root, newdir, batch, attempts=3, log=lambda message: None):
@@ -227,7 +256,8 @@ def publish_batch(root, newdir, batch, attempts=3, log=lambda message: None):
             git(work, 'remote', 'add', 'origin', remote)
             for key, value in identity.items():
                 git(work, 'config', key, value)
-            git(work, 'fetch', '--no-tags', 'origin', 'main')
+            sparse_main(work)
+            git(work, 'fetch', '--filter=blob:none', '--no-tags', 'origin', 'main')
             base = git(work, 'rev-parse', 'FETCH_HEAD').stdout.strip()
             git(work, 'checkout', '--detach', base)
             candidate = batch.get('pushed_sha') or batch.get('candidate_sha')
@@ -245,13 +275,22 @@ def publish_batch(root, newdir, batch, attempts=3, log=lambda message: None):
             if not category_meta:
                 raise ValueError('Cannot verify remote category metadata')
             known_categories = set(re.findall(r"id:\s*'([a-z0-9-]+)'", category_meta.group(1)))
-            for item in batch['items']:
+            import portfolio_manager as manager
+            history_path = work / 'data/portfolio-history.json'
+            history = manager.read_history(history_path)
+            editing = batch.get('kind') == 'edit'
+            items = [] if editing else batch['items']
+            for item in items:
                 if not item['categories'] or not set(item['categories']).issubset(known_categories):
                     raise ValueError('Unknown remote portfolio category for ' + item['dest'])
+            if editing:
+                for change in batch['changes'].values():
+                    if change['after'] and not set(change['after']['categories']).issubset(known_categories):
+                        raise ValueError('Unknown remote portfolio category')
             directory = work / 'public/images/portfolio'
             directory.mkdir(parents=True, exist_ok=True)
             paths = []
-            for item in batch['items']:
+            for item in items:
                 name = safe_name(item['dest'])
                 target = directory / name
                 payload = newdir / '.publisher/payload' / name
@@ -268,16 +307,28 @@ def publish_batch(root, newdir, batch, attempts=3, log=lambda message: None):
                 elif not target.exists():
                     shutil.copyfile(payload, target)
                     paths.append('public/images/portfolio/' + name)
+            if editing:
+                for name, change in batch['changes'].items():
+                    target = directory / safe_name(name)
+                    if target.is_symlink() or not target.is_file() or digest(target) != change['sha256']:
+                        raise RuntimeError('Remote target image changed: ' + name)
+                if accepted:
+                    manager.assert_applied(remote_manifest, history, batch)
+                    merged = remote_manifest
+                else:
+                    merged, updated_history = manager.apply_operation(remote_manifest, history, batch)
+                    atomic_json(history_path, updated_history)
+                    paths.append('data/portfolio-history.json')
+            else:
+                manager.assert_upload_allowed(remote_manifest, history, items)
+                merged = remote_manifest if accepted else merge_manifest(remote_manifest, items)
+            if merged != remote_manifest:
+                atomic_json(manifest_path, merged)
+            batch['expected_index'] = generate_index(work)
             if accepted:
                 batch['pushed_sha'] = candidate
                 save_batch(newdir, batch)
                 return candidate
-            merged = merge_manifest(remote_manifest, batch['items'])
-            if merged != remote_manifest:
-                atomic_json(manifest_path, merged)
-            subprocess.run(['node', 'scripts/gen-portfolio.mjs'], cwd=work,
-                           check=True, capture_output=True, timeout=120,
-                           creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
             paths += ['data/portfolio-tags.json', 'data/portfolio.generated.ts']
             git(work, 'add', '--', *paths)
             if git(work, 'diff', '--cached', '--quiet', check=False).returncode == 0:
@@ -340,7 +391,7 @@ def load_batch(newdir):
     path = Path(newdir) / '.publisher' / 'active.json'
     if path.exists():
         batch = json.loads(path.read_text(encoding='utf-8'))
-        if batch.get('version') != 1:
+        if batch.get('version') not in (1, 2) or (batch.get('version') == 2 and batch.get('kind') != 'edit'):
             raise RuntimeError('Unknown publisher receipt version; retain it for recovery')
         return batch
     return None

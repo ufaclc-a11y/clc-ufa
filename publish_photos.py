@@ -115,7 +115,8 @@ def save_assignments(assign):
 def load_extra():
     if os.path.exists(TAGS_FILE):
         try:
-            return json.load(open(TAGS_FILE, encoding="utf-8")).get("extra_cats", {})
+            with open(TAGS_FILE, encoding='utf-8') as stream:
+                return json.load(stream).get('extra_cats', {})
         except Exception:
             return {}
     return {}
@@ -124,13 +125,10 @@ def load_extra():
 def save_extra(extra):
     data = {}
     if os.path.exists(TAGS_FILE):
-        try:
-            data = json.load(open(TAGS_FILE, encoding="utf-8"))
-        except Exception:
-            data = {}
-    data["extra_cats"] = extra
-    json.dump(data, open(TAGS_FILE, "w", encoding="utf-8"),
-              ensure_ascii=False, indent=2)
+        with open(TAGS_FILE, encoding='utf-8') as stream:
+            data = json.load(stream)  # malformed owner data must never be overwritten
+    data['extra_cats'] = extra
+    safe_publisher.atomic_json(TAGS_FILE, data)
 
 
 # ─── Приложение ──────────────────────────────────────────────────────────────
@@ -156,17 +154,31 @@ class PublishApp:
 
     # ── UI ───────────────────────────────────────────────────────────────────
     def _build_ui(self):
-        top = tk.Frame(self.root, bg=BG2, pady=8)
+        from tkinter import ttk
+        from portfolio_manager_ui import PortfolioTab
+        self.notebook = ttk.Notebook(self.root)
+        self.root.rowconfigure(0, weight=1)
+        self.root.columnconfigure(0, weight=1)
+        self.notebook.grid(row=0, column=0, sticky='nsew')
+        self.new_tab = tk.Frame(self.notebook, bg=BG)
+        site = tk.Frame(self.notebook, bg=BG)
+        self.notebook.add(self.new_tab, text='Новые фото')
+        self.notebook.add(site, text='Фото на сайте')
+        self.site_tab = PortfolioTab(self, site, ROOT)
+        top = tk.Frame(self.new_tab, bg=BG2, pady=8)
         top.pack(fill="x")
         self.lbl_progress = tk.Label(top, text="", bg=BG2, fg=ORANGE,
                                      font=("Consolas", 14, "bold"))
-        self.lbl_progress.pack(side="left", padx=16)
+        top.columnconfigure(0, weight=1)
+        top.columnconfigure(1, weight=1)
+        self.lbl_progress.grid(row=0, column=0, sticky="w", padx=16)
         self.lbl_file = tk.Label(top, text="", bg=BG2, fg="#666", font=("Consolas", 11))
-        self.lbl_file.pack(side="left", padx=4)
-        self._flat_btn(top, "📁  Открыть папку NewPhoto", self.open_folder).pack(side="right", padx=8)
-        self._flat_btn(top, "🔄  Обновить список", self.refresh).pack(side="right", padx=4)
+        self.lbl_file.configure(wraplength=450, anchor="w", justify="left")
+        self.lbl_file.grid(row=0, column=1, sticky="ew", padx=4)
+        self._flat_btn(top, "📁  Открыть папку NewPhoto", self.open_folder).grid(row=1, column=1, sticky="e", padx=8)
+        self._flat_btn(top, "🔄  Обновить список", self.refresh).grid(row=1, column=0, sticky="w", padx=16)
 
-        main = tk.Frame(self.root, bg=BG)
+        main = tk.Frame(self.new_tab, bg=BG)
         main.pack(fill="both", expand=True, padx=10, pady=8)
 
         # Левая колонка: фото + навигация
@@ -174,9 +186,11 @@ class PublishApp:
         left.pack(side="left", fill="y")
         left.pack_propagate(False)
         self.img_label = tk.Label(left, bg=PANEL, fg="#555", font=("Arial", 13))
-        self.img_label.pack(fill="both", expand=True)
+        left.rowconfigure(0, weight=1)
+        left.columnconfigure(0, weight=1)
+        self.img_label.grid(row=0, column=0, sticky="nsew")
         nav = tk.Frame(left, bg=BG, pady=8)
-        nav.pack(fill="x")
+        nav.grid(row=1, column=0, sticky="ew")
         self._nav_btn(nav, "◀  Назад", self.prev_photo).pack(side="left", padx=4)
         self._nav_btn(nav, "Пропустить", self.skip_photo, bg="#1a1a1a", fg="#777").pack(side="left", padx=4)
         self._nav_btn(nav, "Дальше  ▶", self.next_photo).pack(side="right", padx=4)
@@ -185,18 +199,21 @@ class PublishApp:
         right = tk.Frame(main, bg=BG)
         right.pack(side="right", fill="both", expand=True, padx=(12, 0))
         tk.Label(right, text="КАТЕГОРИИ", bg=BG, fg=ORANGE,
-                 font=("Consolas", 12, "bold")).pack(anchor="w")
+                 font=("Consolas", 12, "bold")).grid(row=0, column=0, sticky="w")
         tk.Label(right, text="Можно выбрать несколько  •  ＋ добавить, × удалить категорию",
-                 bg=BG, fg="#666", font=("Arial", 10)).pack(anchor="w", pady=(0, 8))
+                 bg=BG, fg="#666", font=("Arial", 10), wraplength=530, justify="left").grid(row=1, column=0, sticky="w", pady=(0, 8))
 
         cat_wrap = tk.Frame(right, bg=BG)
-        cat_wrap.pack(fill="both", expand=True)
+        right.rowconfigure(2, weight=1)
+        right.columnconfigure(0, weight=1)
+        cat_wrap.grid(row=2, column=0, sticky="nsew")
         self.cat_canvas = tk.Canvas(cat_wrap, bg=BG, highlightthickness=0)
         sb = tk.Scrollbar(cat_wrap, orient="vertical", command=self.cat_canvas.yview)
         self.cat_inner = tk.Frame(self.cat_canvas, bg=BG)
         self.cat_inner.bind("<Configure>", lambda e: self.cat_canvas.configure(
             scrollregion=self.cat_canvas.bbox("all")))
-        self.cat_canvas.create_window((0, 0), window=self.cat_inner, anchor="nw")
+        self.cat_window = self.cat_canvas.create_window((0, 0), window=self.cat_inner, anchor="nw")
+        self.cat_canvas.bind('<Configure>', self._layout_category_columns)
         self.cat_canvas.configure(yscrollcommand=sb.set)
         self.cat_canvas.pack(side="left", fill="both", expand=True)
         sb.pack(side="right", fill="y")
@@ -205,14 +222,14 @@ class PublishApp:
 
         tk.Button(right, text="＋  Добавить категорию", command=self.add_category,
                   bg=BG, fg=ORANGE, relief="flat", font=("Arial", 11), cursor="hand2",
-                  pady=8, activebackground="#1a1a1a").pack(fill="x", pady=(8, 0))
+                  pady=8, activebackground="#1a1a1a").grid(row=3, column=0, sticky="ew", pady=(8, 0))
         self.lbl_selected = tk.Label(right, text="", bg=BG, fg=ORANGE, font=("Arial", 10),
                                      wraplength=620, justify="left", anchor="w")
-        self.lbl_selected.pack(fill="x", pady=(6, 0))
+        self.lbl_selected.grid(row=4, column=0, sticky="ew", pady=(6, 0))
 
         # Низ: публикация + лог
         bottom = tk.Frame(self.root, bg=BG2)
-        bottom.pack(fill="x", side="bottom")
+        bottom.grid(row=1, column=0, sticky="ew")
         bar = tk.Frame(bottom, bg=BG2, pady=10)
         bar.pack(fill="x")
         self.lbl_status = tk.Label(bar, text="", bg=BG2, fg="#888",
@@ -248,6 +265,21 @@ class PublishApp:
                          activebackground="#3a3a3a", activeforeground="white")
 
     # ── Категории (порт из photo_tagger) ──────────────────────────────────────
+    def _layout_category_columns(self, event=None):
+        """Keep existing category controls reachable in the vertical scroller."""
+        cols = self.cat_inner.winfo_children()
+        if not cols:
+            return
+        width = max(1, self.cat_canvas.winfo_width())
+        stacked = width < sum(col.winfo_reqwidth() + 10 for col in cols)
+        for index, col in enumerate(cols):
+            self.cat_inner.columnconfigure(index, weight=0, uniform='')
+            col.grid(row=index if stacked else 0, column=0 if stacked else index,
+                     sticky='nsew', padx=(0, 10))
+        for index in range(1 if stacked else len(cols)):
+            self.cat_inner.columnconfigure(index, weight=1)
+        self.cat_canvas.itemconfigure(self.cat_window, width=width)
+
     def _render_categories(self):
         for w in self.cat_inner.winfo_children():
             w.destroy()
@@ -275,9 +307,8 @@ class PublishApp:
             for gname, cats in CATEGORY_GROUPS:
                 if gname == group_name and cat_name in cats:
                     cats.remove(cat_name); break
-            for fname, tags in self.assign.items():
-                if cat_name in tags:
-                    tags.remove(cat_name)
+            # Remove only the optional checkbox, never historical input tags.
+            # Those remain visible as unknown input and block unsafe publication.
             save_extra(self.extra); save_assignments(self.assign)
             self._render_categories()
             self._restore_checks()
@@ -309,6 +340,7 @@ class PublishApp:
             render_group(col_map.get(group_name, cols[0]), group_name, cats)
 
         self._restore_checks()
+        self.root.after_idle(self._layout_category_columns)
 
     def add_category(self):
         groups = [g for g, _ in CATEGORY_GROUPS if g != "Служебные"]
@@ -363,7 +395,9 @@ class PublishApp:
             return
         name = self._current()
         if name:
-            sel = self._selected()
+            # Unknown legacy tags are not rendered as checkboxes, but remain
+            # recoverable input. Never silently drop them when editing known tags.
+            sel = self._selected() + [tag for tag in self.assign.get(name, []) if tag not in self.check_vars]
             if sel:
                 self.assign[name] = sel
             else:
@@ -413,12 +447,37 @@ class PublishApp:
         except Exception as e:
             self.img_label.config(image="", text=f"Не открыть фото:\n{e}", fg="#e55")
 
+    def _sync_busy(self):
+        # Disable real widgets as well as guarding callbacks. Retain their prior
+        # states (notably readonly comboboxes and initially disabled buttons).
+        if not hasattr(self.root, 'winfo_children'):
+            return
+        if self.busy and not getattr(self, '_disabled_widgets', None):
+            self._disabled_widgets = []
+            def visit(parent):
+                for widget in parent.winfo_children():
+                    if 'state' in widget.keys():
+                        previous = str(widget.cget('state'))
+                        self._disabled_widgets.append((widget, previous))
+                        widget.configure(state='disabled')
+                    visit(widget)
+            visit(self.root)
+        elif not self.busy:
+            for widget, previous in getattr(self, '_disabled_widgets', []):
+                if widget.winfo_exists():
+                    widget.configure(state=previous)
+            self._disabled_widgets = []
+
     def _update_publish_btn(self):
+        self._sync_busy()
         if self.busy:
+            if hasattr(self, 'btn_publish'):
+                self.btn_publish.config(state='disabled')
             return
         pending = safe_publisher.load_batch(NEWDIR)
         if pending and not pending.get('complete'):
-            self.btn_publish.config(state="normal", text="⏳  ПОВТОРИТЬ ПРОВЕРКУ / ПУБЛИКАЦИЮ ПАЧКИ")
+            label = '⏳  ПОВТОРИТЬ ИЗМЕНЕНИЕ / ВОССТАНОВЛЕНИЕ' if pending.get('kind') == 'edit' else '⏳  ПОВТОРИТЬ ПРОВЕРКУ / ПУБЛИКАЦИЮ ПАЧКИ'
+            self.btn_publish.config(state='normal', text=label)
             return
         n = sum(1 for f in self.photos if self.assign.get(f))
         if n:
@@ -428,10 +487,14 @@ class PublishApp:
 
     # ── Навигация ──────────────────────────────────────────────────────────────
     def next_photo(self):
+        if self.busy:
+            return
         if self.photos and self.idx < len(self.photos) - 1:
             self.idx += 1; self._show_photo()
 
     def prev_photo(self):
+        if self.busy:
+            return
         if self.photos and self.idx > 0:
             self.idx -= 1; self._show_photo()
 
@@ -469,6 +532,15 @@ class PublishApp:
             return
         pending = safe_publisher.load_batch(NEWDIR)
         resuming = pending and not pending.get('complete')
+        if resuming and pending.get('kind') == 'edit':
+            msg = 'Повторить сохранённое изменение категорий / восстановление?\n'
+            msg += '\n'.join(name + ': ' + ', '.join((change['before'] or {}).get('categories', [])) + ' → ' + ', '.join((change['after'] or {}).get('categories', [])) for name, change in pending['changes'].items())
+            msg += '\n\nНовые фото не затрагиваются. Прямой URL изображения может остаться доступным.'
+            if self._confirm_changes(msg):
+                self.busy = True
+                self._update_publish_btn()
+                threading.Thread(target=self._operation_worker, args=(pending,), daemon=True).start()
+            return
         ready = [f for f in self.photos if self.assign.get(f)]
         if not ready and not resuming:
             messagebox.showinfo("Нечего публиковать",
@@ -483,9 +555,122 @@ class PublishApp:
         if not messagebox.askyesno("Публикация", msg):
             return
         self.busy = True
+        self._update_publish_btn()
         self.btn_publish.config(state="disabled", text="⏳  Публикую…")
         self.log.config(state="normal"); self.log.delete("1.0", "end"); self.log.config(state="disabled")
         threading.Thread(target=self._publish_worker, args=(ready,), daemon=True).start()
+
+    def _confirm_changes(self, details):
+        """Scrollable, explicit review even for hundreds of selected memberships."""
+        from tkinter import ttk
+        dialog = tk.Toplevel(self.root)
+        dialog.title('Подтвердите точные изменения на сайте')
+        dialog.geometry('1000x700')
+        dialog.minsize(640, 400)
+        dialog.transient(self.root)
+        dialog.grab_set()
+        approved = [False]
+        dialog.columnconfigure(0, weight=1)
+        dialog.rowconfigure(2, weight=1)
+        ttk.Label(dialog, text='Проверьте полный список. Ничего не отправляется до нажатия «Подтвердить».').grid(row=0, column=0, padx=14, pady=12)
+        ttk.Label(dialog, text='Удаление из портфолио убирает только связи с категориями. Физические файлы сохраняются; прямой URL может оставаться доступным.', wraplength=600, justify='left').grid(row=1, column=0, sticky='ew', padx=14, pady=(0, 12))
+        body = ttk.Frame(dialog)
+        body.grid(row=2, column=0, sticky='nsew', padx=14)
+        text = tk.Text(body, wrap='word', font=('Consolas', 11))
+        scroll = ttk.Scrollbar(body, command=text.yview)
+        text.configure(yscrollcommand=scroll.set)
+        text.insert('1.0', details)
+        text.configure(state='disabled')
+        text.pack(side='left', fill='both', expand=True)
+        scroll.pack(side='right', fill='y')
+        controls = ttk.Frame(dialog)
+        controls.grid(row=3, column=0, sticky='ew', padx=14, pady=12)
+        def confirm():
+            approved[0] = True
+            dialog.destroy()
+        cancel = ttk.Button(controls, text='Отмена', command=dialog.destroy)
+        cancel.pack(side='right', padx=8)
+        ttk.Button(controls, text='Подтвердить', command=confirm).pack(side='right')
+        cancel.focus_set()
+        dialog.bind('<Escape>', lambda event: dialog.destroy())
+        self.root.wait_window(dialog)
+        return approved[0]
+
+    def _submit_operation(self, operation):
+        if self.busy:
+            return
+        try:
+            pending = safe_publisher.load_batch(NEWDIR)
+            if pending and not pending.get('complete'):
+                messagebox.showinfo('Сначала завершите пачку', 'Есть незавершённая квитанция. Нажмите кнопку повтора внизу окна.')
+                return
+            lines = ['Изменить категории на сайте? Файлов: ' + str(len(operation['changes']))]
+            for name, change in operation['changes'].items():
+                before = ', '.join((change['before'] or {}).get('categories', [])) or '(нет в портфолио)'
+                after = ', '.join((change['after'] or {}).get('categories', [])) or '(убрать из всего портфолио)'
+                lines.append(name + '\n  ' + before + ' → ' + after)
+            lines.append('\nФизические файлы и оригиналы НЕ удаляются. Прямой URL изображения может остаться доступным. '
+                         'Это не удаление конфиденциальных данных. Восстановление — через журнал.\n'
+                         'После подтверждения: push в main, deploy.yml и проверка полного индекса сайта.')
+            if not self._confirm_changes('\n\n'.join(lines)):
+                return
+            if pending:
+                safe_publisher.atomic_json(os.path.join(NEWDIR, '.publisher', 'last-completed.json'), pending)
+            safe_publisher.save_batch(NEWDIR, operation)
+            self.busy = True
+            self._update_publish_btn()
+            threading.Thread(target=self._operation_worker, args=(operation,), daemon=True).start()
+        except Exception as error:
+            self._publication_failed(str(error))
+
+    def cancel_pending_operation(self):
+        if self.busy:
+            return
+        if not messagebox.askyesno('Отменить неподтверждённое изменение',
+                'Проверить свежий main и отменить только НЕ принятый push изменения категорий?\n'
+                'Если main уже принял операцию, отмена будет запрещена. Входящая пачка фото не отменяется.'):
+            return
+        self.busy = True
+        self._update_publish_btn()
+        threading.Thread(target=self._cancel_operation_worker, daemon=True).start()
+
+    def _cancel_operation_worker(self):
+        import portfolio_manager as manager
+        try:
+            manager.cancel_operation(ROOT, NEWDIR)
+            def finished():
+                self.busy = False
+                self._update_publish_btn()
+                if hasattr(self, 'site_tab'):
+                    self.site_tab.invalidate('Непринятое изменение отменено. Обновите каталог и выберите изменения заново.')
+                self._set_status('Отменено до принятого push. Квитанция сохранена; оригиналы и теги не изменены.', ORANGE)
+            self.root.after(0, finished)
+        except Exception as error:
+            self._publication_failed(str(error))
+
+    def _operation_worker(self, operation):
+        """Same durable publication gates as uploads, without touching input files."""
+        try:
+            sha = safe_publisher.publish_batch(ROOT, NEWDIR, operation, log=self._log)
+            self._log('main принял SHA ' + sha + '; жду точный deploy.yml.')
+            self._set_status('Жду deploy.yml и проверяю полный индекс сайта…', ORANGE)
+            run = safe_publisher.wait_for_deploy(sha)
+            operation['workflow_run_id'] = run['id']
+            safe_publisher.save_batch(NEWDIR, operation)
+            safe_publisher.verify_live(operation)
+            operation['verified'] = True
+            operation['complete'] = True
+            safe_publisher.save_batch(NEWDIR, operation)
+            def finished():
+                self.busy = False
+                self._update_publish_btn()
+                self._set_status('Готово: изменения категорий и полный индекс сайта проверены.', GREEN)
+                if hasattr(self, 'site_tab'):
+                    self.site_tab.invalidate('Операция проверена. Обновите каталог для следующих изменений.')
+                messagebox.showinfo('Готово', 'Изменения подтверждены на сайте. Оригиналы и входящие теги не изменены.')
+            self.root.after(0, finished)
+        except Exception as error:
+            self._publication_failed(str(error))
 
     def _publish_worker(self, ready):
         try:
@@ -551,12 +736,24 @@ class PublishApp:
 
 
     # ── Клавиши ──────────────────────────────────────────────────────────────
+    def _close(self):
+        if self.busy:
+            messagebox.showinfo('Операция выполняется', 'Дождитесь результата. При сбое квитанция позволит повторить операцию.')
+            return
+        site = getattr(self, 'site_tab', None)
+        if site and getattr(site, '_thumbnail_running', False):
+            site.invalidate('Дожидаюсь завершения текущего запроса миниатюры перед закрытием…')
+            self.root.after(100, self._close)
+            return
+        self.root.destroy()
+
     def _bind_keys(self):
+        self.root.protocol('WM_DELETE_WINDOW', self._close)
         self.root.bind("<Right>",  lambda e: self.next_photo())
         self.root.bind("<Return>", lambda e: self.next_photo())
         self.root.bind("<Left>",   lambda e: self.prev_photo())
         self.root.bind("<space>",  lambda e: self.skip_photo())
-        self.root.bind("<Escape>", lambda e: self.root.destroy())
+        self.root.bind("<Escape>", lambda e: self._close())
 
 
 # ─── Запуск ──────────────────────────────────────────────────────────────────

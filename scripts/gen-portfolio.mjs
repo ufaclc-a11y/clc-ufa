@@ -5,6 +5,7 @@
 
 import { readFileSync, writeFileSync, existsSync } from 'fs'
 import path from 'path'
+import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'url'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -39,7 +40,14 @@ const body =
   'export const portfolioFiles: Record<string, string[]> = ' +
   JSON.stringify(out, null, 2) + '\n'
 
+// Both consumers use the exact same exhaustive mapping; no preview pagination.
+// Missing assets must never produce a seemingly valid deployment/index.
+if (missing.length) throw new Error(`Missing portfolio assets: ${missing.join(', ')}`)
+const sha256 = Object.fromEntries(Object.keys(manifest).sort().map(file => [
+  file, createHash('sha256').update(readFileSync(path.join(portfolioDir, file))).digest('hex'),
+]))
 writeFileSync(path.join(root, 'data', 'portfolio.generated.ts'), banner + body)
+writeFileSync(path.join(root, 'public', 'portfolio-index.json'), JSON.stringify({ version: 1, categories: out, sha256 }, null, 2) + '\n')
 
 const files = Object.keys(manifest).length
 const refs = Object.values(out).reduce((s, a) => s + a.length, 0)

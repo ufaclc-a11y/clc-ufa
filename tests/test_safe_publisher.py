@@ -313,7 +313,8 @@ class HttpTests(unittest.TestCase):
                 if '/actions/' in self.path:
                     self.wfile.write(json.dumps({'workflow_runs': [owner.workflow_run]}).encode())
                 elif self.path.startswith('/images/'):
-                    self.wfile.write(owner.image)
+                    name = self.path.removeprefix('/images/portfolio/')
+                    self.wfile.write(getattr(owner, 'images', {}).get(name, owner.image))
                 else:
                     self.wfile.write(owner.html.encode())
             def log_message(self, *args):
@@ -351,6 +352,10 @@ class HttpTests(unittest.TestCase):
         self.assertIn('head_sha=' + self.sha, self.requests[0][0])
         self.assertIn('/actions/workflows/deploy.yml/runs', self.requests[0][0])
         self.assertEqual(self.requests[0][1]['X-Github-Api-Version'], '2026-03-10')
+        # Contract changed: category HTML previews are not exhaustive. The public
+        # index comes from the same generator mapping as the actual TS consumer.
+        self.html = json.dumps({'version': 1, 'categories': {'a': ['p-new.jpg']},
+                                'sha256': {'p-new.jpg': hashlib.sha256(self.image).hexdigest()}})
         batch = {'items': [{'dest': 'p-new.jpg', 'categories': ['a'],
                             'payload_sha256': hashlib.sha256(self.image).hexdigest()}]}
         core.verify_live(batch, self.base, timeout=1)
@@ -368,7 +373,7 @@ class HttpTests(unittest.TestCase):
         self.html = '<img alt="Другая категория" src="/images/portfolio/p-new.jpg">'
         batch = {'items': [{'dest': 'p-new.jpg', 'categories': ['a'],
                             'payload_sha256': hashlib.sha256(self.image).hexdigest()}]}
-        with self.assertRaisesRegex(RuntimeError, 'rendered'):
+        with self.assertRaisesRegex(RuntimeError, 'index'):
             core.verify_live(batch, self.base, timeout=1)
 
     def test_live_image_prefix_is_not_exact_image_evidence(self):
@@ -377,7 +382,7 @@ class HttpTests(unittest.TestCase):
         self.html = '<img alt="Категория — пример 1" src="/images/portfolio/p-new.jpg.not-selected">'
         batch = {'items': [{'dest': 'p-new.jpg', 'categories': ['a'],
                             'payload_sha256': hashlib.sha256(self.image).hexdigest()}]}
-        with self.assertRaisesRegex(RuntimeError, 'rendered'):
+        with self.assertRaisesRegex(RuntimeError, 'index'):
             core.verify_live(batch, self.base, timeout=1)
 
     def test_slow_http_body_has_bounded_deadline(self):
