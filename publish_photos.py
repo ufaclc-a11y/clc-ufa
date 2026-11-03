@@ -11,29 +11,27 @@ publish_photos.py — одно окно: разметить новые фото 
   3. Для каждого фото отметь категории галочками (можно несколько).
   4. Нажми «🚀 Опубликовать на сайт».
 
-Что делает кнопка «Опубликовать» (вся прежняя ручная цепочка):
-  • каждый тег → категория сайта через portfolio_maps.py (как в import_new.py);
-    если тег никуда не ведёт — ГРОМКО предупреждает, фото в эту категорию не попадёт;
-  • копирует фото в public/images/portfolio/ как p-<hash>.<ext> (повтор не плодит дубли);
-  • прописывает категории и порядок в data/portfolio-tags.json (новые фото — в начало);
-  • npm run gen:portfolio → git add (только портфолио) → commit → push (= деплой);
-  • опубликованные оригиналы переносит в NewPhoto/_published/.
+Что делает кнопка «Опубликовать»:
+  • сохраняет только выбранную пачку и разметку в NewPhoto/.publisher;
+  • добавляет её поверх свежего main в независимой временной копии;
+  • не меняет локальные код, манифест, индекс, ветку и коммиты;
+  • ждёт успешный deploy.yml для точного SHA и проверяет живые фото/категории;
+  • лишь затем архивирует неизменённые оригиналы и снимает разметку пачки.
+При ошибке повторяет ту же пачку по квитанции. См. docs/photo-publisher.md.
 """
-import os, sys, json, hashlib, shutil, subprocess, threading, collections
+import os, sys, json, shutil, subprocess, threading
 import tkinter as tk
 from tkinter import messagebox
 from PIL import Image, ImageTk, ImageOps
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from photo_tagger import CATEGORY_GROUPS          # тот же набор категорий, что в тэггере
-from portfolio_maps import categories_for, unmapped, SKIP_TAGS
+from portfolio_maps import categories_for, unmapped
+import safe_photo_publisher as safe_publisher
 
 # ─── Пути ────────────────────────────────────────────────────────────────────
 ROOT         = os.path.dirname(os.path.abspath(__file__))
 NEWDIR       = os.path.join(ROOT, "NewPhoto")
-PUBLISHED    = os.path.join(NEWDIR, "_published")
-DEST         = os.path.join(ROOT, "public", "images", "portfolio")
-MANIFEST     = os.path.join(ROOT, "data", "portfolio-tags.json")
 TAGS_FILE    = os.path.join(ROOT, "photo_tags.json")     # отсюда берём extra_cats (общие с тэггером)
 ASSIGN_FILE  = os.path.join(NEWDIR, ".assignments.json")
 EXTS         = (".jpg", ".jpeg", ".png", ".webp", ".jfif")
@@ -42,8 +40,6 @@ EXTS         = (".jpg", ".jpeg", ".png", ".webp", ".jfif")
 ORANGE = "#FF6B00"
 GREEN  = "#1f9d3a"; GREEN_D = "#16802e"
 BG = "#111"; BG2 = "#0d0d0d"; PANEL = "#0a0a0a"; CARD = "#1e1e1e"
-
-_NO_WINDOW = subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
 
 # базовые (неудаляемые) категории
 BASE_CATS = {c for _, cats in CATEGORY_GROUPS for c in cats}
@@ -97,12 +93,6 @@ def optimize_image(src, dst):
 
 
 # ─── Данные ──────────────────────────────────────────────────────────────────
-def load_manifest():
-    if os.path.exists(MANIFEST):
-        return json.load(open(MANIFEST, encoding="utf-8"))
-    return {}
-
-
 def scan_photos():
     os.makedirs(NEWDIR, exist_ok=True)
     return [f for f in sorted(os.listdir(NEWDIR))
@@ -112,17 +102,14 @@ def scan_photos():
 
 def load_assignments():
     if os.path.exists(ASSIGN_FILE):
-        try:
-            return json.load(open(ASSIGN_FILE, encoding="utf-8"))
-        except Exception:
-            return {}
+        with open(ASSIGN_FILE, encoding="utf-8") as stream:
+            return json.load(stream)
     return {}
 
 
 def save_assignments(assign):
     os.makedirs(NEWDIR, exist_ok=True)
-    json.dump(assign, open(ASSIGN_FILE, "w", encoding="utf-8"),
-              ensure_ascii=False, indent=2)
+    safe_publisher.atomic_json(ASSIGN_FILE, assign)
 
 
 def load_extra():
@@ -157,9 +144,7 @@ class PublishApp:
 
         self.extra      = load_extra()
         self.photos     = scan_photos()
-        all_tags        = set(BASE_CATS) | {c for g in self.extra.values() for c in g}
-        self.assign     = {k: [c for c in v if c in all_tags]
-                           for k, v in load_assignments().items() if k in self.photos}
+        self.assign     = load_assignments()  # retain old/unknown tags for recoverable retries
         self.idx        = 0
         self.img_ref    = None
         self.check_vars = {}     # tag -> BooleanVar
@@ -280,6 +265,8 @@ class PublishApp:
         }
 
         def delete_extra(group_name, cat_name):
+            if self.busy:
+                return
             if not messagebox.askyesno("Удалить категорию",
                                        f'Удалить «{cat_name}» из «{group_name}»?', parent=self.root):
                 return
@@ -371,6 +358,9 @@ class PublishApp:
         return [cat for cat, var in self.check_vars.items() if var.get()]
 
     def _on_check(self):
+        if self.busy:
+            self._restore_checks()
+            return
         name = self._current()
         if name:
             sel = self._selected()
@@ -426,6 +416,10 @@ class PublishApp:
     def _update_publish_btn(self):
         if self.busy:
             return
+        pending = safe_publisher.load_batch(NEWDIR)
+        if pending and not pending.get('complete'):
+            self.btn_publish.config(state="normal", text="⏳  ПОВТОРИТЬ ПРОВЕРКУ / ПУБЛИКАЦИЮ ПАЧКИ")
+            return
         n = sum(1 for f in self.photos if self.assign.get(f))
         if n:
             self.btn_publish.config(state="normal", text=f"🚀  ОПУБЛИКОВАТЬ НА САЙТ  ({n})")
@@ -445,8 +439,9 @@ class PublishApp:
         self.next_photo()
 
     def refresh(self):
+        if self.busy:
+            return
         self.photos = scan_photos()
-        self.assign = {k: v for k, v in self.assign.items() if k in self.photos}
         self.idx = min(self.idx, max(0, len(self.photos) - 1))
         self._show_photo()
 
@@ -470,14 +465,19 @@ class PublishApp:
 
     # ── Публикация ───────────────────────────────────────────────────────────────
     def publish(self):
+        if self.busy:
+            return
+        pending = safe_publisher.load_batch(NEWDIR)
+        resuming = pending and not pending.get('complete')
         ready = [f for f in self.photos if self.assign.get(f)]
-        if not ready:
+        if not ready and not resuming:
             messagebox.showinfo("Нечего публиковать",
                                 "Сначала отметь хотя бы у одного фото категорию.")
             return
         no_cat = len(self.photos) - len(ready)
-        msg = f"Опубликовать {len(ready)} фото на сайт?"
-        if no_cat:
+        msg = ("Продолжить сохранённую пачку? Новые фото пока не добавляются."
+               if resuming else f"Опубликовать {len(ready)} фото на сайт?")
+        if no_cat and not resuming:
             msg += f"\n\n{no_cat} фото без категории будут пропущены (останутся в NewPhoto)."
         msg += "\n\nФото уедут в портфолио, изменения запушатся и сайт пересоберётся."
         if not messagebox.askyesno("Публикация", msg):
@@ -487,273 +487,68 @@ class PublishApp:
         self.log.config(state="normal"); self.log.delete("1.0", "end"); self.log.config(state="disabled")
         threading.Thread(target=self._publish_worker, args=(ready,), daemon=True).start()
 
-    def _run(self, cmd, label, cwd=None):
-        self._log(f"$ {cmd if isinstance(cmd, str) else ' '.join(cmd)}")
-        try:
-            r = subprocess.run(cmd, cwd=cwd or ROOT, shell=isinstance(cmd, str),
-                               capture_output=True, text=True, encoding="utf-8",
-                               errors="replace", creationflags=_NO_WINDOW)
-        except Exception as e:
-            self._log(f"  ✖ {label}: {e}"); return False, str(e)
-        out = (r.stdout or "") + (r.stderr or "")
-        for line in out.splitlines():
-            if line.strip():
-                self._log("  " + line)
-        if r.returncode != 0:
-            self._log(f"  ✖ {label} — код {r.returncode}")
-        return r.returncode == 0, out
-
-    # Пути, которые публикация имеет право менять. Всё остальное берётся из
-    # origin/main как есть — так фото не могут утащить с собой чужие правки.
-    PUBLISH_PATHS = ["public/images/portfolio", "data/portfolio-tags.json",
-                     "data/portfolio.generated.ts"]
-
-    def _publish_to_origin(self, cmsg, published):
-        """
-        Кладёт фото поверх свежего origin/main во временной копии репозитория.
-
-        Раньше здесь был `git pull --rebase --autostash` — он перебазировал всю
-        рабочую ветку и потому зависел от состояния рабочей папки. Если в ней
-        лежали правки тех же файлов, что изменились на GitHub (а при работе над
-        сайтом это обычное дело), автостеш не возвращался, публикация срывалась,
-        и фото оставались лежать локальным коммитом.
-
-        Теперь рабочая папка не участвует: временная копия создаётся из
-        origin/main, в неё переносятся только фото и теги, манифест
-        пересобирается уже там. Состояние вашей папки на публикацию не влияет.
-        """
-        import tempfile
-
-        ok, _ = self._run(["git", "fetch", "origin", "main"], "git fetch")
-        if not ok:
-            self._set_status("Нет связи с GitHub — фото закоммичены локально.", "#e9a000")
-            self.root.after(0, lambda: messagebox.showwarning(
-                "Нет связи с GitHub",
-                "Фото добавлены и закоммичены локально, но связаться с GitHub не вышло.\n"
-                "Проверьте интернет и запустите публикацию ещё раз — ничего не потеряно."))
-            return False
-
-        tmp = tempfile.mkdtemp(prefix="clc-publish-")
-        work = os.path.join(tmp, "repo")
-        try:
-            self._log("Готовлю чистую копию из origin/main…")
-            ok, _ = self._run(["git", "worktree", "add", "--detach", work, "origin/main"],
-                              "git worktree add")
-            if not ok:
-                raise RuntimeError("не удалось создать временную копию репозитория")
-
-            # Переносим только фото и теги. Манифест пересоберётся на месте:
-            # он должен учитывать и наши новые снимки, и те, что появились на
-            # GitHub, пока мы готовили публикацию.
-            self._log("Переношу фотографии и теги…")
-            src_dir = os.path.join(ROOT, "public", "images", "portfolio")
-            dst_dir = os.path.join(work, "public", "images", "portfolio")
-            os.makedirs(dst_dir, exist_ok=True)
-            for name in os.listdir(src_dir):
-                dst = os.path.join(dst_dir, name)
-                if not os.path.exists(dst):
-                    shutil.copy2(os.path.join(src_dir, name), dst)
-            shutil.copy2(os.path.join(ROOT, "data", "portfolio-tags.json"),
-                         os.path.join(work, "data", "portfolio-tags.json"))
-
-            self._log("Пересобираю портфолио в копии…")
-            ok, _ = self._run(["node", "scripts/gen-portfolio.mjs"], "gen-portfolio", cwd=work)
-            if not ok:
-                raise RuntimeError("пересборка портфолио в копии не прошла")
-
-            self._run(["git", "add", "--"] + self.PUBLISH_PATHS, "git add", cwd=work)
-            ok, st = self._run(["git", "status", "--porcelain", "--"] + self.PUBLISH_PATHS,
-                               "git status", cwd=work)
-            if not st.strip():
-                self._log("На GitHub уже всё это есть — отправлять нечего.")
-                self._set_status("Фото уже на сайте.", "#888")
-                return True
-
-            ok, _ = self._run(["git", "commit", "-m", cmsg], "git commit", cwd=work)
-            if not ok:
-                raise RuntimeError("не удалось создать коммит в копии")
-
-            self._log("Отправляю на GitHub…")
-            ok, out = self._run(["git", "push", "origin", "HEAD:main"], "git push", cwd=work)
-            if not ok:
-                # Кто-то запушил, пока мы собирали копию. Повтор решает.
-                self._set_status("Кто-то опередил — нажмите «Опубликовать» ещё раз.", "#e9a000")
-                self.root.after(0, lambda: messagebox.showwarning(
-                    "Нужен повтор",
-                    "Пока готовилась публикация, на GitHub появились новые изменения.\n\n"
-                    "Ничего не потеряно — просто нажмите «Опубликовать» ещё раз."))
-                return False
-            return True
-
-        except Exception as e:
-            self._log(f"  ✖ публикация: {e}")
-            self._set_status("Фото закоммичены локально, отправка не прошла.", "#e9a000")
-            self.root.after(0, lambda: messagebox.showwarning(
-                "Отправка не прошла",
-                f"Фото добавлены и закоммичены локально, но отправить на сайт не вышло:\n{e}\n\n"
-                "Ничего не потеряно. Попробуйте ещё раз или позовите того, кто помогает с сайтом."))
-            return False
-        finally:
-            self._run(["git", "worktree", "remove", "--force", work], "git worktree remove")
-            shutil.rmtree(tmp, ignore_errors=True)
-
     def _publish_worker(self, ready):
         try:
-            manifest = load_manifest()
-            os.makedirs(DEST, exist_ok=True); os.makedirs(PUBLISHED, exist_ok=True)
+            self._set_status("Готовлю или восстанавливаю выбранную пачку…", ORANGE)
+            selected = []
+            pending = safe_publisher.load_batch(NEWDIR)
+            if not pending or pending.get('complete'):
+                for name in ready:
+                    tags = list(self.assign.get(name, []))
+                    bad = unmapped(tags)
+                    if bad:
+                        raise ValueError(f"{name}: теги без категории: {', '.join(bad)}. Исправьте разметку.")
+                    cats = categories_for(tags)
+                    if cats:
+                        selected.append((name, cats, tags))
+            batch = safe_publisher.prepare_batch(
+                NEWDIR, selected,
+                lambda src, dst: optimize_image(str(src), str(dst)), output_ext)
+            self._set_status("Отправляю выбранную пачку из чистой копии main…", ORANGE)
+            sha = safe_publisher.publish_batch(ROOT, NEWDIR, batch, log=self._log)
+            self._log(f"main принял SHA {sha}. Это ещё не подтверждение сайта.")
+            self._set_status("Жду успешный deploy.yml именно этого SHA (до 20 минут)…", ORANGE)
+            run = safe_publisher.wait_for_deploy(sha)
+            batch['workflow_run_id'] = run['id']
+            safe_publisher.save_batch(NEWDIR, batch)
+            self._set_status("Проверяю изображения и категории на clc-ufa.ru…", ORANGE)
+            safe_publisher.verify_live(batch)
+            batch['verified'] = True
+            safe_publisher.save_batch(NEWDIR, batch)
+            self.root.after(0, lambda: self._finish_ui(batch, pushed=True))
+        except Exception as error:
+            self._publication_failed(str(error))
 
-            minorder = {}
-            for meta in manifest.values():
-                for c, n in (meta.get("order") or {}).items():
-                    minorder[c] = min(minorder.get(c, n), n)
-
-            # план: тег → категория сайта (через portfolio_maps), предупреждения о незамапленных
-            self._set_status("Готовлю файлы…", ORANGE)
-            plan, warnings, no_cat_after = [], [], []
-            for name in ready:
-                src = os.path.join(NEWDIR, name)
-                if not os.path.exists(src):
-                    self._log(f"  пропуск (нет файла): {name}"); continue
-                tags = [t for t in self.assign.get(name, []) if t not in SKIP_TAGS]
-                cats = categories_for(tags)
-                bad = unmapped(tags)
-                if bad:
-                    warnings.append((name, bad))
-                if not cats:
-                    no_cat_after.append(name); continue
-                with open(src, "rb") as fh:
-                    h = hashlib.md5(fh.read()).hexdigest()[:12]
-                ext = output_ext(src)
-                plan.append((name, src, f"p-{h}{ext}", cats))
-
-            if warnings:
-                self._log("⚠ Теги без категории — фото туда НЕ попадёт:")
-                for name, bad in warnings:
-                    self._log(f"    {name}: {', '.join(bad)}")
-                self._log("  (добавь маппинг в portfolio_maps.py, если нужно)")
-
-            if not plan:
-                self.busy = False
-                self.root.after(0, self._update_publish_btn)
-                self._set_status("Нечего публиковать: ни один тег не ведёт в категорию.", "#e9a000")
-                self.root.after(0, lambda: messagebox.showwarning(
-                    "Нечего публиковать",
-                    "Ни одно фото не попало в категорию сайта — все теги оказались "
-                    "незамапленными. Смотри предупреждения в логе."))
-                return
-
-            # порядок: вся пачка перед существующими, внутри — в порядке плана
-            percat_new = collections.defaultdict(list)
-            for _, _, dest, cats in plan:
-                existing = set(manifest.get(dest, {}).get("categories", []))
-                for c in cats:
-                    if c not in existing and dest not in percat_new[c]:
-                        percat_new[c].append(dest)
-            order_for = {}
-            for c, dests in percat_new.items():
-                base = minorder.get(c, 1) - len(dests)
-                for i, dest in enumerate(dests):
-                    order_for[(dest, c)] = base + i
-
-            copied, published, bycat = 0, [], collections.Counter()
-            orig_bytes = new_bytes = 0
-            for name, src, dest, cats in plan:
-                dst = os.path.join(DEST, dest)
-                if not os.path.exists(dst):
-                    try:
-                        o_sz, n_sz = optimize_image(src, dst)
-                    except Exception as e:               # если PIL не смог — кладём как есть
-                        self._log(f"  оптимизация не удалась ({name}): {e} — копирую оригинал")
-                        shutil.copy2(src, dst)
-                        o_sz = n_sz = os.path.getsize(src)
-                    orig_bytes += o_sz; new_bytes += n_sz; copied += 1
-                entry = manifest.get(dest, {"categories": [], "order": {}})
-                ecats, eorder = set(entry.get("categories", [])), dict(entry.get("order", {}))
-                for c in cats:
-                    if c not in ecats:
-                        ecats.add(c); bycat[c] += 1
-                    if (dest, c) in order_for:
-                        eorder[c] = order_for[(dest, c)]
-                    elif c not in eorder:
-                        eorder[c] = minorder.get(c, 1)
-                manifest[dest] = {"categories": sorted(ecats), "order": eorder}
-                published.append((name, dest))
-
-            json.dump(dict(sorted(manifest.items())), open(MANIFEST, "w", encoding="utf-8"),
-                      ensure_ascii=False, indent=2)
-            self._log(f"Манифест обновлён. Новых файлов скопировано: {copied}.")
-            if copied and orig_bytes:
-                saved = 100 * (orig_bytes - new_bytes) / orig_bytes
-                self._log(f"Оптимизация: {orig_bytes/1e6:.1f} → {new_bytes/1e6:.1f} МБ  (−{saved:.0f}%)")
-            for c, n in sorted(bycat.items(), key=lambda x: -x[1]):
-                self._log(f"  +{n}  {c}")
-            if no_cat_after:
-                self._log(f"Пропущено (теги без категории): {len(no_cat_after)}")
-
-            self._set_status("Пересобираю портфолио…", ORANGE)
-            ok, _ = self._run("npm run gen:portfolio", "gen:portfolio")
-            if not ok:
-                raise RuntimeError("npm run gen:portfolio завершился с ошибкой — см. лог.")
-
-            self._set_status("Коммичу и пушу…", ORANGE)
-            paths = ["public/images/portfolio", "data/portfolio-tags.json", "data/portfolio.generated.ts"]
-            self._run(["git", "add", "--"] + paths, "git add")
-            ok, st = self._run(["git", "status", "--porcelain", "--"] + paths, "git status")
-            if not st.strip():
-                self._set_status("Изменений нет — всё уже на сайте.", "#888")
-                self._log("Нечего коммитить: эти фото уже опубликованы.")
-                self._finish_ui([], pushed=False); return
-
-            cmsg = f"feat(portfolio): +{len(published)} фото"
-            cat_list = ", ".join(c for c, _ in sorted(bycat.items(), key=lambda x: -x[1])[:4])
-            if cat_list:
-                cmsg += f" — {cat_list}"
-            ok, _ = self._run(["git", "commit", "-m", cmsg], "git commit")
-            if not ok:
-                raise RuntimeError("git commit не прошёл — см. лог.")
-
-            self._set_status("Отправляю на сайт…", ORANGE)
-            if not self._publish_to_origin(cmsg, published):
-                self._finish_ui(published, pushed=False); return
-            self._finish_ui(published, pushed=True)
-
-        except Exception as e:
-            self._log(f"✖ ОШИБКА: {e}")
-            self._set_status(f"Ошибка: {e}", "#e55")
-            self.root.after(0, lambda: messagebox.showerror(
-                "Ошибка публикации",
-                f"{e}\n\nНичего не отправлено на сайт.\nПодробности — в логе."))
+    def _publication_failed(self, detail):
+        self._log("✖ Публикация не подтверждена: " + detail)
+        self._set_status("Не подтверждено. Оригиналы и разметка сохранены; повторите публикацию.", "#e9a000")
+        def failed():
             self.busy = False
-            self.root.after(0, self._update_publish_btn)
+            self._update_publish_btn()
+            messagebox.showerror("Публикация не подтверждена",
+                detail + "\n\nPush мог уже пройти. Оригиналы, разметка и квитанция сохранены. "
+                "Нажмите «Опубликовать» ещё раз: продолжится та же пачка без новых дублей. "
+                "Не удаляйте NewPhoto/.publisher.")
+        self.root.after(0, failed)
 
     def _finish_ui(self, published, pushed):
-        moved = 0
-        for name, _dest in published:
-            src = os.path.join(NEWDIR, name)
-            if os.path.exists(src):
-                base, ext = os.path.splitext(name)
-                target = os.path.join(PUBLISHED, name); k = 1
-                while os.path.exists(target):
-                    target = os.path.join(PUBLISHED, f"{base}_{k}{ext}"); k += 1
-                try:
-                    shutil.move(src, target); moved += 1
-                except Exception as e:
-                    self._log(f"  не убрать в _published: {name} ({e})")
-            self.assign.pop(name, None)
-        save_assignments(self.assign)
-
-        def done():
+        if not pushed:
             self.busy = False
-            self.photos = scan_photos(); self.idx = 0
-            self._show_photo()
-            if pushed and published:
-                self._set_status(f"Готово! {len(published)} фото отправлены. "
-                                 "Сайт пересоберётся за пару минут.", GREEN)
-                messagebox.showinfo("Опубликовано 🎉",
-                    f"{len(published)} фото отправлены на сайт.\n"
-                    f"Оригиналы перенесены в NewPhoto/_published ({moved}).\n\n"
-                    "GitHub Actions пересоберёт clc-ufa.ru — обычно 1–3 минуты.")
-        self.root.after(0, done)
+            self._update_publish_btn()
+            return
+        try:
+            self.assign = safe_publisher.archive_batch(NEWDIR, published, load_assignments())
+        except Exception as error:
+            self._publication_failed(str(error))
+            return
+        self.busy = False
+        self.photos = scan_photos()
+        self.idx = 0
+        self._show_photo()
+        self._set_status("Готово: deploy и живые категории проверены; оригиналы в _published.", GREEN)
+        messagebox.showinfo("Опубликовано", "Успешный deploy и фото в категориях clc-ufa.ru проверены.\n"
+                           "Оригиналы сохранены в NewPhoto/_published.")
+
 
     # ── Клавиши ──────────────────────────────────────────────────────────────
     def _bind_keys(self):
@@ -766,11 +561,7 @@ class PublishApp:
 
 # ─── Запуск ──────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    try:
-        from PIL import Image, ImageTk  # noqa: F401
-    except ImportError:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "pillow", "-q"])
-        from PIL import Image, ImageTk  # noqa: F401
-    root = tk.Tk()
-    PublishApp(root)
-    root.mainloop()
+    with safe_publisher.publisher_lock(NEWDIR):
+        root = tk.Tk()
+        PublishApp(root)
+        root.mainloop()

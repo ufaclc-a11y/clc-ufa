@@ -23,6 +23,8 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - name: Photo publisher regressions (offline stdlib)
+        run: python3 -W error::ResourceWarning -m unittest discover -s tests -p 'test_safe_publisher.py' -v
       - run: npm ci
       - name: Lint
         run: npm run lint
