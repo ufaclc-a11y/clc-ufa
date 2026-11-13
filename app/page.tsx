@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { services }          from '@/data/services'
 import { products }          from '@/data/products'
 import { ServiceCard }       from '@/components/ServiceCard'
-import { ContactButtons }    from '@/components/ContactButtons'
 import { B2BSection }        from '@/components/B2BSection'
 import { ProcessSteps }      from '@/components/ProcessSteps'
 import { PortfolioGrid }     from '@/components/PortfolioGrid'
@@ -14,6 +13,7 @@ import { FAQAccordion }      from '@/components/FAQAccordion'
 import { blogPosts }         from '@/data/blog'
 import Image                 from 'next/image'
 import { SymbolIcon }        from '@/components/Icons'
+import { HomeHero }          from '@/components/HomeHero'
 import { JsonLd }            from '@/components/JsonLd'
 import { selectFaqItems }    from '@/data/faq'
 import { faqPageLd }         from '@/lib/seo'
@@ -57,81 +57,7 @@ export default function HomePage() {
       <JsonLd data={howToLd} />
       <JsonLd data={faqLd} />
       {/* ─── HERO ─── */}
-      <section className="relative min-h-[min(900px,100svh)] bg-black flex flex-col justify-end pb-12 sm:pb-16 pt-28 sm:pt-32 overflow-hidden">
-        {/* Фоновое фото: лазерная голова за работой */}
-        <Image
-          src="/images/hero-laser.jpg"
-          alt=""
-          fill
-          priority
-          className="object-cover opacity-40"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40 pointer-events-none" />
-
-        {/* Тонкий оранжевый акцент снизу-слева поверх лазера */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: [
-              'radial-gradient(ellipse 60% 40% at 10% 90%, rgba(255,107,0,0.07) 0%, transparent 60%)',
-              'radial-gradient(ellipse 40% 30% at 90% 10%, rgba(255,107,0,0.04) 0%, transparent 55%)',
-            ].join(', '),
-          }}
-        />
-
-        {/* SVG-зернистость */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.45]"
-          style={{
-            backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E\")",
-          }}
-        />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <div className="max-w-4xl">
-            {/* Метка */}
-            <div className="inline-flex items-center gap-3 mb-8 animate-fade-in">
-              <span className="w-8 h-px bg-[#FF6B00]" />
-              <span className="font-mono text-xs text-[#FF6B00] tracking-[0.2em] uppercase">
-                Уфа · Воплощаем идеи
-              </span>
-            </div>
-
-            {/* Заголовок */}
-            <h1 className="font-display text-[34px] sm:text-[56px] lg:text-[72px] text-white tracking-normal leading-[1.08] mb-6 animate-fade-up">
-              Лазерная резка,{' '}
-              <span className="text-[#FF8A33] whitespace-nowrap">УФ-печать</span>
-              <br />и фрезеровка ЧПУ
-              <br />в Уфе
-            </h1>
-
-            <p className="text-base sm:text-lg text-white/80 max-w-2xl leading-[1.7] mb-8 animate-fade-up delay-100">
-              Изготавливаем изделия, детали и заготовки по вашему макету — от одной штуки до партии. Фанера, акрил, ПВХ, МДФ, дерево, кожа, стекло и другие материалы.
-            </p>
-
-            <div className="animate-fade-up delay-200">
-              <ContactButtons size="lg" variant="dark" />
-            </div>
-
-            {/* Цифры */}
-            <div className="mt-10 pt-6 border-t border-white/20 grid grid-cols-3 gap-4 sm:gap-16 animate-fade-up delay-300">
-              {[
-                { n: '4',    sub: 'технологии в одном месте' },
-                { n: '1–3',  sub: 'дня — стандартный срок'   },
-                { n: '1 ч',  sub: 'срочный небольшой заказ'  },
-              ].map(s => (
-                <div key={s.n}>
-                  <div className="font-display text-3xl sm:text-4xl text-[#FF6B00] tracking-wider leading-none">
-                    {s.n}
-                  </div>
-                  <div className="text-xs sm:text-sm text-white/60 mt-1 leading-tight">{s.sub}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <HomeHero />
 
       {/* ─── УСЛУГИ ─── */}
       <section className="py-20 bg-[#F5F4F0]">

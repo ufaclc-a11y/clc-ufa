@@ -18,4 +18,12 @@ export const fontBody = localFont({
   variable: '--f-body',
 })
 
-export const fontVariables = fontBody.variable
+
+// Заголовок hero главной: PT Serif Bold (кириллица+латиница).
+export const fontHero = localFont({
+  src: [{ path: '../assets/fonts/pt-serif-700.woff2', weight: '700', style: 'normal' }],
+  display: 'swap',
+  variable: '--f-hero',
+})
+
+export const fontVariables = `${fontBody.variable} ${fontHero.variable}`
