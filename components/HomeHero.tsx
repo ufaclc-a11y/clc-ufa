@@ -57,10 +57,10 @@ export function HomeHero() {
 
           <div className={styles.visual}>
             <picture>
-              <source media="(min-width: 1024px)" srcSet="/images/hero-products.jpg" />
+              <source media="(min-width: 1024px)" srcSet="/images/hero-products-uv.webp" />
               <Image
-                src="/images/hero-products-m.jpg"
-                alt="Награда из акрила, резное панно, коробка из фанеры, медаль и адресная табличка"
+                src="/images/hero-products-m-uv.webp"
+                alt="Награда из акрила, резное панно, коробка из фанеры, цветная медаль с УФ-печатью и адресная табличка"
                 width={640} height={410} priority unoptimized
                 className={styles.productImage}
               />
