@@ -136,5 +136,42 @@
       "payloadHash": "bb53dfe3dfb6b53fefd7ddadb40d18b20de8a2c9fba74f4e43674963c65995a5",
       "importedAt": "2026-10-26T07:31:17.346321+00:00"
     }
+  },
+  {
+    "id": "panno-iz-fanery-dub",
+    "title": "Панно из фанеры в оттенке «дуб»",
+    "client": "",
+    "storyLevel": "A",
+    "summary": "В примере — изящное панно из фанеры толщиной 3 мм, окрашенное в благородный оттенок «дуб».",
+    "cta": "Пришлите эскиз",
+    "category": "Реальный проект",
+    "image": "/images/cases/content-factory/panno-iz-fanery-dub-56595cf96dac.jpg",
+    "imageAlt": "Панно из фанеры в оттенке «дуб»",
+    "images": [
+      {
+        "src": "/images/cases/content-factory/panno-iz-fanery-dub-56595cf96dac.jpg",
+        "alt": "Панно из фанеры в оттенке «дуб»"
+      },
+      {
+        "src": "/images/cases/content-factory/panno-iz-fanery-dub-68005a76d2b4.jpg",
+        "alt": "Панно из фанеры в оттенке «дуб», фото 2"
+      }
+    ],
+    "task": "Панно изготавливается по идее заказчика.",
+    "solution": "Мы подготовим макет под резку панно.",
+    "result": "Готовое изделие — панно из фанеры толщиной 3 мм, окрашенное в благородный оттенок «дуб».",
+    "price": "",
+    "qty": "",
+    "deadline": "",
+    "tags": [],
+    "contentFactory": {
+      "schemaVersion": "content-factory.website-case.v1",
+      "projectId": "cmwiy42hw000ffwbtwkq1i67p",
+      "packId": "cmwiz7xve000hfwq6yna4td96",
+      "packVersion": 1,
+      "approvalHash": "c1cb4a37f0b9ed5a0dbdbabe37331f3379ba9f145e08d5eb82f0526015f318bb",
+      "payloadHash": "bc94f0d09feb044dd57adbc7e2ff1a30c4ef4923f1e9f6b505eb96bd75c3a0de",
+      "importedAt": "2026-11-16T13:00:20.696Z"
+    }
   }
 ]
