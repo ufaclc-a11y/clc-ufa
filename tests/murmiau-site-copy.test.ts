@@ -57,8 +57,9 @@ test('existing calculation panel now carries a contextual photo-evaluation reque
 
 test('only authorized copy/provenance changes; media, layout, commercial unknowns and other cases survive', () => {
   const records = JSON.parse(readFileSync('content/content-factory-cases.json', 'utf8')) as Case[]
-  assert.deepEqual(records.map(item => item.id), previous.map(item => item.id))
-  assert.deepEqual(records.filter(item => item.id !== slug), previous.filter(item => item.id !== slug))
+  // Cases published later are appended; the frozen baseline must survive unchanged and in order.
+  assert.deepEqual(records.slice(0, previous.length).map(item => item.id), previous.map(item => item.id))
+  assert.deepEqual(records.slice(0, previous.length).filter(item => item.id !== slug), previous.filter(item => item.id !== slug))
   const item = getPublicCase(slug)!
   const permitted = ['title', 'cta', 'seoDescription', 'imageAlt', 'images', 'task', 'result', 'contentFactory']
   const retained = (record: object) => Object.fromEntries(Object.entries(record).filter(([key]) => !permitted.includes(key)))

@@ -54,7 +54,8 @@ test('GS polish preserves historical murmiau baseline; later kulon copy has its 
   const records = JSON.parse(fs.readFileSync('content/content-factory-cases.json', 'utf8'))
   // Historical published fixture remains immutable. The authorized later copy is
   // compared to its own full frozen baseline in murmiau-site-copy.test.ts.
-  assert.deepEqual(records.map((record: { id: string }) => record.id), previous.map((record: { id: string }) => record.id))
+  // Later Content Factory publications are appended; the historical baseline stays first and in order.
+  assert.deepEqual(records.slice(0, previous.length).map((record: { id: string }) => record.id), previous.map((record: { id: string }) => record.id))
   const murBefore = previous.find((record: { id: string }) => record.id === 'murmiau-engraved-tag')
   const murNow = records.find((record: { id: string }) => record.id === 'murmiau-engraved-tag')
   for (const key of ['presentation', 'classification', 'summary', 'solution', 'image', 'price', 'qty', 'deadline', 'tags']) assert.deepEqual(murNow[key], murBefore[key], key)

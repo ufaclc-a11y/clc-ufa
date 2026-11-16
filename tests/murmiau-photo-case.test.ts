@@ -51,7 +51,7 @@ test('website revision 7 has authorized kulon copy and exact crops; accepted ori
   assert.deepEqual(item.tags, [])
   assert.deepEqual(publicCases.slice(0, cases.length), cases)
   assert.equal(publicCases[cases.length].id, 'company-gift-infinity')
-  assert.equal(publicCases.at(-1)?.id, slug)
+  assert.ok(publicCases.findIndex(record => record.id === slug) > cases.length, 'authorized case stays after the baseline; later cases may be appended')
   assert.equal(new Set(publicCases.map(record => record.id)).size, publicCases.length)
   const html = renderToStaticMarkup(await CasePage({ params: Promise.resolve({ slug }) }))
   // Structured UI may split solution into preparation/approval/production sections.

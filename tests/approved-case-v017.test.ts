@@ -14,7 +14,8 @@ test('approved GS medicine story v005 preserves Claude v002 video, original desi
   assert.ok(item)
   assert.equal(publicCases.filter(c => c.id === slug).length, 1)
   assert.deepEqual(publicCases.slice(0, cases.length), cases)
-  assert.deepEqual(publicCases.slice(cases.length).map(item => item.id), ['company-gift-infinity', 'murmiau-engraved-tag'])
+  // Baseline cases keep their order; cases published later by the Content Factory are appended after them.
+  assert.deepEqual(publicCases.slice(cases.length, cases.length + 2).map(item => item.id), ['company-gift-infinity', 'murmiau-engraved-tag'])
   assert.equal(item.title, "Корпоративная статуэтка по ИИ-эскизу для GS medicine")
   assert.equal(item.task, "Изготовить корпоративный подарок ко дню рождения GS medicine — статуэтку в форме знака бесконечности. На старте у заказчика была сгенерированная картинка, но не было готового производственного макета.")
   assert.equal(item.solution, "Тёмный пробник заказчик счёл унылым — выбрали светлое оформление.\n\nМедицинские аппараты сделали объёмными накладками из молочного акрила с УФ-печатью и светлыми торцами. Логотип и знак бесконечности на табличке оставили плоскими, чтобы не перегрузить изделие.\n\nРазвели пересечения линий в центре, доработали табличку основания и согласовали макет.")
