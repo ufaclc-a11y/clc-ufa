@@ -60,6 +60,10 @@ export default async function CasePage({ params }: Props) {
       name: 'Центр лазерной резки',
       url: 'https://clc-ufa.ru',
     },
+    // GEO: выполнено в Уфе мастерской с адресом; категория — предмет кейса (для ответов ИИ и локального поиска).
+    contentLocation: { '@type': 'City', name: 'Уфа' },
+    about: { '@type': 'Service', name: item.category, provider: { '@id': 'https://clc-ufa.ru/#business' }, areaServed: { '@type': 'City', name: 'Уфа' } },
+    isPartOf: { '@type': 'CollectionPage', name: 'Кейсы Центра лазерной резки', url: 'https://clc-ufa.ru/cases' },
   }
 
   const facts = caseFacts(item)
