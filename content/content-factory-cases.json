@@ -214,5 +214,39 @@
       "payloadHash": "01d42cad33b797e9d4f432977358fc948f399d3e3f506463fcb9c1681582e045",
       "importedAt": "2026-11-17T12:36:19.522Z"
     }
+  },
+  {
+    "id": "tablichka-na-dennik-dlya-konya",
+    "title": "Табличка на денник для коня из фанеры ФСФ 6 мм",
+    "client": "",
+    "storyLevel": "A",
+    "summary": "Индивидуальный заказ — табличка на денник для коня. Основа — фанера ФСФ 6 мм.",
+    "approvedDetails": "Фанера ФСФ 6 мм, обработка морилкой «орех», лакировка для защиты, аккуратная УФ-печать.",
+    "cta": "Пришлите фото, рисунок или идею для проверки возможности изготовления и расчёта стоимости.",
+    "category": "Реальный проект",
+    "image": "/images/cases/content-factory/tablichka-na-dennik-dlya-konya-46435f12b39c.jpg",
+    "imageAlt": "Табличка на денник для коня из фанеры ФСФ 6 мм",
+    "images": [
+      {
+        "src": "/images/cases/content-factory/tablichka-na-dennik-dlya-konya-46435f12b39c.jpg",
+        "alt": "Табличка на денник для коня из фанеры ФСФ 6 мм"
+      }
+    ],
+    "task": "Для денника понадобилась индивидуальная табличка.",
+    "solution": "Изготовили табличку из фанеры ФСФ 6 мм, обработали морилкой «орех» и покрыли лаком для защиты.",
+    "result": "На табличку нанесли аккуратную УФ-печать, стойкую к влаге и истиранию.",
+    "price": "",
+    "qty": "",
+    "deadline": "",
+    "tags": [],
+    "contentFactory": {
+      "schemaVersion": "content-factory.website-case.v1",
+      "projectId": "cmwiy43l8000ufwbtyze1gbw4",
+      "packId": "cmwiz8eoc000qfwq6ndp3z5gy",
+      "packVersion": 1,
+      "approvalHash": "0f474aca55c0d839320ff69488a23541d6b39ea4a618e53481e0456ebe7d0405",
+      "payloadHash": "7391b3f0d92ee323ed2e18726fba9e242692e1c6ddafc4e7abbaa45772696493",
+      "importedAt": "2026-11-17T17:58:56.055Z"
+    }
   }
 ]
