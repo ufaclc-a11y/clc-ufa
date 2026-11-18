@@ -31,7 +31,8 @@ export function relatedCaseLinks(item: Case, examples: Case[]) {
       .slice(0, 2).map(example => ({ href: `/cases/${example.id}`, title: example.title }))]
       .filter((link, index, all) => all.findIndex(other => other.href === link.href) === index)
   }
-  const source = terms([item.title, item.task, ...item.tags].join(' '))
+  // Услуги и товары: ищем по названию, задаче, тегам и по описанию изготовления (материал, технология), чтобы кейс вёл на нужную услугу.
+  const source = terms([item.title, item.task, item.solution, item.approvedDetails, ...item.tags].filter(Boolean).join(' '))
   const score = (text: string) => [...terms(text)].filter(term => source.has(term)).length
   const catalog = [
     ...services.map(service => ({ href: `/services/${service.slug}`, title: service.title })),
@@ -39,8 +40,14 @@ export function relatedCaseLinks(item: Case, examples: Case[]) {
   ].map(link => ({ ...link, score: score(link.title) }))
     .filter(link => link.score >= Math.min(2, terms(link.title).size) && link.score > 0)
     .sort((a, b) => b.score - a.score).slice(0, 4)
+  // Похожие кейсы по убыванию важности: то же изделие (название) → та же потребность (задача) → тот же материал и технология.
+  const overlap = (a: string, b: string) => { const other = terms(b); return [...terms(a)].filter(term => other.has(term)).length }
   const related = (item.autoRelatedCases === false ? [] : examples).filter(example => example.id !== item.id)
-    .map(example => ({ href: `/cases/${example.id}`, title: example.title, score: score([example.title, example.task, ...example.tags].join(' ')) }))
-    .filter(link => link.score >= 2).sort((a, b) => b.score - a.score).slice(0, 2)
+    .map(example => ({
+      href: `/cases/${example.id}`, title: example.title,
+      score: 4 * overlap(item.title, example.title) + 2 * overlap([item.task, ...item.tags].join(' '), [example.task, ...example.tags].join(' '))
+        + overlap([item.solution, item.approvedDetails].filter(Boolean).join(' '), [example.solution, example.approvedDetails].filter(Boolean).join(' ')),
+    }))
+    .filter(link => link.score >= 4).sort((a, b) => b.score - a.score).slice(0, 2)
   return [...catalog, ...related].filter((link, index, all) => all.findIndex(other => other.href === link.href) === index)
 }

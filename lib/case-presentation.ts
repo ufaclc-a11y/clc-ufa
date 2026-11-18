@@ -25,6 +25,8 @@ export function caseSections(item: Case) {
       { heading: level === 'B' ? 'Доработка' : level === 'C' ? 'Сложности и решения' : 'Как сделали', text: solution },
       ...(level === 'C' ? [{ heading: 'Изготовление', text: item.production }] : []),
       { heading: 'Результат', text: item.result },
+      // Кейсы контент-завода: сводка параметров (материал, технология, отделка) отдельным блоком, если её не пересказывают другие разделы.
+      ...('contentFactory' in item ? [{ heading: 'Характеристики', text: item.approvedDetails }] : []),
     ]
     const seen = new Set<string>()
     return sections.flatMap(section => {
@@ -32,6 +34,8 @@ export function caseSections(item: Case) {
       if (!text || seen.has(key(text))) return []
       // A production paragraph wholly repeated in the solution adds no evidence.
       if (section.heading === 'Изготовление' && key(solution).includes(key(text))) return []
+      // Характеристики, уже целиком сказанные в других разделах, второй раз не показываем.
+      if (section.heading === 'Характеристики' && sections.some(other => other !== section && key(other.text ?? '').toLowerCase().includes(key(text).toLowerCase().replace(/[.;]$/, '')))) return []
       seen.add(key(text))
       return [{ heading: section.heading, text }]
     })

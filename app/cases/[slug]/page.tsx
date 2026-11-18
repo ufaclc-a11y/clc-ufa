@@ -37,6 +37,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: images.map(image => ({ url: image.src, alt: image.alt })),
       type: 'article',
     },
+    // Карточка в мессенджерах и соцсетях — с названием и фото именно этого кейса, а не общая заглушка сайта.
+    twitter: { card: 'summary_large_image', title: item.title, description, images: images.map(image => image.src) },
   }
 }
 
