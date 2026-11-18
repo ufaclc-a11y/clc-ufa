@@ -138,43 +138,6 @@
     }
   },
   {
-    "id": "panno-iz-fanery-dub",
-    "title": "Панно из фанеры в оттенке «дуб»",
-    "client": "",
-    "storyLevel": "A",
-    "summary": "В примере — изящное панно из фанеры толщиной 3 мм, окрашенное в благородный оттенок «дуб».",
-    "cta": "Пришлите эскиз",
-    "category": "Реальный проект",
-    "image": "/images/portfolio/lazernaya-rezka-336.jpg",
-    "imageAlt": "Панно из фанеры в оттенке «дуб»",
-    "images": [
-      {
-        "src": "/images/portfolio/lazernaya-rezka-336.jpg",
-        "alt": "Панно из фанеры в оттенке «дуб»"
-      },
-      {
-        "src": "/images/portfolio/lazernaya-rezka-337.jpg",
-        "alt": "Панно из фанеры в оттенке «дуб», фото 2"
-      }
-    ],
-    "task": "Панно изготавливается по идее заказчика.",
-    "solution": "Мы подготовим макет под резку панно.",
-    "result": "Готовое изделие — панно из фанеры толщиной 3 мм, окрашенное в благородный оттенок «дуб».",
-    "price": "",
-    "qty": "",
-    "deadline": "",
-    "tags": [],
-    "contentFactory": {
-      "schemaVersion": "content-factory.website-case.v1",
-      "projectId": "cmwiy42hw000ffwbtwkq1i67p",
-      "packId": "cmwiz7xve000hfwq6yna4td96",
-      "packVersion": 1,
-      "approvalHash": "c1cb4a37f0b9ed5a0dbdbabe37331f3379ba9f145e08d5eb82f0526015f318bb",
-      "payloadHash": "bc94f0d09feb044dd57adbc7e2ff1a30c4ef4923f1e9f6b505eb96bd75c3a0de",
-      "importedAt": "2026-11-16T13:00:20.696Z"
-    }
-  },
-  {
     "id": "figurnyy-olenenok-fanera-uf-pechat",
     "title": "Фигурный оленёнок из влагостойкой фанеры ФСФ 9 мм с УФ-печатью",
     "client": "",
@@ -285,6 +248,45 @@
       "approvalHash": "6ed6818861000f255c24951cf4016a8373ba88d9fab841cf3f46c587eabff4dc",
       "payloadHash": "d34e9bc9d60df4df75355b8b5a042b5c9ca043f887fe53a972e4db55d1b1801f",
       "importedAt": "2026-11-18T08:53:36.881Z"
+    }
+  },
+  {
+    "id": "panno-iz-fanery-dub",
+    "title": "Резное панно из фанеры 3 мм в оттенке «дуб» на заказ",
+    "client": "",
+    "storyLevel": "A",
+    "summary": "Ажурное панно из фанеры толщиной 3 мм в оттенке «дуб»: три фигуры вырезаны по контуру внутри прямоугольной рамки. Пример работы, которую можно повторить или сделать по вашему эскизу.",
+    "approvedDetails": "Материал: фанера 3 мм. Отделка: окрашивание в оттенок «дуб». Технология: резка по макету.",
+    "cta": "Хотите такое панно по своему эскизу? Пришлите рисунок или идею и желаемый размер — подготовим макет под резку и рассчитаем стоимость.",
+    "seoDescription": "Резное панно из фанеры 3 мм в оттенке «дуб»: изготовили по макету в Уфе. Пришлите эскиз — сделаем панно по вашей идее.",
+    "category": "Реальный проект",
+    "image": "/images/portfolio/lazernaya-rezka-336.jpg",
+    "imageAlt": "Ажурное панно из фанеры в рамке с тремя вырезанными фигурами с кувшинами, окрашенное в оттенок дуб",
+    "images": [
+      {
+        "src": "/images/portfolio/lazernaya-rezka-336.jpg",
+        "alt": "Ажурное панно из фанеры в рамке с тремя вырезанными фигурами с кувшинами, окрашенное в оттенок дуб"
+      },
+      {
+        "src": "/images/portfolio/lazernaya-rezka-337.jpg",
+        "alt": "Резное панно из фанеры 3 мм в оттенке «дуб» на заказ, вид 2"
+      }
+    ],
+    "task": "Заказчики приходят со своей идеей или эскизом, а нужно превратить её в панно для интерьера.",
+    "solution": "Подбираем фанеру нужной толщины, готовим макет под резку и вырезаем панно. В этом примере взяли фанеру 3 мм и окрасили её в оттенок «дуб», так что рисунок древесины остался виден.",
+    "result": "Готовое панно: три фигуры с кувшинами в рамке, тёмно-коричневый тон и видимая текстура дерева.",
+    "price": "",
+    "qty": "",
+    "deadline": "",
+    "tags": [],
+    "contentFactory": {
+      "schemaVersion": "content-factory.website-case.v1",
+      "projectId": "cmwiy42hw000ffwbtwkq1i67p",
+      "packId": "cmwm1wnjw0000fwkmrzpdkrz4",
+      "packVersion": 2,
+      "approvalHash": "f6d7fdbda9835aae513fca8a01ca95e97e00ce097871e85b3392e9aeaaa182a1",
+      "payloadHash": "c0bdd472a6a4b5d5942f0073edaa8b8ef19686832f0946c547f4d7f7e006f62d",
+      "importedAt": "2026-11-18T11:41:57.471Z"
     }
   }
 ]
