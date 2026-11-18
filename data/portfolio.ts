@@ -1,4 +1,5 @@
 import { portfolioFiles } from './portfolio.generated'
+import { portfolioCaseLinks } from '@/lib/portfolio-case-links'
 
 export type PortfolioItem = {
   id:       string
@@ -7,6 +8,8 @@ export type PortfolioItem = {
   tags:     string[]
   image:    string
   alt:      string
+  /** Кейс, в котором использовано это фото (если есть): ссылка из портфолио в кейс. */
+  case?:    { id: string; title: string }
 }
 
 export type PortfolioCategory = { id: string; label: string; count: number; sourceCount?: number }
@@ -53,6 +56,8 @@ const CATEGORY_META: { id: string; label: string }[] = [
   { id: 'klyuchnitsa',         label: 'Ключницы'            },
 ]
 
+const caseLinks = portfolioCaseLinks()
+
 function makeItems(id: string, label: string): PortfolioItem[] {
   const files = portfolioFiles[id] ?? []
   return files.map((file, i) => ({
@@ -62,6 +67,7 @@ function makeItems(id: string, label: string): PortfolioItem[] {
     tags:     [],
     image:    `/images/portfolio/${file}`,
     alt:      `${label} — пример ${i + 1}`,
+    ...(caseLinks.has(`/images/portfolio/${file}`) ? { case: caseLinks.get(`/images/portfolio/${file}`) } : {}),
   }))
 }
 

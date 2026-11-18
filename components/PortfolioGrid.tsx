@@ -156,6 +156,7 @@ export function PortfolioGrid({ limit, showFilter = true, defaultCategory = 'all
 /* ── PortfolioCard ── */
 function PortfolioCard({ item, priority, onClick }: { item: PortfolioItem; priority?: boolean; onClick: () => void }) {
   return (
+    <div className="relative">
     <button
       type="button"
       onClick={onClick}
@@ -181,6 +182,16 @@ function PortfolioCard({ item, priority, onClick }: { item: PortfolioItem; prior
         <p className="text-white text-sm font-semibold leading-snug">{item.title}</p>
       </div>
     </button>
+    {item.case && (
+      <Link
+        href={`/cases/${item.case.id}`}
+        aria-label={`Читать кейс: ${item.case.title}`}
+        className="absolute left-2 top-2 z-10 inline-flex min-h-8 items-center rounded-full bg-[#FF6B00] px-3 text-xs font-bold text-white shadow-[0_2px_10px_rgba(0,0,0,0.3)] transition-colors hover:bg-[#C94700] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+      >
+        Кейс →
+      </Link>
+    )}
+    </div>
   )
 }
 
@@ -208,7 +219,7 @@ function Lightbox({
   // Простая ловушка фокуса: Tab циклится по кнопкам лайтбокса
   const onKeyDown = (e: React.KeyboardEvent) => {
     if (e.key !== 'Tab' || !rootRef.current) return
-    const focusables = rootRef.current.querySelectorAll<HTMLElement>('button')
+    const focusables = rootRef.current.querySelectorAll<HTMLElement>('button, a[href]')
     if (focusables.length === 0) return
     const first = focusables[0]
     const last  = focusables[focusables.length - 1]
@@ -296,8 +307,17 @@ function Lightbox({
       </button>
 
       {/* Caption */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-sm text-center select-none px-4">
-        {item.alt}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-sm text-center px-4">
+        <span className="select-none">{item.alt}</span>
+        {item.case && (
+          <Link
+            href={`/cases/${item.case.id}`}
+            onClick={(e) => e.stopPropagation()}
+            className="mt-2 inline-flex min-h-11 items-center rounded-full bg-[#FF6B00] px-5 font-semibold text-white hover:bg-[#C94700] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          >
+            Читать кейс: {item.case.title}
+          </Link>
+        )}
       </div>
     </div>
   )

@@ -8,6 +8,7 @@
     "gen:shop-descriptions": "node scripts/gen-shop-descriptions.mjs",
     "gen:shop-gallery": "node scripts/download-shop-gallery.mjs",
     "predev": "node scripts/gen-portfolio.mjs",
+    "gen:photo-index": "node scripts/gen-photo-index.mjs",
     "dev": "next dev",
     "prebuild": "node scripts/gen-portfolio.mjs",
     "build": "next build --webpack",
