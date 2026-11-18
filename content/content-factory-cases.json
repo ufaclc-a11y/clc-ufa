@@ -138,43 +138,6 @@
     }
   },
   {
-    "id": "ulichnaya-tablichka-brig",
-    "title": "Уличная табличка с логотипом «Бриг»",
-    "client": "",
-    "storyLevel": "A",
-    "summary": "Изготовили уличную табличку с логотипом «Бриг». Дополнительно сделали трафарет для покраски из ПЭТ.",
-    "cta": "Пришлите фото, рисунок или идею для проверки возможности изготовления и расчёта стоимости.",
-    "category": "Реальный проект",
-    "image": "/images/cases/content-factory/ulichnaya-tablichka-brig-6fa3994f0136.png",
-    "imageAlt": "Уличная табличка с логотипом «Бриг»",
-    "images": [
-      {
-        "src": "/images/cases/content-factory/ulichnaya-tablichka-brig-6fa3994f0136.png",
-        "alt": "Уличная табличка с логотипом «Бриг»"
-      },
-      {
-        "src": "/images/cases/content-factory/ulichnaya-tablichka-brig-cmwlm14u9000.png",
-        "alt": "Уличная табличка с логотипом «Бриг», фото 2"
-      }
-    ],
-    "task": "Клиенту требовалась уличная табличка с логотипом «Бриг».",
-    "solution": "Мы изготовили табличку методом фрезеровки. Для удобства покраски дополнительно сделали трафарет из ПЭТ.",
-    "result": "Готовая уличная табличка с логотипом «Бриг» и трафарет для покраски из ПЭТ.",
-    "price": "",
-    "qty": "",
-    "deadline": "",
-    "tags": [],
-    "contentFactory": {
-      "schemaVersion": "content-factory.website-case.v1",
-      "projectId": "cmu6ktd4u00f4fvx62okrgolc",
-      "packId": "cmwlm14u90005fw8mjx7tl8xq",
-      "packVersion": 1,
-      "approvalHash": "eb4e1e92073a62bfceffe6027b0993f91d8236cf4e16c7bbbeda5e2e1a2c8030",
-      "payloadHash": "8af7086764a3c29a427fcc2176119d31555816ceb0a6d1f0accc7541956d6e79",
-      "importedAt": "2026-11-18T04:25:30.418Z"
-    }
-  },
-  {
     "id": "tablichka-na-dennik-dlya-konya",
     "title": "Именная табличка на денник для коня с портретом из фанеры",
     "client": "",
