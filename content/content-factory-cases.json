@@ -138,47 +138,6 @@
     }
   },
   {
-    "id": "figurnyy-olenenok-fanera-uf-pechat",
-    "title": "Фигурный оленёнок из влагостойкой фанеры ФСФ 9 мм с УФ-печатью",
-    "client": "",
-    "storyLevel": "A",
-    "summary": "Мы изготовили фигурного оленёнка из влагостойкой фанеры ФСФ толщиной 9 мм и нанесли яркое полноцветное изображение методом УФ-печати.",
-    "cta": "Пришлите фото, рисунок или идею для проверки возможности изготовления и расчёта стоимости.",
-    "category": "Реальный проект",
-    "image": "/images/cases/content-factory/figurnyy-olenenok-fanera-uf-pechat-304d8e070fe3.jpg",
-    "imageAlt": "Фигурный оленёнок из влагостойкой фанеры ФСФ 9 мм с УФ-печатью",
-    "images": [
-      {
-        "src": "/images/cases/content-factory/figurnyy-olenenok-fanera-uf-pechat-304d8e070fe3.jpg",
-        "alt": "Фигурный оленёнок из влагостойкой фанеры ФСФ 9 мм с УФ-печатью"
-      },
-      {
-        "src": "/images/cases/content-factory/figurnyy-olenenok-fanera-uf-pechat-97aa01d5380d.jpg",
-        "alt": "Фигурный оленёнок из влагостойкой фанеры ФСФ 9 мм с УФ-печатью, фото 2"
-      },
-      {
-        "src": "/images/cases/content-factory/figurnyy-olenenok-fanera-uf-pechat-e643ae4a3985.jpg",
-        "alt": "Фигурный оленёнок из влагостойкой фанеры ФСФ 9 мм с УФ-печатью, фото 3"
-      }
-    ],
-    "task": "Для праздничного оформления понадобилась фигурная декорация.",
-    "solution": "Мы выполнили лазерную резку по контуру и печать.",
-    "result": "Готовый фигурный оленёнок выполнен из влагостойкой фанеры ФСФ толщиной 9 мм, на него нанесено яркое полноцветное изображение методом УФ-печати.",
-    "price": "",
-    "qty": "",
-    "deadline": "",
-    "tags": [],
-    "contentFactory": {
-      "schemaVersion": "content-factory.website-case.v1",
-      "projectId": "cmwiy40rf0000fwbti1ppqd8r",
-      "packId": "cmwj03kb40002fw36tkbuk1v2",
-      "packVersion": 2,
-      "approvalHash": "e6e4e26d688ae6208cc147f0423569d822651d124bed7bd2fcb9ed3cabd96f45",
-      "payloadHash": "01d42cad33b797e9d4f432977358fc948f399d3e3f506463fcb9c1681582e045",
-      "importedAt": "2026-11-17T12:36:19.522Z"
-    }
-  },
-  {
     "id": "ulichnaya-tablichka-brig",
     "title": "Уличная табличка с логотипом «Бриг»",
     "client": "",
@@ -287,6 +246,49 @@
       "approvalHash": "f6d7fdbda9835aae513fca8a01ca95e97e00ce097871e85b3392e9aeaaa182a1",
       "payloadHash": "c0bdd472a6a4b5d5942f0073edaa8b8ef19686832f0946c547f4d7f7e006f62d",
       "importedAt": "2026-11-18T11:41:57.471Z"
+    }
+  },
+  {
+    "id": "figurnyy-olenenok-fanera-uf-pechat",
+    "title": "Новогодний оленёнок из фанеры ФСФ 9 мм с УФ-печатью",
+    "client": "",
+    "storyLevel": "A",
+    "summary": "Фигурный оленёнок для новогоднего оформления: влагостойкая фанера ФСФ 9 мм, вырезан лазером по контуру, яркое полноцветное изображение нанесено УФ-печатью.",
+    "approvedDetails": "Материал: влагостойкая фанера ФСФ 9 мм. Технологии: лазерная резка по контуру, полноцветная УФ-печать.",
+    "cta": "Нужна такая же фигура для витрины, фотозоны или праздника? Пришлите изображение, желаемые размеры и количество — предложим вариант изготовления и рассчитаем стоимость.",
+    "seoDescription": "Новогодний оленёнок из фанеры ФСФ 9 мм: лазерная резка по контуру и полноцветная УФ-печать. Фигурный декор для витрин и фотозон в Уфе.",
+    "category": "Реальный проект",
+    "image": "/images/cases/content-factory/figurnyy-olenenok-fanera-uf-pechat-304d8e070fe3.jpg",
+    "imageAlt": "Фигурный новогодний оленёнок в красно-белом колпаке и воротнике из фанеры с цветной УФ-печатью на деревянной подставке",
+    "images": [
+      {
+        "src": "/images/cases/content-factory/figurnyy-olenenok-fanera-uf-pechat-304d8e070fe3.jpg",
+        "alt": "Фигурный новогодний оленёнок в красно-белом колпаке и воротнике из фанеры с цветной УФ-печатью на деревянной подставке"
+      },
+      {
+        "src": "/images/cases/content-factory/figurnyy-olenenok-fanera-uf-pechat-97aa01d5380d.jpg",
+        "alt": "Новогодний оленёнок из фанеры ФСФ 9 мм с УФ-печатью, вид 2"
+      },
+      {
+        "src": "/images/cases/content-factory/figurnyy-olenenok-fanera-uf-pechat-e643ae4a3985.jpg",
+        "alt": "Новогодний оленёнок из фанеры ФСФ 9 мм с УФ-печатью, вид 3"
+      }
+    ],
+    "task": "Для праздничного оформления понадобилась фигурная декорация в виде оленёнка.",
+    "solution": "Фигуру вырезали лазером по контуру из влагостойкой фанеры ФСФ 9 мм и нанесли полноцветное изображение УФ-печатью. Подставку на части фотографий заказчица оформила самостоятельно и собрала из заготовки новогоднюю композицию.",
+    "result": "Готовая фигура оленёнка в праздничном колпаке и воротнике с яркой цветной печатью по всему контуру.",
+    "price": "",
+    "qty": "",
+    "deadline": "",
+    "tags": [],
+    "contentFactory": {
+      "schemaVersion": "content-factory.website-case.v1",
+      "projectId": "cmwiy40rf0000fwbti1ppqd8r",
+      "packId": "cmwm1x3k70000fwnd7ma0ug5v",
+      "packVersion": 3,
+      "approvalHash": "78a83f25e77470e13298046770e1952a5177d89ce6fb45b73aa4a81e4fa688fd",
+      "payloadHash": "44ca985b5e6f739c8750404deff0579d36707e5afe43acc034d6cb06783512c9",
+      "importedAt": "2026-11-18T11:42:13.354Z"
     }
   }
 ]
