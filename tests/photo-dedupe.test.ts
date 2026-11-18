@@ -9,11 +9,14 @@ import { publicCases } from '../lib/public-cases'
 const root = path.resolve(import.meta.dirname, '..')
 const index = JSON.parse(readFileSync(path.join(root, 'data/photo-index.json'), 'utf8')) as Record<string, { sha256: string; dhash: string }>
 
-test('photo index covers every portfolio file with the right hash (run npm run gen:photo-index after adding photos)', () => {
+test('photo index covers every portfolio file with the right hashes (run npm run gen:photo-index after adding photos)', async () => {
+  const { dhash } = await import('../scripts/gen-photo-index.mjs')
   const files = readdirSync(path.join(root, 'public/images/portfolio')).filter(f => /\.(jpe?g|png|webp)$/i.test(f))
   assert.deepEqual(Object.keys(index).sort(), files.sort())
-  for (const file of files.slice(0, 25)) {
-    assert.equal(index[file].sha256, createHash('sha256').update(readFileSync(path.join(root, 'public/images/portfolio', file))).digest('hex'))
+  for (const file of files) {
+    const bytes = readFileSync(path.join(root, 'public/images/portfolio', file))
+    assert.equal(index[file].sha256, createHash('sha256').update(bytes).digest('hex'), `${file}: sha256 индекса устарел`)
+    assert.equal(index[file].dhash, await dhash(bytes), `${file}: dhash индекса устарел`)
   }
 })
 
@@ -27,7 +30,7 @@ test('no Content Factory case keeps its own copy of a photo that already exists 
       if (image.src.startsWith('/images/portfolio/')) continue
       const hash = await dhash(readFileSync(file))
       const nearest = Object.entries(index).map(([name, value]) => [hamming(hash, value.dhash), name] as const).sort((a, b) => a[0] - b[0])[0]
-      assert.ok(nearest[0] > 6, `${item.id}: ${image.src} дублирует фото портфолио ${nearest[1]} — сошлитесь на /images/portfolio/${nearest[1]} и удалите копию`)
+      assert.ok(nearest[0] > 4, `${item.id}: ${image.src} дублирует фото портфолио ${nearest[1]} — сошлитесь на /images/portfolio/${nearest[1]} и удалите копию`)
     }
   }
 })

@@ -307,7 +307,7 @@ function Lightbox({
       </button>
 
       {/* Caption */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-sm text-center px-4">
+      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 flex-col items-center text-white/60 text-sm text-center px-4">
         <span className="select-none">{item.alt}</span>
         {item.case && (
           <Link
