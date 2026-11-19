@@ -335,5 +335,67 @@
       "payloadHash": "94bca5878b26a632b6db8b53119880791f1c22601c9233cc0effa5a0477caee9",
       "importedAt": "2026-11-19T09:08:32.206Z"
     }
+  },
+  {
+    "id": "maket-flakona-preparata-dlya-fotozony",
+    "title": "Макет флакона препарата для фотозоны",
+    "client": "",
+    "storyLevel": "A",
+    "summary": "Изготовили макет флакона препарата для фотозоны: большую версию высотой 50 см напечатали на МДФ.",
+    "cta": "Хотите такой же макет для фотозоны? Пришлите фото упаковки, нужную высоту и пример оформления — предложим вариант изготовления и рассчитаем стоимость.",
+    "seoDescription": "Макет флакона препарата для фотозоны высотой 50 см из МДФ с ножкой сзади. Закажите похожий макет для мероприятия или семинара.",
+    "category": "Реальный проект",
+    "image": "/images/cases/content-factory/maket-flakona-preparata-dlya-fotozony-826b48e3b71f.png",
+    "imageAlt": "Напечатанный макет флакона препарата для фотозоны из МДФ",
+    "images": [
+      {
+        "src": "/images/cases/content-factory/maket-flakona-preparata-dlya-fotozony-826b48e3b71f.png",
+        "alt": "Напечатанный макет флакона препарата для фотозоны из МДФ"
+      },
+      {
+        "src": "/images/portfolio/p-fc847e4ea44e.jpg",
+        "alt": "Макет флакона препарата для фотозоны, вид 2"
+      },
+      {
+        "src": "/images/cases/content-factory/maket-flakona-preparata-dlya-fotozony-f17123dea663.png",
+        "alt": "Макет флакона препарата для фотозоны, вид 3"
+      },
+      {
+        "src": "/images/cases/content-factory/maket-flakona-preparata-dlya-fotozony-1182ec05c291.png",
+        "alt": "Макет флакона препарата для фотозоны, вид 4"
+      },
+      {
+        "src": "/images/cases/content-factory/maket-flakona-preparata-dlya-fotozony-ec591b659b04.png",
+        "alt": "Макет флакона препарата для фотозоны, вид 5"
+      },
+      {
+        "src": "/images/cases/content-factory/maket-flakona-preparata-dlya-fotozony-c1062efe521f.png",
+        "alt": "Макет флакона препарата для фотозоны, вид 6"
+      },
+      {
+        "src": "/images/cases/content-factory/maket-flakona-preparata-dlya-fotozony-c41c86020a89.png",
+        "alt": "Макет флакона препарата для фотозоны, вид 7"
+      },
+      {
+        "src": "/images/cases/content-factory/maket-flakona-preparata-dlya-fotozony-9946117dc641.png",
+        "alt": "Макет флакона препарата для фотозоны, вид 8"
+      }
+    ],
+    "task": "Заказчику нужен был макет флакона препарата для фотозоны высотой примерно 50 см, чтобы он был как настоящий. Заказ был срочный, к семинару.",
+    "solution": "Для большого макета выбрали МДФ 6 мм: на нём при печати не видна фактура, а на фанере она заметна. Чтобы макет можно было поставить и он не падал, заказчик попросил сделать опору.",
+    "result": "Напечатали маленькие статуэтки на акриле, большую высотой 50 см напечатали на МДФ, сзади есть ножка.",
+    "price": "",
+    "qty": "",
+    "deadline": "",
+    "tags": [],
+    "contentFactory": {
+      "schemaVersion": "content-factory.website-case.v1",
+      "projectId": "cmu6ktzkz00hcfvx6jnlog8b1",
+      "packId": "cmwnc7840000mfwb1x0xl4pta",
+      "packVersion": 1,
+      "approvalHash": "72f31c36b46b210b06ac7cdf81abd71c7c100cdd1b082348f3ed1cea25243110",
+      "payloadHash": "42093dc54c5c3435327872df71afb6ad34b70b712db2c42f613b210030eb3001",
+      "importedAt": "2026-11-19T09:20:34.443Z"
+    }
   }
 ]
