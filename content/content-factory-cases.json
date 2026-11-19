@@ -300,5 +300,40 @@
       "payloadHash": "97dcb5abbf944c6a91cc773a8bec9cefa2600b89fe28df0a5a4b67ebeededf21",
       "importedAt": "2026-11-19T06:26:30.766Z"
     }
+  },
+  {
+    "id": "gravirovka-na-zastezhke-braslet-chasov",
+    "title": "Гравировка на застёжке стального браслета часов",
+    "client": "",
+    "storyLevel": "A",
+    "summary": "Лазерная гравировка на застёжке стального браслета от часов: надпись «15 лет» и логотип компании.",
+    "approvedDetails": "Материал: сталь. Технология: лазерная гравировка.",
+    "cta": "Хотите гравировку на часах или браслете? Пришлите фото изделия, надпись и логотип — предложим вариант и рассчитаем стоимость.",
+    "seoDescription": "Гравировка на застёжке стального браслета от часов: надпись «15 лет» и логотип. Закажите лазерную гравировку на часах.",
+    "category": "Реальный проект",
+    "image": "/images/cases/content-factory/gravirovka-na-zastezhke-braslet-chasov-cmwnbu50b000.png",
+    "imageAlt": "Застёжка стального браслета от часов с лазерной гравировкой «15 лет» и логотипом",
+    "images": [
+      {
+        "src": "/images/cases/content-factory/gravirovka-na-zastezhke-braslet-chasov-cmwnbu50b000.png",
+        "alt": "Застёжка стального браслета от часов с лазерной гравировкой «15 лет» и логотипом"
+      }
+    ],
+    "task": "Клиент спросил, делаем ли мы гравировку на часах, и уточнил, есть ли ручная гравировка.",
+    "solution": "Ручной гравировки у нас нет, мы гравируем только лазером, поэтому надпись нанесли лазерной гравировкой.",
+    "result": "На застёжке стального браслета от часов нанесена гравировка «15 лет» и логотип компании.",
+    "price": "",
+    "qty": "",
+    "deadline": "",
+    "tags": [],
+    "contentFactory": {
+      "schemaVersion": "content-factory.website-case.v1",
+      "projectId": "cmu6ktv9700h0fvx666lq107q",
+      "packId": "cmwnbu50b000ffwn2j62ka6i2",
+      "packVersion": 1,
+      "approvalHash": "1099b641e4b0ff7eb871b3a70cb5177f685e14769d8786324171672cbf088419",
+      "payloadHash": "94bca5878b26a632b6db8b53119880791f1c22601c9233cc0effa5a0477caee9",
+      "importedAt": "2026-11-19T09:08:32.206Z"
+    }
   }
 ]
