@@ -253,5 +253,52 @@
       "payloadHash": "44ca985b5e6f739c8750404deff0579d36707e5afe43acc034d6cb06783512c9",
       "importedAt": "2026-11-18T11:42:13.354Z"
     }
+  },
+  {
+    "id": "uv-dtf-stikery-po-individualnomu-maketu",
+    "title": "UV DTF-стикеры по индивидуальному макету",
+    "client": "",
+    "storyLevel": "A",
+    "summary": "Изготовили UV DTF-стикеры по индивидуальному макету с белой контурной подложкой в 5 слоёв.",
+    "approvedDetails": "Технология: UV DTF. Отделка: белая контурная подложка, 5 слоёв.",
+    "cta": "Хотите такие же стикеры по своему макету? Пришлите макет и пример оформления — предложим вариант изготовления и рассчитаем стоимость.",
+    "seoDescription": "UV DTF-стикеры по индивидуальному макету с белой контурной подложкой. Пришлите макет — предложим вариант и рассчитаем заказ.",
+    "category": "Реальный проект",
+    "image": "/images/cases/content-factory/uv-dtf-stikery-po-individualnomu-maketu-b16c71fe0a2f.jpg",
+    "imageAlt": "Готовые UV DTF-стикеры по индивидуальному макету с белой контурной подложкой",
+    "images": [
+      {
+        "src": "/images/cases/content-factory/uv-dtf-stikery-po-individualnomu-maketu-b16c71fe0a2f.jpg",
+        "alt": "Готовые UV DTF-стикеры по индивидуальному макету с белой контурной подложкой"
+      },
+      {
+        "src": "/images/cases/content-factory/uv-dtf-stikery-po-individualnomu-maketu-f5768d19280e.jpg",
+        "alt": "UV DTF-стикеры по индивидуальному макету, вид 2"
+      },
+      {
+        "src": "/images/cases/content-factory/uv-dtf-stikery-po-individualnomu-maketu-a4c79c2d97fc.jpg",
+        "alt": "UV DTF-стикеры по индивидуальному макету, вид 3"
+      },
+      {
+        "src": "/images/cases/content-factory/uv-dtf-stikery-po-individualnomu-maketu-556ef07c7429.jpg",
+        "alt": "UV DTF-стикеры по индивидуальному макету, вид 4"
+      }
+    ],
+    "task": "Контур на фартуке снизу, у человека со стаканом, был слишком маленький — 0,25 мм, и при отклеивании мог порваться.",
+    "solution": "Предложили сделать белую подложку: так удобнее приклеивать стикер. Чтобы контур не порвался при отклеивании, использовали 5 слоёв белой контурной подложки — так плотнее. Изгибы ткани соединили с общим объектом.",
+    "result": "UV DTF-стикеры по индивидуальному макету с белой контурной подложкой в 5 слоёв под тонкий контур 0,25 мм. Изгибы ткани соединены с общим объектом.",
+    "price": "",
+    "qty": "",
+    "deadline": "",
+    "tags": [],
+    "contentFactory": {
+      "schemaVersion": "content-factory.website-case.v1",
+      "projectId": "cmuy8eemp001dfve2t6baxxsa",
+      "packId": "cmwmcg80e0004fwqrbvo33o9e",
+      "packVersion": 1,
+      "approvalHash": "e20ace5af308e2d2c552be01a7cc5b879a8e44d20dcbaa6c3fb94c96d8a96ae6",
+      "payloadHash": "97dcb5abbf944c6a91cc773a8bec9cefa2600b89fe28df0a5a4b67ebeededf21",
+      "importedAt": "2026-11-19T06:26:30.766Z"
+    }
   }
 ]
