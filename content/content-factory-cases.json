@@ -397,5 +397,40 @@
       "payloadHash": "46d29adc7565e422cc667d4637ff6345e57d0e84f5a31f6e9d966991df3103f9",
       "importedAt": "2026-11-19T12:38:44.731Z"
     }
+  },
+  {
+    "id": "kartholder-iz-iskusstvennoj-kozhi-s-nadpisyu-ufa",
+    "title": "Картхолдер из искусственной кожи с надписью «Уфа»",
+    "client": "",
+    "storyLevel": "A",
+    "summary": "Изготовили картхолдер из искусственной кожи с надписью «Уфа» на башкирском языке.",
+    "approvedDetails": "Материал: искусственная кожа. Надпись: «Уфа» на башкирском языке.",
+    "cta": "Хотите такой же картхолдер со своей надписью? Пришлите текст, фото и пример оформления — предложим вариант и рассчитаем стоимость.",
+    "seoDescription": "Картхолдер из искусственной кожи с надписью «Уфа» на башкирском языке. Закажите похожий картхолдер с вашей надписью.",
+    "category": "Реальный проект",
+    "image": "/images/cases/content-factory/kartholder-iz-iskusstvennoj-kozhi-s-nadpisyu-ufa-d821b8c3dbf4.jpg",
+    "imageAlt": "Картхолдер из искусственной кожи с надписью «Уфа» на башкирском языке",
+    "images": [
+      {
+        "src": "/images/cases/content-factory/kartholder-iz-iskusstvennoj-kozhi-s-nadpisyu-ufa-d821b8c3dbf4.jpg",
+        "alt": "Картхолдер из искусственной кожи с надписью «Уфа» на башкирском языке"
+      }
+    ],
+    "task": "Нужен был картхолдер с надписью «Уфа» на башкирском языке.",
+    "solution": "Картхолдер сделан из искусственной кожи.",
+    "result": "Готовый картхолдер из искусственной кожи с надписью «Уфа» на башкирском языке.",
+    "price": "",
+    "qty": "",
+    "deadline": "",
+    "tags": [],
+    "contentFactory": {
+      "schemaVersion": "content-factory.website-case.v1",
+      "projectId": "cmu6kudl500j2fvx6cyd7nr1s",
+      "packId": "cmwnicwhz0016fwwr6y2aw9dt",
+      "packVersion": 1,
+      "approvalHash": "ffc2e11a45338bab8fae48707e8d191b0621cf1c183c93609447e2ed04f431d6",
+      "payloadHash": "8c83dc35e5c550d6545c907a3574929aa30dcca751fc03a69711618626f41959",
+      "importedAt": "2026-11-19T14:11:48.679Z"
+    }
   }
 ]
