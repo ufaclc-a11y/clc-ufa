@@ -71,7 +71,9 @@ test('only authorized copy/provenance changes; media, layout, commercial unknown
   const oldCases = publicCases.map(record => record.id === slug ? before : record)
   for (const record of publicCases) {
     const old = oldCases.find(previous => previous.id === record.id)!
-    assert.deepEqual(relatedCaseLinks(record, publicCases), relatedCaseLinks(old, oldCases), `derived related links: ${record.id}`)
+    // Сравниваем адреса и оценки: название кейса мурмяу в ссылках другого кейса законно меняется вместе с утверждённой правкой его названия.
+    const hrefs = (links: { href: string; score?: number }[]) => links.map(({ href, score }) => ({ href, score }))
+    assert.deepEqual(hrefs(relatedCaseLinks(record, publicCases)), hrefs(relatedCaseLinks(old, oldCases)), `derived related links: ${record.id}`)
   }
   for (const field of ['price', 'qty', 'deadline'] as const) assert.equal(item[field], '')
 })
