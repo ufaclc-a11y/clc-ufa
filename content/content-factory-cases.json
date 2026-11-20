@@ -432,5 +432,48 @@
       "payloadHash": "8c83dc35e5c550d6545c907a3574929aa30dcca751fc03a69711618626f41959",
       "importedAt": "2026-11-19T14:11:48.679Z"
     }
+  },
+  {
+    "id": "derevyannaya-korobka-s-otsekami-dlya-kofe",
+    "title": "Деревянная коробка с отсеками для кофе",
+    "client": "",
+    "storyLevel": "A",
+    "summary": "Изготовили деревянную коробку с несколькими отсеками разного размера и раздвижной крышкой.",
+    "approvedDetails": "Материал: дерево. Конструкция: шиповые соединения, внутренние перегородки, раздвижная крышка. Отделка: тёмная тонировка, текстура дерева видна.",
+    "cta": "Хотите такую же коробку с отсеками? Пришлите размеры отсеков и пример оформления — предложим вариант и рассчитаем стоимость.",
+    "seoDescription": "Деревянная коробка с отсеками и раздвижной крышкой, шиповые соединения, тёмная тонировка. Закажите похожую коробку по своим размерам.",
+    "category": "Реальный проект",
+    "image": "/images/cases/content-factory/derevyannaya-korobka-s-otsekami-dlya-kofe-cmwole3gw000.png",
+    "imageAlt": "Деревянная коробка с отсеками и раздвижной крышкой, тёмная тонировка, видна текстура дерева",
+    "images": [
+      {
+        "src": "/images/cases/content-factory/derevyannaya-korobka-s-otsekami-dlya-kofe-cmwole3gw000.png",
+        "alt": "Деревянная коробка с отсеками и раздвижной крышкой, тёмная тонировка, видна текстура дерева"
+      },
+      {
+        "src": "/images/cases/content-factory/derevyannaya-korobka-s-otsekami-dlya-kofe-065440c1483f.png",
+        "alt": "Деревянная коробка с отсеками для кофе, вид 2"
+      },
+      {
+        "src": "/images/cases/content-factory/derevyannaya-korobka-s-otsekami-dlya-kofe-6f31a7e377a0.png",
+        "alt": "Деревянная коробка с отсеками для кофе, вид 3"
+      }
+    ],
+    "task": "Клиенту нужна была коробка с отсеками под кофе, размеры отсеков он задал сам, по своим замерам.",
+    "solution": "Мы подготовили макет по присланным размерам и увеличили отступы в отсеках, чтобы содержимое было удобно брать.",
+    "result": "Готовая коробка с отсеками: корпус собран на шиповых соединениях, внутри перегородки, поверхность тонирована в тёмный цвет с видимой текстурой дерева.",
+    "price": "",
+    "qty": "",
+    "deadline": "",
+    "tags": [],
+    "contentFactory": {
+      "schemaVersion": "content-factory.website-case.v1",
+      "projectId": "cmu6ku3l700i1fvx6cb2pba1u",
+      "packId": "cmwole3gw000ffwbexqy49n9g",
+      "packVersion": 1,
+      "approvalHash": "312e0841023edb7fdba3233d1571175564bd3d688b61262e35b3311aed5c6e7e",
+      "payloadHash": "69c78c5f3357d4c73cff8acfa3f2f0fd49744cf62f22e7e348695257bde4509a",
+      "importedAt": "2026-11-20T06:23:30.946Z"
+    }
   }
 ]
